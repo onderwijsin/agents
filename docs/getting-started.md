@@ -20,6 +20,25 @@ VS Code recommends `oxc.oxc-vscode` and uses it as the default formatter on save
 `pnpm format` formats supported source and documentation files. The supplied task brief is
 excluded from formatting and Markdown linting so its original requirements are preserved.
 
+Dependency versions are pinned exactly. `saveExact: true` in `pnpm-workspace.yaml` makes
+`pnpm add` save exact versions instead of ranges. Keep those pins and the lockfile synchronized
+when updating dependencies.
+
+## Git hooks
+
+`pnpm install` runs the `prepare` script to install Husky hooks in the local checkout.
+
+- Before a commit, lint-staged passes staged files to Oxfmt and automatically stages the
+  formatting changes. It preserves unstaged edits, including edits in partially staged files.
+  Oxfmt's configured exclusions still apply; unsupported file types are skipped. Formatting
+  errors abort the commit and lint-staged restores the original state.
+- Before a push, `pnpm lint` checks repository Markdown and scripts. Errors abort the push.
+
+Review staged changes before committing. The hooks do not stage unrelated files or replace
+`pnpm check`. CI disables local hooks with `HUSKY=0` and runs the full quality gates itself.
+See [Husky setup](https://typicode.github.io/husky/get-started.html) and
+[lint-staged](https://github.com/lint-staged/lint-staged) for hook behavior.
+
 ## Quality commands
 
 | Command             | Purpose                                                                |

@@ -89,3 +89,6 @@ Directus-managed references are one possible application of this boundary. Disco
 validation, or publication through MCP requires a separately defined capability with explicit
 review, authentication, and availability contracts. External content management does not replace
 GitHub ownership of static packages.
+
+The [vision and development direction](docs/vision.md) describes the goals and development
+priorities for capabilities built within these boundaries.

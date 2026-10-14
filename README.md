@@ -38,6 +38,7 @@ Start with [CONTRIBUTING.md](CONTRIBUTING.md). Propose a reusable capability thr
 GitHub issue, then contribute it through a reviewed pull request. Nontechnical colleagues
 can contribute task examples, instructions, and feedback without writing software.
 
+- [Vision and development direction](docs/vision.md): priorities and dynamic references through Directus.
 - [Architecture](ARCHITECTURE.md): sources of truth and lifecycle.
 - [Contributor setup](docs/getting-started.md): local tools and quality checks.
 - [Creating skills](docs/creating-skills.md): portable instructions and metadata.

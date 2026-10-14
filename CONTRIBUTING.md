@@ -15,7 +15,9 @@ pnpm format
 pnpm check
 ```
 
-See [getting started](docs/getting-started.md) for editor setup and individual checks.
+See [getting started](docs/getting-started.md) for editor setup, Git hooks, and individual checks.
+Dependency installation enables automatic formatting of staged files before commit and linting
+before push. Run `pnpm check` before submitting changes.
 The repository is private as an npm package because distribution uses catalogs and package
 folders; the repository content itself is open source under MIT.
 
