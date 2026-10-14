@@ -32,10 +32,12 @@ when updating dependencies.
   formatting changes. It preserves unstaged edits, including edits in partially staged files.
   Oxfmt's configured exclusions still apply; unsupported file types are skipped. Formatting
   errors abort the commit and lint-staged restores the original state.
-- Before a push, `pnpm lint` checks repository Markdown and scripts. Errors abort the push.
+- Before a push, `pnpm check` runs formatting checks, linting, type checking, content and
+  catalog validation, and validator tests. Any failure aborts the push.
 
-Review staged changes before committing. The hooks do not stage unrelated files or replace
-`pnpm check`. CI disables local hooks with `HUSKY=0` and runs the full quality gates itself.
+Review staged changes before committing. The hooks do not stage unrelated files. Run
+`pnpm check` during development as well; CI disables local hooks with `HUSKY=0` and runs
+the full quality gates itself.
 See [Husky setup](https://typicode.github.io/husky/get-started.html) and
 [lint-staged](https://github.com/lint-staged/lint-staged) for hook behavior.
 
