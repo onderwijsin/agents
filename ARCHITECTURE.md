@@ -30,7 +30,6 @@ capability and provider, not inferred from marketplace membership.
 | Location                           | Architectural responsibility                                            |
 | ---------------------------------- | ----------------------------------------------------------------------- |
 | `plugins/<name>/`                  | Independently distributable plugin package and bundled resources        |
-| `skills/<name>/`                   | Independently usable standalone Agent Skill                             |
 | `.agents/plugins/marketplace.json` | Primary ChatGPT/Codex discovery catalog                                 |
 | `.claude-plugin/marketplace.json`  | Claude-compatible discovery catalog                                     |
 | `.agents/skills/`                  | Contributor-facing agent skills, separate from distributed capabilities |
@@ -44,10 +43,12 @@ directories and agree on identities. Provider-specific manifests and extensions 
 metadata or configuration required by their host; they do not duplicate shared skill instructions.
 
 Plugin identity belongs in the root portable `plugin.json`. Bundled skills and resources belong
-inside the plugin's distribution boundary. Standalone skills retain their own ownership and
-installable boundary. Reuse across those boundaries requires an explicit ownership model and a
-deterministic packaging strategy that produces self-contained artifacts without maintaining
-multiple authored copies. Cross-directory references and symlinks do not provide that guarantee.
+inside the plugin's distribution boundary. Every distributable skill belongs to exactly one plugin.
+Plugins contain one or more
+skills and are the canonical units of distribution, installation, and versioning. Bundled skill
+changes belong to the containing plugin version; skills need no independent version. Resources
+stay inside their plugin boundary, without copying, symlinks, or build-time packaging.
+Repository development skills in `.agents/skills/` remain outside marketplace distribution.
 
 ## Authoring, review, and validation
 
@@ -72,7 +73,9 @@ GitHub catalogs define discoverable packages. ChatGPT Business administrators im
 marketplace and use provider-managed GitHub synchronization. A plugin may reference an existing
 registered ChatGPT app without bundling its MCP server; app availability, plugin installation
 policies, permissions, and member authentication remain separate workspace controls. Codex and Claude consume
-their respective native catalogs; standalone skills use a host's Agent Skills installation route.
+their respective native catalogs. Marketplaces reference plugin packages and synchronize their
+bundled contents. GitHub-to-ChatGPT marketplace sync does not discover standalone repository
+skills; other hosts may support standalone Agent Skills installation independently.
 
 Repository review governs source changes. Workspace policy governs consumption. Public repository
 access, workspace import, and publication in a provider's public directory are separate distribution

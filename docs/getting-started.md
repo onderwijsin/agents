@@ -53,7 +53,9 @@ See [Husky setup](https://typicode.github.io/husky/get-started.html) and
 | `pnpm check`        | Run all quality gates                                                  |
 
 The validator prints a file/context with errors and exits unsuccessfully. Fix the source;
-do not weaken checks to hide a failure. Empty `plugins/` and `skills/` are intentional.
+do not weaken checks to hide a failure. Empty plugin catalogs remain valid; distributable
+skills belong in `plugins/<plugin-name>/skills/<skill-name>/`, with a README and manifest
+at the plugin root. A repository-level `skills/` directory fails validation.
 Use [skill authoring](creating-skills.md) or [plugin authoring](creating-plugins.md) for content work.
 
 ## Repository tooling and validation scope
@@ -65,7 +67,7 @@ Oxfmt formats source and Markdown; Oxlint lints scripts; markdownlint-cli2 check
 
 The validator covers the local-only catalog subset, matching catalog names and paths, unique
 identities, required plugin and skill files, skill frontmatter, and relative Markdown file links.
-Empty content directories are accepted. Plugin validation checks required identity fields rather
+Empty plugin catalogs are accepted; repository-level distributable skills are rejected. Plugin validation checks required identity fields rather
 than certifying the full portable schema. It also checks the documented credential-free HTTPS MCP
 subset, matching Claude overlays, OpenAI PNG presentation assets, and plugin-local shared references.
 Advanced manifest extensions, other MCP configuration, Markdown anchors, external URLs,

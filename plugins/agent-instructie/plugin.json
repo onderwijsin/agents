@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agent-instructie",
+  "version": "0.1.0",
+  "repository": "https://github.com/onderwijsin/agents",
+  "description": "Schrijf en verbeter prompts, skills en AI-instructies voor niet-technische taken.",
+  "author": {
+    "name": "Onderwijs in"
+  },
+  "homepage": "https://onderwijsin.nl",
+  "license": "MIT",
+  "keywords": ["instructies", "prompts", "skills"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Agent-instructie",
+        "shortDescription": "Maak duidelijke AI-instructies voor niet-technische taken.",
+        "developerName": "Onderwijs in",
+        "category": "Productivity",
+        "websiteURL": "https://onderwijsin.nl",
+        "defaultPrompt": [
+          "Verbeter deze prompt voor mijn taak.",
+          "Maak een skill voor een terugkerende redactietaak."
+        ]
+      }
+    }
+  }
+}

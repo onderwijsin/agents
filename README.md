@@ -10,14 +10,17 @@ under the [MIT license](LICENSE) so other organizations can reuse and improve th
 An **Agent Skill** is a folder of Markdown instructions and optional resources that
 teaches an AI assistant when and how to perform a reusable task. A **plugin** packages
 skills and, when needed, connections to external services for installation together.
-A **marketplace** is a catalog that helps people discover and install plugins.
+A **marketplace** is a catalog that helps people discover and install plugins. Every
+distributable skill belongs to a plugin; plugins are our discovery, installation, synchronization,
+and versioning units. A plugin may contain one skill or several. Repository development
+skills in `.agents/skills/` are separate and are not distributed through our marketplaces.
 
 ## Use the collection
 
 | Name                                                               | Type   | Description                                                                                                                                                                              |
 | ------------------------------------------------------------------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Onderwijs in Redacteur](plugins/onderwijs-in-redacteur/README.md) | Plugin | Edit Dutch content for tone, structure and content type, check spelling, review ideas, and write drafts using current Onderwijs in content through MCP. Returns written results in chat. |
-| [Agent-instructie](skills/agent-instructie/README.md)              | Skill  | Schrijf en verbeter Nederlandstalige prompts en skills voor niet-technische taken, met duidelijke opdrachten en controleerbare resultaten.                                               |
+| [Agent-instructie](plugins/agent-instructie/README.md)             | Plugin | Schrijf en verbeter Nederlandstalige prompts en skills voor niet-technische taken, met duidelijke opdrachten en controleerbare resultaten.                                               |
 
 Our deployment target is the _ChatGPT Business workspace_ marketplace. Administrators
 can import a GitHub catalog through the GUI, then colleagues can discover and install
@@ -28,7 +31,7 @@ import settings, sync, and workspace permissions.
 | Platform                 | Current repository support                                                      |
 | ------------------------ | ------------------------------------------------------------------------------- |
 | ChatGPT / Codex          | Local marketplace entry and portable package; workspace/runtime testing pending |
-| Claude Code              | Matching marketplace and compatibility overlay; runtime testing pending         |
+| Claude Code              | Matching marketplace; overlays where needed; runtime testing pending            |
 | Other Agent Skills hosts | Portable instructions; the editorial skills require their whole plugin package  |
 
 Portable files do not guarantee identical tools, permissions, or behavior on every host.

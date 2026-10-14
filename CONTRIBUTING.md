@@ -26,9 +26,12 @@ folders; the repository content itself is open source under MIT.
 - Use lowercase kebab-case directories and matching manifest/frontmatter names.
 - Write portable Markdown with concise descriptions explaining when the skill applies.
 - Follow [creating skills](docs/creating-skills.md) and [creating plugins](docs/creating-plugins.md).
-- Include a README for each package or standalone skill with usage, prerequisites, examples,
+- Create distributable skills in `plugins/<plugin-name>/skills/<skill-name>/`.
+  Use a single-skill plugin for an independent capability.
+- Include a README for each plugin package with usage, prerequisites, examples,
   supported hosts, and limitations. Keep bundled skill instructions inside their package.
-- Update both catalogs when adding a plugin. Do not list standalone skills as plugins.
+- Update both catalogs when adding a plugin. Catalogs reference plugin packages.
+- Version bundled skill changes through the containing plugin; individual skills need no version.
 - Add only resources needed by the capability; do not duplicate content for each provider.
 - Never include credentials, private organizational data, or personal information in examples.
 

@@ -2,13 +2,27 @@
 
 ChatGPT Business is our first target. Administrators manage the marketplace; colleagues use
 the plugin GUI. The catalog now includes
-[Onderwijs in Redacteur](../plugins/onderwijs-in-redacteur/README.md).
+[Onderwijs in Redacteur](../plugins/onderwijs-in-redacteur/README.md) and
+[Agent-instructie](../plugins/agent-instructie/README.md).
 The editorial plugin references the existing Onderwijs in ChatGPT app through `.app.json`;
 it does not bundle an MCP server in the ChatGPT-imported package. The technical app ID
 comes from the app URL supplied for this integration and uses OpenAI's documented
 `plugin_asdk_app...` identifier format. Workspace role access and runtime behavior still
 require verification. Verify feature availability, installation, resource loading and
 representative tasks in the workspace before rollout.
+
+## Discovery and synchronization boundaries
+
+The [official plugin management guide](https://learn.chatgpt.com/docs/enterprise/plugin-management)
+describes GitHub import and sync through `.agents/plugins/marketplace.json`. Catalog entries
+reference plugins; their bundled skills synchronize with them. As observed in this workspace,
+standalone skills in a repository-level `skills/` directory are not automatically discovered
+by GitHub-to-ChatGPT marketplace sync. This limitation concerns that distribution route; other
+hosts may support standalone skill installation.
+
+Every distributed capability here belongs to one plugin, including skill-only packages.
+`.agents/skills/` contains repository development skills and is not marketplace content.
+Plugin versions govern bundled content; marketplace sync is not a separate skill release process.
 
 ## Administrator import
 
@@ -53,7 +67,8 @@ Codex can consume `.agents/plugins/marketplace.json` through its native marketpl
 Claude Code uses `.claude-plugin/marketplace.json`. See the
 [Claude marketplace guide](https://code.claude.com/docs/en/plugin-marketplaces) for installation.
 These are distribution targets, not tested runtime guarantees; the first package must establish
-host-specific compatibility. Standalone skills use the host's Agent Skills installation route.
+host-specific compatibility. Other hosts may independently support standalone Agent Skills,
+but this repository distributes its capabilities as plugins.
 
 ## Empty catalog compatibility for future changes
 

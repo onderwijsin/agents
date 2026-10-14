@@ -9,7 +9,7 @@ import { validate } from "./validate.js";
 async function fixture(run: (root: string) => Promise<void>): Promise<void> {
   const root = await mkdtemp(join(tmpdir(), "agents-validation-"));
   try {
-    for (const path of [".agents/plugins", ".claude-plugin", "plugins", "skills", "docs"]) {
+    for (const path of [".agents/plugins", ".claude-plugin", "plugins", "docs"]) {
       await mkdir(join(root, path), { recursive: true });
     }
     await writeFile(
@@ -26,19 +26,18 @@ async function fixture(run: (root: string) => Promise<void>): Promise<void> {
   }
 }
 
-/** Write a standalone skill with supplied metadata for boundary tests. */
+/** Write a bundled skill with supplied metadata for boundary tests. */
 async function addSkill(
   root: string,
   metadata: string,
   body = "# Draft\n\nWrite a draft.",
 ): Promise<void> {
-  const path = join(root, "skills", "draft");
-  await mkdir(path);
-  await writeFile(join(path, "README.md"), "# Draft\n");
+  const plugin = await addPlugin(root);
+  const path = join(plugin, "skills", "draft");
   await writeFile(join(path, "SKILL.md"), `---\n${metadata}\n---\n${body}\n`);
 }
 
-test("empty catalogs and a valid standalone skill pass", async () => {
+test("empty catalogs and a single-skill plugin without connections pass", async () => {
   await fixture(async (root) => {
     await validate(root);
     await addSkill(root, "name: draft\ndescription: Write a draft when asked.");
@@ -113,12 +112,12 @@ test("invalid skill metadata and missing instructions fail", async () => {
     await addSkill(root, "name: other\ndescription: Write a draft.");
     await assert.rejects(validate(root), /name must match/);
     await writeFile(
-      join(root, "skills/draft/SKILL.md"),
+      join(root, "plugins/draft/skills/draft/SKILL.md"),
       "---\nname: draft\ndescription: Draft\nmetadata:\n  version: 1\n---\n# Draft\n",
     );
     await assert.rejects(validate(root), /expected string/);
     await writeFile(
-      join(root, "skills/draft/SKILL.md"),
+      join(root, "plugins/draft/skills/draft/SKILL.md"),
       "---\nname: draft\ndescription: Draft\n---\n",
     );
     await assert.rejects(validate(root), /missing instructions/);
@@ -140,7 +139,7 @@ test("skill references cannot escape the distributable folder", async () => {
     await addSkill(
       root,
       "name: draft\ndescription: Write a draft.",
-      "# Draft\n\n[External](../../docs/guide.md)",
+      "# Draft\n\n[External](../../../../docs/guide.md)",
     );
     await assert.rejects(validate(root), /link escapes package/);
   });
@@ -400,5 +399,33 @@ test("presentation icons require contained PNG assets", async () => {
     await writeFile(join(root, "outside.png"), "outside");
     await symlink(join(root, "outside.png"), join(path, "assets/icon.png"));
     await assert.rejects(validate(root), /reference escapes/);
+  });
+});
+
+test("root skills are rejected while repository development skills are outside distribution", async () => {
+  await fixture(async (root) => {
+    await mkdir(join(root, ".agents/skills/internal"), { recursive: true });
+    await writeFile(join(root, ".agents/skills/internal/SKILL.md"), "Contributor instructions");
+    await validate(root);
+    await mkdir(join(root, "skills"));
+    await assert.rejects(validate(root), /Distributable skills belong inside plugins/);
+  });
+});
+
+test("catalog entries require an existing plugin and matching source", async () => {
+  await fixture(async (root) => {
+    const path = await addPlugin(root);
+    const catalogPath = join(root, ".claude-plugin/marketplace.json");
+    const catalog = {
+      name: "test",
+      owner: { name: "Test" },
+      plugins: [{ name: "draft", source: "./plugins/missing" }],
+    };
+    await writeFile(catalogPath, JSON.stringify(catalog));
+    await assert.rejects(validate(root), /inconsistent catalog source/);
+    catalog.plugins[0]!.source = "./plugins/draft";
+    await writeFile(catalogPath, JSON.stringify(catalog));
+    await rm(path, { recursive: true });
+    await assert.rejects(validate(root), /exactly one entry per plugin/);
   });
 });

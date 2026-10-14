@@ -292,11 +292,10 @@ export async function validate(root: string): Promise<void> {
     for (const skillName of bundled) await skill(join(path, "skills", skillName), path);
     await markdownFiles(path, path);
   }
-  for (const skillName of await directories(join(root, "skills"))) {
-    const path = join(root, "skills", skillName);
-    await file(join(path, "README.md"));
-    await skill(path);
-  }
+  if ((await readdir(root)).includes("skills"))
+    throw new Error(
+      "Distributable skills belong inside plugins; root skills/ is not supported by this repository",
+    );
   for (const entry of await readdir(root, { withFileTypes: true })) {
     if (entry.isFile() && entry.name.endsWith(".md") && entry.name !== "TASK.md")
       await links(join(root, entry.name), root);

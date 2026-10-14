@@ -7,7 +7,9 @@ managing prompts, repositories, or developer tools.
 
 This repository should become the maintained, open-source collection behind that experience.
 It brings reusable skills, installable plugins, and clear contribution practices together.
-The direction described here guides future work; it does not claim that these capabilities
+Plugins containing one or more skills are the distribution and versioning units; repository
+development skills stay separate in `.agents/skills/`. The direction described here guides future
+work; it does not claim that these capabilities
 are implemented. [ARCHITECTURE.md](../ARCHITECTURE.md) defines the architectural boundaries.
 
 ## The experience we want to enable
@@ -54,7 +56,7 @@ and available evidence allow it.
 | Establish a useful capability     | Choose a recurring colleague task; author a focused skill with examples and an owner        | Representative users can apply it and identify useful results and limitations              |
 | Prove the installation experience | Package related content and test marketplace import, installation, and updates              | A colleague can discover and use it through the intended workspace GUI                     |
 | Establish practical portability   | Test the same canonical content on additional hosts and document differences                | Each claimed host supports the capability without a second authored copy                   |
-| Make content easier to maintain   | Resolve standalone skill reuse, resource packaging, versioning, and contributor workflows   | Shared content has clear ownership and produces self-contained packages                    |
+| Make content easier to maintain   | Maintain plugin ownership, resource boundaries, versioning, and contributor workflows       | Shared content has clear ownership and produces self-contained packages                    |
 | Introduce dynamic references      | Pilot access to published organizational references through an explicit service boundary    | Colleagues receive relevant, attributable material without exposing drafts or private data |
 | Enable assisted authoring         | Add discovery, editing, validation, and publication capabilities for organizational content | Authors and reviewers can control changes reliably through their AI workspace              |
 
@@ -148,7 +150,7 @@ an integration or server to introduce as repository scaffolding.
 
 The direction is clear, but several implementation choices should follow experience:
 
-- How standalone skills are reused in plugins while retaining one authored source.
+- How related skills are grouped within plugins while retaining one authored source per capability.
 - Which hosts and runtime features each capability can support and who verifies them.
 - How capability ownership, versions, updates, and retirement are communicated to users.
 - Which organizational content belongs in public packages versus the remote content system.

@@ -1,7 +1,7 @@
 {
   "name": "onderwijsin-agents",
   "interface": {
-    "displayName": "Onderwijs in Redacteur"
+    "displayName": "Onderwijs in Agents"
   },
   "plugins": [
     {
@@ -16,6 +16,19 @@
       },
       "category": "Productivity",
       "description": "Vijf redactionele skills om content in de stijl van Onderwijs in te schrijven."
+    },
+    {
+      "name": "agent-instructie",
+      "source": {
+        "source": "local",
+        "path": "./plugins/agent-instructie"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity",
+      "description": "Schrijf en verbeter prompts, skills en AI-instructies voor niet-technische taken."
     }
   ]
 }

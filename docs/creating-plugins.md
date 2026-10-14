@@ -1,7 +1,9 @@
 # Creating a plugin
 
 A plugin packages related skills and optional external service connections into an installable
-capability. Propose the intended audience, reusable tasks, supported hosts, and permissions first.
+capability. A skill-only plugin can contain one skill; multi-skill plugins group related tasks
+under one identity and version. MCP integrations are optional. Propose the intended audience,
+reusable tasks, supported hosts, and permissions first.
 
 ## Canonical package
 
@@ -44,8 +46,7 @@ Extend validation for new manifest fields and integration files in the same chan
 
 Plugin-owned skills may link to shared `references/` within the same plugin root.
 Document ownership and require whole-plugin installation; they are not standalone packages.
-The validator keeps standalone references within their skill and bundled references within
-their plugin, rejecting escapes and symlinks in both cases.
+The validator keeps bundled references within their plugin, rejecting escapes and symlinks.
 
 Registered OpenAI app mappings use `extensions.com.openai.apps` pointing to a package-local
 `.app.json`; each named mapping contains the technical registered app ID. The validator checks
@@ -91,5 +92,12 @@ our initial validation contract; introduce them with focused validation and docu
 
 Run `pnpm check` and test installation and behavior on each claimed host before requesting review.
 Do not claim compatibility based solely on portable files. Before distributing the first plugin,
-verify workspace import and Claude loading in the intended environments. Standalone skill reuse
-must produce a self-contained package without maintaining duplicate authored instructions.
+verify workspace import and Claude loading in the intended environments. Every distributable
+skill has one canonical source inside one plugin. Plugin versions are authoritative for all
+bundled changes; there is no independent skill version or release automation. See
+[issue #4](https://github.com/onderwijsin/agents/issues/4) for future release work.
+
+For a skill-only plugin using the standard `skills/` layout, Claude documents its manifest as
+optional and derives the name from the marketplace entry. No overlay or empty MCP configuration
+is needed. See [Agent-instructie](../plugins/agent-instructie/README.md) for this pattern and
+its unverified runtime status.

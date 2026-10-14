@@ -1,4 +1,4 @@
-# Creating a standalone skill
+# Creating a skill within a plugin
 
 A skill teaches a reusable capability, including when to use it. Start with a specific audience,
 realistic task examples, and clear expected results. Follow the
@@ -6,15 +6,20 @@ realistic task examples, and clear expected results. Follow the
 
 ## Layout and metadata
 
-Use `skills/<skill-name>/SKILL.md` and add a package README. Optional `references/`, `assets/`,
-and `scripts/` belong inside that skill's directory. The following is a documentation skeleton,
+Use `plugins/<plugin-name>/skills/<skill-name>/SKILL.md` and document usage in the plugin README.
+Create a single-skill plugin for an independent capability, or add the skill to an existing
+plugin when its audience and ownership fit. Follow [plugin authoring](creating-plugins.md)
+for the manifest and both catalog entries. Optional `references/`, `assets/`, and `scripts/`
+belong inside the skill or its containing plugin. The following is a documentation skeleton,
 not an existing capability:
 
 ```text
-skills/<skill-name>/
-  SKILL.md
+plugins/<plugin-name>/
+  plugin.json
   README.md
-  references/  (only if needed)
+  skills/<skill-name>/
+    SKILL.md
+    references/  (only if needed)
 ```
 
 ```yaml
@@ -43,7 +48,7 @@ available before beginning agent-authored instruction changes.
 
 Explain inputs, steps, expected outputs, verification, and when to ask for missing information.
 Keep the body focused and put detailed reference material in local files linked with relative
-Markdown paths. Standalone skills keep resources inside the skill. Plugin-owned skills may
+Markdown paths. Skills may
 share resources inside their plugin root when the plugin is their explicit installation boundary;
 document that they cannot be installed separately. Do not reference a sibling package or rely on
 files installed only on the author's computer. Describe external services and environment
@@ -54,5 +59,8 @@ start of `SKILL.md`. Dutch instructions are welcome for Dutch-language work; exp
 in the README. Never publish private operational examples.
 
 Run `pnpm check`, then manually try representative tasks and activation/non-activation cases
-on each claimed host. Standalone skills are not marketplace entries. Shared packaging into a
-plugin needs an ownership and packaging decision first; no automatic copying exists.
+on each claimed host. The containing plugin is the installation and versioning unit; change
+its version when its bundled skills change. Individual skills need no independent version.
+`.agents/skills/` holds repository development skills and remains outside this distribution model.
+Other hosts can support standalone skill installation, but GitHub-to-ChatGPT marketplace sync
+discovers plugin entries and their bundled skills, not a repository-level skills directory.

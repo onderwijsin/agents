@@ -47,7 +47,9 @@ Use provider-specific metadata only where the host requires it; share the underl
 Verify claimed host behavior through installation and representative tasks, rather than inferring
 runtime compatibility from matching file formats.
 
-Establish ownership and deterministic packaging before reusing a standalone skill in a plugin.
+Create distributable skills inside exactly one plugin; keep its resources within that package.
+Use the containing plugin version for bundled skill changes. Keep `.agents/skills/` for repository
+development capabilities outside marketplace distribution.
 Keep repository validation separate from runtime capabilities and service integrations.
 Introduce adapters, generators, integrations, and publication machinery only for concrete,
 authorized requirements.
