@@ -2,7 +2,7 @@
 name: redigeren-contenttype
 description: Maak bestaande Onderwijs in-content passend voor een webpagina, expertise-item, blog, vacature, teamlidpagina, domein of initiatief; pas bij expertise ook het subtype toe. Controleer vorm, structuur, toon en spelling en lever de volledige tekst in de chat.
 license: MIT
-compatibility: Vereist het volledige Onderwijs in Redacteur-pluginpakket voor gedeelde referenties. Vereist toegang tot de publieke Onderwijs in-MCP voor verplicht brononderzoek vóór iedere taak.
+compatibility: Vereist het volledige Onderwijs in Redacteur-pluginpakket voor gedeelde referenties. Vereist toegang tot de gebundelde publieke MCP-verbinding voor verplicht brononderzoek vóór iedere taak.
 ---
 
 # Redigeren op contenttype

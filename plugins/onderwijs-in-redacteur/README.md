@@ -41,13 +41,23 @@ of structuurredactie. Voorbeelden uit een vorige taak vervangen geen nieuwe zoek
 Bij lege resultaten wordt breder gezocht; ontbreken voorbeelden, dan wordt dat benoemd.
 De referenties zijn redactionele uitgangspunten; bevestigde gebruikersrichtlijnen gaan voor.
 
-## Publieke MCP-verbinding
+## Gebundelde MCP-verbinding
 
-`mcp.json` verbindt met [de publieke MCP](https://onderwijsin.nl/mcp) via Streamable HTTP.
-De server vereist geen authenticatie, API-key, headers of lokale software.
-Hij biedt publieke documenten, zoekfuncties, lijsten en resources; deze plugin gebruikt
-uitsluitend lezen. Concepten blijven in de chat en worden niet in het CMS opgeslagen.
-Workspace- en hostrechten bepalen of de verbinding beschikbaar is.
+`mcp.json` declareert de publieke server `https://onderwijsin.nl/mcp` als
+`streamable-http`. De verbinding wordt met de plugin geïnstalleerd en vereist
+geen authenticatie of afzonderlijk geïnstalleerde ChatGPT-app. De server biedt
+uitsluitend lezen; concepten blijven in de chat. Host- en workspacebeleid bepalen
+of de verbinding beschikbaar is.
+
+Ontbreekt toegang, controleer in ChatGPT Desktop of de plugin en verbinding zijn
+ingeschakeld. Bij een workspaceblokkade is toegang via de beheerder nodig.
+
+### Pluginicoon
+
+`assets/icon.png` wordt gebruikt door `extensions.com.openai.interface.logo` en
+`composerIcon` in `plugin.json`. Beide verwijzen naar `./assets/icon.png` volgens de
+[OpenAI-presentatiemetadata](https://developers.openai.com/plugins/build/plugins#add-openai-specific-metadata).
+Sync de marketplace na het bijwerken van het bestand en controleer beide weergaven.
 
 [Bronnen ophalen](references/bronnen-ophalen.md) beschrijft tools, resources, paginering,
 statusfilters en een herstelroute wanneer subtype-metadata en toolschema verschillen.
@@ -57,35 +67,28 @@ weer mogelijk is. Een actualiteits- of overlapclaim vereist gelezen bronnen.
 ## Packaging en beoogde hosts
 
 Het rootmanifest en `mcp.json` volgen
-[Agent Plugins 1.0.0](https://agent-plugins.org/specification) en de
-[MCP-schema](https://agent-plugins.org/schemas/1.0.0/mcp.schema.json).
-OpenAI-presentatie gebruikt de
-[officiële pluginhandleiding](https://developers.openai.com/plugins/build/plugins);
-skills volgen [Agent Skills](https://agentskills.io/specification).
-De kleine Claude-overlay volgt de
-[manifestreferentie](https://code.claude.com/docs/en/plugins-reference) en
-[HTTP MCP-configuratie](https://code.claude.com/docs/en/mcp).
-Zij vertaalt alleen het transportlabel naar `http` en herhaalt vereiste provideridentiteit;
-skillinhoud en referenties blijven gedeeld.
+[Agent Plugins 1.0.0](https://agent-plugins.org/specification).
+OpenAI-presentatie staat in `extensions.com.openai` volgens de
+[OpenAI-pluginhandleiding](https://developers.openai.com/plugins/build/plugins).
+De Claude-overlay deelt identiteit en vertaalt het transportlabel naar `http`;
+skills en referenties blijven gedeeld. Zie de
+[Claude-manifestreferentie](https://code.claude.com/docs/en/plugins-reference) en
+[MCP-configuratie](https://code.claude.com/docs/en/mcp).
 
-De gepubliceerde portable MCP-schema accepteert geen server-`extensions`, terwijl de
-OpenAI-handleiding daar een `com.openai.auth`-object beschrijft. Dit pakket houdt het
-portable bestand schema-conform en bevat geen auth-configuratie; de publieke server
-is zonder credentials getest. Of workspace-import expliciete `auth.type: none`
-vereist, moet tijdens hostinstallatie worden vastgesteld.
+Voor ChatGPT is deze plugin uitsluitend bedoeld voor de desktopapp.
+Gebundelde MCP-declaraties veroorzaken volgens de
+[importhandleiding](https://help.openai.com/en/articles/20001504-importing-and-syncing-plugin-marketplaces-from-github)
+het label Desktop only, ook bij remote HTTPS-servers. ChatGPT op het web wordt
+niet ondersteund. Er is geen `.app.json` of afhankelijkheid van een geregistreerde app.
+De verbinding gebruikt wel de externe publieke MCP-service.
 
-| Omgeving                 | Bewijs                                                                | Nog te verifiëren                                                       |
-| ------------------------ | --------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| Repository               | Catalogen, instructies en lokale referentielinks worden gecontroleerd | Geen bewijs van hostinstallatie                                         |
-| Publieke MCP             | Initialisatie, discovery en documentlezing zonder auth getest         | Beschikbaarheid kan wijzigen                                            |
-| ChatGPT Business / Codex | Canonical pakket en catalogus aangemaakt                              | Import, installatie, activatie, gedeelde referenties, MCP en vijf taken |
-| Claude Code              | Overlay en catalogus aangemaakt                                       | Installatie, activatie, gedeelde referenties, MCP en vijf taken         |
-| Losse Agent Skills-hosts | Instructies in Agent Skills-formaat                                   | Pluginreferenties maken afzonderlijke installatie ongeschikt            |
-
-Er wordt nog geen geteste runtimecompatibiliteit geclaimd. Volg
-[de acceptatieproeven](tests/acceptatie.md) in elke beoogde host vóór uitrol.
-De bestaande Onderwijs in-connector is voor documentlezing gebruikt; dit bewijst niet
-dat deze nieuwe plugin al is geïnstalleerd.
+De portable MCP-schema accepteert geen server-`extensions`, terwijl de OpenAI-handleiding
+hier auth-metadata beschrijft. Het pakket bevat geen auth-configuratie; de publieke
+server is zonder credentials getest. De eerdere ChatGPT-import van versie 0.1.0
+slaagde met Desktop only-notice. Import, icoonweergave, installatie, activatie,
+gedeelde referentielading en de vijf taken van versie 0.2.1 moeten nog worden getest.
+Claude-installatie en runtimegedrag blijven ongetest.
+Volg [de acceptatieproeven](tests/acceptatie.md) vóór uitrol.
 
 ## Validatie
 

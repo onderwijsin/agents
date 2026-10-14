@@ -310,3 +310,43 @@ test("OpenAI presentation rejects empty required fields", async () => {
     await assert.rejects(validate(root), /Too small/);
   });
 });
+
+test("presentation icons require contained PNG assets", async () => {
+  await fixture(async (root) => {
+    const path = await addPlugin(root);
+    await writeFile(
+      join(path, "plugin.json"),
+      JSON.stringify({
+        $schema: "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+        name: "draft",
+        version: "0.2.1",
+        description: "Draft text.",
+        extensions: {
+          "com.openai": {
+            interface: {
+              displayName: "Draft",
+              shortDescription: "Draft text.",
+              logo: "./assets/icon.png",
+            },
+          },
+        },
+      }),
+    );
+    await assert.rejects(validate(root), /ENOENT/);
+    await mkdir(join(path, "assets"));
+    await writeFile(join(path, "assets/icon.png"), "not a PNG");
+    await assert.rejects(validate(root), /expected a PNG/);
+    await writeFile(
+      join(path, "assets/icon.png"),
+      Buffer.from(
+        "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aH1sAAAAASUVORK5CYII=",
+        "base64",
+      ),
+    );
+    await validate(root);
+    await rm(join(path, "assets/icon.png"));
+    await writeFile(join(root, "outside.png"), "outside");
+    await symlink(join(root, "outside.png"), join(path, "assets/icon.png"));
+    await assert.rejects(validate(root), /reference escapes/);
+  });
+});

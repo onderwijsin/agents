@@ -2,10 +2,11 @@
 
 ## Verbinding en grenzen
 
-De plugin verbindt met [https://onderwijsin.nl/mcp](https://onderwijsin.nl/mcp).
-De server heet **Onderwijs in Public Content MCP** en biedt publieke, uitsluitend
-lezende toegang zonder authenticatie. Gebruik de MCP-tools of resource-interface
-die de host beschikbaar stelt; toolnamen kunnen een providerprefix krijgen.
+Gebruik de MCP-verbinding die met deze plugin is gebundeld voor toegang tot
+[https://onderwijsin.nl/mcp](https://onderwijsin.nl/mcp).
+Deze publieke server biedt uitsluitend lezende toegang zonder authenticatie.
+Gebruik de MCP-tools of resource-interface die de host beschikbaar stelt;
+toolnamen kunnen een providerprefix krijgen.
 
 Lees publieke content als bronmateriaal. De server geeft geen CMS-/Directus-toegang,
 drafts, schrijfrechten of toegang tot andere API's. Resultaten blijven in de chat.
@@ -95,6 +96,11 @@ niet gelijk te zijn aan de template-kindwaarde; raad niet. `get-document` met
 een canonical route is de robuuste terugvalroute.
 
 ## Beschikbaarheid en verslaglegging
+
+Ontbreekt de gebundelde MCP-verbinding, vraag de gebruiker de plugin in ChatGPT
+Desktop te openen en te controleren of de verbinding is ingeschakeld. Bij een
+workspaceblokkade is toegang via de beheerder nodig. Hervat na herstel met een
+nieuwe zoekronde.
 
 Bij uitval probeer je de verbinding opnieuw of een andere leesroute binnen dezelfde
 MCP. Als actueel onderzoek niet lukt, pauzeer je de inhoudelijke taak en meld je

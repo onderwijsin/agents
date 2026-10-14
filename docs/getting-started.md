@@ -67,7 +67,7 @@ The validator covers the local-only catalog subset, matching catalog names and p
 identities, required plugin and skill files, skill frontmatter, and relative Markdown file links.
 Empty content directories are accepted. Plugin validation checks required identity fields rather
 than certifying the full portable schema. It also checks the documented credential-free HTTPS MCP
-subset, matching Claude overlays, basic OpenAI presentation, and plugin-local shared references.
+subset, matching Claude overlays, OpenAI PNG presentation assets, and plugin-local shared references.
 Advanced manifest extensions, other MCP configuration, Markdown anchors, external URLs,
 and runtime behavior require targeted checks when introduced.
 

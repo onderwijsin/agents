@@ -53,8 +53,10 @@ An optional `.claude-plugin/plugin.json` overlay repeats identity and translates
 to Claude's `http` transport; validation requires matching names, versions, descriptions and URLs.
 OpenAI presentation checks require nonempty display name and short description when provided.
 Other transport, authentication and overlay fields need focused validation before introduction.
-See [Onderwijs in Redacteur](../plugins/onderwijs-in-redacteur/README.md) for current
-specification links, the portable/OpenAI auth-schema discrepancy, and runtime test limitations.
+OpenAI `logo` and `composerIcon` point to existing PNG files under
+`./assets/` inside the package. Validation checks their package boundary and PNG signature.
+See [Onderwijs in Redacteur](../plugins/onderwijs-in-redacteur/README.md) for the bundled MCP
+connection, host limitations, and official specification links.
 
 ## Catalog entries
 

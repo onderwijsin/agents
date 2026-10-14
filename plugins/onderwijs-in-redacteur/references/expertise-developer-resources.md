@@ -27,7 +27,7 @@ Verbind techniek steeds met wat die gebruikers of partners helpt doen.
 
 ## Controle
 
-De publieke Onderwijs in-MCP geeft redactionele bronnen; toegang tot die MCP
+Onderwijs in MCP geeft redactionele bronnen; toegang tot die MCP
 verleent geen toegang tot de Onderwijsloket-API of regio-API.
 Controleer authenticatie, versies, endpoints, velden, rechten en codevoorbeelden
 in de betreffende actuele documentatie. Neem geen credentials op.

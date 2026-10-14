@@ -46,6 +46,14 @@ const pluginMetadata = z.object({
           interface: z.object({
             displayName: z.string().trim().min(1),
             shortDescription: z.string().trim().min(1),
+            logo: z
+              .string()
+              .regex(/^\.\/assets\/.+\.png$/)
+              .optional(),
+            composerIcon: z
+              .string()
+              .regex(/^\.\/assets\/.+\.png$/)
+              .optional(),
           }),
         })
         .optional(),
@@ -175,6 +183,15 @@ async function connections(path: string, metadata: z.infer<typeof pluginMetadata
     }
   };
   const mcpPath = join(path, "mcp.json");
+  const openAI = metadata.extensions?.["com.openai"];
+  for (const asset of [openAI?.interface.logo, openAI?.interface.composerIcon]) {
+    if (!asset) continue;
+    const assetPath = resolve(path, asset);
+    await containedFile(assetPath, path);
+    const bytes = await readFile(assetPath);
+    if (!bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])))
+      throw new Error(`${assetPath}: expected a PNG image`);
+  }
   const overlayPath = join(path, ".claude-plugin/plugin.json");
   const hasMcp = await hasFile(mcpPath);
   if (hasMcp) await containedFile(mcpPath, path);

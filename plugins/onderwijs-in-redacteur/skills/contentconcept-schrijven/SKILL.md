@@ -2,7 +2,7 @@
 name: contentconcept-schrijven
 description: Schrijf nieuwe Nederlandstalige Onderwijs in-concepten uit een brief, notities of bronnen voor webpagina's, expertise, blogs, vacatures, teamleden, domeinen en initiatieven. Gebruik de passende subtypegids, controleer spelling en lever het volledige concept in de chat. Gebruik wanneer een draft of eerste tekst gevraagd is.
 license: MIT
-compatibility: Vereist het volledige Onderwijs in Redacteur-pluginpakket voor gedeelde referenties. Vereist toegang tot de publieke Onderwijs in-MCP voor verplicht brononderzoek vóór iedere taak.
+compatibility: Vereist het volledige Onderwijs in Redacteur-pluginpakket voor gedeelde referenties. Vereist toegang tot de gebundelde publieke MCP-verbinding voor verplicht brononderzoek vóór iedere taak.
 ---
 
 # Contentconcept schrijven

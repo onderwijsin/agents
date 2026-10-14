@@ -2,7 +2,7 @@
 name: redigeren-structuur
 description: Proeflees of herschrijf bestaande Onderwijs in-content voor opbouw, volgorde, koppen, samenhang of scanbaarheid. Controleer altijd ook spelling en lever de volledige tekst in de chat. Gebruik wanneer de organisatie van de tekst centraal staat.
 license: MIT
-compatibility: Vereist het volledige Onderwijs in Redacteur-pluginpakket voor gedeelde referenties. Vereist toegang tot de publieke Onderwijs in-MCP voor verplicht brononderzoek vóór iedere taak.
+compatibility: Vereist het volledige Onderwijs in Redacteur-pluginpakket voor gedeelde referenties. Vereist toegang tot de gebundelde publieke MCP-verbinding voor verplicht brononderzoek vóór iedere taak.
 ---
 
 # Redigeren op structuur

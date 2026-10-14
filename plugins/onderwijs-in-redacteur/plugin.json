@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "onderwijs-in-redacteur",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "Redigeer, toets en schrijf Onderwijs in-content met gedeelde stijlgidsen en publieke bronnen.",
   "author": {
     "name": "Onderwijs in"
@@ -12,6 +12,8 @@
   "extensions": {
     "com.openai": {
       "interface": {
+        "logo": "./assets/icon.png",
+        "composerIcon": "./assets/icon.png",
         "displayName": "Onderwijs in Redacteur",
         "shortDescription": "Vijf redactionele skills voor Onderwijs in.",
         "developerName": "Onderwijs in",

@@ -10,16 +10,12 @@
         "source": "local",
         "path": "./plugins/onderwijs-in-redacteur"
       },
-      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
       "category": "Productivity",
       "description": "Vijf redactionele skills om content in de stijl van Onderwijs in te schrijven."
-    },
-    {
-      "name": "marketplace-sample",
-      "source": { "source": "local", "path": "./plugins/marketplace-sample" },
-      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
-      "category": "Productivity",
-      "description": "Minimal skills-only plugin for testing marketplace import."
     }
   ]
 }

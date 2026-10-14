@@ -5,7 +5,9 @@
     "email": "hallo@onderwijsin.nl"
   },
   "plugins": [
-    { "name": "onderwijs-in-redacteur", "source": "./plugins/onderwijs-in-redacteur" },
-    { "name": "marketplace-sample", "source": "./plugins/marketplace-sample" }
+    {
+      "name": "onderwijs-in-redacteur",
+      "source": "./plugins/onderwijs-in-redacteur"
+    }
   ]
 }

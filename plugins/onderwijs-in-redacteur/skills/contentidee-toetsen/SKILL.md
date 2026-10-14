@@ -2,7 +2,7 @@
 name: contentidee-toetsen
 description: Gril, beoordeel of scherp een Onderwijs in-contentidee aan op doelgroep, relevantie, bewijs, vorm en overlap met bestaande publieke content. Lever een onderbouwde beoordeling en aangescherpte contentbrief in de chat. Gebruik vóór het schrijven wanneer de kwaliteit van het idee de vraag is.
 license: MIT
-compatibility: Vereist het volledige Onderwijs in Redacteur-pluginpakket voor gedeelde referenties. Vereist toegang tot de publieke Onderwijs in-MCP voor verplicht brononderzoek vóór iedere taak.
+compatibility: Vereist het volledige Onderwijs in Redacteur-pluginpakket voor gedeelde referenties. Vereist toegang tot de gebundelde publieke MCP-verbinding voor verplicht brononderzoek vóór iedere taak.
 ---
 
 # Contentidee kritisch toetsen

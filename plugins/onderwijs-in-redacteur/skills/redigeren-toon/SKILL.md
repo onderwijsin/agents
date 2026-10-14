@@ -2,7 +2,7 @@
 name: redigeren-toon
 description: Herschrijf of proeflees bestaande Onderwijs in-tekst voor tone of voice, stijl of aanspreekvorm. Controleer altijd ook spelling en lever de volledige tekst in de chat. Gebruik voor toonredactie; kies structuurredactie voor herordening en contenttyperedactie voor omzetting naar een andere vorm.
 license: MIT
-compatibility: Vereist het volledige Onderwijs in Redacteur-pluginpakket voor gedeelde referenties. Vereist toegang tot de publieke Onderwijs in-MCP voor verplicht brononderzoek vóór iedere taak.
+compatibility: Vereist het volledige Onderwijs in Redacteur-pluginpakket voor gedeelde referenties. Vereist toegang tot de gebundelde publieke MCP-verbinding voor verplicht brononderzoek vóór iedere taak.
 ---
 
 # Redigeren op toon

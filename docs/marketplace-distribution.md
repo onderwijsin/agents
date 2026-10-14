@@ -3,9 +3,9 @@
 ChatGPT Business is our first target. Administrators manage the marketplace; colleagues use
 the plugin GUI. The catalog now includes
 [Onderwijs in Redacteur](../plugins/onderwijs-in-redacteur/README.md).
-Actual ChatGPT workspace import and new-plugin runtime behavior have not been tested.
-The [marketplace sample](../plugins/marketplace-sample/README.md) provides a minimal
-skills-only import and activation test for diagnosing sync failures.
+The previous editorial package imported successfully with a Desktop only notice.
+The editorial plugin bundles its MCP connection and supports ChatGPT Desktop only.
+Its current version and runtime behavior still require workspace testing.
 Verify feature availability, installation, resource loading and representative tasks
 in your workspace before rollout.
 
