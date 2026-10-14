@@ -1,0 +1,3 @@
+{
+  "ignorePatterns": ["TASK.md", "pnpm-lock.yaml", ".agents/skills/**", "skills-lock.json"]
+}

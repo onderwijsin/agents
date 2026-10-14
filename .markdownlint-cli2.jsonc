@@ -1,0 +1,4 @@
+{
+  "config": { "default": true, "MD013": false, "MD041": { "allow_preamble": true } },
+  "ignores": ["node_modules/**", "TASK.md", ".agents/skills/**"],
+}

@@ -1,0 +1,55 @@
+{
+  "name": "@onderwijsin/agents",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A collection of provider-agnostic AI plugins and skills for Onderwijs in",
+  "keywords": [
+    "agents",
+    "ai",
+    "chatgpt",
+    "codex",
+    "marketplace",
+    "plugins",
+    "skills"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Onderwijs in",
+    "email": "hallo@onderwijsin.nl",
+    "url": "https://github.com/onderwijsin"
+  },
+  "contributors": [
+    {
+      "name": "Remi Huigen",
+      "email": "remihuigen@onderwijsin.nl",
+      "url": "https://github.com/remihuigen"
+    }
+  ],
+  "repository": "https://github.com/onderwijsin/agents",
+  "type": "module",
+  "scripts": {
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check .",
+    "lint:md": "markdownlint-cli2 \"**/*.md\"",
+    "lint:ts": "oxlint --deny-warnings scripts",
+    "lint": "pnpm lint:md && pnpm lint:ts",
+    "typecheck": "tsc --noEmit",
+    "validate": "tsx scripts/validate.ts",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm validate && pnpm test",
+    "test": "tsx --test scripts/validate.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "markdownlint-cli2": "^0.23.3",
+    "oxfmt": "^0.73.0",
+    "oxlint": "^1.88.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.7"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@11.22.0"
+}

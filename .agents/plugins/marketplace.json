@@ -1,0 +1,7 @@
+{
+  "name": "onderwijsin-agents",
+  "interface": {
+    "displayName": "Onderwijs in"
+  },
+  "plugins": []
+}
