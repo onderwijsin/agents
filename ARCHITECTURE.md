@@ -69,8 +69,9 @@ agents is [AGENTS.md](AGENTS.md); authoring and check procedures belong in [docs
 ## Distribution and workspace governance
 
 GitHub catalogs define discoverable packages. ChatGPT Business administrators import the primary
-marketplace and use provider-managed GitHub synchronization. Installation policies, connected-app
-permissions, and member authentication remain separate workspace controls. Codex and Claude consume
+marketplace and use provider-managed GitHub synchronization. A plugin may reference an existing
+registered ChatGPT app without bundling its MCP server; app availability, plugin installation
+policies, permissions, and member authentication remain separate workspace controls. Codex and Claude consume
 their respective native catalogs; standalone skills use a host's Agent Skills installation route.
 
 Repository review governs source changes. Workspace policy governs consumption. Public repository

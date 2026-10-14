@@ -2,7 +2,7 @@
 
 ## Dynamische referenties
 
-Zoek via MCP naar handreikingen en gebruiksuitleg die passen bij het onderwerp en de doelgroep.
+Zoek via de Onderwijs in-verbinding naar handreikingen en gebruiksuitleg die passen bij het onderwerp en de doelgroep.
 Controleer het subtype in de actuele metadata en lees relevante documenten volledig.
 Gebruik hun opbouw, toon en onderbouwing bij deze taak. Als passende voorbeelden
 ontbreken, meld dat en behandel onderstaande opbouw als redactioneel voorstel.

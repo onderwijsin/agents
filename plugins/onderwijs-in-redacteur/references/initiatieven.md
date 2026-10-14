@@ -3,7 +3,7 @@
 ## Doel en vorm
 
 Een initiatief beschrijft een concreet project, programma of pilot.
-Haal via MCP vergelijkbare initiatieven en het betrokken project op. Bepaal met
+Haal via de Onderwijs in-verbinding vergelijkbare initiatieven en het betrokken project op. Bepaal met
 actuele metadata en body of het een idee, actieve aanpak of afgerond/overgedragen
 project is. Gebruik die fase bij de keuze van werkwoorden en lezersbelofte.
 

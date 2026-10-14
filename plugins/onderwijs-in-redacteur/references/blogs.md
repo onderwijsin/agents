@@ -4,7 +4,7 @@
 
 Een blog deelt een actuele ontwikkeling, terugblik of verhaal achter het werk.
 De aanleiding bepaalt de lengte: kort nieuws vraagt minder context dan een uitgebreide
-pilot- of campagneterugblik. Zoek via MCP naar relevante blogs en lees hun volledige
+pilot- of campagneterugblik. Zoek via de Onderwijs in-verbinding naar relevante blogs en lees hun volledige
 tekst om de gekozen invalshoek, opbouw en toon af te stemmen.
 
 ## Aanbevolen opbouw

@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtemp, mkdir, rm, symlink, writeFile } from "node:fs/promises";
+import { mkdtemp, mkdir, readFile, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
@@ -288,7 +288,59 @@ test("Claude overlays must match canonical identity and MCP endpoints", async ()
     }
     await writeOverlay(overlay);
     await rm(join(path, "mcp.json"));
-    await assert.rejects(validate(root), /servers must match/);
+    await assert.rejects(validate(root), /require root mcp.json or a registered app/);
+  });
+});
+
+test("registered app references are package-local and support a Claude MCP adapter", async () => {
+  await fixture(async (root) => {
+    const path = await addPlugin(root);
+    await writeFile(
+      join(path, ".app.json"),
+      JSON.stringify({ apps: { docs: { id: "asdk_app_example", required: true } } }),
+    );
+    const manifest = JSON.parse(await readFile(join(path, "plugin.json"), "utf8")) as Record<
+      string,
+      unknown
+    >;
+    manifest.extensions = {
+      "com.openai": {
+        interface: { displayName: "Draft", shortDescription: "Draft text." },
+        apps: "./.app.json",
+      },
+    };
+    await writeFile(
+      join(root, "outside.json"),
+      JSON.stringify({ apps: { docs: { id: "outside" } } }),
+    );
+    await writeFile(join(path, "plugin.json"), JSON.stringify(manifest));
+    await mkdir(join(path, ".claude-plugin"));
+    await writeFile(
+      join(path, ".claude-plugin/plugin.json"),
+      JSON.stringify({
+        name: "draft",
+        version: "0.1.0",
+        description: "Draft text.",
+        mcpServers: { docs: { type: "http", url: "https://example.com/mcp" } },
+      }),
+    );
+    await validate(root);
+    manifest.extensions = {
+      "com.openai": {
+        interface: { displayName: "Draft", shortDescription: "Draft text." },
+        apps: "./../../outside.json",
+      },
+    };
+    await writeFile(join(path, "plugin.json"), JSON.stringify(manifest));
+    await assert.rejects(validate(root), /reference escapes/);
+    manifest.extensions = {
+      "com.openai": {
+        interface: { displayName: "Draft", shortDescription: "Draft text." },
+        apps: "./missing.json",
+      },
+    };
+    await writeFile(join(path, "plugin.json"), JSON.stringify(manifest));
+    await assert.rejects(validate(root), /ENOENT/);
   });
 });
 

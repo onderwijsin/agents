@@ -1,7 +1,7 @@
 # Criteria voor contentideeën
 
 Deze beoordelingscriteria zijn redactionele uitgangspunten. Haal de actuele missie,
-aanpak en relevante content via MCP op om ze op het idee toe te passen.
+aanpak en relevante content via de Onderwijs in-verbinding op om ze op het idee toe te passen.
 De criteria zijn geen formele publicatiepoorten.
 Gebruik ze bij `contentidee-toetsen` en bespreek een inhoudelijk conflict
 met bevestigde gebruikersrichtlijnen.

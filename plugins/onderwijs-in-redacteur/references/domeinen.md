@@ -4,7 +4,7 @@
 
 Een domein is een brede inhoudelijke invalshoek op de missie. Het beschrijft een
 opgave, richting en uitgangspunten, niet de planning van één project.
-Haal de actuele domeinen via MCP op, lees relevante domeindocumenten en onderzoek
+Haal de actuele domeinen via de Onderwijs in-verbinding op, lees relevante domeindocumenten en onderzoek
 hoe de inhoudelijke opgave aansluit op missie, doelgroepen en initiatieven.
 Gebruik de aangetroffen namen en afbakeningen; deze gids legt geen domeinlijst vast.
 

@@ -3,7 +3,7 @@
 ## Doel en vorm
 
 Een vacature helpt de lezer beoordelen of de rol past en hoe die kan reageren.
-Haal via MCP vergelijkbare vacatures op, inclusief gesloten vacatures voor stijlonderzoek.
+Haal via de Onderwijs in-verbinding vergelijkbare vacatures op, inclusief gesloten vacatures voor stijlonderzoek.
 Controleer bij iedere taak of het om regulier, tijdelijk of bestuurswerk gaat.
 Historische voorbeelden onderbouwen stijl en opbouw, geen actuele arbeidsvoorwaarden.
 

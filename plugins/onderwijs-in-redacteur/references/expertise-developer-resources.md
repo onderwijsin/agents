@@ -2,7 +2,7 @@
 
 ## Dynamische referenties
 
-Zoek via MCP naar technische uitleg en developer resources die passen bij het onderwerp en de doelgroep.
+Zoek via de Onderwijs in-verbinding naar technische uitleg en developer resources die passen bij het onderwerp en de doelgroep.
 Controleer het subtype in de actuele metadata en lees relevante documenten volledig.
 Gebruik hun opbouw, toon en onderbouwing bij deze taak. Als passende voorbeelden
 ontbreken, meld dat en behandel onderstaande opbouw als redactioneel voorstel.
@@ -27,8 +27,9 @@ Verbind techniek steeds met wat die gebruikers of partners helpt doen.
 
 ## Controle
 
-Onderwijs in MCP geeft redactionele bronnen; toegang tot die MCP
-verleent geen toegang tot de Onderwijsloket-API of regio-API.
+De Onderwijs in-app in ChatGPT en de MCP-verbinding op andere hosts geven toegang
+tot redactionele bronnen. Die toegang verleent geen toegang tot de
+Onderwijsloket-API of regio-API.
 Controleer authenticatie, versies, endpoints, velden, rechten en codevoorbeelden
 in de betreffende actuele documentatie. Neem geen credentials op.
 Een schema, callback of asynchrone verwerking krijgt alleen de garanties die de

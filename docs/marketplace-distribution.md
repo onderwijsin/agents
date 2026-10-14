@@ -3,11 +3,12 @@
 ChatGPT Business is our first target. Administrators manage the marketplace; colleagues use
 the plugin GUI. The catalog now includes
 [Onderwijs in Redacteur](../plugins/onderwijs-in-redacteur/README.md).
-The previous editorial package imported successfully with a Desktop only notice.
-The editorial plugin bundles its MCP connection and supports ChatGPT Desktop only.
-Its current version and runtime behavior still require workspace testing.
-Verify feature availability, installation, resource loading and representative tasks
-in your workspace before rollout.
+The editorial plugin references the existing Onderwijs in ChatGPT app through `.app.json`;
+it does not bundle an MCP server in the ChatGPT-imported package. The technical app ID
+comes from the app URL supplied for this integration and uses OpenAI's documented
+`plugin_asdk_app...` identifier format. Workspace role access and runtime behavior still
+require verification. Verify feature availability, installation, resource loading and
+representative tasks in the workspace before rollout.
 
 ## Administrator import
 
@@ -27,8 +28,11 @@ control availability and installation for workspace roles.
 
 ## Permissions and updates
 
-Importing plugins does not grant connected-app access or authenticate members. Manage required
-apps and their permitted actions separately, and ensure members have the relevant service access.
+Importing plugins does not grant connected-app access or authenticate members. For Redacteur,
+enable the existing Onderwijs in app for the intended workspace roles separately. Set the
+plugin's workspace installation policy to **Available** or **Installed** as appropriate;
+repository catalog policy is only metadata and does not override workspace policy or provision
+app access. Ensure members have the relevant service access.
 See [plugin controls](https://learn.chatgpt.com/docs/enterprise/apps-and-connectors).
 
 New imports enable daily sync. Use **Admin → Plugins → Marketplaces → Sync now** to request an
@@ -37,8 +41,9 @@ sync can introduce new plugins. Inspect sync errors; invalid updates retain the 
 Removing a catalog entry does not remove its imported workspace copy. Deleting a marketplace
 removes its imported plugins, so do not use deletion merely to reconnect GitHub access.
 
-GitHub is the source of truth; this repository has no deploy or publishing workflow. Neither a
-public GitHub repository nor workspace import publishes plugins in the universal public directory.
+GitHub is the public, auditable source of truth; this repository has no deploy or publishing
+workflow. Neither a public GitHub repository nor workspace import publishes plugins in the
+universal public directory. Distribution targets the internal, admin-imported workspace marketplace.
 Colleagues can browse available workspace plugins and install those permitted by their role once
 an administrator has imported real content. Report missing access to your workspace administrator.
 

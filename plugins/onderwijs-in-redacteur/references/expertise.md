@@ -3,7 +3,7 @@
 ## Doel en vorm
 
 Expertise maakt kennis, middelen, ervaringen of visie bruikbaar voor anderen.
-Vraag via MCP de actuele type-metadata op en lees relevante expertise-items volledig.
+Vraag via de Onderwijs in-verbinding de actuele type-metadata op en lees relevante expertise-items volledig.
 Titel, omschrijving, datum, auteur en classificatie kunnen apart van de body staan;
 gekoppelde middelen zijn niet altijd volledig in de canonical tekst aanwezig.
 
@@ -24,7 +24,7 @@ verwante vorm als analogie zonder die als bestaand subtypevoorbeeld te presenter
 | Developer resource | [Developer resources](expertise-developer-resources.md) | Technische mogelijkheden verantwoord benutten           |
 | Case study         | [Case studies](expertise-case-studies.md)               | Een concrete aanpak en resultaten in context beoordelen |
 
-Haal subtypewaarden en hun betekenis tijdens uitvoering uit de actuele MCP-metadata.
+Haal subtypewaarden en hun betekenis tijdens uitvoering uit de actuele metadata van de verbinding.
 Metadata is classificatie, geen zoekfiltercontract. Controleer toolargumenten met
 [bronnen ophalen](bronnen-ophalen.md).
 

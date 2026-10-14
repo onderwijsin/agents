@@ -55,6 +55,10 @@ const pluginMetadata = z.object({
               .regex(/^\.\/assets\/.+\.png$/)
               .optional(),
           }),
+          apps: z
+            .string()
+            .regex(/^\.\/.+\.json$/)
+            .optional(),
         })
         .optional(),
     })
@@ -71,6 +75,14 @@ const remoteMcpServer = z.strictObject({
 const mcpMetadata = z.strictObject({
   $schema: z.literal("https://agent-plugins.org/schemas/1.0.0/mcp.schema.json"),
   mcpServers: z.record(name, remoteMcpServer).refine((servers) => Object.keys(servers).length > 0),
+});
+const appMetadata = z.strictObject({
+  apps: z
+    .record(
+      name,
+      z.strictObject({ id: z.string().trim().min(1), required: z.boolean().optional() }),
+    )
+    .refine((apps) => Object.keys(apps).length > 0),
 });
 const claudePluginMetadata = z.strictObject({
   name,
@@ -184,6 +196,7 @@ async function connections(path: string, metadata: z.infer<typeof pluginMetadata
   };
   const mcpPath = join(path, "mcp.json");
   const openAI = metadata.extensions?.["com.openai"];
+  const appReference = openAI?.apps;
   for (const asset of [openAI?.interface.logo, openAI?.interface.composerIcon]) {
     if (!asset) continue;
     const assetPath = resolve(path, asset);
@@ -196,6 +209,11 @@ async function connections(path: string, metadata: z.infer<typeof pluginMetadata
   const hasMcp = await hasFile(mcpPath);
   if (hasMcp) await containedFile(mcpPath, path);
   const mcp = hasMcp ? mcpMetadata.parse(await json(mcpPath)) : undefined;
+  if (appReference) {
+    const appPath = resolve(path, appReference);
+    await containedFile(appPath, path);
+    appMetadata.parse(await json(appPath));
+  }
   if (await hasFile(overlayPath)) {
     await containedFile(overlayPath, path);
     const overlay = claudePluginMetadata.parse(await json(overlayPath));
@@ -207,11 +225,15 @@ async function connections(path: string, metadata: z.infer<typeof pluginMetadata
       )
     )
       throw new Error(`${overlayPath}: identity must match root plugin.json`);
-    if (!mcp || Object.keys(overlay.mcpServers).length !== Object.keys(mcp.mcpServers).length)
-      throw new Error(`${overlayPath}: MCP servers must match root mcp.json`);
-    for (const [serverName, server] of Object.entries(overlay.mcpServers)) {
-      if (server.url !== mcp.mcpServers[serverName]?.url)
-        throw new Error(`${overlayPath}: MCP endpoint must match root mcp.json`);
+    if (mcp) {
+      if (Object.keys(overlay.mcpServers).length !== Object.keys(mcp.mcpServers).length)
+        throw new Error(`${overlayPath}: MCP servers must match root mcp.json`);
+      for (const [serverName, server] of Object.entries(overlay.mcpServers)) {
+        if (server.url !== mcp.mcpServers[serverName]?.url)
+          throw new Error(`${overlayPath}: MCP endpoint must match root mcp.json`);
+      }
+    } else if (!appReference || Object.keys(overlay.mcpServers).length === 0) {
+      throw new Error(`${overlayPath}: MCP servers require root mcp.json or a registered app`);
     }
   }
 }

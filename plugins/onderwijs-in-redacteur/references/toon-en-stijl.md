@@ -1,7 +1,7 @@
 # Algemene toon en stijl
 
 Gebruik deze schrijfregels met de specifieke contenttype- en subtypegids.
-Haal vóór iedere taak relevante actuele content via MCP op en stem de toepassing
+Haal vóór iedere taak relevante actuele content via de Onderwijs in-verbinding op en stem de toepassing
 af op de gekozen doelgroep, vorm en spreker. Deze gids bevat duurzame redactionele
 uitgangspunten; de actuele voorbeelden worden tijdens uitvoering gelezen.
 

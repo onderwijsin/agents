@@ -1,8 +1,10 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "onderwijs-in-redacteur",
-  "version": "0.2.1",
+  "version": "0.2.2",
+  "repository": "https://github.com/onderwijsin/agents",
   "description": "Redigeer, toets en schrijf Onderwijs in-content met gedeelde stijlgidsen en publieke bronnen.",
+  "longDescription": "Schrijf en verbeter content volgens de redactionele richtlijnen van Onderwijs in. Vijf gespecialiseerde skills helpen je bij het redigeren van toon en structuur, het aanpassen van teksten aan contenttypes, het kritisch toetsen van contentideeën en het schrijven van nieuwe concepten. De skills gebruiken gedeelde stijlgidsen en raadplegen bestaande content via de gekoppelde Onderwijs in-app.",
   "author": {
     "name": "Onderwijs in"
   },
@@ -11,6 +13,7 @@
   "keywords": ["redactie", "onderwijs", "schrijven"],
   "extensions": {
     "com.openai": {
+      "apps": "./.app.json",
       "interface": {
         "logo": "./assets/icon.png",
         "composerIcon": "./assets/icon.png",

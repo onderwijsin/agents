@@ -47,6 +47,11 @@ Document ownership and require whole-plugin installation; they are not standalon
 The validator keeps standalone references within their skill and bundled references within
 their plugin, rejecting escapes and symlinks in both cases.
 
+Registered OpenAI app mappings use `extensions.com.openai.apps` pointing to a package-local
+`.app.json`; each named mapping contains the technical registered app ID. The validator checks
+that the reference resolves inside the plugin and that the mapping is nonempty. An app mapping
+can coexist with a bundled MCP server for hosts that support that packaging.
+
 The initial MCP validation subset supports root `mcp.json` with the Agent Plugins 1.0.0
 schema identifier and named `streamable-http` HTTPS connections without headers or credentials.
 An optional `.claude-plugin/plugin.json` overlay repeats identity and translates these connections
@@ -55,8 +60,8 @@ OpenAI presentation checks require nonempty display name and short description w
 Other transport, authentication and overlay fields need focused validation before introduction.
 OpenAI `logo` and `composerIcon` point to existing PNG files under
 `./assets/` inside the package. Validation checks their package boundary and PNG signature.
-See [Onderwijs in Redacteur](../plugins/onderwijs-in-redacteur/README.md) for the bundled MCP
-connection, host limitations, and official specification links.
+See [Onderwijs in Redacteur](../plugins/onderwijs-in-redacteur/README.md) for a registered app
+reference, its separate Claude MCP configuration, host limitations, and official specification links.
 
 ## Catalog entries
 

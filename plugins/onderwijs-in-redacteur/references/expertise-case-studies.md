@@ -2,7 +2,7 @@
 
 ## Dynamische referenties
 
-Vraag via MCP de actuele subtypen op en zoek naar case studies over het onderwerp
+Vraag via de Onderwijs in-verbinding de actuele subtypen op en zoek naar case studies over het onderwerp
 voor de gekozen doelgroep. Lees gevonden documenten volledig. Als er geen passend
 casevoorbeeld is, zoek verwante praktijkcontent en benoem dat je die als analogie
 gebruikt. Onderstaande structuur is een redactioneel voorstel; toets de toepassing

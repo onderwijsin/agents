@@ -2,7 +2,7 @@
 name: contentconcept-schrijven
 description: Schrijf nieuwe Nederlandstalige Onderwijs in-concepten uit een brief, notities of bronnen voor webpagina's, expertise, blogs, vacatures, teamleden, domeinen en initiatieven. Gebruik de passende subtypegids, controleer spelling en lever het volledige concept in de chat. Gebruik wanneer een draft of eerste tekst gevraagd is.
 license: MIT
-compatibility: Vereist het volledige Onderwijs in Redacteur-pluginpakket voor gedeelde referenties. Vereist toegang tot de gebundelde publieke MCP-verbinding voor verplicht brononderzoek vóór iedere taak.
+compatibility: Vereist het volledige pluginpakket voor gedeelde referenties en brononderzoek. In ChatGPT is toegang tot de geregistreerde Onderwijs in-app nodig; op andere hosts een MCP-verbinding met de Onderwijs in-bronnen.
 ---
 
 # Contentconcept schrijven
@@ -12,9 +12,9 @@ compatibility: Vereist het volledige Onderwijs in Redacteur-pluginpakket voor ge
 1. Stel bronmateriaal, onderwerp, doelgroep en doel vast.
    Zonder onderwerp of bruikbare brief vraag je naar de lezersvraag en het beschikbare materiaal.
    Lees [bronnen ophalen](../../references/bronnen-ophalen.md) en zoek vóór de
-   inhoudelijke taak via MCP naar relevant bestaand materiaal. Lees de geselecteerde
+   inhoudelijke taak via de Onderwijs in-verbinding naar relevant bestaand materiaal. Lees de geselecteerde
    documenten volledig; haal ook het bronitem op als een publieke route is aangeleverd.
-   Gebruik de gevonden teksten als referentie voor deze taak. Bij onbereikbare MCP
+   Gebruik de gevonden teksten als referentie voor deze taak. Bij een onbereikbare app of MCP-verbinding
    volg je de herstelroute; een tekst uit een eerdere taak vervangt deze stap niet.
 2. Lees [de gedeelde redactionele werkwijze](../../references/werkwijze.md),
    [toon en stijl](../../references/toon-en-stijl.md) en
@@ -23,7 +23,7 @@ compatibility: Vereist het volledige Onderwijs in Redacteur-pluginpakket voor ge
    Gebruik de gevonden voorbeelden om de toepassing van de schrijfregels af te stemmen.
    Vraag om een keuze wanneer het type de uitkomst wezenlijk verandert.
 3. Lees [structuur](../../references/structuur.md). Verifieer bestaande organisatie-
-   en projectfeiten met de gelezen MCP-bronnen. Haal aanvullende documenten op
+   en projectfeiten met de gelezen Onderwijs in-bronnen. Haal aanvullende documenten op
    als de brief feiten noemt die deze bronnen nog niet onderbouwen.
 4. Bepaal een invalshoek en opbouw volgens de type- en eventuele subtypegids.
    Schrijf een bruikbaar concept in één doorlopende ronde: titel, passende omschrijving,

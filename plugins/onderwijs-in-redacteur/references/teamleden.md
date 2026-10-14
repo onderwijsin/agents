@@ -3,7 +3,7 @@
 ## Doel en vorm
 
 Een profiel maakt zichtbaar wie iemand is, wat die bijdraagt en waarom.
-Haal via MCP relevante profielen op; lees bij een bestaand teamlid ook diens eigen
+Haal via de Onderwijs in-verbinding relevante profielen op; lees bij een bestaand teamlid ook diens eigen
 actuele document. Stem lengte en secties af op het beoogde profiel. Naam, rol,
 contactlinks en gerelateerde content kunnen naast de body worden aangeboden.
 

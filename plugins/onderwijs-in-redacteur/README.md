@@ -34,23 +34,26 @@ De canonical referenties staan uitsluitend in `references/`. Relatieve links van
 de skills blijven binnen deze plugin. Installeer de hele plugin; losse skillmappen zijn
 niet zelfstandig distributabel. Er zijn geen kopieën, symlinks of generator nodig.
 
-Iedere skill zoekt vóór elke taak via MCP naar relevant bestaand materiaal en leest
+Iedere skill zoekt vóór elke taak via de Onderwijs in-verbinding naar relevant bestaand materiaal en leest
 de geselecteerde documenten volledig. De gevonden voorbeelden en actuele metadata
 bepalen hoe de schrijfregels worden toegepast. Dit geldt ook voor alleen taal-, toon-
 of structuurredactie. Voorbeelden uit een vorige taak vervangen geen nieuwe zoekronde.
 Bij lege resultaten wordt breder gezocht; ontbreken voorbeelden, dan wordt dat benoemd.
 De referenties zijn redactionele uitgangspunten; bevestigde gebruikersrichtlijnen gaan voor.
 
-## Gebundelde MCP-verbinding
+## ChatGPT-app en bronverbinding
 
-`mcp.json` declareert de publieke server `https://onderwijsin.nl/mcp` als
-`streamable-http`. De verbinding wordt met de plugin geïnstalleerd en vereist
-geen authenticatie of afzonderlijk geïnstalleerde ChatGPT-app. De server biedt
-uitsluitend lezen; concepten blijven in de chat. Host- en workspacebeleid bepalen
-of de verbinding beschikbaar is.
+De plugin verwijst via `.app.json` naar de bestaande geregistreerde Onderwijs in-app
+met technische ID `plugin_asdk_app_6acfac4f5ef08191855806720d766a68`. Het rootmanifest
+verwijst naar dit bestand via `extensions.com.openai.apps`. Er zit geen `mcp.json`
+in de ChatGPT-import, zodat de app-verbinding apart door de workspace wordt beheerd.
+De app gebruikt `https://onderwijsin.nl/mcp`; de beschikbare tools en leesrechten
+worden bepaald door de bestaande appconfiguratie en workspacebeleid.
 
-Ontbreekt toegang, controleer in ChatGPT Desktop of de plugin en verbinding zijn
-ingeschakeld. Bij een workspaceblokkade is toegang via de beheerder nodig.
+Een beheerder moet de bestaande app voor de bedoelde rollen beschikbaar maken en
+de plugin-installatie op **Available** of **Installed** zetten. De cataloguspolicy
+regelt dit niet en verleent geen app-toegang. Bij ontbrekende toegang controleert
+de beheerder zowel pluginbeleid als app-beschikbaarheid.
 
 ### Pluginicoon
 
@@ -59,35 +62,30 @@ ingeschakeld. Bij een workspaceblokkade is toegang via de beheerder nodig.
 [OpenAI-presentatiemetadata](https://developers.openai.com/plugins/build/plugins#add-openai-specific-metadata).
 Sync de marketplace na het bijwerken van het bestand en controleer beide weergaven.
 
-[Bronnen ophalen](references/bronnen-ophalen.md) beschrijft tools, resources, paginering,
+[Bronnen ophalen](references/bronnen-ophalen.md) beschrijft de Onderwijs in-app in ChatGPT,
+de MCP-verbinding op andere hosts, tools, resources, paginering,
 statusfilters en een herstelroute wanneer subtype-metadata en toolschema verschillen.
-Bij onbereikbare MCP wordt de inhoudelijke taak gepauzeerd tot actueel brononderzoek
+Bij een onbereikbare app of MCP-verbinding wordt de inhoudelijke taak gepauzeerd tot actueel brononderzoek
 weer mogelijk is. Een actualiteits- of overlapclaim vereist gelezen bronnen.
 
 ## Packaging en beoogde hosts
 
-Het rootmanifest en `mcp.json` volgen
-[Agent Plugins 1.0.0](https://agent-plugins.org/specification).
+Het rootmanifest volgt [Agent Plugins 1.0.0](https://agent-plugins.org/specification).
 OpenAI-presentatie staat in `extensions.com.openai` volgens de
-[OpenAI-pluginhandleiding](https://developers.openai.com/plugins/build/plugins).
-De Claude-overlay deelt identiteit en vertaalt het transportlabel naar `http`;
-skills en referenties blijven gedeeld. Zie de
+[OpenAI-pluginhandleiding](https://developers.openai.com/plugins/build/plugins); de
+`apps`-mapping gebruikt het door OpenAI beschreven `plugin_asdk_app...` technische ID.
+De Claude-overlay behoudt een afzonderlijke HTTP MCP-configuratie naar dezelfde
+read-only service. Skills en referenties blijven gedeeld. Zie de
 [Claude-manifestreferentie](https://code.claude.com/docs/en/plugins-reference) en
 [MCP-configuratie](https://code.claude.com/docs/en/mcp).
 
-Voor ChatGPT is deze plugin uitsluitend bedoeld voor de desktopapp.
-Gebundelde MCP-declaraties veroorzaken volgens de
-[importhandleiding](https://help.openai.com/en/articles/20001504-importing-and-syncing-plugin-marketplaces-from-github)
-het label Desktop only, ook bij remote HTTPS-servers. ChatGPT op het web wordt
-niet ondersteund. Er is geen `.app.json` of afhankelijkheid van een geregistreerde app.
-De verbinding gebruikt wel de externe publieke MCP-service.
-
-De portable MCP-schema accepteert geen server-`extensions`, terwijl de OpenAI-handleiding
-hier auth-metadata beschrijft. Het pakket bevat geen auth-configuratie; de publieke
-server is zonder credentials getest. De eerdere ChatGPT-import van versie 0.1.0
-slaagde met Desktop only-notice. Import, icoonweergave, installatie, activatie,
-gedeelde referentielading en de vijf taken van versie 0.2.1 moeten nog worden getest.
-Claude-installatie en runtimegedrag blijven ongetest.
+De repository bevat geen publieke-directorypublicatie: GitHub is de publieke,
+controleerbare bron en het doel is de intern geïmporteerde Business-marketplace.
+De bestaande app-ID komt uit de door de gebruiker verstrekte ChatGPT-app-URL; de
+app-pagina kon hier niet worden geopend. Werkruimte- en roltoegang, verbinding zonder
+extra aanmelding, zichtbaarheid van de Desktop only-markering en toolgedrag op web
+en mobiel zijn daarom nog niet geverifieerd. Claude-installatie en runtimegedrag
+blijven eveneens ongetest.
 Volg [de acceptatieproeven](tests/acceptatie.md) vóór uitrol.
 
 ## Validatie

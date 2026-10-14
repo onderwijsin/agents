@@ -36,10 +36,11 @@ voorbij is? Dan ligt een blog voor de hand. Is de kern een overdraagbare les, hu
 of betoog? Dan ligt expertise voor de hand. Een domein beschrijft een opgave;
 een initiatief beschrijft een concrete aanpak daarbinnen.
 
-## Verplicht MCP-onderzoek vóór iedere taak
+## Verplicht brononderzoek vóór iedere taak
 
 Volg [bronnen ophalen](bronnen-ophalen.md) vóór het beoordelen, redigeren of schrijven,
 ook bij een verzoek dat uitsluitend toon, structuur of spelling betreft.
+Gebruik de Onderwijs in-app in ChatGPT of de beschikbare MCP-verbinding op een andere host.
 Zoek op onderwerp, doelgroep, lezersvraag en beoogde vorm. Lees relevante gevonden
 documenten volledig; een lijst ophalen of alleen de aangeleverde bron lezen is
 geen vervanging voor het zoeken naar vergelijkbaar materiaal.
@@ -53,9 +54,9 @@ lees meer wanneer feitelijke onderbouwing of overlap dat vraagt.
 Zoek bij lege resultaten breder op verwante begrippen, doelgroep of type. Als ook
 dat geen passende voorbeelden geeft, meld de zoekuitkomst en gebruik de schrijfregels
 als redactioneel uitgangspunt; verzin geen voorbeelden of nieuwheidsbewijs.
-Bij onbereikbare MCP pauzeer je de inhoudelijke taak en vraag je om herstel van
-de verbinding. Eerder opgehaalde tekst en statische referenties vervangen geen
-actueel brononderzoek voor een nieuwe taak.
+Bij een onbereikbare app of MCP-verbinding pauzeer je de inhoudelijke taak en vraag je
+om herstel van de toegang. Eerder opgehaalde tekst en statische referenties vervangen
+geen actueel brononderzoek voor een nieuwe taak.
 
 ## Onderbouwing
 
@@ -95,7 +96,8 @@ Houd titel en inhoud gescheiden als de website titel buiten de body rendert.
 
 Controleer vóór oplevering:
 
-- Het verplichte MCP-onderzoek is uitgevoerd; gelezen materiaal is inhoudelijk benut,
+- Het verplichte brononderzoek via de Onderwijs in-app of MCP-verbinding is uitgevoerd;
+  gelezen materiaal is inhoudelijk benut,
   of het ontbreken van passende voorbeelden na een bredere zoekronde is benoemd.
 - De gekozen lezer krijgt antwoord op de hoofdvraag; vorm en toon passen bij het type.
 - Alle oorspronkelijke inhoudelijke punten zijn behouden of hun weglating is gemotiveerd.

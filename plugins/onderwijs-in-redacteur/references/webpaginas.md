@@ -4,7 +4,7 @@
 
 Een webpagina geeft blijvende uitleg, helpt navigeren of maakt een handeling mogelijk.
 Kies de opbouw voor de paginafunctie: missie, samenwerking, doelgroep, overzicht,
-contact of aanmelden. Haal vergelijkbare pagina's dynamisch via MCP op en controleer
+contact of aanmelden. Haal vergelijkbare pagina's dynamisch via de Onderwijs in-verbinding op en controleer
 welke secties, aanspreekvorm en functionele onderdelen bij de taak passen.
 
 ## Aanbevolen opbouw

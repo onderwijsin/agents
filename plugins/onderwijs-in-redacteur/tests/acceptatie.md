@@ -18,16 +18,19 @@ hostruns. Test ze in iedere beoogde host en leg resultaten vast in het pakket-RE
 3. Open voor iedere skill een nieuwe chat en controleer activatie bij de eigen voorbeeldtaak.
 4. Controleer dat de skill `../../references/werkwijze.md`, de toon/spellinggids,
    de juiste typegids en bij expertise ook de subtypegids kan lezen.
-5. Controleer na workspace-sync dat de plugin het Desktop only-label heeft en
-   in ChatGPT Desktop de gebundelde MCP-verbinding biedt zonder afzonderlijke appinstallatie.
-   Controleer ook logo en composericoon.
-   Controleer de verbinding zonder credentialprompt; lees discovery en een bekend
-   document. Lees `site://filters` via resources en een document via de template
-   met een daadwerkelijk ontdekte kind/slug.
+5. Controleer na workspace-sync dat de plugin geen Desktop only-label heeft.
+   Controleer ook logo en composericoon. Verifieer dat de bestaande Onderwijs in-app
+   voor de bedoelde workspace-rollen is ingeschakeld en dat de plugin die app gebruikt
+   zonder handmatige MCP-configuratie per gebruiker. Controleer discovery en een bekend
+   document met een bedoeld workspace-account; noteer eventuele aanmeldprompt.
+   Lees `site://filters` via resources en een document via de template met een
+   daadwerkelijk ontdekte kind/slug.
 6. Controleer bij **alle vijf skills** dat vóór de inhoudelijke taak een nieuwe
    MCP-zoekronde plaatsvindt, relevante documenten volledig worden gelezen en de
    gevonden referenties aantoonbaar de keuzes in de uitkomst informeren.
 7. Controleer dat resultaat volledig in de chat verschijnt en geen CMS-mutatie plaatsvindt.
+8. Herhaal een representatieve taak in ChatGPT web en mobiel en noteer de feitelijke
+   beschikbaarheid en beperkingen per oppervlak.
 
 Noteer host, versie, gebruikte installatieroute, feitelijke resultaten en
 beperkingen. Een handmatige bestandslezing in de auteurcheckout vervangt geen hostrun.
@@ -89,8 +92,8 @@ en gebruik een gevonden analoge tekst plus de subtypegids.
 
 ## Grenzen en storingen
 
-- Gebundelde MCP ontbreekt: ieder van de vijf skills vraagt om de plugin in ChatGPT
-  Desktop te openen en de verbinding te controleren. Bij een beleidsblokkade verwijst
+- Geregistreerde app ontbreekt: controleer plugininstallatie en de afzonderlijke
+  workspacebeschikbaarheid van de Onderwijs in-app. Bij een beleidsblokkade verwijst
   de skill naar de workspacebeheerder. De inhoudelijke taak hervat na herstel met
   een nieuwe zoekronde.
 - Alleen “Geef feedback” op een bestaande tekst: kies de gevraagde focus en lever

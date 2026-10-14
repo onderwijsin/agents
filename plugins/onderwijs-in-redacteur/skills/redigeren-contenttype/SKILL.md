@@ -2,7 +2,7 @@
 name: redigeren-contenttype
 description: Maak bestaande Onderwijs in-content passend voor een webpagina, expertise-item, blog, vacature, teamlidpagina, domein of initiatief; pas bij expertise ook het subtype toe. Controleer vorm, structuur, toon en spelling en lever de volledige tekst in de chat.
 license: MIT
-compatibility: Vereist het volledige Onderwijs in Redacteur-pluginpakket voor gedeelde referenties. Vereist toegang tot de gebundelde publieke MCP-verbinding voor verplicht brononderzoek vóór iedere taak.
+compatibility: Vereist het volledige pluginpakket voor gedeelde referenties en brononderzoek. In ChatGPT is toegang tot de geregistreerde Onderwijs in-app nodig; op andere hosts een MCP-verbinding met de Onderwijs in-bronnen.
 ---
 
 # Redigeren op contenttype
@@ -12,9 +12,9 @@ compatibility: Vereist het volledige Onderwijs in Redacteur-pluginpakket voor ge
 1. Stel bronmateriaal, onderwerp, doelgroep en doel vast.
    Zonder tekst of concrete route vraag je om het bronmateriaal.
    Lees [bronnen ophalen](../../references/bronnen-ophalen.md) en zoek vóór de
-   inhoudelijke taak via MCP naar relevant bestaand materiaal. Lees de geselecteerde
+   inhoudelijke taak via de Onderwijs in-verbinding naar relevant bestaand materiaal. Lees de geselecteerde
    documenten volledig; haal ook het bronitem op als een publieke route is aangeleverd.
-   Gebruik de gevonden teksten als referentie voor deze taak. Bij onbereikbare MCP
+   Gebruik de gevonden teksten als referentie voor deze taak. Bij een onbereikbare app of MCP-verbinding
    volg je de herstelroute; een tekst uit een eerdere taak vervangt deze stap niet.
 2. Lees [de gedeelde redactionele werkwijze](../../references/werkwijze.md),
    [toon en stijl](../../references/toon-en-stijl.md) en
