@@ -17,6 +17,7 @@ A **marketplace** is a catalog that helps people discover and install plugins.
 | Name                                                               | Type   | Description                                                                                                                                                                              |
 | ------------------------------------------------------------------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Onderwijs in Redacteur](plugins/onderwijs-in-redacteur/README.md) | Plugin | Edit Dutch content for tone, structure and content type, check spelling, review ideas, and write drafts using current Onderwijs in content through MCP. Returns written results in chat. |
+| [Agent-instructie](skills/agent-instructie/README.md)              | Skill  | Schrijf en verbeter Nederlandstalige prompts en skills voor niet-technische taken, met duidelijke opdrachten en controleerbare resultaten.                                               |
 
 Our deployment target is the _ChatGPT Business workspace_ marketplace. Administrators
 can import a GitHub catalog through the GUI, then colleagues can discover and install
