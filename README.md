@@ -14,21 +14,21 @@ A **marketplace** is a catalog that helps people discover and install plugins.
 
 ## Use the collection
 
-This repository currently contains **zero plugins and zero skills**. The two empty
-marketplace manifests, contributor guides, and automated checks establish the foundation.
-Browse [plugins/](plugins/) and [skills/](skills/) as capabilities are added.
+| Name                                                               | Type   | Description                                                                                                                                                                              |
+| ------------------------------------------------------------------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Onderwijs in Redacteur](plugins/onderwijs-in-redacteur/README.md) | Plugin | Edit Dutch content for tone, structure and content type, check spelling, review ideas, and write drafts using current Onderwijs in content through MCP. Returns written results in chat. |
 
-Our first deployment target is the _ChatGPT Business workspace_ marketplace. Administrators
+Our deployment target is the _ChatGPT Business workspace_ marketplace. Administrators
 can import a GitHub catalog through the GUI, then colleagues can discover and install
 available plugins without using Git or a terminal. See the
 [marketplace distribution guide](docs/marketplace-distribution.md) for prerequisites,
 import settings, sync, and workspace permissions.
 
-| Platform                 | Current repository support                                                        |
-| ------------------------ | --------------------------------------------------------------------------------- |
-| ChatGPT / Codex          | Native empty marketplace; packaging and workspace import guidance                 |
-| Claude Code              | Compatible empty marketplace; plugin runtime support must be verified per package |
-| Other Agent Skills hosts | Portable skill authoring conventions; no adapters or tested content yet           |
+| Platform                 | Current repository support                                                      |
+| ------------------------ | ------------------------------------------------------------------------------- |
+| ChatGPT / Codex          | Local marketplace entry and portable package; workspace/runtime testing pending |
+| Claude Code              | Matching marketplace and compatibility overlay; runtime testing pending         |
+| Other Agent Skills hosts | Portable instructions; the editorial skills require their whole plugin package  |
 
 Portable files do not guarantee identical tools, permissions, or behavior on every host.
 

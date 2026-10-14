@@ -1,0 +1,11 @@
+{
+  "name": "onderwijs-in-redacteur",
+  "version": "0.1.0",
+  "description": "Redigeer, toets en schrijf Onderwijs in-content met gedeelde stijlgidsen en publieke bronnen.",
+  "mcpServers": {
+    "onderwijs-in": {
+      "type": "http",
+      "url": "https://onderwijsin.nl/mcp"
+    }
+  }
+}

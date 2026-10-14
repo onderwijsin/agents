@@ -42,6 +42,20 @@ MCP or app configuration is optional and must follow current host documentation.
 server, credential, hooks, or placeholder configuration unless the capability needs it.
 Extend validation for new manifest fields and integration files in the same change.
 
+Plugin-owned skills may link to shared `references/` within the same plugin root.
+Document ownership and require whole-plugin installation; they are not standalone packages.
+The validator keeps standalone references within their skill and bundled references within
+their plugin, rejecting escapes and symlinks in both cases.
+
+The initial MCP validation subset supports root `mcp.json` with the Agent Plugins 1.0.0
+schema identifier and named `streamable-http` HTTPS connections without headers or credentials.
+An optional `.claude-plugin/plugin.json` overlay repeats identity and translates these connections
+to Claude's `http` transport; validation requires matching names, versions, descriptions and URLs.
+OpenAI presentation checks require nonempty display name and short description when provided.
+Other transport, authentication and overlay fields need focused validation before introduction.
+See [Onderwijs in Redacteur](../plugins/onderwijs-in-redacteur/README.md) for current
+specification links, the portable/OpenAI auth-schema discrepancy, and runtime test limitations.
+
 ## Catalog entries
 
 Add a local entry to `.agents/plugins/marketplace.json`:

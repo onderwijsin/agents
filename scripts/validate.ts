@@ -1,4 +1,4 @@
-import { readdir, readFile, realpath, stat } from "node:fs/promises";
+import { access, readdir, readFile, realpath, stat } from "node:fs/promises";
 import { dirname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseDocument } from "yaml";
@@ -39,6 +39,39 @@ const pluginMetadata = z.object({
       /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-[\da-zA-Z-]+(?:\.[\da-zA-Z-]+)*)?(?:\+[\da-zA-Z-]+(?:\.[\da-zA-Z-]+)*)?$/,
     ),
   description: z.string().trim().min(1).max(4000),
+  extensions: z
+    .object({
+      "com.openai": z
+        .object({
+          interface: z.object({
+            displayName: z.string().trim().min(1),
+            shortDescription: z.string().trim().min(1),
+          }),
+        })
+        .optional(),
+    })
+    .optional(),
+});
+// Deliberately support only the credential-free remote subset used by this repository.
+const remoteMcpServer = z.strictObject({
+  type: z.literal("streamable-http"),
+  url: z.url().refine((value) => {
+    const url = new URL(value);
+    return url.protocol === "https:" && !url.username && !url.password;
+  }, "MCP endpoint must use HTTPS without embedded credentials"),
+});
+const mcpMetadata = z.strictObject({
+  $schema: z.literal("https://agent-plugins.org/schemas/1.0.0/mcp.schema.json"),
+  mcpServers: z.record(name, remoteMcpServer).refine((servers) => Object.keys(servers).length > 0),
+});
+const claudePluginMetadata = z.strictObject({
+  name,
+  version: pluginMetadata.shape.version,
+  description: pluginMetadata.shape.description,
+  mcpServers: z.record(
+    name,
+    z.strictObject({ type: z.literal("http"), url: remoteMcpServer.shape.url }),
+  ),
 });
 const skillMetadata = z.strictObject({
   name,
@@ -113,7 +146,7 @@ async function links(path: string, boundary: string): Promise<void> {
 }
 
 /** Validate skill frontmatter and package-local references. */
-async function skill(path: string): Promise<void> {
+async function skill(path: string, boundary = path): Promise<void> {
   const source = await file(join(path, "SKILL.md"));
   const frontmatter = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/.exec(source);
   if (!frontmatter?.[1]) throw new Error(`${path}/SKILL.md: missing YAML frontmatter`);
@@ -127,7 +160,43 @@ async function skill(path: string): Promise<void> {
     throw new Error(`${path}: skill name must match directory`);
   if (!source.slice(frontmatter[0].length).trim())
     throw new Error(`${path}/SKILL.md: missing instructions`);
-  await markdownFiles(path, path);
+  await markdownFiles(path, boundary);
+}
+
+/** Validate optional connection files and require the Claude overlay to match canonical settings. */
+async function connections(path: string, metadata: z.infer<typeof pluginMetadata>): Promise<void> {
+  const hasFile = async (target: string): Promise<boolean> => {
+    try {
+      await access(target);
+      return true;
+    } catch (error: unknown) {
+      if (error instanceof Error && "code" in error && error.code === "ENOENT") return false;
+      throw error;
+    }
+  };
+  const mcpPath = join(path, "mcp.json");
+  const overlayPath = join(path, ".claude-plugin/plugin.json");
+  const hasMcp = await hasFile(mcpPath);
+  if (hasMcp) await containedFile(mcpPath, path);
+  const mcp = hasMcp ? mcpMetadata.parse(await json(mcpPath)) : undefined;
+  if (await hasFile(overlayPath)) {
+    await containedFile(overlayPath, path);
+    const overlay = claudePluginMetadata.parse(await json(overlayPath));
+    if (
+      ["name", "version", "description"].some(
+        (key) =>
+          overlay[key as "name" | "version" | "description"] !==
+          metadata[key as "name" | "version" | "description"],
+      )
+    )
+      throw new Error(`${overlayPath}: identity must match root plugin.json`);
+    if (!mcp || Object.keys(overlay.mcpServers).length !== Object.keys(mcp.mcpServers).length)
+      throw new Error(`${overlayPath}: MCP servers must match root mcp.json`);
+    for (const [serverName, server] of Object.entries(overlay.mcpServers)) {
+      if (server.url !== mcp.mcpServers[serverName]?.url)
+        throw new Error(`${overlayPath}: MCP endpoint must match root mcp.json`);
+    }
+  }
 }
 
 /** Recursively validate Markdown links without following symlinked resources. */
@@ -173,6 +242,7 @@ export async function validate(root: string): Promise<void> {
     await containedFile(join(path, "plugin.json"), path);
     const metadata = pluginMetadata.parse(await json(join(path, "plugin.json")));
     if (metadata.name !== pluginName) throw new Error(`${path}: plugin name must match directory`);
+    await connections(path, metadata);
     await file(join(path, "README.md"));
     const bundled = await directories(join(path, "skills"));
     if (!bundled.length)
@@ -180,7 +250,7 @@ export async function validate(root: string): Promise<void> {
         `${path}: initial tooling supports skills-based plugins; extend it before introducing MCP-only packages`,
       );
     unique(bundled, path);
-    for (const skillName of bundled) await skill(join(path, "skills", skillName));
+    for (const skillName of bundled) await skill(join(path, "skills", skillName), path);
     await markdownFiles(path, path);
   }
   for (const skillName of await directories(join(root, "skills"))) {

@@ -43,7 +43,9 @@ available before beginning agent-authored instruction changes.
 
 Explain inputs, steps, expected outputs, verification, and when to ask for missing information.
 Keep the body focused and put detailed reference material in local files linked with relative
-Markdown paths. Include resources in the skill; do not reference a sibling package or rely on
+Markdown paths. Standalone skills keep resources inside the skill. Plugin-owned skills may
+share resources inside their plugin root when the plugin is their explicit installation boundary;
+document that they cannot be installed separately. Do not reference a sibling package or rely on
 files installed only on the author's computer. Describe external services and environment
 requirements explicitly. Avoid model names, host-specific tools, and credentials by default.
 

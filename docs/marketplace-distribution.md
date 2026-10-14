@@ -1,9 +1,11 @@
 # Distributing plugins through the workspace marketplace
 
 ChatGPT Business is our first target. Administrators manage the marketplace; colleagues use
-the plugin GUI. The repository currently has an empty catalog, so there is nothing to install.
-The empty catalog is structurally accepted by Codex and warns in Claude; actual ChatGPT workspace
-import has not been tested. Verify feature availability in your workspace before rollout.
+the plugin GUI. The catalog now includes
+[Onderwijs in Redacteur](../plugins/onderwijs-in-redacteur/README.md).
+Actual ChatGPT workspace import and new-plugin runtime behavior have not been tested.
+Verify feature availability, installation, resource loading and representative tasks
+in your workspace before rollout.
 
 ## Administrator import
 
@@ -46,9 +48,9 @@ Claude Code uses `.claude-plugin/marketplace.json`. See the
 These are distribution targets, not tested runtime guarantees; the first package must establish
 host-specific compatibility. Standalone skills use the host's Agent Skills installation route.
 
-## Empty catalog compatibility
+## Empty catalog compatibility for future changes
 
-The decision to keep catalogs empty rather than add dummy capabilities rests on these checks:
+Empty catalogs remain valid repository scaffolds. Their structural handling rests on these checks:
 
 - The [Codex marketplace parser](https://github.com/openai/codex/blob/main/codex-rs/core-plugins/src/marketplace.rs)
   accepts a plugin list without a minimum length. Its

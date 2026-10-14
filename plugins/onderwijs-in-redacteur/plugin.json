@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "onderwijs-in-redacteur",
+  "version": "0.1.0",
+  "description": "Redigeer, toets en schrijf Onderwijs in-content met gedeelde stijlgidsen en publieke bronnen.",
+  "author": {
+    "name": "Onderwijs in"
+  },
+  "homepage": "https://onderwijsin.nl",
+  "license": "MIT",
+  "keywords": ["redactie", "onderwijs", "schrijven"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Onderwijs in Redacteur",
+        "shortDescription": "Vijf redactionele skills voor Onderwijs in.",
+        "developerName": "Onderwijs in",
+        "category": "Productivity",
+        "capabilities": ["Read"],
+        "websiteURL": "https://onderwijsin.nl",
+        "defaultPrompt": [
+          "Herschrijf deze tekst in de toon van Onderwijs in.",
+          "Toets dit contentidee aan onze bestaande content.",
+          "Schrijf een concept voor een expertise-item."
+        ]
+      }
+    }
+  }
+}

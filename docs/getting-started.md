@@ -66,8 +66,10 @@ Oxfmt formats source and Markdown; Oxlint lints scripts; markdownlint-cli2 check
 The validator covers the local-only catalog subset, matching catalog names and paths, unique
 identities, required plugin and skill files, skill frontmatter, and relative Markdown file links.
 Empty content directories are accepted. Plugin validation checks required identity fields rather
-than certifying the full portable schema. Advanced manifest extensions, MCP configuration,
-Markdown anchors, external URLs, and runtime behavior require targeted checks when introduced.
+than certifying the full portable schema. It also checks the documented credential-free HTTPS MCP
+subset, matching Claude overlays, basic OpenAI presentation, and plugin-local shared references.
+Advanced manifest extensions, other MCP configuration, Markdown anchors, external URLs,
+and runtime behavior require targeted checks when introduced.
 
 CI installs dependencies with a frozen lockfile and runs the quality gates. Dependabot proposes
 monthly dependency and action updates. `pnpm-workspace.yaml` permits esbuild's dependency build
