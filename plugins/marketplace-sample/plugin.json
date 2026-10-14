@@ -1,0 +1,7 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "marketplace-sample",
+  "version": "0.1.0",
+  "description": "Minimal skills-only plugin for testing marketplace import and skill activation.",
+  "author": { "name": "Onderwijs in" }
+}
