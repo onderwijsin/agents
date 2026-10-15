@@ -2,14 +2,20 @@
 
 ChatGPT Business is our first target. Administrators manage the marketplace; colleagues use
 the plugin GUI. The catalog now includes
-[Onderwijs in Redacteur](../plugins/onderwijs-in-redacteur/README.md) and
-[Agent-instructie](../plugins/agent-instructie/README.md).
+[Onderwijs in Redacteur](../plugins/onderwijs-in-redacteur/README.md),
+[Agent-instructie](../plugins/agent-instructie/README.md) and
+[Plausible](../plugins/plausible-analytics/README.md).
 The editorial plugin references the existing Onderwijs in ChatGPT app through `.app.json`;
 it does not bundle an MCP server in the ChatGPT-imported package. The technical app ID
 comes from the app URL supplied for this integration and uses OpenAI's documented
 `plugin_asdk_app...` identifier format. Workspace role access and runtime behavior still
 require verification. Verify feature availability, installation, resource loading and
 representative tasks in the workspace before rollout.
+
+Plausible references the existing workspace app with the supplied `asdk_app_...` ID.
+Its README records the identifier-format caveat, MCP limitations and pending acceptance
+matrix. Enable the app for intended roles separately from installing the plugin, then
+verify the mapping in a new chat. Charts and PDF export depend on host capabilities.
 
 ## Discovery and synchronization boundaries
 
