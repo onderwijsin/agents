@@ -1,0 +1,8 @@
+{
+  "apps": {
+    "plausible": {
+      "id": "asdk_app_6ad0a3e9dc288191a3e84ecfd5b23683",
+      "required": true
+    }
+  }
+}

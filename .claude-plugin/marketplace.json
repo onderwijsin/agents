@@ -12,6 +12,10 @@
     {
       "name": "agent-instructie",
       "source": "./plugins/agent-instructie"
+    },
+    {
+      "name": "plausible-analytics",
+      "source": "./plugins/plausible-analytics"
     }
   ]
 }
