@@ -1,15 +1,30 @@
 # Plausible
 
-Analyze website traffic, pages, acquisition, UTM campaigns and measured goal conversions
-through the existing workspace app. One bundled skill, `plausible-analysis`, covers these
-related workflows and returns results in the user's language. Install the whole plugin
+Discover sites and configured goals, then analyze website traffic, pages, acquisition,
+UTM campaigns and measured goal conversions through the existing workspace app. One
+bundled skill, `plausible-analysis`, covers these related workflows and returns results in the user's language. Install the whole plugin
 so its query and output references remain available. No site is hardcoded.
 
 ## Usage and output
 
 Ask a website analytics question and name the site when it is not already known. The
-skill resolves exact dates and the site's reporting zone, queries relevant measurements,
-and separates observations from hypotheses and recommended next checks.
+skill discovers the site's reporting zone and local date with `get_sites`, checks goal
+configuration with `get_goals`, and queries interval KPIs with `get_aggregate`. It uses
+paginated breakdowns when needed and separates observations from hypotheses and next
+checks. Discovery uses the existing caller access; unavailable metadata remains unknown.
+
+The skill and its self-contained query and output references are written in Dutch;
+results follow the language of the user's request. The seven read tools are:
+
+| Tool              | Purpose                                                                         |
+| ----------------- | ------------------------------------------------------------------------------- |
+| `get_sites`       | Authorized sites, reporting time zones and site-local today; cursor pagination. |
+| `get_goals`       | Configured goals, including goals with no activity; cursor pagination.          |
+| `get_aggregate`   | Interval-wide totals, rates and averages.                                       |
+| `get_timeseries`  | Daily, weekly or monthly trends.                                                |
+| `get_breakdown`   | Ranked, paginated results for one dimension.                                    |
+| `get_conversions` | Goal activity and conversion rates, optionally per page, with pagination.       |
+| `compare_periods` | Two period aggregates, deltas and per-period metadata and coverage.             |
 
 - Chat report: concise interpretation and Markdown KPI or breakdown tables (default).
 - Graphs and tables: inline charts when the host can render them, with underlying values.
@@ -63,11 +78,26 @@ Integration references:
   this wrapper exposes a subset.
 - [Metric definitions](https://plausible.io/docs/metrics-definitions): measurement terminology.
 
-The reviewed wrapper has no site/time-zone lookup, offset pagination, time-zone input,
-timestamp bounds or imported-history inclusion option. Breakdowns support one dimension
-and at most 1000 rows. Comparisons drop upstream metadata; the other tools retain it in
-text output. A trailing page wildcard becomes substring matching. The bundled query
-guide records how these limits affect results, including native-data coverage.
+All five statistics tools accept `include_imports`; native-only remains the default.
+Explicitly requested imported history is checked against returned coverage, not assumed
+from the request. Structured results preserve metadata and resolved queries; comparisons
+keep them separately for each period. Breakdowns and conversions expose offsets,
+next offsets, totals, completeness and warnings. A terminal page alone does not prove
+a complete inventory, and pagination is not a snapshot.
+
+A trailing `page` wildcard selects a literal prefix: `/traineeship*` includes
+`/traineeship/apply` and excludes `/archive/traineeship`. This narrows the previous
+substring scope. Intentional substring queries must use an `event:page` `contains`
+property filter. Deployments without upstream `matches` support return an error
+rather than silently widening the page selection.
+
+Discovery depends on the Plausible version and caller permissions. Unsupported or denied
+discovery is unknown configuration, not evidence of absent sites or goals. Remaining
+query limits include one breakdown dimension, no arbitrary ordering, no timestamp bounds
+or time-zone override, no behavioral session filters and no time-label inclusion option.
+Breakdown pages contain at most 1000 rows; conversion pages at most 10000. The
+[self-contained query guide](skills/plausible-analysis/references/queries.md) describes
+parameters, defaults, pagination, filters, coverage and examples.
 
 Conversions require configured, measurable goals. The skill cannot infer visitor
 journeys, ad costs or ROAS from traffic, and never treats cross-site visitor sums as
@@ -80,21 +110,34 @@ and automatic activation, and check both bundled references load. Capture actual
 parameters and results for each case using authorized test-site data. Repeat for every
 host for which support will be claimed.
 
-| Request                                                 | Acceptance criterion                                                                                    |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| “How did onderwijsin.nl perform in the last 30 days?”   | Five KPIs including visits; exact complete site-local days; interval aggregates and interpretation.     |
-| “Which pages performed best last month?”                | Previous calendar month; ranking metric first in query; visitor/pageview distinction and top-N scope.   |
-| “Where did traffic to our traineeship pages come from?” | Verified page set; source/channel and relevant UTM filters retained; no invented joint breakdown.       |
-| “Compare September with August.”                        | Explicit year; August baseline; absolute/relative count deltas, pp rate deltas and month-length caveat. |
-| “Are our Google Ads campaigns sending more visitors?”   | Evidenced paid/UTM filter and comparable trend; missing tags disclosed; no spend or ROAS claim.         |
-| “How many webinar registrations came from this page?”   | Confirmed goal and measurable page relationship, or explicit missing measurement/configuration.         |
-| “Show traffic per week for the last six months.”        | Exact bounds, weekly table and chart when supported; partial edge weeks and missing buckets labeled.    |
-| “Compare these two sites.”                              | Separate site queries and comparable scope/zones; no visitor sum presented as people.                   |
-| “Maak hiervan een PDF-rapport.”                         | Actual Dutch PDF attachment with checked values/layout, or explicit unavailable-export fallback.        |
-| “What pricing strategy should our company use?”         | No activation without a Plausible website-data question.                                                |
+| Request                                                 | Acceptance criterion                                                                                                        |
+| ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| “How did onderwijsin.nl perform in the last 30 days?”   | Site zone/local date from `get_sites`; five KPIs from `get_aggregate`; exact complete days and interpretation.              |
+| “Which pages performed best last month?”                | Previous calendar month; ranking metric first in query; visitor/pageview distinction and top-N scope.                       |
+| “Where did traffic to our traineeship pages come from?” | Verified page set; source/channel and relevant UTM filters retained; no invented joint breakdown.                           |
+| “Compare September with August.”                        | Explicit year; August baseline; absolute/relative count deltas, pp rate deltas and month-length caveat.                     |
+| “Are our Google Ads campaigns sending more visitors?”   | Evidenced paid/UTM filter and comparable trend; missing tags disclosed; no spend or ROAS claim.                             |
+| “How many webinar registrations came from this page?”   | Configured goal from `get_goals`, `display_name` used for activity; zero activity distinguished from missing configuration. |
+| “Show traffic per week for the last six months.”        | Exact bounds, weekly table and chart when supported; partial edge weeks and missing buckets labeled.                        |
+| “Compare these two sites.”                              | Separate site queries and comparable scope/zones; no visitor sum presented as people.                                       |
+| “Maak hiervan een PDF-rapport.”                         | Actual Dutch PDF attachment with checked values/layout, or explicit unavailable-export fallback.                            |
+| “What pricing strategy should our company use?”         | No activation without a Plausible website-data question.                                                                    |
 
 Also exercise zero baselines, null/empty results, unconfigured goals, sparse conversions,
-truncation, metadata warnings and unavailable app access. Verify missing history is not
-zero-filled, defining filters survive errors, relative dates require a known site zone,
+pagination, metadata warnings and unavailable app access. Verify missing history is not
+zero-filled, defining filters survive errors, relative dates use the discovered site zone,
 and external feedback requires authorization. Compare the same values across all three
 output modes and inspect each PDF page.
+
+Additional acceptance cases for discovery and reporting contracts:
+
+| Case                                      | Acceptance criterion                                                                                                                                      |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| List sites or verify the default          | Use `get_sites` with the appropriate selection; follow `next_after` for a full list; use `timezone_status` and site-local `today`.                        |
+| Discovery denied or unsupported           | Configuration stays unknown; no activity-based inference or request for elevated credentials.                                                             |
+| Goal absent on the first page             | Follow the complete cursor chain before declaring it unconfigured; use `display_name` for statistics.                                                     |
+| Multiple breakdown/conversion pages       | Preserve scope and limit across `next_offset`; inspect consistent totals and warnings; the last page is not independently complete.                       |
+| Missing/invalid row totals or no progress | Report unknown completeness even for a short/empty page; stop without looping or claiming exhaustiveness.                                                 |
+| Imported history requested                | Pass `include_imports: true`; distinguish confirmed, excluded and unknown coverage, independently for each comparison period.                             |
+| Structured metadata                       | Inspect preserved `meta` and `query`, including unknown fields, null metrics and empty results; no duplicate queries just to recover comparison metadata. |
+| Prefix versus substring scope             | Verify `/traineeship*` excludes `/archive/traineeship`; use an explicit `contains` filter for substring scope.                                            |

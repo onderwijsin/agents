@@ -1,6 +1,6 @@
 ---
 name: plausible-analysis
-description: Analyseer websiteverkeer, verkeersbronnen, UTM-campagnes en gemeten doelconversies met de gekoppelde Plausible-app. Gebruik voor prestatieoverzichten, paginaranglijsten, periode- of sitevergelijkingen en rapporten in de chat, met grafieken of als PDF. Niet voor algemene bedrijfsanalyses zonder Plausible-websitegegevens.
+description: Analyseer websiteverkeer, verkeersbronnen, UTM-campagnes en gemeten doelconversies met de gekoppelde Plausible-app. Gebruik voor het vinden van sites en ingestelde doelen, prestatieoverzichten, paginaranglijsten, periode- of sitevergelijkingen en rapporten in de chat, met grafieken of als PDF. Niet voor algemene bedrijfsanalyses zonder Plausible-websitegegevens.
 license: MIT
 ---
 
@@ -13,12 +13,19 @@ voorgestelde vervolgcontroles afzonderlijk.
 ## Bepaal de rapportageafbakening
 
 Bepaal site/domein, rapportagetijdzone van de site, exacte periode, vraag, meetwaarden en
-gewenste uitvoervorm uit het gesprek of bevestigde site-instellingen. Vraag alleen naar
-essentiële ontbrekende keuzes. De app heeft geen hulpmiddel om sites of hun tijdzone op
-te zoeken: leid de rapportagetijdzone niet af uit de locatie van de gebruiker. Vraag bij
-ontbrekende informatie naar de site-instelling. Een query met expliciete datums kan
-voorlopig doorgaan met de vermelding dat de tijdzone onbekend is; relatieve datums en
-vergelijkingen met afgestemde periodes vereisen een bevestigde tijdzone.
+gewenste uitvoervorm uit het gesprek en de site-instellingen. Lees vóór de eerste query
+de [querygids](references/queries.md). Gebruik `get_sites` om de bedoelde site, tijdzone
+en lokale datum (`today`) op te halen: met `site_id` voor een genoemde site, met
+`use_default: true` voor de ingestelde standaardsite, of zonder selectie om toegankelijke
+sites te vinden. Vraag alleen om een keuze wanneer meerdere sites passend zijn.
+
+Controleer `status` en `timezone_status`. Bij `unsupported`, `permission_denied` of
+`unavailable` is de configuratie onbekend; vraag alleen de essentiële ontbrekende
+informatie en vraag niet impliciet om ruimere rechten. Leid de tijdzone niet af uit de
+locatie van de gebruiker of de server. Een query met expliciete datums kan voorlopig
+doorgaan met de vermelding dat de tijdzone onbekend is; relatieve datums en vergelijkingen
+met afgestemde periodes vereisen een bevestigde tijdzone. Gebruik de site-lokale `today`
+voor relatieve periodes en vraag bij ontbrekende metadata naar de site-instelling.
 
 Gebruik voor ‘de afgelopen 30 dagen’ standaard de 30 volledige dagen tot en met gisteren
 in de tijdzone van de site en vermeld die keuze. ‘Vorige maand’ betekent de vorige
@@ -30,14 +37,16 @@ tijdvakken.
 
 ## Bevraag en controleer
 
-Lees vóór het gebruik van de tools de [querygids](references/queries.md). Deze beschrijft
-de invoer, resultaten en beperkingen van de MCP-tools. Gebruik de kleinste query die de
-vraag beantwoordt en voeg alleen een uitsplitsing toe als die nodig is voor de analyse.
+Gebruik de kleinste query die de vraag beantwoordt en voeg alleen een uitsplitsing toe
+als die nodig is voor de analyse. Bepaal of geïmporteerde historie bij de vraag hoort:
+standaard wordt alleen eigen Plausible-tracking gebruikt. Gebruik `include_imports: true`
+voor gevraagde geïmporteerde historie en houd dezelfde instelling bij vergelijkingen en
+vervolgqueries. Controleer de feitelijke importdekking voordat je resultaten vergelijkt.
 
-- Overzicht: vraag expliciet `visitors`, `visits`, `pageviews`, `bounce_rate` en
-  `visit_duration` op; de standaardselectie van de MCP bevat geen bezoeken. Gebruik
-  aggregaten over de hele periode in plaats van dagelijkse bezoekersaantallen op te
-  tellen of dagelijkse percentages te middelen.
+- Overzicht: gebruik `get_aggregate` voor `visitors`, `visits`, `pageviews`, `bounce_rate`
+  en `visit_duration`; dit zijn de standaardmeetwaarden van deze tool. Gebruik de
+  periodeaggregaten in plaats van dagelijkse bezoekersaantallen op te tellen of
+  dagelijkse percentages te middelen.
 - Best presterende pagina’s: gebruik `get_breakdown` met `event:page` en zet de
   meetwaarde waarop je rangschikt vooraan. Gebruik bij ‘beste’ zonder nadere doelstelling
   standaard bezoekers en vermeld die keuze. Voeg paginaweergaven toe als context en
@@ -51,11 +60,12 @@ vraag beantwoordt en voeg alleen een uitsplitsing toe als die nodig is voor de a
 - Betaalde campagnes: gebruik een aangetoond betaald kanaal of een bevestigde
   UTM-conventie; verkeer van Google omvat ook organisch verkeer. Vraag een gefilterde
   tijdreeks op met consistente definities.
-- Aanmeldingen: gebruik `get_conversions` voor het bevestigde doel en een meetbare
-  pagina-afbakening. Bekijk bij een onbekende doelnaam eerst de geretourneerde doelen
-  voordat je vraagt welk doel aanmeldingen vertegenwoordigt. Een leeg resultaat toont
-  niet aan dat een doel is ingesteld. Leg uit wanneer de gevraagde relatie tussen
-  pagina en aanmelding niet meetbaar is.
+- Aanmeldingen: gebruik `get_goals` om het ingestelde doel en de definitie te vinden,
+  ook wanneer het geen conversies heeft. Gebruik de geretourneerde `display_name` als
+  `goal` in `get_conversions`, met een meetbare pagina-afbakening. Volg alle doelpagina’s
+  voordat je concludeert dat een doel ontbreekt. Mislukte ontdekking betekent onbekende
+  configuratie; lege conversieresultaten bewijzen niet dat het doel ontbreekt. Leg uit
+  wanneer de relatie tussen pagina en aanmelding niet meetbaar is.
 - Weekhistorie: gebruik `get_timeseries` met wekelijkse tijdvakken en exacte grenzen
   voor zes maanden. Behoud de geretourneerde tijdvaklabels en benoem onvolledige eerste
   en laatste weken.
@@ -64,9 +74,16 @@ vraag beantwoordt en voeg alleen een uitsplitsing toe als die nodig is voor de a
   op tot een aantal unieke personen over alle sites heen.
 
 Controleer vóór interpretatie de koppeling tussen labels en waarden, fouten, nullwaarden,
-lege resultaten, geretourneerde queryafbakening en metadata. Neem waarschuwingen over en
-benoem ontbrekende gegevensdekking. Lees zowel de gestructureerde uitvoer als de
-tekstuitvoer: metadata staat soms alleen in de tekst.
+lege resultaten, `query`, `meta`, `imports` en waar van toepassing `pagination`.
+Vergelijk bij `compare_periods` de dekking en waarschuwingen van A en B afzonderlijk.
+Ontbrekende metadata bevestigt geen volledige dekking.
+
+Volg voor een volledige uitsplitsing `next_offset` met ongewijzigde afbakening en limiet;
+voor site- en doelinventarissen gebruik je `next_after` als `after`. Haal voor een top N
+alleen de benodigde rijen op. Een laatste pagina is op zichzelf geen volledige inventaris.
+Controleer de verzamelde pagina’s en totalen volgens de querygids; benoem onbekende
+volledigheid en waarschuwingen. Pagineringsresultaten zijn geen momentopname: gebruik
+vaste datums en rapporteer inconsistenties in plaats van volledigheid te veronderstellen.
 
 ## Interpreteer de metingen
 
@@ -111,7 +128,8 @@ en een notitie waarmee de analyse kan worden herhaald. Gebruik de taal van de ge
 voor tekst, tabellen, grafieklabels en PDF-inhoud.
 
 Vermeld in die notitie waar van toepassing de tool, site, datumgrenzen, meetwaarden,
-dimensies, filters, tijdvakgrootte, rijlimiet, vergelijkingsrichting en het ophaalmoment.
+dimensies, filters, tijdvakgrootte, rijlimiet en opgehaalde pagina’s, importkeuze en
+feitelijke dekking, vergelijkingsrichting en het ophaalmoment.
 Gebruik een compacte notitie of bijlage in plaats van volledige ruwe tooluitvoer.
 Link waar praktisch naar een bekend Plausible-dashboard. De MCP-hostnaam is niet het
 analyticsdashboard en een eigen installatie gebruikt niet noodzakelijk plausible.io.
