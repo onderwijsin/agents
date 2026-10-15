@@ -3,7 +3,10 @@
 Gebruik dezelfde gecontroleerde queryresultaten voor tekst, tabellen, grafieken en
 exportbestanden. Kies de gevraagde vorm zonder naar cosmetische voorkeuren te vragen.
 Gebruik de beschikbare mogelijkheden van de werkomgeving; gewone rapportage vereist
-geen andere plugin.
+geen andere plugin. Vermeld bij elke uitvoervorm de gekozen en feitelijke importdekking,
+volledigheid van de gebruikte uitsplitsingen en relevante API-waarschuwingen. Maak een
+onvolledige selectie niet als sitetotaal zichtbaar. Gebruik dezelfde filters en
+importkeuze voor onderliggende tabellen, grafieken en vergelijkingen.
 
 ## Rapport in de chat
 
@@ -40,7 +43,8 @@ Installeer of publiceer geen aanvullende diensten als impliciet onderdeel van ra
 Maak een verzorgd rapport met site en gedateerde afbakening, beknopte bevindingen,
 KPI-tabel, relevante grafieken of uitsplitsingen, expliciet benoemde hypotheses en
 vervolgacties, beperkingen en een compacte methodologische bijlage. Neem definities,
-queryparameters en het ophaalmoment op, zodat het bestand zelfstandig leesbaar is.
+queryparameters, importkeuze en dekking, opgehaalde pagina’s en het ophaalmoment op,
+zodat het bestand zelfstandig leesbaar is.
 Gebruik leesbare lettertypen, voldoende contrast, consistente getalnotatie,
 paginanummers en herhaalde tabelkoppen bij tabellen over meerdere pagina’s.
 

@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "plausible-analytics",
-  "version": "0.1.1",
-  "description": "Analyseer websiteverkeer, campagnes en conversies met Plausible en rapporteer in de chat of als PDF.",
+  "version": "0.2.0",
+  "description": "Ontdek sites en doelen, analyseer websiteverkeer, campagnes en conversies met Plausible en rapporteer in de chat of als PDF.",
   "author": {
     "name": "Onderwijs in"
   },
@@ -14,11 +14,12 @@
       "apps": "./.app.json",
       "interface": {
         "displayName": "Plausible",
-        "shortDescription": "Websiteanalyses en rapporten in jouw taal.",
+        "shortDescription": "Sites, doelen en websiteanalyses in jouw taal.",
         "developerName": "Onderwijs in",
         "category": "Productivity",
         "capabilities": ["Read", "Write"],
         "defaultPrompt": [
+          "Welke websites en conversiedoelen zijn beschikbaar?",
           "Hoe presteerde onze website in de afgelopen 30 dagen?",
           "Welke pagina’s presteerden vorige maand het best?",
           "Maak een PDF-rapport waarin je de laatste twee volledige maanden vergelijkt."
