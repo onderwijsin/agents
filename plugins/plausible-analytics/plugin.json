@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "plausible-analytics",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Analyseer websiteverkeer, campagnes en conversies met Plausible en rapporteer in de chat of als PDF.",
   "author": {
     "name": "Onderwijs in"
@@ -22,7 +22,9 @@
           "Hoe presteerde onze website in de afgelopen 30 dagen?",
           "Welke pagina’s presteerden vorige maand het best?",
           "Maak een PDF-rapport waarin je de laatste twee volledige maanden vergelijkt."
-        ]
+        ],
+        "logo": "./assets/icon.png",
+        "composerIcon": "./assets/icon.png"
       }
     }
   }

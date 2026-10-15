@@ -37,19 +37,28 @@ loading, live query behavior, charts and PDF export are **unverified** in that w
 The app is unavailable in this development chat, so no live analytics queries were run.
 Both catalogs register the package for discovery; neither establishes runtime support.
 
-Codex and Claude require equivalent authenticated tools to reuse these instructions.
-The OpenAI mapping does not provision a Claude connection; no Claude MCP configuration
-or runtime compatibility is claimed.
+The Claude overlay at `.claude-plugin/plugin.json` connects the `plausible` HTTP MCP
+server to `https://plausible-mcp.onderwijsin.nl/internal`, using the same bundled skills.
+Authenticate through the host's OAuth flow with an authorized account. The server's
+OAuth configuration must allow the host's callback; the plugin contains no tokens or
+client secrets. This endpoint is separate from the OpenAI app mapping, so ChatGPT
+continues to use `.app.json` without a second bundled connection.
 
-Sources reviewed on 2026-10-15:
+Claude installation, OAuth, tool activation and representative tasks remain unverified.
+Codex requires access to the registered app or equivalent authenticated tools. The
+OpenAI presentation uses `assets/icon.png` for both the logo and composer icon.
+
+Integration references:
 
 - [OpenAI packaging](https://developers.openai.com/plugins/build/plugins): portable root
   manifest and `extensions.com.openai.apps` pointing to `.app.json`. The supplied
   `asdk_app_...` ID is preserved, matching the existing package pattern. Current docs
   illustrate `plugin_asdk_app...`; verify the exact mapping during workspace installation
   instead of guessing a replacement.
-- [Reviewed MCP revision](https://github.com/onderwijsin/plausible-mcp/tree/3a68586d8a26ef91028d0039b1f20a425318ecdf/src):
-  tool schemas, filtering and outputs. Deployed revision is unknown; live schemas prevail.
+- [Plausible MCP](https://github.com/onderwijsin/plausible-mcp): tool schemas, filtering
+  and authentication.
+- [Claude manifest reference](https://code.claude.com/docs/en/plugins/manifest-reference):
+  inline `mcpServers` in `.claude-plugin/plugin.json` and shared root `skills/` discovery.
 - [Plausible Stats API](https://plausible.io/docs/stats-api): the full API contract;
   this wrapper exposes a subset.
 - [Metric definitions](https://plausible.io/docs/metrics-definitions): measurement terminology.

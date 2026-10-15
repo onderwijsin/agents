@@ -1,0 +1,11 @@
+{
+  "name": "plausible-analytics",
+  "version": "0.1.1",
+  "description": "Analyseer websiteverkeer, campagnes en conversies met Plausible en rapporteer in de chat of als PDF.",
+  "mcpServers": {
+    "plausible": {
+      "type": "http",
+      "url": "https://plausible-mcp.onderwijsin.nl/internal"
+    }
+  }
+}
