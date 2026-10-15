@@ -41,7 +41,7 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity",
-      "description": "Analyzeer website traffic, campagnes en conversie met Plausible en rapporteer in chat of PDF-exports."
+      "description": "Analyseer websiteverkeer, campagnes en conversies met Plausible en rapporteer in de chat of als PDF."
     }
   ]
 }
