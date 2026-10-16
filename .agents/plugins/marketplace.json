@@ -55,6 +55,19 @@
       },
       "category": "Productivity",
       "description": "Controleer en corrigeer nieuwsbriefconcepten in Loops op teamgebonden opmaak en stijl."
+    },
+    {
+      "name": "icon-generator",
+      "source": {
+        "source": "local",
+        "path": "./plugins/icon-generator"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity",
+      "description": "Genereer PNG-iconen in de stijl van Onderwijs in, Trainees in onderwijs of Onderwijsloket."
     }
   ]
 }
