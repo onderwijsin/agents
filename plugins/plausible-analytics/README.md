@@ -61,7 +61,7 @@ continues to use `.app.json` without a second bundled connection.
 
 Claude installation, OAuth, tool activation and representative tasks remain unverified.
 Codex requires access to the registered app or equivalent authenticated tools. The
-OpenAI presentation uses `assets/icon.png` for both the logo and composer icon.
+OpenAI presentation uses `assets/plugin-icon.png` for both the logo and composer icon.
 
 Integration references:
 

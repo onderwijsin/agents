@@ -82,8 +82,8 @@ de beheerder zowel pluginbeleid als app-beschikbaarheid.
 
 ### Pluginicoon
 
-`assets/icon.png` wordt gebruikt door `extensions.com.openai.interface.logo` en
-`composerIcon` in `plugin.json`. Beide verwijzen naar `./assets/icon.png` volgens de
+`assets/plugin-icon.png` wordt gebruikt door `extensions.com.openai.interface.logo` en
+`composerIcon` in `plugin.json`. Beide verwijzen naar `./assets/plugin-icon.png` volgens de
 [OpenAI-presentatiemetadata](https://developers.openai.com/plugins/build/plugins#add-openai-specific-metadata).
 Sync de marketplace na het bijwerken van het bestand en controleer beide weergaven.
 

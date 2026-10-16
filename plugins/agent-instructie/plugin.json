@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "agent-instructie",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "repository": "https://github.com/onderwijsin/agents",
   "description": "Schrijf en verbeter prompts, skills en AI-instructies voor niet-technische taken.",
   "author": {
@@ -21,7 +21,9 @@
         "defaultPrompt": [
           "Verbeter deze prompt voor mijn taak.",
           "Maak een skill voor een terugkerende redactietaak."
-        ]
+        ],
+        "logo": "./assets/plugin-icon.png",
+        "composerIcon": "./assets/plugin-icon.png"
       }
     }
   }
