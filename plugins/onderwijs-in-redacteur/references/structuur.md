@@ -1,5 +1,9 @@
 # Structuur en samenhang
 
+Toepassing: websiteredactie. Deze gids beschrijft websitecontent, niet het
+schrijf- of redactieproces voor mailings. Gebruik daarvoor `nieuwsbrief-redactie`
+en de bijbehorende nieuwsbriefreferenties.
+
 Pas deze gids toe bij structuurredactie en nieuwe concepten.
 Lees ook de gids voor het gekozen contenttype.
 

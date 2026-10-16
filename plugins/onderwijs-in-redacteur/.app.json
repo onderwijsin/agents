@@ -3,6 +3,10 @@
     "onderwijs-in": {
       "id": "asdk_app_6acfac4f5ef08191855806720d766a68",
       "required": true
+    },
+    "loops": {
+      "id": "asdk_app_6a76060a3cbc81919eaaca7e37e830fe",
+      "required": false
     }
   }
 }

@@ -1,5 +1,9 @@
 # Webpagina's
 
+Toepassing: websiteredactie. Deze gids beschrijft websitecontent, niet het
+schrijf- of redactieproces voor mailings. Gebruik daarvoor `nieuwsbrief-redactie`
+en de bijbehorende nieuwsbriefreferenties.
+
 ## Doel en vorm
 
 Een webpagina geeft blijvende uitleg, helpt navigeren of maakt een handeling mogelijk.

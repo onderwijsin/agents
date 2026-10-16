@@ -14,9 +14,9 @@ hostruns. Test ze in iedere beoogde host en leg resultaten vast in het pakket-RE
 ## Installatie en resources
 
 1. Installeer vanuit de lokale catalogus in een testomgeving.
-2. Controleer weergavenaam, versie en precies vijf beschikbare skills.
+2. Controleer weergavenaam, versie en zes beschikbare skills.
 3. Open voor iedere skill een nieuwe chat en controleer activatie bij de eigen voorbeeldtaak.
-4. Controleer dat de skill `../../references/werkwijze.md`, de toon/spellinggids,
+4. Controleer bij de websiteskills dat `../../references/werkwijze-websiteredactie.md`, de toon/spellinggids,
    de juiste typegids en bij expertise ook de subtypegids kan lezen.
 5. Controleer na workspace-sync dat de plugin geen Desktop only-label heeft.
    Controleer ook logo en composericoon. Verifieer dat de bestaande Onderwijs in-app
@@ -25,17 +25,17 @@ hostruns. Test ze in iedere beoogde host en leg resultaten vast in het pakket-RE
    document met een bedoeld workspace-account; noteer eventuele aanmeldprompt.
    Lees `site://filters` via resources en een document via de template met een
    daadwerkelijk ontdekte kind/slug.
-6. Controleer bij **alle vijf skills** dat vóór de inhoudelijke taak een nieuwe
+6. Controleer bij **de vijf websiteskills** dat vóór de inhoudelijke taak een nieuwe
    MCP-zoekronde plaatsvindt, relevante documenten volledig worden gelezen en de
    gevonden referenties aantoonbaar de keuzes in de uitkomst informeren.
-7. Controleer dat resultaat volledig in de chat verschijnt en geen CMS-mutatie plaatsvindt.
+7. Controleer bij websitewerk dat resultaat volledig in de chat verschijnt en geen CMS-mutatie plaatsvindt.
 8. Herhaal een representatieve taak in ChatGPT web en mobiel en noteer de feitelijke
    beschikbaarheid en beperkingen per oppervlak.
 
 Noteer host, versie, gebruikte installatieroute, feitelijke resultaten en
 beperkingen. Een handmatige bestandslezing in de auteurcheckout vervangt geen hostrun.
 
-## Vijf representatieve taken
+## Vijf representatieve websitetaken
 
 ### Toonredactie
 
@@ -117,3 +117,41 @@ en gebruik een gevonden analoge tekst plus de subtypegids.
   voer de taak uit vanuit schrijfregels en aangeleverde feiten zonder nieuwheid te claimen.
 - Een vervolgopdracht in dezelfde chat: voer opnieuw relevant MCP-onderzoek uit.
 - “Alleen de tekst”: geen wijzigingslog, wel herkenbare invulpunten voor essentiële onzekerheden.
+
+## Nieuwsbriefredactie — nog uit te voeren hostproeven
+
+Voer deze proeven uit met de nieuw geïnstalleerde `nieuwsbrief-redactie`-skill en
+bevestigde testdrafts. Ze zijn acceptatiecriteria, geen claims van geslaagde runs.
+Gebruik voor previews uitsluitend een expliciet opgegeven testadres.
+
+| Scenario                                               | Verwacht resultaat                                                                                        |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
+| Nieuw idee, bestemming nog onbekend                    | Vraag naar chat of Loops; schrijf nuttige inhoud zonder mutatie terwijl antwoord uitstaat.                |
+| Schrijven in chat gekozen                              | Volledige subject, preview en body; ontbrekende items zichtbaar; geen create/update/preview.              |
+| Geplakte mail voor toonredactie                        | Nieuwsbriefskill, geen websitewerkwijze of verplichte typegids; volledige herziene tekst.                 |
+| Loops en reviewer ontbreken                            | Chatconcept mogelijk; gerichte dependencyvraag vóór live werk.                                            |
+| Externe reviewer geïnstalleerd                         | Algemene stijl-, UTM- en deep dive-resources via host vindbaar; geen checkout-afhankelijkheid.            |
+| Nieuwe deep dive met Loops-toestemming                 | Nieuwe draft uit templategegevens; bron intact; geen audience/planning gekopieerd.                        |
+| Geen dupliceerendpoint                                 | Create + email-update volgens actuele schema's, geen verzonnen endpoint of field.                         |
+| Create slaagt, vullen faalt                            | Bestaande nieuwe draft met link melden en hervatten; geen dubbele creatie of automatische delete.         |
+| Auteur of bronitems ontbreken                          | Gerichte invulpunten, geen fictieve auteurservaring of hergebruik van oude voorbeelditems als definitief. |
+| Bestaande draft aanpassen                              | Juiste mail, toestemming, actuele revisie en zelfcontrole van de opgeslagen inhoud.                       |
+| Sent/Scheduled-campagne of actieve workflow            | Weigeren; geen statuswijziging als omweg.                                                                 |
+| Gepauzeerde workflow of transactionele draft           | Alleen juiste bestaande mail; typeondersteuning controleren, nooit live-versie als fallback.              |
+| Revisieconflict of statuswijziging                     | Opnieuw lezen, gebruikerswijzigingen behouden of stoppen; geen blinde retry.                              |
+| Regres na opslaan                                      | Binnen toestemming herstellen, opnieuw ophalen en controleren tot opgelost of expliciet geblokkeerd.      |
+| Subject zonder openingsreden, preview herhaalt subject | Inhoudelijk voorstel door Redacteur; reviewer controleert alleen aanwezigheid/lengte.                     |
+| Alleen stijlreview gevraagd                            | Reviewer doet geen inhoudelijke onderwerp- of tone-of-voice-redactie.                                     |
+| Geen previewtoestemming                                | Alleen aanbieden, niets versturen; expliciet adres vereist bij ja.                                        |
+| Volledige stijlreview gekozen                          | Reviewer op dezelfde mail, eigen statuschecks en scope; geen impliciete mutatie of preview.               |
+| Verzoek om echte verzending/publicatie                 | Geen verzending, event, planning of activering; gebruiker naar webinterface.                              |
+| Websiteopdracht na installatie Loops                   | Bestaande websiteflow, geen nieuwsbriefkopie of onnodige Loops-authenticatie.                             |
+
+Voor alle Loops-nieuwsbriefproeven geldt bovendien:
+
+- Een template of sectie kopiëren gebeurt uitsluitend via MCP; nooit via browserbediening.
+- Bij ontbrekende of falende MCP-functionaliteit stopt de afhankelijke handeling,
+  zonder browser-, CLI-, SDK- of directe HTTP-fallback. Chatredactie mag doorgaan.
+- Een gekoppelde skill die een browserrender vraagt, doorbreekt deze grens niet.
+  Zonder via MCP aangeleverd beeld of gebruikersafbeelding blijft visuele controle onuitgevoerd.
+- Webinterface-links worden alleen als tekst gedeeld; de agent opent geen tab.

@@ -17,11 +17,12 @@ skills in `.agents/skills/` are separate and are not distributed through our mar
 
 ## Use the collection
 
-| Name                                                               | Type   | Description                                                                                                                                                                              |
-| ------------------------------------------------------------------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Onderwijs in Redacteur](plugins/onderwijs-in-redacteur/README.md) | Plugin | Edit Dutch content for tone, structure and content type, check spelling, review ideas, and write drafts using current Onderwijs in content through MCP. Returns written results in chat. |
-| [Agent-instructie](plugins/agent-instructie/README.md)             | Plugin | Schrijf en verbeter Nederlandstalige prompts en skills voor niet-technische taken, met duidelijke opdrachten en controleerbare resultaten.                                               |
-| [Plausible](plugins/plausible-analytics/README.md)                 | Plugin | Analyze website traffic, acquisition and measured conversions in your language, with chat, chart and PDF reporting.                                                                      |
+| Name                                                                   | Type   | Description                                                                                                                                |
+| ---------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Onderwijs in Redacteur](plugins/onderwijs-in-redacteur/README.md)     | Plugin | Edit and write Dutch website content and newsletters; return text in chat or prepare a Loops draft with separate style-review support.     |
+| [Agent-instructie](plugins/agent-instructie/README.md)                 | Plugin | Schrijf en verbeter Nederlandstalige prompts en skills voor niet-technische taken, met duidelijke opdrachten en controleerbare resultaten. |
+| [Plausible](plugins/plausible-analytics/README.md)                     | Plugin | Analyze website traffic, acquisition and measured conversions in your language, with chat, chart and PDF reporting.                        |
+| [Nieuwsbrief stijl review](plugins/nieuwsbrief-style-review/README.md) | Plugin | Review Loops newsletter drafts for team style and formatting, with optional draft corrections and test previews.                           |
 
 Our deployment target is the _ChatGPT Business workspace_ marketplace. Administrators
 can import a GitHub catalog through the GUI, then colleagues can discover and install

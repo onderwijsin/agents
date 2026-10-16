@@ -16,6 +16,10 @@
     {
       "name": "plausible-analytics",
       "source": "./plugins/plausible-analytics"
+    },
+    {
+      "name": "nieuwsbrief-style-review",
+      "source": "./plugins/nieuwsbrief-style-review"
     }
   ]
 }

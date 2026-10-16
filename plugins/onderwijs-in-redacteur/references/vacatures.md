@@ -1,5 +1,9 @@
 # Vacatures
 
+Toepassing: websiteredactie. Deze gids beschrijft websitecontent, niet het
+schrijf- of redactieproces voor mailings. Gebruik daarvoor `nieuwsbrief-redactie`
+en de bijbehorende nieuwsbriefreferenties.
+
 ## Doel en vorm
 
 Een vacature helpt de lezer beoordelen of de rol past en hoe die kan reageren.

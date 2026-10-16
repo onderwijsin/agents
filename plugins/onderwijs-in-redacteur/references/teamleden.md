@@ -1,5 +1,9 @@
 # Teamlidpagina's
 
+Toepassing: websiteredactie. Deze gids beschrijft websitecontent, niet het
+schrijf- of redactieproces voor mailings. Gebruik daarvoor `nieuwsbrief-redactie`
+en de bijbehorende nieuwsbriefreferenties.
+
 ## Doel en vorm
 
 Een profiel maakt zichtbaar wie iemand is, wat die bijdraagt en waarom.

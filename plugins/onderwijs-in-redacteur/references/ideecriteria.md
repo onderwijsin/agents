@@ -1,5 +1,9 @@
 # Criteria voor contentideeën
 
+Toepassing: websiteredactie. Deze gids beschrijft websitecontent, niet het
+schrijf- of redactieproces voor mailings. Gebruik daarvoor `nieuwsbrief-redactie`
+en de bijbehorende nieuwsbriefreferenties.
+
 Deze beoordelingscriteria zijn redactionele uitgangspunten. Haal de actuele missie,
 aanpak en relevante content via de Onderwijs in-verbinding op om ze op het idee toe te passen.
 De criteria zijn geen formele publicatiepoorten.

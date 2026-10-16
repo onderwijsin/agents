@@ -1,9 +1,10 @@
 # Algemene toon en stijl
 
-Gebruik deze schrijfregels met de specifieke contenttype- en subtypegids.
-Haal vóór iedere taak relevante actuele content via de Onderwijs in-verbinding op en stem de toepassing
-af op de gekozen doelgroep, vorm en spreker. Deze gids bevat duurzame redactionele
-uitgangspunten; de actuele voorbeelden worden tijdens uitvoering gelezen.
+Deze gedeelde merkstem geldt voor websitecontent én nieuwsbrieven en mailings.
+De actieve skill bepaalt brononderzoek, proces en oplevering. Voor websitecontent
+gebruik je de toepasselijke contenttype- en subtypegids; voor mailings ook
+[nieuwsbrief-tone-of-voice](nieuwsbrief-tone-of-voice.md). Deze gids legt geen
+websiteopbouw, verplichte zoekronde of chatoplevering op aan mailredactie.
 
 ## Herkenbare stem
 
@@ -30,7 +31,7 @@ Vakinhoud is welkom als de lezer begrijpt wat die in de praktijk betekent.
 Gebruik “we” voor Onderwijs in en “je” voor de lezer. “Wij” en “jij” kunnen voor
 een bewuste nadruk. Gebruik “jullie” als je duidelijk een organisatie/team aanspreekt
 en houd dat perspectief consistent. Zakelijke doelgroepen vereisen precisie, geen
-afstandelijk “u”. Een benoemde opinieauteur kan “ik” gebruiken; een teamprofiel
+afstandelijk “u”. Een benoemde auteur van een opinie of persoonlijk mailbericht kan “ik” gebruiken; een teamprofiel
 staat doorgaans in de derde persoon.
 
 Gebruik de merknaam **Onderwijs in**; schrijf bij een formele introductie

@@ -17,6 +17,33 @@ Its README records the identifier-format caveat, MCP limitations and pending acc
 matrix. Enable the app for intended roles separately from installing the plugin, then
 verify the mapping in a new chat. Charts and PDF export depend on host capabilities.
 
+## Nieuwsbriefreview en Loops
+
+[Nieuwsbrief stijl review](../plugins/nieuwsbrief-style-review/README.md) koppelt de
+bestaande Loops-app. Gebruikers installeren daarnaast de Loops-plugin voor de
+externe skills; een appmapping installeert die skills niet mee. De teamgidsen
+leggen verplichte themes vast; gedeelde regels leggen UTM-parameters vast. Trainees in onderwijs heeft
+algemene stijlregels en conditionele patronen met een vrije inhoudelijke indeling.
+Onderwijs in heeft
+algemene stijlregels voor alle mailtypen en daarnaast een deep dive-referentie
+voor de vaste structuur en templatespecifieke blokken. Campagnes, gepauzeerde workflows en transactionele
+drafts vallen binnen de review. Volledige huisstijlgoedkeuring en runtimecompatibiliteit
+zijn nog niet aangetoond. Zie de package-README voor rechten, bronnen en acceptatiechecks.
+
+## Nieuwsbriefredactie en afhankelijkheden
+
+Onderwijs in Redacteur koppelt de bestaande Onderwijs in-app en de Loops-app.
+De Loops-mapping is optioneel voor websitewerk; voor live nieuwsbriefredactie
+zijn Loops, diens relevante skills en `nieuwsbrief-style-review` afzonderlijk nodig.
+De host moet de geïnstalleerde externe skill en pakketresources beschikbaar maken.
+Er is geen automatische transitive plugininstallatie gedeclareerd. Controleer dit
+in een verse chat vóór rollout; `.app.json` levert geen externe skills mee.
+
+De redacteur beheert inhoud, tone of voice en subject/preview; de reviewer beheert
+stijl, structuur en uitsluitend subject/preview-aanwezigheid en lengte.
+De bestaande Claude-overlay levert alleen de publieke website-MCP. Loops-werk is
+niet voor Claude geconfigureerd. Zie de package-README en acceptatiecriteria.
+
 ## Discovery and synchronization boundaries
 
 The [official plugin management guide](https://learn.chatgpt.com/docs/enterprise/plugin-management)

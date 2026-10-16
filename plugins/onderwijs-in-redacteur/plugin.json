@@ -1,10 +1,10 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "onderwijs-in-redacteur",
-  "version": "0.2.2",
+  "version": "0.3.1",
   "repository": "https://github.com/onderwijsin/agents",
-  "description": "Redigeer, toets en schrijf Onderwijs in-content met gedeelde stijlgidsen en publieke bronnen.",
-  "longDescription": "Schrijf en verbeter content volgens de redactionele richtlijnen van Onderwijs in. Vijf gespecialiseerde skills helpen je bij het redigeren van toon en structuur, het aanpassen van teksten aan contenttypes, het kritisch toetsen van contentideeën en het schrijven van nieuwe concepten. De skills gebruiken gedeelde stijlgidsen en raadplegen bestaande content via de gekoppelde Onderwijs in-app.",
+  "description": "Schrijf en redigeer Onderwijs in-websitecontent, nieuwsbrieven en mailings in de chat of als Loops-draft.",
+  "longDescription": "Vijf websiteskills en een nieuwsbriefredacteur delen de merkstem en spellingregels. Nieuwsbriefredactie richt zich op inhoud, tone of voice en onderwerpregels; Loops en Nieuwsbrief stijl review ondersteunen concepten in Loops.",
   "author": {
     "name": "Onderwijs in"
   },
@@ -18,15 +18,16 @@
         "logo": "./assets/icon.png",
         "composerIcon": "./assets/icon.png",
         "displayName": "Onderwijs in Redacteur",
-        "shortDescription": "Vijf redactionele skills voor Onderwijs in.",
+        "shortDescription": "Website- en nieuwsbriefredactie voor Onderwijs in.",
         "developerName": "Onderwijs in",
         "category": "Productivity",
-        "capabilities": ["Read"],
+        "capabilities": ["Read", "Write"],
         "websiteURL": "https://onderwijsin.nl",
         "defaultPrompt": [
           "Herschrijf deze tekst in de toon van Onderwijs in.",
           "Toets dit contentidee aan onze bestaande content.",
-          "Schrijf een concept voor een expertise-item."
+          "Schrijf een concept voor een expertise-item.",
+          "Schrijf een nieuwsbrief op basis van deze notities."
         ]
       }
     }

@@ -1,8 +1,8 @@
 # Spelling en taalcontrole
 
-Voer deze controle bij alle drie de redactieskills uit, ook wanneer alleen toon,
-structuur of contenttype is gevraagd. Controleer nieuwe concepten en geschreven
-ideeënbeoordelingen eveneens vóór oplevering.
+Deze taalcontrole geldt voor websitecontent én nieuwsbrieven en mailings.
+Controleer de volledige eindtekst, ook wanneer alleen toon of structuur is gevraagd.
+Controleer bij mails ook subject, previewtekst, buttonteksten en altteksten.
 
 ## Controleer de volledige eindtekst
 
@@ -21,8 +21,10 @@ ideeënbeoordelingen eveneens vóór oplevering.
    Maak bullets grammaticaal parallel. Gebruik Nederlandse decimale komma's;
    behoud de waarde en valuta van bedragen. Schrijf data ondubbelzinnig met jaar
    als dat voor actualiteit nodig is.
-6. Controleer Markdown: sluit vet/cursief, voorkom losse tekens en onbedoelde
-   kopniveaus. Decodeer HTML-entiteiten in lopende tekst waar nodig.
+6. Controleer bij chatoplevering Markdown: sluit vet/cursief, voorkom losse tekens en onbedoelde
+   kopniveaus. Decodeer HTML-entiteiten in leesbare chattekst waar nodig.
+   Behoud bij LMX de vereiste XML-escaping, variabelen, identifiers en links;
+   een spellingcorrectie mag technische syntax niet veranderen.
 
 ## Betekenisgevoelige correcties
 
