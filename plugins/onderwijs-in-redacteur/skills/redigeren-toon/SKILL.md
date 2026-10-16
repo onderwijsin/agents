@@ -1,11 +1,14 @@
 ---
 name: redigeren-toon
-description: Herschrijf of proeflees bestaande Onderwijs in-tekst voor tone of voice, stijl of aanspreekvorm. Controleer altijd ook spelling en lever de volledige tekst in de chat. Gebruik voor toonredactie; kies structuurredactie voor herordening en contenttyperedactie voor omzetting naar een andere vorm.
+description: Herschrijf of proeflees bestaande Onderwijs in-tekst voor tone of voice, stijl of aanspreekvorm. Controleer altijd ook spelling en lever de volledige tekst in de chat. Gebruik voor toonredactie; kies structuurredactie voor herordening en contenttyperedactie voor omzetting naar een andere vorm. Voor nieuwsbrief- en mailingredactie gebruik je nieuwsbrief-redactie.
 license: MIT
 compatibility: Vereist het volledige pluginpakket voor gedeelde referenties en brononderzoek. In ChatGPT is toegang tot de geregistreerde Onderwijs in-app nodig; op andere hosts een MCP-verbinding met de Onderwijs in-bronnen.
 ---
 
 # Redigeren op toon
+
+Deze skill behandelt websitecontent. Voor nieuwsbrieven en mailings gebruik je
+`nieuwsbrief-redactie`, met zijn eigen proces, bronnen en oplevering.
 
 ## Werkwijze
 
@@ -16,7 +19,7 @@ compatibility: Vereist het volledige pluginpakket voor gedeelde referenties en b
    documenten volledig; haal ook het bronitem op als een publieke route is aangeleverd.
    Gebruik de gevonden teksten als referentie voor deze taak. Bij een onbereikbare app of MCP-verbinding
    volg je de herstelroute; een tekst uit een eerdere taak vervangt deze stap niet.
-2. Lees [de gedeelde redactionele werkwijze](../../references/werkwijze.md),
+2. Lees [de gedeelde redactionele werkwijze](../../references/werkwijze-websiteredactie.md),
    [toon en stijl](../../references/toon-en-stijl.md) en
    [spelling](../../references/spelling.md). Kies en lees de contenttypegids;
    bepaal bij expertise het subtype via actuele metadata en lees de subtypegids.

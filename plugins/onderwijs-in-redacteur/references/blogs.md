@@ -1,5 +1,9 @@
 # Blogitems
 
+Toepassing: websiteredactie. Deze gids beschrijft websitecontent, niet het
+schrijf- of redactieproces voor mailings. Gebruik daarvoor `nieuwsbrief-redactie`
+en de bijbehorende nieuwsbriefreferenties.
+
 ## Doel en vorm
 
 Een blog deelt een actuele ontwikkeling, terugblik of verhaal achter het werk.

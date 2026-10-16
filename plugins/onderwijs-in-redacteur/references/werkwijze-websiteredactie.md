@@ -1,6 +1,10 @@
-# Redactionele werkwijze
+# Werkwijze voor websiteredactie
 
-Gebruik deze regels bij ieder redactie-, idee- of schrijfverzoek.
+Toepassing: websiteredactie. Deze gids beschrijft websitecontent, niet het
+schrijf- of redactieproces voor mailings. Gebruik daarvoor `nieuwsbrief-redactie`
+en de bijbehorende nieuwsbriefreferenties.
+
+Gebruik deze regels bij ieder redactie-, idee- of schrijfverzoek voor de website.
 De specifieke skill bepaalt welke ingreep nodig is.
 
 ## Brief en context

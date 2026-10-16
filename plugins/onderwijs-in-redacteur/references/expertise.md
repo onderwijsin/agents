@@ -1,5 +1,9 @@
 # Expertise-items
 
+Toepassing: websiteredactie. Deze gids beschrijft websitecontent, niet het
+schrijf- of redactieproces voor mailings. Gebruik daarvoor `nieuwsbrief-redactie`
+en de bijbehorende nieuwsbriefreferenties.
+
 ## Doel en vorm
 
 Expertise maakt kennis, middelen, ervaringen of visie bruikbaar voor anderen.

@@ -22,11 +22,11 @@ jou opgegeven adres. Controleer de laatste versie altijd zelf in Loops.
 
 ## Verplichte controles
 
-Iedere mail heeft een expliciete subject line en previewtekst. De review toetst
-ze op een relevante openingsreden, inhoudelijke juistheid en onderlinge aanvulling
-volgens de [subject- en previewregels](references/subject-en-previewtekst.md).
-Lengte en woordkeuze krijgen onderbouwd advies; ontbrekende velden zijn fouten.
-De gids geldt voor beide teams en alle mailtypen, ook transactionele drafts.
+Subject en previewtekst worden alleen op aanwezigheid en lengte gecontroleerd via
+[de lengteregels](references/subject-en-previewtekst.md). Inhoudelijke kwaliteit,
+openingsbelofte en tone of voice horen bij de afzonderlijke skill
+`nieuwsbrief-redactie` in `onderwijs-in-redacteur`. Stijlreview vereist geen
+Redacteur-installatie; voor inhoudelijke voorstellen kan de gebruiker die kiezen.
 
 Vóór inhoudelijke review, iedere mutatie en iedere preview controleert de skill de
 status: campagnes moeten draft zijn, workflows `Paused` of `PausedAndQueueing`,
@@ -163,15 +163,11 @@ Openstaande representatieve runtimechecks:
 | Header, icoon of avatarcomponent           | Werkelijke assetidentiteit controleren, niet alleen bestandsnaam.                    |
 | Mobiele weergave en afmeldafstand          | Visueel controleren in een verse Loops-render.                                       |
 
-Acceptatie voor de subject- en previewcontrole:
+Acceptatie voor de subject- en previewcontrole (nog te testen in de host):
 
-| Scenario                                                 | Verwacht resultaat                                                       |
-| -------------------------------------------------------- | ------------------------------------------------------------------------ |
-| Leeg subject of lege preview, ook alleen witruimte       | Fout met concreet voorstel voor beide velden; geen automatische mutatie. |
-| Preview herhaalt subject of belofte ontbreekt in de body | Afwijking met inhoudelijk onderbouwd vervangend paar.                    |
-| Lange maar passende onderwerpregel                       | Lengteadvies, geen afkeuring uitsluitend op tekentelling.                |
-| Transactionele bevestiging                               | Duidelijke functie en volgende stap, geen opgedrongen marketingteaser.   |
-| Personalisatie zonder betrouwbare waarde                 | Fallback controleren of punt als niet verifieerbaar markeren.            |
-| Goedgekeurde draftcorrectie                              | Opgeslagen subject en preview opnieuw ophalen en controleren.            |
-
-Deze aanvullende runtimechecks zijn nog niet uitgevoerd in een geïnstalleerde host.
+| Scenario                                    | Verwacht resultaat                                                         |
+| ------------------------------------------- | -------------------------------------------------------------------------- |
+| Subject of preview ontbreekt                | Ontbrekend veld melden, geen inhoud bedenken.                              |
+| Subject/preview te lang                     | Tekentelling en lengteadvies; geen inhoudelijke herschrijving.             |
+| Inhoud is vaag of clickbait, lengte voldoet | Geen inhoudelijke beoordeling door deze reviewer; dat hoort bij Redacteur. |
+| Reviewer zonder Redacteur geïnstalleerd     | Stijl- en lengtecontrole blijft zelfstandig bruikbaar.                     |

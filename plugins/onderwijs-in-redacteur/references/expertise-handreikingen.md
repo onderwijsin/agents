@@ -1,5 +1,9 @@
 # Expertise: handreikingen
 
+Toepassing: websiteredactie. Deze gids beschrijft websitecontent, niet het
+schrijf- of redactieproces voor mailings. Gebruik daarvoor `nieuwsbrief-redactie`
+en de bijbehorende nieuwsbriefreferenties.
+
 ## Dynamische referenties
 
 Zoek via de Onderwijs in-verbinding naar handreikingen en gebruiksuitleg die passen bij het onderwerp en de doelgroep.

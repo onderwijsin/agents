@@ -1,5 +1,9 @@
 # Domeinen
 
+Toepassing: websiteredactie. Deze gids beschrijft websitecontent, niet het
+schrijf- of redactieproces voor mailings. Gebruik daarvoor `nieuwsbrief-redactie`
+en de bijbehorende nieuwsbriefreferenties.
+
 ## Doel en vorm
 
 Een domein is een brede inhoudelijke invalshoek op de missie. Het beschrijft een

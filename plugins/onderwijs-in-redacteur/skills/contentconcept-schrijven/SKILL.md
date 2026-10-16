@@ -1,11 +1,14 @@
 ---
 name: contentconcept-schrijven
-description: Schrijf nieuwe Nederlandstalige Onderwijs in-concepten uit een brief, notities of bronnen voor webpagina's, expertise, blogs, vacatures, teamleden, domeinen en initiatieven. Gebruik de passende subtypegids, controleer spelling en lever het volledige concept in de chat. Gebruik wanneer een draft of eerste tekst gevraagd is.
+description: Schrijf nieuwe Nederlandstalige Onderwijs in-concepten uit een brief, notities of bronnen voor webpagina's, expertise, blogs, vacatures, teamleden, domeinen en initiatieven. Gebruik de passende subtypegids, controleer spelling en lever het volledige concept in de chat. Gebruik wanneer een draft of eerste tekst gevraagd is. Voor nieuwsbrief- en mailingredactie gebruik je nieuwsbrief-redactie.
 license: MIT
 compatibility: Vereist het volledige pluginpakket voor gedeelde referenties en brononderzoek. In ChatGPT is toegang tot de geregistreerde Onderwijs in-app nodig; op andere hosts een MCP-verbinding met de Onderwijs in-bronnen.
 ---
 
 # Contentconcept schrijven
+
+Deze skill behandelt websitecontent. Voor nieuwsbrieven en mailings gebruik je
+`nieuwsbrief-redactie`, met zijn eigen proces, bronnen en oplevering.
 
 ## Werkwijze
 
@@ -16,7 +19,7 @@ compatibility: Vereist het volledige pluginpakket voor gedeelde referenties en b
    documenten volledig; haal ook het bronitem op als een publieke route is aangeleverd.
    Gebruik de gevonden teksten als referentie voor deze taak. Bij een onbereikbare app of MCP-verbinding
    volg je de herstelroute; een tekst uit een eerdere taak vervangt deze stap niet.
-2. Lees [de gedeelde redactionele werkwijze](../../references/werkwijze.md),
+2. Lees [de gedeelde redactionele werkwijze](../../references/werkwijze-websiteredactie.md),
    [toon en stijl](../../references/toon-en-stijl.md) en
    [spelling](../../references/spelling.md). Kies en lees de contenttypegids;
    bepaal bij expertise het subtype via actuele metadata en lees de subtypegids.

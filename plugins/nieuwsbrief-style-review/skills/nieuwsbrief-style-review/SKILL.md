@@ -64,16 +64,12 @@ toegang of gegevens zonder een controle of succesvolle mutatie te suggereren.
 
 ## 2. Beoordeel de actuele inhoud
 
-Iedere mail moet een ingevulde **subject line (`subject`) en previewtekst
-(`previewText`)** hebben die de ontvanger met een relevante, eerlijke aanleiding
-uitnodigen om te openen. Lees bij iedere review de
-[subject- en previewregels](../../references/subject-en-previewtekst.md) en toets
-beide velden samen tegen de inhoud en het maildoel. Meld ontbrekende velden als
-fout, niet als optioneel advies. Geef bij afwijkingen een concreet tekstpaar;
-pas dat alleen binnen de wijzigingstoestemming toe en controleer de opgeslagen
-velden na iedere mutatie opnieuw. Bij transactionele mails staat de functionele
-boodschap centraal. Gebruik de Loops-skill `loops-email-sending-best-practices`
-voor aanvullende vragen over onderwerpregels en previewtekst wanneer beschikbaar.
+Controleer subject en previewtekst uitsluitend op aanwezigheid en tekstlengte via
+[subject en previewtekst — lengte](../../references/subject-en-previewtekst.md).
+Geef de gemeten lengte en ontbrekende velden terug. Beoordeel of herschrijf hun
+inhoud, tone of voice of openingsbelofte niet; daarvoor is de afzonderlijke skill
+`nieuwsbrief-redactie` in `onderwijs-in-redacteur` bedoeld. Een stijlingreep geeft
+geen toestemming om deze inhoudelijke velden te wijzigen.
 
 Lees de [gedeelde linkregels](../../references/linkregels.md) voor iedere review
 en uitsluitend de teamgids van het gekozen team:

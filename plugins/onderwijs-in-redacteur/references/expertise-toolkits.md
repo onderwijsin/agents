@@ -1,5 +1,9 @@
 # Expertise: toolkits
 
+Toepassing: websiteredactie. Deze gids beschrijft websitecontent, niet het
+schrijf- of redactieproces voor mailings. Gebruik daarvoor `nieuwsbrief-redactie`
+en de bijbehorende nieuwsbriefreferenties.
+
 ## Dynamische referenties
 
 Zoek via de Onderwijs in-verbinding naar tools en gebundelde middelen die passen bij het onderwerp en de doelgroep.

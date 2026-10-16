@@ -1,5 +1,9 @@
 # Expertise: case studies
 
+Toepassing: websiteredactie. Deze gids beschrijft websitecontent, niet het
+schrijf- of redactieproces voor mailings. Gebruik daarvoor `nieuwsbrief-redactie`
+en de bijbehorende nieuwsbriefreferenties.
+
 ## Dynamische referenties
 
 Vraag via de Onderwijs in-verbinding de actuele subtypen op en zoek naar case studies over het onderwerp

@@ -1,7 +1,7 @@
 {
   "name": "onderwijs-in-redacteur",
-  "version": "0.2.2",
-  "description": "Redigeer, toets en schrijf Onderwijs in-content met gedeelde stijlgidsen en publieke bronnen.",
+  "version": "0.3.1",
+  "description": "Schrijf en redigeer Onderwijs in-websitecontent, nieuwsbrieven en mailings in de chat of als Loops-draft.",
   "mcpServers": {
     "onderwijs-in": {
       "type": "http",
