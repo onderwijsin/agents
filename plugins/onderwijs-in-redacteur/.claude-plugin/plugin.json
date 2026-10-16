@@ -1,6 +1,6 @@
 {
   "name": "onderwijs-in-redacteur",
-  "version": "0.3.1",
+  "version": "0.3.3",
   "description": "Schrijf en redigeer Onderwijs in-websitecontent, nieuwsbrieven en mailings in de chat of als Loops-draft.",
   "mcpServers": {
     "onderwijs-in": {

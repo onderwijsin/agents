@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nieuwsbrief-style-review",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Controleer en corrigeer nieuwsbriefconcepten in Loops op teamgebonden opmaak en stijl.",
   "author": {
     "name": "Onderwijs in"
@@ -21,8 +21,8 @@
           "Controleer mijn mailing.",
           "Corrigeer mijn nieuwsbrief op basis van onze stijlgids."
         ],
-        "logo": "./assets/icon.png",
-        "composerIcon": "./assets/icon.png"
+        "logo": "./assets/plugin-icon.png",
+        "composerIcon": "./assets/plugin-icon.png"
       }
     }
   }

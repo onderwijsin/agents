@@ -39,3 +39,9 @@ van identiek runtimegedrag.
 Controleer bij hosttests dat de plugin installeert, de gebundelde skill laadt en bij de
 voorbeelden hierboven activeert. Probeer ook een programmeertaak om de activatiegrens te
 controleren en beoordeel of het resultaat een bruikbare Nederlandstalige instructie is.
+
+## Pluginicoon
+
+`assets/plugin-icon.png` is een uniek gegenereerd icoon voor deze plugin: een tekstballon
+met instructieregels en een potlood, als verwijzing naar heldere AI-instructies schrijven.
+`logo` en `composerIcon` verwijzen beide naar dit bestand.

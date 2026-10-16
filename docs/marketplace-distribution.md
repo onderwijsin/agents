@@ -84,6 +84,26 @@ control availability and installation for workspace roles.
 
 ## Permissions and updates
 
+### Missing listing icons
+
+The [OpenAI icon requirements](https://developers.openai.com/plugins/deploy/submission)
+place `logo` and `composerIcon` in `extensions.com.openai.interface`, with package-relative
+paths to bundled images. Our packages use square PNGs under `./assets/`. An attached app's
+icon or a skill's icon does not configure these plugin presentation fields.
+
+The October 2026 investigation found no icon configured for Agent-instructie. The three
+other affected packages already had readable, square PNGs and matching presentation fields;
+the repository did not establish why their imported listings showed placeholders. The repair
+adds Agent-instructie's unique instruction-writing icon and gives the other icons the same
+`./assets/plugin-icon.png` path used by the working Icon-generator listing, with patch
+versions for all four packages. This is a refresh measure, not proof of a platform cache bug.
+
+After these changes reach the imported GitHub revision, use **Sync now** and reload the plugin
+list. Verify all five listing icons and the composer icons in the workspace. If placeholders
+remain, inspect sync errors and the imported revision/version before escalating to OpenAI;
+do not delete the marketplace as a refresh workaround. Repository checks do not verify the
+workspace's imported assets or rendering. Claude configuration and skill behavior are unchanged.
+
 Importing plugins does not grant connected-app access or authenticate members. For Redacteur,
 enable the existing Onderwijs in app for the intended workspace roles separately. Set the
 plugin's workspace installation policy to **Available** or **Installed** as appropriate;
