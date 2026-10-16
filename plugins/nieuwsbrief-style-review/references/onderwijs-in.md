@@ -60,7 +60,10 @@ Houd primaire tekst leesbaar en maak niet alle bodytekst klein of grijs.
 Cursief markeert bijvoorbeeld een functie of datum/locatie; vet markeert een naam
 of gerichte nadruk, geen volledige lange bodytekst.
 
-OI-KNOP-01: primaire CTA: achtergrond `#ff9255`, tekst `#ffffff`, 16 px,
+OI-KNOP-01: buttontekst is altijd vetgedrukt, voor zowel primaire als secundaire
+buttons. Controleer de effectieve tekstopmaak, inclusief lokale overrides.
+
+De primaire CTA: achtergrond `#ff9255`, tekst `#ffffff`, 16 px,
 binnenruimte X=16/Y=12 px, radius 4, randbreedte 0. Gebruik beknopte actiegerichte
 tekst. Een secundaire tekstachtige button kan wit met oranje tekst zijn, zoals
 het verhaalpatroon in de deep dive-gids; dat is geen tweede algemene CTA-eis.

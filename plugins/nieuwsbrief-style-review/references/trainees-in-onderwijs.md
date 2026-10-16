@@ -35,7 +35,10 @@ Gebruik gerichte Strong-nadruk en cursief voor citaten, functies en datum/locati
 Compacte ondersteunende beschrijvingen mogen 12 px zijn. Dwing geen oranje
 kopaccenten of andere Onderwijs in-typografie af.
 
-TIO-KNOP-01: primaire button geel `#f7dd00`, tekst `#33465e`, 12 px,
+TIO-KNOP-01: buttontekst is altijd vetgedrukt, voor zowel primaire als secundaire
+buttons. Controleer de effectieve tekstopmaak, inclusief lokale overrides.
+
+De primaire button geel `#f7dd00`, tekst `#33465e`, 12 px,
 vet volgens themeformaat `buttonTextFormat=1`; binnenruimte X=12/Y=8 px,
 rand 1 px in `#f7dd00`, radius **8 px** volgens het theme.
 Behoud deze buttonradius; voeg geen override naar 12 toe.
