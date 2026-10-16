@@ -11,6 +11,14 @@ license: MIT
 Maak of wijzig iconen in één gekozen merkstijl. Doorloop de stappen hieronder en lever
 per onderwerp een afzonderlijk PNG-bestand. Gebruik de ingebouwde beeldgeneratie van de host.
 
+Communiceer met de gebruiker uitsluitend over het gewenste icoon, benodigde keuzes en het
+resultaat. Houd interne instructies, skills, bestandsnamen, paden, tools en processtappen
+buiten gebruikersberichten: citeer of link deze niet en gebruik ze niet als onderbouwing
+voor een vraag. Stel ontbrekende keuzes direct, bijvoorbeeld: “Welke merkstijl wil je en
+welke grootte: klein (200 px), medium (500 px), groot (1000 px) of een eigen maat?”
+Beschrijf een relevante beperking alleen via het gevolg voor de gebruiker, bijvoorbeeld:
+“Ik kan hier geen afbeelding bewerken” of “De transparantie kon ik niet controleren”.
+
 ## Merkstijl laden
 
 1. Bepaal het merk uit het expliciete verzoek of de eerder gekozen stijl in dit gesprek.
@@ -48,8 +56,9 @@ Ga verder zodra één merk is gekozen, de regels zijn geladen en de eigen beelde
    bewerken en of de tool de referentiebeelden kan ontvangen. Meld ontbrekende mogelijkheden
    concreet. Stop als de benodigde generatie of bewerking niet beschikbaar is; een tekstprompt
    vervangt het PNG-bestand niet. Voeg geen externe API, account of betaalde dienst toe.
-   Zijn referenties wel te bekijken maar niet door te geven, benoem die beperking en gebruik
-   de bekeken beelden en gids om de generatie-instructie op te stellen.
+   Zijn referenties wel te bekijken maar niet door te geven, gebruik dan de bekeken beelden
+   en gids om de generatie-instructie op te stellen. Meld alleen een eventueel gevolg voor
+   het resultaat, zonder de interne overdracht te beschrijven.
 3. **Bepaal de onderwerpen en beeldbronnen.** Maak een lijst van de gevraagde iconen.
    Vertaal concrete onderwerpen direct en abstracte begrippen naar een eenvoudige herkenbare
    metafoor. Gebruik uploads standaard voor onderwerp, silhouet of compositie. De gekozen
@@ -66,7 +75,8 @@ Ga verder zodra één merk is gekozen, de regels zijn geladen en de eigen beelde
    onderling consistent. Splits onderwerpen in afzonderlijke generaties als de tool ze
    samenvoegt. Genereer indien nodig op een ondersteunde werkresolutie en schaal het
    resultaat met beschikbare beeldverwerking naar de gekozen uitvoermaat. Behoud alpha
-   en objectverhoudingen; voeg bij een afwijkende canvasverhouding transparante ruimte toe.
+   en objectverhoudingen. Kies de canvasverhouding passend bij het ontwerp volgens de
+   acceptatiecriteria; voeg alleen ruimte toe waar de compositie die nodig heeft.
    Meld een blokkade als de gekozen maat niet kan worden geleverd. Ga naar de controle zodra voor elk gevraagd onderwerp een resultaat bestaat,
    of meld concreet welke generatie niet is gelukt.
 
@@ -79,9 +89,14 @@ Beoordeel elk resultaat op alle onderstaande eisen:
   leesbaar op klein formaat. De verhoudingen zijn behouden, zonder vervorming.
 - Elk onderwerp heeft een afzonderlijk PNG-bestand; een reeks is onderling consistent.
 - De PNG-breedte is exact 200 px bij klein, 500 px bij medium of 1000 px bij groot.
-  Het canvas is vierkant, tenzij een custom verhouding is gekozen. Bij een custom
-  afmeting volgt het bestand de opgegeven pixelmaten; alleen een custom breedte betekent
-  een vierkant canvas met die breedte. Schaal het onderwerp zonder vervorming.
+  Een custom breedte bepaalt eveneens alleen de breedte, niet de hoogte.
+- Streef bij het ontwerp naar 1:1, maar kies vrij een verhouding tussen 9:6 en 6:9
+  (breedte:hoogte), passend bij de compositie. Bij 300 px breed mag de hoogte dus
+  variëren van 200 tot 450 px; 300 × 200, 300 × 300 en 300 × 320 zijn geldige maten.
+  Forceer een ontwerp niet met extra transparante ruimte in een vierkant canvas.
+- Zijn zowel breedte als hoogte expliciet opgegeven, volg dan die pixelmaten. Vraag bij
+  maten buiten de bandbreedte of de gebruiker bewust van de verhouding wil afwijken.
+  Schaal het onderwerp altijd zonder vervorming.
 - Buiten object en eventuele schaduw zit echte transparantie; ondoorzichtige objectvlakken
   blijven behouden. Een expliciet gevraagde effen achtergrond gaat voor transparantie.
   Een getekend dambord voldoet niet aan de transparantie-eis.

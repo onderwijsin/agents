@@ -18,7 +18,9 @@ Er zijn geen MCP-server, API-sleutels of externe diensten geconfigureerd.
 
 Geef altijd een merkstijl, een onderwerp- of objectbeschrijving en een gewenste grootte:
 klein (200 px breed), medium (500 px breed), groot (1000 px breed) of een custom
-pixelafmeting. Referentiemateriaal is optioneel. De skill vraagt ontbrekende inputs samen
+pixelafmeting. De breedte legt de hoogte niet vast: het ontwerp streeft naar 1:1,
+met vrijheid tussen 9:6 en 6:9 (breedte:hoogte). Bij 300 px breed is bijvoorbeeld
+300 × 200 of 300 × 320 mogelijk. Referentiemateriaal is optioneel. De skill vraagt ontbrekende inputs samen
 uit en wacht met generatie tot alle drie vaststaan. Bij vervolgverzoeken blijven eerdere
 keuzes gelden zolang de gebruiker ze niet wijzigt. Uploads ondersteunen het onderwerp of
 de compositie; de eigen gebundelde merkbeelden bepalen de stijl.
