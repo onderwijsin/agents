@@ -1,0 +1,27 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "icon-generator",
+  "version": "0.1.0",
+  "description": "Genereer PNG-iconen in de stijl van Onderwijs in, Trainees in onderwijs of Onderwijsloket.",
+  "author": {
+    "name": "Onderwijs in"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/onderwijsin/agents",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Icon-generator",
+        "shortDescription": "Genereer PNG-iconen in de stijl van Onderwijs in, Trainees in onderwijs of Onderwijsloket.",
+        "developerName": "Onderwijs in",
+        "category": "Productivity",
+        "defaultPrompt": [
+          "Maak een icoon van een open boek in de stijl van Onderwijs in.",
+          "Maak drie losse iconen in de stijl van Onderwijsloket: laptop, map en boek."
+        ],
+        "logo": "./assets/plugin-icon.png",
+        "composerIcon": "./assets/plugin-icon.png"
+      }
+    }
+  }
+}

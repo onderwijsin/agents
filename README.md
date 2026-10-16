@@ -23,6 +23,7 @@ skills in `.agents/skills/` are separate and are not distributed through our mar
 | [Agent-instructie](plugins/agent-instructie/README.md)                 | Plugin | Schrijf en verbeter Nederlandstalige prompts en skills voor niet-technische taken, met duidelijke opdrachten en controleerbare resultaten. |
 | [Plausible](plugins/plausible-analytics/README.md)                     | Plugin | Analyze website traffic, acquisition and measured conversions in your language, with chat, chart and PDF reporting.                        |
 | [Nieuwsbrief stijl review](plugins/nieuwsbrief-style-review/README.md) | Plugin | Review Loops newsletter drafts for team style and formatting, with optional draft corrections and test previews.                           |
+| [Icon-generator](plugins/icon-generator/README.md)                     | Plugin | Genereer PNG-iconen voor drie merken; met eigen referentie-iconen en afgeleide stijlregels per merk.                                       |
 
 Our deployment target is the _ChatGPT Business workspace_ marketplace. Administrators
 can import a GitHub catalog through the GUI, then colleagues can discover and install

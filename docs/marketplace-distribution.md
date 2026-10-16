@@ -17,6 +17,15 @@ Its README records the identifier-format caveat, MCP limitations and pending acc
 matrix. Enable the app for intended roles separately from installing the plugin, then
 verify the mapping in a new chat. Charts and PDF export depend on host capabilities.
 
+## Icon-generator
+
+[Icon-generator](../plugins/icon-generator/README.md) bevat één skill met drie gescheiden
+merkstijlen en eigen assetsmappen. De referentie-iconen en afgeleide regels zijn opgenomen.
+De catalogi bevatten het pakket; installatie, activatie, referentiegebruik en native
+beeldgeneratie zijn nog niet getest. Rond de feasibilitytest in de plugin-README af
+voordat de plugin als werkende merkgenerator wordt uitgerold. Er is geen gekoppelde app
+of externe beeldservice nodig in de huidige opzet.
+
 ## Nieuwsbriefreview en Loops
 
 [Nieuwsbrief stijl review](../plugins/nieuwsbrief-style-review/README.md) koppelt de

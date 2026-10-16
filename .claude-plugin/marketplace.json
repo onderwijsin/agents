@@ -20,6 +20,10 @@
     {
       "name": "nieuwsbrief-style-review",
       "source": "./plugins/nieuwsbrief-style-review"
+    },
+    {
+      "name": "icon-generator",
+      "source": "./plugins/icon-generator"
     }
   ]
 }
