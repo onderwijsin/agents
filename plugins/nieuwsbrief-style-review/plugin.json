@@ -20,7 +20,9 @@
         "defaultPrompt": [
           "Controleer mijn mailing.",
           "Corrigeer mijn nieuwsbrief op basis van onze stijlgids."
-        ]
+        ],
+        "logo": "./assets/icon.png",
+        "composerIcon": "./assets/icon.png"
       }
     }
   }
