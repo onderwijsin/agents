@@ -22,8 +22,9 @@ verify the mapping in a new chat. Charts and PDF export depend on host capabilit
 [Nieuwsbrief stijl review](../plugins/nieuwsbrief-style-review/README.md) koppelt de
 bestaande Loops-app. Gebruikers installeren daarnaast de Loops-plugin voor de
 externe skills; een appmapping installeert die skills niet mee. De teamgidsen
-leggen verplichte themes vast; gedeelde regels leggen UTM-parameters vast. Overige
-huisstijlregels van Trainees in onderwijs zijn placeholders. Onderwijs in heeft
+leggen verplichte themes vast; gedeelde regels leggen UTM-parameters vast. Trainees in onderwijs heeft
+algemene stijlregels en conditionele patronen met een vrije inhoudelijke indeling.
+Onderwijs in heeft
 algemene stijlregels voor alle mailtypen en daarnaast een deep dive-referentie
 voor de vaste structuur en templatespecifieke blokken. Campagnes, gepauzeerde workflows en transactionele
 drafts vallen binnen de review. Volledige huisstijlgoedkeuring en runtimecompatibiliteit

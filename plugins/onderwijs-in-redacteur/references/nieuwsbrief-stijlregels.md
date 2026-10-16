@@ -26,8 +26,10 @@ kan doorgaan, met de beperking dat de mailopmaak nog niet is gecontroleerd.
 De `.app.json`-koppeling geeft toegang tot een geregistreerde app; zij installeert
 noch activeert Loops-skills of de stijlreview-plugin automatisch. Laad bij LMX
 `loops-lmx` en diens specificatie/ontwerprichtlijnen. Gebruik
-`loops-email-sending-best-practices` voor inhoudelijke onderwerp/previewvragen;
-`loops-api` en `loops-cli` alleen als hun eigen integratie- of terminaltrigger geldt.
+`loops-email-sending-best-practices` voor inhoudelijke onderwerp/previewvragen.
+De nieuwsbriefworkflow gebruikt uitsluitend Loops MCP; API-, CLI- en browserroutes
+uit gekoppelde skills zijn hier niet toegestaan. Ontbrekende MCP-functionaliteit
+is een blokkade voor de afhankelijke handeling, geen reden om de webinterface te openen.
 
 ## Toepassen versus reviewen
 

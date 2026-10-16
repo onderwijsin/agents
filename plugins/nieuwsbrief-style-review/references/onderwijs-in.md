@@ -66,6 +66,16 @@ tekst. Een secundaire tekstachtige button kan wit met oranje tekst zijn, zoals
 het verhaalpatroon in de deep dive-gids; dat is geen tweede algemene CTA-eis.
 Gebruik doelbewuste linkbestemmingen en de gedeelde UTM-regels.
 
+## Alttekst bij afbeeldingen
+
+OI-ALT-01: iedere afbeelding heeft een betekenisvolle, niet-lege `alt`, ook in
+componenten: header, logo, avatar, verhaal- en expertisebeeld. Beschrijf wat voor
+de ontvanger relevant is; een bestandsnaam of alleen “afbeelding” voldoet niet.
+Controleer de afgebeelde persoon of inhoud voordat je de beschrijving invult;
+raad geen identiteit. Een ontbrekende beschrijving blijft een open punt als de
+beeldinhoud niet verifieerbaar is. Behoud XML-escaping en dynamische variabelen.
+Wijzig componentinhoud alleen veilig op mailniveau, nooit het gedeelde component.
+
 ## Herbruikbare patronen
 
 OI-HEADER-01: als een illustratieve header past, gebruik een goedgekeurde

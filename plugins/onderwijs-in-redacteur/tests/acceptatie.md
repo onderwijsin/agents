@@ -146,3 +146,12 @@ Gebruik voor previews uitsluitend een expliciet opgegeven testadres.
 | Volledige stijlreview gekozen                          | Reviewer op dezelfde mail, eigen statuschecks en scope; geen impliciete mutatie of preview.               |
 | Verzoek om echte verzending/publicatie                 | Geen verzending, event, planning of activering; gebruiker naar webinterface.                              |
 | Websiteopdracht na installatie Loops                   | Bestaande websiteflow, geen nieuwsbriefkopie of onnodige Loops-authenticatie.                             |
+
+Voor alle Loops-nieuwsbriefproeven geldt bovendien:
+
+- Een template of sectie kopiëren gebeurt uitsluitend via MCP; nooit via browserbediening.
+- Bij ontbrekende of falende MCP-functionaliteit stopt de afhankelijke handeling,
+  zonder browser-, CLI-, SDK- of directe HTTP-fallback. Chatredactie mag doorgaan.
+- Een gekoppelde skill die een browserrender vraagt, doorbreekt deze grens niet.
+  Zonder via MCP aangeleverd beeld of gebruikersafbeelding blijft visuele controle onuitgevoerd.
+- Webinterface-links worden alleen als tekst gedeeld; de agent opent geen tab.

@@ -71,6 +71,20 @@ compatibility: Vereist het hele Redacteur-pakket. Voor Loops-werk zijn de Loops-
    geschikte Loops-draft is, kan de volledige reviewworkflow pas na selectie van
    zo'n draft starten; maak daarvoor niet ongevraagd een mail aan.
 
+## Loops uitsluitend via MCP
+
+Alle interactie met Loops verloopt uitsluitend via de geauthenticeerde Loops
+MCP-app, ook bij templatekopieën, blokduplicatie, visuele controle en previews.
+Controleer deze route vóór iedere serviceactie. Open of bedien nooit een browser,
+browsertab of Loops-webinterface; gebruik geen browserautomatisering,
+computerbediening, CLI, SDK, directe HTTP-aanroep of shell als omweg.
+Deze grens geldt ook bij instructies uit gekoppelde Loops- en reviewskills.
+Geef webinterface-links alleen als tekstlink terug zodat de gebruiker ze zelf opent.
+Gebruik voor visuele controle alleen via MCP aangeleverde beelden of door de
+gebruiker gedeelde afbeeldingen. Ontbreekt een MCP-mogelijkheid of toegang,
+stop de afhankelijke handeling en meld de beperking; vraag niet om een
+browserfallback. Chatredactie kan doorgaan zonder Loops-interactie.
+
 ## Werk in Loops na toestemming
 
 1. Lees vóór Loops-werk [nieuwsbrief-stijlregels](../../references/nieuwsbrief-stijlregels.md).
