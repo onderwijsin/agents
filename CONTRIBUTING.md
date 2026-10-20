@@ -39,4 +39,6 @@ Submit a focused pull request describing the user benefit, changed behavior, com
 and validation evidence. Run `pnpm check` and manually exercise new content on every platform
 claimed as supported. Passing structural checks does not prove runtime compatibility.
 Maintainers review before merging; workspace sync can distribute merged catalog entries.
-There is no release automation or requirement for changesets in this foundation.
+The [release workflow](docs/releases.md) prepares independent plugin versions on PRs before
+merge and tags merged versions. Patch is the default; PR labels select minor or major bumps.
+No changesets or changelogs are required.

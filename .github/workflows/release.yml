@@ -1,0 +1,51 @@
+name: Release
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      before:
+        description: Commit before the merge(s) to release
+        required: true
+      after:
+        description: Last merged commit to release
+        required: true
+permissions:
+  contents: read
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+      - name: Tag merged plugin versions
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BEFORE: ${{ inputs.before || github.event.before }}
+          AFTER: ${{ inputs.after || github.sha }}
+        run: |
+          git merge-base --is-ancestor "$BEFORE" "$AFTER"
+          git merge-base --is-ancestor "$AFTER" origin/main
+          gh auth setup-git
+          # Tag the final merged snapshot, including squash and rebase merges.
+          node scripts/release.ts tags "$BEFORE" "$AFTER" > "$RUNNER_TEMP/release-tags"
+          while IFS= read -r tag; do
+            test -n "$tag" || continue
+            existing=$(git ls-remote --refs origin "refs/tags/$tag" | cut -f1)
+            if test -n "$existing"; then
+              test "$existing" = "$AFTER" || { echo "Tag collision: $tag" >&2; exit 1; }
+            else
+              git tag "$tag" "$AFTER"
+              git push origin "refs/tags/$tag"
+            fi
+          done < "$RUNNER_TEMP/release-tags"
+      # Add post-release work here, after tags have been published successfully.

@@ -36,7 +36,9 @@
     "typecheck": "tsc --noEmit",
     "validate": "tsx scripts/validate.ts",
     "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm validate && pnpm test",
-    "test": "tsx --test scripts/validate.test.ts",
+    "test": "tsx --test scripts/*.test.ts",
+    "release:prepare": "node scripts/release.ts write",
+    "release:check": "node scripts/release.ts check",
     "prepare": "husky"
   },
   "devDependencies": {

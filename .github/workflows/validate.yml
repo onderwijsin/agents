@@ -1,14 +1,22 @@
 name: Validate
 on:
   pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, labeled, unlabeled, ready_for_review]
+  workflow_dispatch:
+    inputs:
+      pull_request:
+        description: PR number to validate
+        required: true
   push:
     branches: [main]
 env:
   HUSKY: 0
 permissions:
   contents: read
+  pull-requests: read
 concurrency:
-  group: validate-${{ github.workflow }}-${{ github.ref }}
+  group: validate-${{ github.workflow }}-${{ github.event.pull_request.number || inputs.pull_request || github.ref }}
   cancel-in-progress: true
 jobs:
   validate:
@@ -17,6 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
+          fetch-depth: 0
           persist-credentials: false
       - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
@@ -25,3 +34,16 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
+      - name: Check plugin versions before merge
+        if: github.event_name != 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ inputs.pull_request || github.event.pull_request.number }}
+          EXPECTED: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          # Labels are mutable: validate against current PR state, including bot dispatches.
+          gh pr view "$PR" --json labels,headRefOid,baseRefName > "$RUNNER_TEMP/release-pr.json"
+          test "$(jq -r .headRefOid "$RUNNER_TEMP/release-pr.json")" = "$EXPECTED"
+          test "$(jq -r .baseRefName "$RUNNER_TEMP/release-pr.json")" = main
+          export RELEASE_LABELS=$(jq -c '[.labels[].name]' "$RUNNER_TEMP/release-pr.json")
+          node scripts/release.ts check origin/main HEAD

@@ -43,16 +43,16 @@ See [Husky setup](https://typicode.github.io/husky/get-started.html) and
 
 ## Quality commands
 
-| Command             | Purpose                                                                |
-| ------------------- | ---------------------------------------------------------------------- |
-| `pnpm format`       | Apply Oxfmt formatting                                                 |
-| `pnpm format:check` | Check formatting without changing files                                |
-| `pnpm lint:md`      | Lint Markdown                                                          |
-| `pnpm lint:ts`      | Lint TypeScript with Oxlint                                            |
-| `pnpm typecheck`    | Check strict TypeScript types                                          |
-| `pnpm validate`     | Validate content, catalogs, and local Markdown file links              |
-| `pnpm test`         | Exercise validator failure and success contracts in temporary fixtures |
-| `pnpm check`        | Run all quality gates                                                  |
+| Command             | Purpose                                                        |
+| ------------------- | -------------------------------------------------------------- |
+| `pnpm format`       | Apply Oxfmt formatting                                         |
+| `pnpm format:check` | Check formatting without changing files                        |
+| `pnpm lint:md`      | Lint Markdown                                                  |
+| `pnpm lint:ts`      | Lint TypeScript with Oxlint                                    |
+| `pnpm typecheck`    | Check strict TypeScript types                                  |
+| `pnpm validate`     | Validate content, catalogs, and local Markdown file links      |
+| `pnpm test`         | Exercise validator and release contracts in temporary fixtures |
+| `pnpm check`        | Run all quality gates                                          |
 
 The validator prints a file/context with errors and exits unsuccessfully. Fix the source;
 do not weaken checks to hide a failure. Empty plugin catalogs remain valid; distributable
@@ -79,3 +79,8 @@ CI installs dependencies with a frozen lockfile and runs the quality gates. Depe
 monthly dependency and action updates. `pnpm-workspace.yaml` permits esbuild's dependency build
 script for the TypeScript runner. Locally installed contributor skills under `.agents/skills/`
 are excluded from formatting and Markdown linting; they are separate from marketplace content.
+
+## Plugin releases
+
+See [plugin releases](releases.md) for automatic PR version preparation, SemVer labels,
+local preparation commands, merge enforcement and post-merge tagging.
