@@ -10,8 +10,10 @@ import or unavailable through the installed skill reader remains unknown.
 The phase 1 candidate is plugin version **0.1.3** (previously 0.1.2). It moves the
 seven references into `skills/nieuwsbrief-style-review/reference/` and updates
 relative links. Reference rules are unchanged; only relative image links change
-to keep pointing to the existing plugin-root assets. Those assets are outside
-this experiment's Markdown relocation and remain unverified in the skill reader.
+to keep pointing to the existing plugin-root assets in the original experiment.
+Subsequent preparation moves those images into skill-local `assets/` and updates
+their links accordingly. Only the plugin presentation icon remains at plugin root.
+Installed reader access to these images remains unverified.
 Catalog identities and paths remain unchanged; there is no provider overlay for
 this plugin and no separate skill version.
 

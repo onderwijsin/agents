@@ -1,9 +1,21 @@
 import assert from "node:assert/strict";
-import { mkdtemp, mkdir, readFile, rm, symlink, writeFile } from "node:fs/promises";
+import { spawnSync } from "node:child_process";
+import {
+  access,
+  mkdtemp,
+  mkdir,
+  readFile,
+  realpath,
+  rm,
+  symlink,
+  writeFile,
+} from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
-import { validate } from "./validate.js";
+import { fileURLToPath } from "node:url";
+import { stripAnsi } from "consola/utils";
+import { formatReport, inspect, validate } from "./validate.js";
 
 /** Create an isolated empty scaffold for a validator contract test. */
 async function fixture(run: (root: string) => Promise<void>): Promise<void> {
@@ -127,7 +139,7 @@ test("invalid skill metadata and missing instructions fail", async () => {
 test("broken local links fail but fenced examples are ignored", async () => {
   await fixture(async (root) => {
     await writeFile(join(root, "docs/guide.md"), "# Guide\n\n[Missing](missing.md)\n");
-    await assert.rejects(validate(root), /ENOENT/);
+    await assert.rejects(validate(root), /missing local resource/);
     await writeFile(join(root, "docs/guide.md"), "# Guide\n\n```md\n[Example](missing.md)\n```\n");
     await validate(root);
   });
@@ -145,16 +157,16 @@ test("skill references cannot escape the distributable folder", async () => {
   });
 });
 
-/** Create a plugin-owned skill and shared reference for offline boundary tests. */
+/** Create an installed skill with its own reference for offline boundary tests. */
 async function addPlugin(root: string): Promise<string> {
   const path = join(root, "plugins/draft");
   await mkdir(join(path, "skills/draft"), { recursive: true });
-  await mkdir(join(path, "references"));
+  await mkdir(join(path, "skills/draft/reference"));
   await writeFile(join(path, "README.md"), "# Draft\n");
-  await writeFile(join(path, "references/style.md"), "# Style\n");
+  await writeFile(join(path, "skills/draft/reference/style.md"), "# Style\n");
   await writeFile(
     join(path, "skills/draft/SKILL.md"),
-    "---\nname: draft\ndescription: Draft text.\n---\n# Draft\n\n[Style](../../references/style.md)\n",
+    "---\nname: draft\ndescription: Draft text.\n---\n# Draft\n\n[Style](reference/style.md)\n",
   );
   await writeFile(
     join(path, "plugin.json"),
@@ -205,18 +217,118 @@ async function addMcp(path: string, url = "https://example.com/mcp"): Promise<vo
   );
 }
 
-test("bundled shared references pass while escapes and symlinks fail", async () => {
+test("skill-local references pass while transitive escapes and symlinks fail", async () => {
   await fixture(async (root) => {
     const path = await addPlugin(root);
     await validate(root);
     await writeFile(join(root, "docs/outside.md"), "# Outside\n");
     await writeFile(
-      join(path, "references/style.md"),
-      "# Style\n\n[Outside](../../../docs/outside.md)\n",
+      join(path, "skills/draft/reference/style.md"),
+      "# Style\n\n[Outside](../../../../../docs/outside.md)\n",
     );
     await assert.rejects(validate(root), /link escapes package/);
-    await writeFile(join(path, "references/style.md"), "# Style\n");
-    await symlink(join(root, "docs/outside.md"), join(path, "references/linked.md"));
+    await writeFile(join(path, "skills/draft/reference/style.md"), "# Style\n");
+    await symlink(join(root, "docs/outside.md"), join(path, "skills/draft/reference/linked.md"));
+    await assert.rejects(validate(root), /symlinks are not distributable/);
+  });
+});
+
+test("missing skill references fail without copying matching plugin-root sources", async () => {
+  await fixture(async (root) => {
+    const path = await addPlugin(root);
+    const installed = join(path, "skills/draft/reference/style.md");
+    await mkdir(join(path, "reference"));
+    await writeFile(join(path, "reference/style.md"), "# Canonical source\n");
+    await rm(installed);
+    await assert.rejects(
+      validate(root),
+      /SKILL\.md: missing local resource "reference\/style\.md"/,
+    );
+    await assert.rejects(access(installed));
+    assert.equal(await readFile(join(path, "reference/style.md"), "utf8"), "# Canonical source\n");
+    await writeFile(installed, "# Installed reference\n");
+    await validate(root);
+  });
+});
+
+test("skills cannot fall back to plugin-root or sibling-skill resources", async () => {
+  await fixture(async (root) => {
+    const path = await addPlugin(root);
+    await mkdir(join(path, "reference"));
+    await writeFile(join(path, "reference/style.md"), "# Shared source\n");
+    await mkdir(join(path, "skills/other/reference"), { recursive: true });
+    await writeFile(
+      join(path, "skills/other/SKILL.md"),
+      "---\nname: other\ndescription: Another skill.\n---\n# Other\n",
+    );
+    await writeFile(join(path, "skills/other/reference/style.md"), "# Other\n");
+    for (const target of [
+      "../../reference/style.md",
+      "../other/reference/style.md",
+      "reference/../../../reference/style.md",
+      "reference/%2e%2e/%2e%2e/%2e%2e/reference/style.md",
+    ]) {
+      await writeFile(
+        join(path, "skills/draft/SKILL.md"),
+        `---\nname: draft\ndescription: Draft text.\n---\n# Draft\n\n[Style](${target})\n`,
+      );
+      await assert.rejects(validate(root), /link escapes package/);
+    }
+  });
+});
+
+test("transitive references, reference-style links and skill-local assets must exist", async () => {
+  await fixture(async (root) => {
+    const path = await addPlugin(root);
+    const skill = join(path, "skills/draft");
+    await writeFile(
+      join(skill, "reference/style.md"),
+      "# Style\n\n[Rules][rules]\n\n[rules]: rules%20guide.md?mode=test#section\n",
+    );
+    await assert.rejects(validate(root), /style\.md: missing local resource "rules guide\.md"/);
+    await writeFile(
+      join(skill, "reference/rules guide.md"),
+      "# Rules\n\n![Example](../assets/example.png)\n",
+    );
+    await assert.rejects(
+      validate(root),
+      /rules guide\.md: missing local resource "\.\.\/assets\/example\.png"/,
+    );
+    await mkdir(join(skill, "assets"));
+    await writeFile(join(skill, "assets/example.png"), "fixture image");
+    await validate(root);
+    await rm(join(skill, "reference/rules guide.md"));
+    await mkdir(join(skill, "reference/rules guide.md"));
+    await assert.rejects(validate(root), /expected a Markdown file/);
+  });
+});
+
+test("singular reference directories are enforced for plugin sources and skill resources", async () => {
+  await fixture(async (root) => {
+    const path = await addPlugin(root);
+    for (const parent of [path, join(path, "skills/draft")]) {
+      const legacy = join(parent, "references");
+      await mkdir(legacy);
+      await assert.rejects(validate(root), /use the singular reference\/ directory/);
+      await rm(legacy, { recursive: true });
+    }
+  });
+});
+
+test("canonical source links are checked in installed context and sources still reject symlinks", async () => {
+  await fixture(async (root) => {
+    const path = await addPlugin(root);
+    await mkdir(join(path, "reference"));
+    // This link is valid only after installation into the skill's reference/ directory.
+    const source = "# Style\n\n![Example](../assets/example.png)\n";
+    await writeFile(join(path, "reference/style.md"), source);
+    await validate(root);
+    await writeFile(join(path, "skills/draft/reference/style.md"), source);
+    await assert.rejects(validate(root), /missing local resource "\.\.\/assets\/example\.png"/);
+    await mkdir(join(path, "skills/draft/assets"));
+    await writeFile(join(path, "skills/draft/assets/example.png"), "fixture image");
+    await validate(root);
+    await symlink(join(path, "skills/draft/reference/style.md"), join(path, "reference/linked.md"));
     await assert.rejects(validate(root), /symlinks are not distributable/);
   });
 });
@@ -427,5 +539,126 @@ test("catalog entries require an existing plugin and matching source", async () 
     await writeFile(catalogPath, JSON.stringify(catalog));
     await rm(path, { recursive: true });
     await assert.rejects(validate(root), /exactly one entry per plugin/);
+  });
+});
+
+test("reports include every broken target, successful checks and responsible files", async () => {
+  await fixture(async (root) => {
+    const path = await addPlugin(root);
+    await writeFile(
+      join(path, "skills/draft/reference/style.md"),
+      "# Style\n\n[One](missing-one.md)\n[Two](missing-two.md)\n[Repeated](missing-one.md)\n",
+    );
+    await writeFile(join(root, "docs/broken.md"), "# Broken\n\n[Three](missing-three.md)\n");
+    const report = await inspect(root);
+    const failures = report.results.filter((result) => result.status === "failed");
+    assert.equal(failures.length, 2);
+    assert.equal(failures[0]?.file, join(path, "skills/draft/reference/style.md"));
+    assert.equal(failures[0]?.details.length, 2);
+    const output = formatReport(report, root);
+    for (const target of ["missing-one.md", "missing-two.md", "missing-three.md"])
+      assert.ok(output.includes(target));
+    assert.match(output, /✓ Plugin packaging\s+\d+ passed/);
+    assert.ok(!output.includes("✓ Plugin manifest"));
+    assert.ok(!output.includes("✓ Markdown links"));
+    assert.ok(!output.includes("plugins/draft/plugin.json"));
+    assert.match(output, /Failed \(2\)/);
+    assert.match(output, /✗ Resources and links\s+\d+ passed · 2 failed/);
+    assert.match(output, /✗ Markdown links — docs\/broken.md/);
+    assert.ok(output.endsWith("Result: FAIL"));
+    assert.ok(!output.includes(root));
+    await assert.rejects(validate(root), (error: unknown) => {
+      assert.ok(error instanceof AggregateError);
+      assert.equal(error.errors.length, 2);
+      assert.match(error.message, /missing-three.md/);
+      return true;
+    });
+  });
+});
+
+test("invalid metadata skips dependent checks while resources and neighboring plugins still run", async () => {
+  await fixture(async (root) => {
+    const path = await addPlugin(root);
+    await writeFile(join(root, "plugins/not-a-directory.txt"), "invalid entry");
+    await writeFile(join(root, ".agents/plugins/marketplace.json"), "{invalid JSON");
+    await writeFile(join(path, "plugin.json"), '{"name":"draft"}');
+    await writeFile(
+      join(path, "skills/draft/SKILL.md"),
+      "# No frontmatter\n\n[Missing](reference/missing.md)\n",
+    );
+    await writeFile(join(root, "docs/valid.md"), "# Valid\n");
+    const report = await inspect(root);
+    const failed = report.results.filter((result) => result.status === "failed");
+    for (const rule of [
+      "Content directory name",
+      "OpenAI catalog schema",
+      "Plugin manifest",
+      "Skill metadata",
+      "Markdown links",
+    ]) {
+      assert.ok(
+        failed.some((result) => result.rule === rule),
+        rule,
+      );
+    }
+    assert.ok(
+      report.results.some(
+        (result) => result.rule === "Provider configuration" && result.status === "skipped",
+      ),
+    );
+    assert.ok(
+      report.results.some(
+        (result) => result.file === join(root, "docs/valid.md") && result.status === "passed",
+      ),
+    );
+    const output = formatReport(report, root);
+    assert.match(output, /Skipped \(/);
+    assert.match(output, /Root plugin metadata is invalid/);
+    assert.match(output, /version:/);
+  });
+});
+
+test("CLI prints the complete report before exiting successfully or unsuccessfully", async () => {
+  await fixture(async (root) => {
+    await mkdir(join(root, "scripts"));
+    const script = join(root, "scripts/validate.ts");
+    await writeFile(script, await readFile(new URL("validate.ts", import.meta.url)));
+    await symlink(
+      fileURLToPath(new URL("../node_modules", import.meta.url)),
+      join(root, "node_modules"),
+    );
+    // Node resolves module URLs through macOS's /var -> /private/var alias.
+    const canonicalScript = await realpath(script);
+    const run = (color = false) => {
+      const env = { ...process.env };
+      delete env.NO_COLOR;
+      delete env.FORCE_COLOR;
+      env[color ? "FORCE_COLOR" : "NO_COLOR"] = "1";
+      return spawnSync(process.execPath, [canonicalScript], {
+        cwd: root,
+        encoding: "utf8",
+        env,
+      });
+    };
+    const passed = run();
+    assert.equal(passed.status, 0, passed.stderr);
+    assert.match(passed.stdout, /✓ Catalogs\s+\d+ passed/);
+    assert.match(passed.stdout, /0 failed/);
+    assert.ok(!passed.stdout.includes("Failed (0)"));
+    assert.ok(!passed.stdout.includes(".agents/plugins/marketplace.json"));
+    assert.ok(passed.stdout.trimEnd().endsWith("Result: PASS"));
+    await writeFile(join(root, "docs/first.md"), "# First\n\n[Missing](first-missing.md)\n");
+    await writeFile(join(root, "docs/second.md"), "# Second\n\n[Missing](second-missing.md)\n");
+    const failed = run();
+    assert.equal(failed.status, 1);
+    assert.match(failed.stdout, /first-missing.md/);
+    assert.match(failed.stdout, /second-missing.md/);
+    assert.ok(failed.stdout.trimEnd().endsWith("Result: FAIL"));
+    assert.equal(failed.stderr, "");
+    assert.equal(stripAnsi(failed.stdout), failed.stdout);
+    const colored = run(true);
+    assert.equal(colored.status, 1);
+    assert.notEqual(stripAnsi(colored.stdout), colored.stdout);
+    assert.equal(stripAnsi(colored.stdout), failed.stdout);
   });
 });

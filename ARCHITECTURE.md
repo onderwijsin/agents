@@ -46,8 +46,12 @@ Plugin identity belongs in the root portable `plugin.json`. Bundled skills and r
 inside the plugin's distribution boundary. Every distributable skill belongs to exactly one plugin.
 Plugins contain one or more
 skills and are the canonical units of distribution, installation, and versioning. Bundled skill
-changes belong to the containing plugin version; skills need no independent version. Resources
-stay inside their plugin boundary, without copying, symlinks, or build-time packaging.
+changes belong to the containing plugin version; skills need no independent version.
+Runtime resources resolve within each installed skill directory, using singular
+`reference/` for Markdown reference material and `assets/` for skill assets. Shared
+authored references may live at plugin root; installed copies must be supplied by
+an explicit preparation step. Validation checks the installed files without creating
+them. Plugin presentation assets remain at plugin root. Symlinks are not distributable.
 Repository development skills in `.agents/skills/` remain outside marketplace distribution.
 
 ## Authoring, review, and validation

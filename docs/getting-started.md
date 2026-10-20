@@ -54,7 +54,13 @@ See [Husky setup](https://typicode.github.io/husky/get-started.html) and
 | `pnpm test`         | Exercise validator and release contracts in temporary fixtures |
 | `pnpm check`        | Run all quality gates                                          |
 
-The validator prints a file/context with errors and exits unsuccessfully. Fix the source;
+The validator prints compact category summaries, followed by individual failures
+with responsible files and reasons. Successful entries stay out of the detailed
+output, and identical skipped-check reasons are grouped. Consola provides terminal
+styling; `NO_COLOR=1` disables colors for plain output. It collects independent failures, including every
+broken local target in a document, before exiting with status 1 if any check failed.
+Checks blocked by invalid metadata are marked skipped; unrelated checks continue.
+Reports use repository-relative paths for terminals and CI. Fix the source;
 do not weaken checks to hide a failure. Empty plugin catalogs remain valid; distributable
 skills belong in `plugins/<plugin-name>/skills/<skill-name>/`, with a README and manifest
 at the plugin root. A repository-level `skills/` directory fails validation.
@@ -71,7 +77,12 @@ The validator covers the local-only catalog subset, matching catalog names and p
 identities, required plugin and skill files, skill frontmatter, and relative Markdown file links.
 Empty plugin catalogs are accepted; repository-level distributable skills are rejected. Plugin validation checks required identity fields rather
 than certifying the full portable schema. It also checks the documented credential-free HTTPS MCP
-subset, matching Claude overlays, OpenAI PNG presentation assets, and plugin-local shared references.
+subset, matching Claude overlays, OpenAI PNG presentation assets, singular `reference/`
+directories and skill-local runtime resources. Missing resources fail at their exact
+linked locations, including transitive references and assets; plugin-root sources
+are not a fallback. Shared source links are checked in their installed skill copies.
+Validation is read-only and belongs after resource migration when that separate step
+is implemented. Until then, missing skill-local copies intentionally fail `pnpm check`.
 Advanced manifest extensions, other MCP configuration, Markdown anchors, external URLs,
 and runtime behavior require targeted checks when introduced.
 

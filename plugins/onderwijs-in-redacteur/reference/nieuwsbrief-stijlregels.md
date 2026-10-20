@@ -15,9 +15,9 @@ Voor Loops-werk zijn nodig:
   zijn skill en referenties beschikbaar in de actieve host.
 
 Ontdek de geïnstalleerde `nieuwsbrief-style-review`-skill via de host en lokaliseer
-zijn pakketresources via die skill. Lees `references/onderwijs-in.md` en
-`references/linkregels.md` uit dat pakket; bij een deep dive ook
-`references/onderwijs-in-deep-dive-template.md` en de daarin genoemde assets.
+zijn pakketresources via die skill. Lees `reference/onderwijs-in.md` en
+`reference/linkregels.md` uit dat pakket; bij een deep dive ook
+`reference/onderwijs-in-deep-dive-template.md` en de daarin genoemde assets.
 Deze paden zijn logische pakketresources, geen absolute installatiepaden. Een
 geïnstalleerde maar niet leesbare dependency telt als onbeschikbaar: meld welke
 toegang nodig is en stel live mutaties uit. Chatredactie met Redacteur-referenties

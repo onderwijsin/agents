@@ -116,8 +116,10 @@ meegeleverd: de OpenAI-appmapping levert daar geen Loops-verbinding. Installatie
 activatie en runtimegedrag zijn nog niet volledig geverifieerd. In issue #19 is
 bevestigd dat ChatGPT de skill laadt, maar plugin-rootreferenties niet kan lezen.
 Versie 0.1.3 verplaatst de zeven Markdown-referenties naar de skillmap om dit te
-testen; de regels blijven gelijk. Afbeeldingen blijven op pluginroot en hun
-toegankelijkheid via de skillreader blijft afzonderlijk ongeverifieerd.
+testen; de regels blijven gelijk. De referentiebeelden staan inmiddels in
+`skills/nieuwsbrief-style-review/assets/`, passend bij de skill-local links.
+Alleen het pluginicoon blijft onder root `assets/`. Toegankelijkheid van de
+beelden via de geïnstalleerde skillreader blijft ongeverifieerd.
 Zie het [experimentlog](https://github.com/onderwijsin/agents/blob/main/docs/nieuwsbrief-resource-experiment.md) voor de
 openstaande sync- en leestest. Installeer het hele pluginpakket.
 

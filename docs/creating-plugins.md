@@ -44,9 +44,12 @@ MCP or app configuration is optional and must follow current host documentation.
 server, credential, hooks, or placeholder configuration unless the capability needs it.
 Extend validation for new manifest fields and integration files in the same change.
 
-Plugin-owned skills may link to shared `references/` within the same plugin root.
-Document ownership and require whole-plugin installation; they are not standalone packages.
-The validator keeps bundled references within their plugin, rejecting escapes and symlinks.
+Plugin-owned skills load runtime resources from their own `reference/` and `assets/`
+directories. Shared authored sources may remain in plugin-root `reference/`, with
+links written for their eventual skill-local installation. Follow the
+[resource path contract](creating-skills.md#resource-paths-and-validation); validation
+requires the installed files to exist and performs no migration. Keep plugin
+presentation icons in root `assets/` and document whole-plugin installation.
 
 Registered OpenAI app mappings use `extensions.com.openai.apps` pointing to a package-local
 `.app.json`; each named mapping contains the technical registered app ID. The validator checks

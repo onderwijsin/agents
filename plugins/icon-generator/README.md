@@ -11,8 +11,11 @@ consistentie van nieuwe resultaten moeten nog worden getest.
 
 ## Gebruik en vereisten
 
-Installeer het volledige pakket via de marketplace; de skill gebruikt bestanden buiten
-zijn eigen skillmap en is niet afzonderlijk installeerbaar. De host moet afbeeldingen
+Installeer het volledige pakket via de marketplace; de skill leest runtimebestanden
+binnen zijn eigen skillmap. De merkbeelden staan in `skills/icon-generator/assets/`;
+alleen het pluginicoon blijft in root `assets/`. De gidslinks wijzen naar de
+skill-local `reference/`-map; die kopieën ontbreken nog totdat migratie is uitgevoerd.
+De host moet afbeeldingen
 kunnen inspecteren, native genereren en bewerken, en downloadbare PNG-bestanden leveren.
 Er zijn geen MCP-server, API-sleutels of externe diensten geconfigureerd.
 
@@ -28,11 +31,11 @@ de compositie; de eigen gebundelde merkbeelden bepalen de stijl.
 De [skill](skills/icon-generator/SKILL.md) bevat de gedeelde uitvoering en exportregels.
 Elke stijl heeft één canonieke gids en één eigen assetsmap:
 
-| Stijl                 | Stijlgids                                   | Referenties                                                        |
-| --------------------- | ------------------------------------------- | ------------------------------------------------------------------ |
-| Onderwijs in          | [Gids](references/onderwijs-in.md)          | [assets/onderwijsin](assets/onderwijsin/README.md)                 |
-| Trainees in onderwijs | [Gids](references/trainees-in-onderwijs.md) | [assets/traineesinonderwijs](assets/traineesinonderwijs/README.md) |
-| Onderwijsloket        | [Gids](references/onderwijsloket.md)        | [assets/onderwijsloket](assets/onderwijsloket/README.md)           |
+| Stijl                 | Stijlgids                                                        | Referenties                                                                              |
+| --------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Onderwijs in          | [Gids](skills/icon-generator/reference/onderwijs-in.md)          | [assets/onderwijsin](skills/icon-generator/assets/onderwijsin/README.md)                 |
+| Trainees in onderwijs | [Gids](skills/icon-generator/reference/trainees-in-onderwijs.md) | [assets/traineesinonderwijs](skills/icon-generator/assets/traineesinonderwijs/README.md) |
+| Onderwijsloket        | [Gids](skills/icon-generator/reference/onderwijsloket.md)        | [assets/onderwijsloket](skills/icon-generator/assets/onderwijsloket/README.md)           |
 
 ## Referenties en regels aanvullen
 
