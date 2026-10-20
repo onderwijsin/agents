@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "onderwijs-in-redacteur",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "repository": "https://github.com/onderwijsin/agents",
   "description": "Schrijf en redigeer Onderwijs in-websitecontent, nieuwsbrieven en mailings in de chat of als Loops-draft.",
   "longDescription": "Vijf websiteskills en een nieuwsbriefredacteur delen de merkstem en spellingregels. Nieuwsbriefredactie richt zich op inhoud, tone of voice en onderwerpregels; Loops en Nieuwsbrief stijl review ondersteunen concepten in Loops.",
