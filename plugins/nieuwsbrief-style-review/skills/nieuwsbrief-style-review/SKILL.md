@@ -113,17 +113,17 @@ toegang of gegevens zonder een controle of succesvolle mutatie te suggereren.
 ## 2. Beoordeel de actuele inhoud
 
 Controleer subject en previewtekst uitsluitend op aanwezigheid en tekstlengte via
-[subject en previewtekst — lengte](../../references/subject-en-previewtekst.md).
+[subject en previewtekst — lengte](reference/subject-en-previewtekst.md).
 Geef de gemeten lengte en ontbrekende velden terug. Beoordeel of herschrijf hun
 inhoud, tone of voice of openingsbelofte niet; daarvoor is de afzonderlijke skill
 `nieuwsbrief-redactie` in `onderwijs-in-redacteur` bedoeld. Een stijlingreep geeft
 geen toestemming om deze inhoudelijke velden te wijzigen.
 
-Lees de [gedeelde linkregels](../../references/linkregels.md) voor iedere review
+Lees de [gedeelde linkregels](reference/linkregels.md) voor iedere review
 en uitsluitend de teamgids van het gekozen team:
 
-- Onderwijs in: [onderwijs-in.md](../../references/onderwijs-in.md).
-- Trainees in onderwijs: [trainees-in-onderwijs.md](../../references/trainees-in-onderwijs.md).
+- Onderwijs in: [onderwijs-in.md](reference/onderwijs-in.md).
+- Trainees in onderwijs: [trainees-in-onderwijs.md](reference/trainees-in-onderwijs.md).
 
 Beoordeel iedere vastgelegde regel tegen de opgehaalde inhoud en effectieve
 opmaak. Gebruik de LMX-specificatie voor technische geldigheid. Label algemene
@@ -139,14 +139,14 @@ Wijzig het gedeelde theme zelf nooit.
 Pas voor iedere Onderwijs in-mail de algemene gids toe: theme, sectiecontainers,
 typografie, radiusregels, herbruikbare patronen en verplichte footer. Bepaal daarna
 het format; lees alleen bij een deep dive aanvullend
-[deep dive-template](../../references/onderwijs-in-deep-dive-template.md) voor vaste
+[deep dive-template](reference/onderwijs-in-deep-dive-template.md) voor vaste
 structuur, rubrieken en statische deep dive-tekst. Vraag bij onduidelijk format om
 verduidelijking en controleer intussen de algemene regels. Leg andere mails geen
 deep dive-structuur of auteurswisseling op. De gesprekssectie en persoonlijke
 auteur zijn algemeen contextafhankelijk; bij deep dives zijn ze verplicht.
 Voor Trainees in onderwijs is de inhoudelijke indeling vrij tussen de verplichte
 header en footer. Lees bij aanwezige agenda-, icoon-, interview-, team- of
-contactblokken de [Trainees-patronen](../../references/trainees-in-onderwijs-patronen.md).
+contactblokken de [Trainees-patronen](reference/trainees-in-onderwijs-patronen.md).
 Eis geen Onderwijs in-deep dive-rubrieken, aantallen of volgorde. Controleer alle
 afbeeldingen, ook binnen componenten, op alttekst volgens de gekozen teamgids.
 
@@ -157,7 +157,7 @@ regels, verzin de rest niet en geef geen volledige huisstijlgoedkeuring.
 Algemene adviezen blijven afzonderlijk gelabeld.
 
 Lever iedere afgeronde review op volgens het verplichte
-[reviewrapport](../../references/reviewrapport.md): drie tabellen voor vastgestelde
+[reviewrapport](reference/reviewrapport.md): drie tabellen voor vastgestelde
 verbeteracties, door de gebruiker te verifiëren punten en voorgestelde UTM-links,
 gevolgd door aanvullend advies, Guardian-resultaten en benodigde keuzes.
 Gebruik hetzelfde format bij de hercontrole na wijzigingen; vermeld dan de
