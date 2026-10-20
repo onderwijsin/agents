@@ -1,0 +1,60 @@
+name: Prepare release
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, labeled, unlabeled, ready_for_review]
+env:
+  HUSKY: 0
+permissions:
+  contents: read
+concurrency:
+  group: prepare-release-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+jobs:
+  prepare:
+    # Forks use the local preparation command; never grant writes to fork code.
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      actions: write
+      pull-requests: read
+    steps:
+      # Execute only the base branch's release script, reading PR contents as Git objects.
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+      - name: Prepare versions
+        id: versions
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+          RELEASE_LABELS: ${{ toJSON(github.event.pull_request.labels.*.name) }}
+        run: |
+          git fetch origin "$HEAD"
+          prepared=$(node scripts/release.ts prepare "$BASE" "$HEAD")
+          echo "sha=$prepared" >> "$GITHUB_OUTPUT"
+      - name: Commit versions if needed and request validation
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PREPARED: ${{ steps.versions.outputs.sha }}
+          EXPECTED: ${{ github.event.pull_request.head.sha }}
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          # A stale run must not update a newer branch or dispatch checks for the wrong commit.
+          current=$(gh pr view "$PR" --json headRefOid --jq .headRefOid)
+          test "$current" = "$EXPECTED"
+          gh auth setup-git
+          if test "$PREPARED" != "$EXPECTED"; then
+            git push origin "$PREPARED:refs/heads/$BRANCH"
+          fi
+          # GITHUB_TOKEN pushes do not reliably start ordinary CI automatically.
+          # Dispatch even on a no-op so a failed previous dispatch can be retried.
+          gh workflow run validate.yml --ref "$BRANCH" -f pull_request="$PR"

@@ -122,8 +122,9 @@ sync can introduce new plugins. Inspect sync errors; invalid updates retain the 
 Removing a catalog entry does not remove its imported workspace copy. Deleting a marketplace
 removes its imported plugins, so do not use deletion merely to reconnect GitHub access.
 
-GitHub is the public, auditable source of truth; this repository has no deploy or publishing
-workflow. Neither a public GitHub repository nor workspace import publishes plugins in the
+GitHub is the public, auditable source of truth; the [release workflow](releases.md)
+commits version updates before merge and tags merged plugin versions. It does not deploy
+content or request marketplace sync. Neither a public GitHub repository nor workspace import publishes plugins in the
 universal public directory. Distribution targets the internal, admin-imported workspace marketplace.
 Colleagues can browse available workspace plugins and install those permitted by their role once
 an administrator has imported real content. Report missing access to your workspace administrator.

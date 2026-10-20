@@ -94,8 +94,9 @@ Run `pnpm check` and test installation and behavior on each claimed host before 
 Do not claim compatibility based solely on portable files. Before distributing the first plugin,
 verify workspace import and Claude loading in the intended environments. Every distributable
 skill has one canonical source inside one plugin. Plugin versions are authoritative for all
-bundled changes; there is no independent skill version or release automation. See
-[issue #4](https://github.com/onderwijsin/agents/issues/4) for future release work.
+bundled changes; there is no independent skill version. The
+[release workflow](releases.md) updates manifest versions before merge; use PR labels
+for minor or major bumps.
 
 For a skill-only plugin using the standard `skills/` layout, Claude documents its manifest as
 optional and derives the name from the marketplace entry. No overlay or empty MCP configuration
