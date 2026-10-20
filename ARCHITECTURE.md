@@ -49,9 +49,12 @@ skills and are the canonical units of distribution, installation, and versioning
 changes belong to the containing plugin version; skills need no independent version.
 Runtime resources resolve within each installed skill directory, using singular
 `reference/` for Markdown reference material and `assets/` for skill assets. Shared
-authored references may live at plugin root; installed copies must be supplied by
-an explicit preparation step. Validation checks the installed files without creating
-them. Plugin presentation assets remain at plugin root. Symlinks are not distributable.
+authored references may live at plugin root; reference synchronization supplies only
+the copies reachable from each skill's Markdown links. Generated ownership manifests
+distinguish those copies from skill-private files. Release preparation synchronizes
+references before versioning and commits the output consumed by marketplaces.
+Validation checks the installed files without creating them. Plugin presentation
+assets remain at plugin root. Symlinks are not distributable.
 Repository development skills in `.agents/skills/` remain outside marketplace distribution.
 
 ## Authoring, review, and validation

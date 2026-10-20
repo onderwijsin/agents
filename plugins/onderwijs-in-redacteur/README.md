@@ -36,8 +36,9 @@ websiteleesroute; de nieuwsbriefskill gebruikt die wanneer inhoudsverificatie no
 
 De plugin bezit alle eigen skills en referenties binnen zijn pakket. Gedeelde
 bronnen staan in root `reference/`; de skills lezen uitsluitend hun eigen
-`reference/`-map. De links in dit README verwachten die geïnstalleerde kopieën, die
-nog ontbreken zolang migratie niet is uitgevoerd. Installeer het hele pakket. De inhoudelijke
+`reference/`-map. `pnpm references:sync` onderhoudt uitsluitend de benodigde
+kopieën per skill en hun ownershipmanifest. Bewerk de gedeelde bronnen in root
+`reference/`, niet de gegenereerde kopieën. Installeer het hele pakket. De inhoudelijke
 [subject- en previewgids](skills/nieuwsbrief-redactie/reference/subject-en-previewtekst.md) is hier canonical.
 Opmaak en exacte deep dive-structuur blijven canonical bij `nieuwsbrief-style-review`.
 Externe dependencies worden via de host ontdekt, niet via repositorypaden gekoppeld.

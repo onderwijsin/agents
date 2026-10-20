@@ -55,37 +55,14 @@ requirements explicitly. Avoid model names, host-specific tools, and credentials
 
 ## Resource paths and validation
 
-Use singular **`reference/`** for reference directories in distributed plugins and
-skills. This is the repository's chosen OpenAI-targeted packaging convention; the
-[Agent Skills specification](https://agentskills.io/specification) permits additional
-directories and illustrates `references/`, so singular spelling is not a universal
-specification requirement. The [OpenAI packaging guide](https://developers.openai.com/plugins/build/plugins)
-does not establish runtime access to arbitrary plugin-root files. These sources were
-consulted on 20 October 2026; verify installed resource access in each claimed host.
+Keep runtime references and assets inside the consuming skill. Use singular
+`reference/` for Markdown reference material and `assets/` for images; plugin
+presentation icons remain at plugin root.
 
-- Link from `SKILL.md` with `reference/<file>.md` and `assets/<file>`.
-- Inside `reference/`, link to sibling documents with `<file>.md` and to skill assets
-  with `../assets/<file>`. Paths are relative to the Markdown file containing the link.
-- Keep skill runtime resources inside that skill's directory, including transitive
-  reference links. A file at plugin root or in another skill does not satisfy the link.
-- Shared authored sources may live in `plugins/<plugin>/reference/`. Write their links
-  for the eventual `skills/<skill>/reference/` location. Skill-private references
-  are authored directly inside their skill. Author shared content once.
-- Plugin presentation icons stay under plugin-root `assets/` as required by the
-  manifest; skill reference images belong under skill-local `assets/`.
-
-The validator checks the exact installed paths, including transitive Markdown links
-and linked assets, and rejects missing resources, directory targets used as Markdown
-files, symlinks and escapes from the skill directory. It also rejects plural
-`references/` directories inside distributed plugins. Shared plugin-root source
-links are checked in their installed copies, because source and installed resource
-contexts differ; symlinks and directory naming are checked in sources too.
-
-Validation is read-only: it never moves, copies, generates or repairs files and has
-no fallback to shared sources. Run it after the separately scoped migration step
-once that exists. At present, the path preparation intentionally fails validation
-where skill-local references or assets are absent; implementing migration is deferred.
-The validator checks Markdown links, not arbitrary prose or inline-code paths.
+For shared sources, generated copies, Markdown dependency selection, ownership,
+cleanup and synchronization commands, follow
+[reference synchronization](reference-synchronization.md). Run synchronization after
+changing shared references or their consuming links, then run `pnpm check`.
 
 Use UTF-8 Markdown, one H1, fenced code blocks with languages, and YAML frontmatter only at the
 start of `SKILL.md`. Dutch instructions are welcome for Dutch-language work; explain the audience

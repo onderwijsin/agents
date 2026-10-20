@@ -47,7 +47,7 @@ Extend validation for new manifest fields and integration files in the same chan
 Plugin-owned skills load runtime resources from their own `reference/` and `assets/`
 directories. Shared authored sources may remain in plugin-root `reference/`, with
 links written for their eventual skill-local installation. Follow the
-[resource path contract](creating-skills.md#resource-paths-and-validation); validation
+[resource path contract](reference-synchronization.md); validation
 requires the installed files to exist and performs no migration. Keep plugin
 presentation icons in root `assets/` and document whole-plugin installation.
 

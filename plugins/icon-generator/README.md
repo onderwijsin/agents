@@ -14,7 +14,8 @@ consistentie van nieuwe resultaten moeten nog worden getest.
 Installeer het volledige pakket via de marketplace; de skill leest runtimebestanden
 binnen zijn eigen skillmap. De merkbeelden staan in `skills/icon-generator/assets/`;
 alleen het pluginicoon blijft in root `assets/`. De gidslinks wijzen naar de
-skill-local `reference/`-map; die kopieën ontbreken nog totdat migratie is uitgevoerd.
+skill-local `reference/`-map. De canonieke gidsen blijven in root `reference/`;
+`pnpm references:sync` onderhoudt de benodigde kopieën en hun ownershipmanifest.
 De host moet afbeeldingen
 kunnen inspecteren, native genereren en bewerken, en downloadbare PNG-bestanden leveren.
 Er zijn geen MCP-server, API-sleutels of externe diensten geconfigureerd.

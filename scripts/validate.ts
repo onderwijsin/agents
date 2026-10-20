@@ -5,6 +5,7 @@ import { parseDocument } from "yaml";
 import { z } from "zod";
 import { createConsola } from "consola";
 import { colors } from "consola/utils";
+import { localMarkdownLinks } from "./markdown-links.ts";
 
 // Offline, read-only validation of repository packaging and installed resources.
 // Missing skill resources are errors even when matching shared sources exist.
@@ -219,17 +220,10 @@ class Checks {
  * anchors or remote URLs, and is not a complete Markdown parser.
  */
 async function links(path: string, boundary: string): Promise<void> {
-  const content = (await file(path)).replace(/^(`{3,}|~{3,}).*\n[\s\S]*?^\1[^\n]*$/gm, "");
-  const destinations = [
-    ...content.matchAll(/!?\[[^\]\n]*\]\(<?([^\s)>]+)>?(?:\s+["'][^\n]*["'])?\)/g),
-    ...content.matchAll(/^\s*\[[^\]]+\]:\s*<?([^\s>]+)>?/gm),
-  ];
   const errors: unknown[] = [];
-  for (const match of destinations) {
-    const destination = match[1];
-    if (!destination || /^(?:[a-z][a-z\d+.-]*:|#)/i.test(destination)) continue;
+  for (const destination of localMarkdownLinks(await file(path))) {
     try {
-      const target = decodeURIComponent(destination.split(/[?#]/)[0] ?? "");
+      const target = decodeURIComponent(destination);
       if (!target) continue;
       const resolved = resolve(dirname(path), target);
       // Check lexical containment before lookup, then real containment for symlink escapes.

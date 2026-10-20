@@ -46,6 +46,9 @@ GitHub issue, then contribute it through a reviewed pull request. Nontechnical c
 can contribute task examples, instructions, and feedback without writing software.
 
 - [Vision and development direction](docs/vision.md): priorities and dynamic references through Directus.
+- [Reference synchronization](docs/reference-synchronization.md): canonical sources,
+  generated skill-local copies, asset placement and validation.
+- [Plugin releases](docs/releases.md): reference synchronization, independent versions and Git tags.
 - [Architecture](ARCHITECTURE.md): sources of truth and lifecycle.
 - [Contributor setup](docs/getting-started.md): local tools and quality checks.
 - [Creating skills](docs/creating-skills.md): portable instructions and metadata.

@@ -623,6 +623,10 @@ test("CLI prints the complete report before exiting successfully or unsuccessful
     await mkdir(join(root, "scripts"));
     const script = join(root, "scripts/validate.ts");
     await writeFile(script, await readFile(new URL("validate.ts", import.meta.url)));
+    await writeFile(
+      join(root, "scripts/markdown-links.ts"),
+      await readFile(new URL("markdown-links.ts", import.meta.url)),
+    );
     await symlink(
       fileURLToPath(new URL("../node_modules", import.meta.url)),
       join(root, "node_modules"),

@@ -33,6 +33,10 @@ folders; the repository content itself is open source under MIT.
 - Update both catalogs when adding a plugin. Catalogs reference plugin packages.
 - Version bundled skill changes through the containing plugin; individual skills need no version.
 - Add only resources needed by the capability; do not duplicate content for each provider.
+- Author shared references in plugin-root `reference/` and link to their installed
+  skill-local paths. Run `pnpm references:sync`, then commit generated copies and
+  ownership manifests with the source changes. See the
+  [resource contract](docs/reference-synchronization.md).
 - Never include credentials, private organizational data, or personal information in examples.
 
 Submit a focused pull request describing the user benefit, changed behavior, compatibility,

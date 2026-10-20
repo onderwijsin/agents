@@ -43,16 +43,18 @@ See [Husky setup](https://typicode.github.io/husky/get-started.html) and
 
 ## Quality commands
 
-| Command             | Purpose                                                        |
-| ------------------- | -------------------------------------------------------------- |
-| `pnpm format`       | Apply Oxfmt formatting                                         |
-| `pnpm format:check` | Check formatting without changing files                        |
-| `pnpm lint:md`      | Lint Markdown                                                  |
-| `pnpm lint:ts`      | Lint TypeScript with Oxlint                                    |
-| `pnpm typecheck`    | Check strict TypeScript types                                  |
-| `pnpm validate`     | Validate content, catalogs, and local Markdown file links      |
-| `pnpm test`         | Exercise validator and release contracts in temporary fixtures |
-| `pnpm check`        | Run all quality gates                                          |
+| Command                 | Purpose                                                                    |
+| ----------------------- | -------------------------------------------------------------------------- |
+| `pnpm format`           | Apply Oxfmt formatting                                                     |
+| `pnpm format:check`     | Check formatting without changing files                                    |
+| `pnpm lint:md`          | Lint Markdown                                                              |
+| `pnpm lint:ts`          | Lint TypeScript with Oxlint                                                |
+| `pnpm typecheck`        | Check strict TypeScript types                                              |
+| `pnpm references:sync`  | Synchronize required canonical references into installed skill directories |
+| `pnpm references:check` | Check generated reference drift without changing files                     |
+| `pnpm validate`         | Validate content, catalogs, and local Markdown file links                  |
+| `pnpm test`             | Exercise validator and release contracts in temporary fixtures             |
+| `pnpm check`            | Run all quality gates                                                      |
 
 The validator prints compact category summaries, followed by individual failures
 with responsible files and reasons. Successful entries stay out of the detailed
@@ -81,8 +83,9 @@ subset, matching Claude overlays, OpenAI PNG presentation assets, singular `refe
 directories and skill-local runtime resources. Missing resources fail at their exact
 linked locations, including transitive references and assets; plugin-root sources
 are not a fallback. Shared source links are checked in their installed skill copies.
-Validation is read-only and belongs after resource migration when that separate step
-is implemented. Until then, missing skill-local copies intentionally fail `pnpm check`.
+Validation is read-only and runs after `pnpm references:sync`. The read-only drift
+check `pnpm references:check` runs first in `pnpm check`; CI also rejects migration
+output missing from the committed revision. See the [resource contract](reference-synchronization.md).
 Advanced manifest extensions, other MCP configuration, Markdown anchors, external URLs,
 and runtime behavior require targeted checks when introduced.
 
