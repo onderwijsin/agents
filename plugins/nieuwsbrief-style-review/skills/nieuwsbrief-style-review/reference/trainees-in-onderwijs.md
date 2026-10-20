@@ -75,7 +75,7 @@ De specifieke interviewspacer staat in de patroongids.
 
 TIO-HEADER-01: iedere mail begint na de Style-metadata met component
 `cmvamz7dm09iz0jypt5ztegl7` (`Header`). Het beeld is
-[Header.png](../assets/traineesinonderwijs/Header.png) uit dit pakket.
+[Header.png](../../../assets/traineesinonderwijs/Header.png) uit dit pakket.
 De websitebestemming is `https://traineesinonderwijs.nl`, aangevuld met
 mailinggebonden UTM's; `utm_content=header` mag blijven staan.
 
@@ -107,8 +107,8 @@ en onscherp vergroten. Een pixelbreedte alleen bewijst geen goede mobiele weerga
 
 TIO-ICOON-01: gebruik voor illustratieve iconen goedgekeurde PNG-afbeeldingen
 uit `assets/traineesinonderwijs/icons/`, met witte achtergrond en gecentreerd icoon.
-Voorbeelden: [AI.png](../assets/traineesinonderwijs/icons/AI.png) en
-[Netwerk.png](../assets/traineesinonderwijs/icons/Netwerk.png).
+Voorbeelden: [AI.png](../../../assets/traineesinonderwijs/icons/AI.png) en
+[Netwerk.png](../../../assets/traineesinonderwijs/icons/Netwerk.png).
 Image-stijl: radius 12, randbreedte 1 px, randkleur `#c7e6ee`.
 Gebruik geen inline SVG of een willekeurige glyph ter vervanging. De kleine
 sociale Icon-elementen in de vaste footer vormen een afzonderlijk patroon.

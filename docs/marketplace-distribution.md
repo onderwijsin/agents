@@ -39,6 +39,11 @@ voor de vaste structuur en templatespecifieke blokken. Campagnes, gepauzeerde wo
 drafts vallen binnen de review. Volledige huisstijlgoedkeuring en runtimecompatibiliteit
 zijn nog niet aangetoond. Zie de package-README voor rechten, bronnen en acceptatiechecks.
 
+Versie 0.1.3 test skill-local Markdown-referenties na gemelde leesfouten op
+plugin-rootreferenties. Het [experimentlog](nieuwsbrief-resource-experiment.md)
+bevat de kandidaatversie, teststappen en nog in te vullen sync- en leesresultaten.
+Dit is nog geen bevestigde oplossing of algemene verpakkingsregel voor andere plugins.
+
 ## Nieuwsbriefredactie en afhankelijkheden
 
 Onderwijs in Redacteur koppelt de bestaande Onderwijs in-app en de Loops-app.

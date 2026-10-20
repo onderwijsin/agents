@@ -32,7 +32,7 @@ jou opgegeven adres. Controleer de laatste versie altijd zelf in Loops.
 ## Verplichte controles
 
 Subject en previewtekst worden alleen op aanwezigheid en lengte gecontroleerd via
-[de lengteregels](references/subject-en-previewtekst.md). Inhoudelijke kwaliteit,
+[de lengteregels](skills/nieuwsbrief-style-review/reference/subject-en-previewtekst.md). Inhoudelijke kwaliteit,
 openingsbelofte en tone of voice horen bij de afzonderlijke skill
 `nieuwsbrief-redactie` in `onderwijs-in-redacteur`. Stijlreview vereist geen
 Redacteur-installatie; voor inhoudelijke voorstellen kan de gebruiker die kiezen.
@@ -46,20 +46,20 @@ pauzeert de workflow. Een gepubliceerde transactionele versie wordt niet beoorde
 of gewijzigd; een afzonderlijke draft kan wel worden beoordeeld.
 
 De teamgidsen bevatten de opgegeven team-ID's en verplichte theme-ID's:
-[Onderwijs in](references/onderwijs-in.md) en
-[Trainees in onderwijs](references/trainees-in-onderwijs.md).
-De [gedeelde linkregels](references/linkregels.md) verplichten `utm_source=newsletter`,
+[Onderwijs in](skills/nieuwsbrief-style-review/reference/onderwijs-in.md) en
+[Trainees in onderwijs](skills/nieuwsbrief-style-review/reference/trainees-in-onderwijs.md).
+De [gedeelde linkregels](skills/nieuwsbrief-style-review/reference/linkregels.md) verplichten `utm_source=newsletter`,
 `utm_medium=loops` en een mailingidentificerende `utm_campaign` op links naar
 traineesinonderwijs.nl, onderwijsin.nl en onderwijsloket.com, inclusief subdomeinen.
-`utm_content` is optioneel en identificeert een blok of tekst. De [algemene Onderwijs in-gids](references/onderwijs-in.md) geldt voor alle
+`utm_content` is optioneel en identificeert een blok of tekst. De [algemene Onderwijs in-gids](skills/nieuwsbrief-style-review/reference/onderwijs-in.md) geldt voor alle
 mailtypen: secties, theme-tokens, typografie, radiusregels, patronen en de vaste
 footer. Buttons hebben radius 4; secties en gewone afgeronde beelden/vlakken 8.
-De [deep dive-gids](references/onderwijs-in-deep-dive-template.md) voegt alleen voor
+De [deep dive-gids](skills/nieuwsbrief-style-review/reference/onderwijs-in-deep-dive-template.md) voegt alleen voor
 dat format structuur, rubrieken, aantallen en de statische deep dive-gesprekssectie
 toe. Andere formats hebben vrije passende inhoudelijke indeling.
-De [Trainees in onderwijs-gids](references/trainees-in-onderwijs.md) legt de
+De [Trainees in onderwijs-gids](skills/nieuwsbrief-style-review/reference/trainees-in-onderwijs.md) legt de
 verplichte header, footer en algemene stijl vast, met vrije inhoudsindeling.
-De [Trainees-patronen](references/trainees-in-onderwijs-patronen.md) gelden alleen
+De [Trainees-patronen](skills/nieuwsbrief-style-review/reference/trainees-in-onderwijs-patronen.md) gelden alleen
 voor aanwezige agenda-, icoon-, interview- en afsluitblokken. Beide teamgidsen
 vereisen betekenisvolle alttekst bij iedere afbeelding.
 
@@ -113,8 +113,13 @@ toolbeleid; dit pakket verandert geen workspacebeleid.
 ChatGPT Business en Codex zijn beoogde hosts. De Claude-catalogus bevat dezelfde
 package-identiteit voor consistentie, maar er is geen Claude MCP-configuratie
 meegeleverd: de OpenAI-appmapping levert daar geen Loops-verbinding. Installatie,
-activatie en runtimegedrag zijn op geen host geverifieerd. De skill en gedeelde
-referenties vereisen installatie van het hele pluginpakket.
+activatie en runtimegedrag zijn nog niet volledig geverifieerd. In issue #19 is
+bevestigd dat ChatGPT de skill laadt, maar plugin-rootreferenties niet kan lezen.
+Versie 0.1.3 verplaatst de zeven Markdown-referenties naar de skillmap om dit te
+testen; de regels blijven gelijk. Afbeeldingen blijven op pluginroot en hun
+toegankelijkheid via de skillreader blijft afzonderlijk ongeverifieerd.
+Zie het [experimentlog](https://github.com/onderwijsin/agents/blob/main/docs/nieuwsbrief-resource-experiment.md) voor de
+openstaande sync- en leestest. Installeer het hele pluginpakket.
 
 ## Acceptatie vóór ingebruikname
 
@@ -123,7 +128,7 @@ expliciet opgegeven previewadres; voer geen campagneverzending uit.
 
 | Scenario                                                   | Te verifiëren resultaat                                            |
 | ---------------------------------------------------------- | ------------------------------------------------------------------ |
-| Installeren in ChatGPT en Codex                            | Plugin vindbaar; reviewskill en beide referenties laden.           |
+| Installeren in ChatGPT en Codex                            | Plugin vindbaar; reviewskill en alle zeven referenties laden.      |
 | Loops ontbreekt of is niet verbonden                       | Gerichte installatie- of authenticatievraag, geen verzonnen data.  |
 | Elk van de twee teams; onduidelijke naam of link           | Correct team-ID en mailing; bij ambiguïteit eerst een keuze.       |
 | Niet vastgelegde huisstijl                                 | Geen huisstijlgoedkeuring of verzonnen teamregels.                 |
@@ -151,8 +156,8 @@ Aanvullende runtimechecks voor versie 0.2.0 staan eveneens open:
 
 ## Onderwijs in — broncontrole en referenties
 
-[Algemene stijl](references/onderwijs-in.md) geldt voor alle mails; de
-[deep dive-gids](references/onderwijs-in-deep-dive-template.md) wordt alleen voor dat
+[Algemene stijl](skills/nieuwsbrief-style-review/reference/onderwijs-in.md) geldt voor alle mails; de
+[deep dive-gids](skills/nieuwsbrief-style-review/reference/onderwijs-in-deep-dive-template.md) wordt alleen voor dat
 format extra geladen. Gedeelde footer en algemene patronen hebben één bron in de
 algemene gids. De deep dive-gids bewaart zijn eigen vaste gesprekstekst.
 
@@ -241,7 +246,7 @@ als hosttest uitgevoerd.
 
 ## Standaard reviewrapport
 
-Iedere afgeronde review gebruikt het [vaste rapportformat](references/reviewrapport.md):
+Iedere afgeronde review gebruikt het [vaste rapportformat](skills/nieuwsbrief-style-review/reference/reviewrapport.md):
 drie tabellen voor concrete verbeteracties, gebruikersverificatie en voorgestelde
 UTM-URL’s. Daarna volgen aanvullend advies, de feitelijke Guardian-uitkomst,
 wijzigingsstatus en benodigde keuzes. Hercontroles gebruiken hetzelfde format
