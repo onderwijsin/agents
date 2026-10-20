@@ -5,7 +5,14 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 import { parseDocument } from "yaml";
-import { bumpVersion, planRelease, prepareCommit, releaseTags, selectBump } from "./release.js";
+import {
+  bumpVersion,
+  planPreparation,
+  planRelease,
+  prepareCommit,
+  releaseTags,
+  selectBump,
+} from "./release.js";
 
 /** Run fixture Git commands without involving the contributor's checkout or hooks. */
 function git(root: string, ...args: string[]): string {
@@ -207,4 +214,64 @@ test("the tagging workflow publishes to a remote, tolerates retries and refuses 
     assert.throws(run, /Tag collision: alpha@1.2.4/);
     assert.equal(git(root, "--git-dir", remote, "rev-parse", "alpha@1.2.4"), base);
   });
+});
+
+test("release preparation migrates before versioning and commits resources, deletions and versions together", async () => {
+  await fixture(async (root) => {
+    await mkdir(join(root, "plugins/alpha/skills/draft"), { recursive: true });
+    await mkdir(join(root, "plugins/alpha/reference"));
+    await writeFile(join(root, "plugins/alpha/reference/style.md"), "# Style\n");
+    await writeFile(
+      join(root, "plugins/alpha/skills/draft/SKILL.md"),
+      "# Draft\n\n[Style](reference/style.md)\n",
+    );
+    const base = snapshot(root);
+    await writeFile(join(root, "README.md"), "Tooling-only PR\n");
+    const head = snapshot(root);
+    assert.deepEqual(planRelease(root, base, head).versions, {});
+    const plan = await planPreparation(root, base, head);
+    assert.deepEqual(plan.versions, { alpha: "1.2.4" });
+    const prepared = await prepareCommit(root, head, plan.updates);
+    assert.equal(git(root, "rev-parse", `${prepared}^`), head);
+    assert.equal(
+      git(root, "show", `${prepared}:plugins/alpha/skills/draft/reference/style.md`),
+      "# Style",
+    );
+    assert.equal(
+      JSON.parse(git(root, "show", `${prepared}:plugins/alpha/plugin.json`)).version,
+      "1.2.4",
+    );
+    assert.deepEqual((await planPreparation(root, base, prepared)).updates, []);
+    assert.equal(git(root, "status", "--porcelain"), "");
+    git(root, "reset", "--hard", prepared);
+    await writeFile(join(root, "plugins/alpha/skills/draft/SKILL.md"), "# Draft\n");
+    const edited = snapshot(root);
+    const cleanup = await planPreparation(root, base, edited);
+    assert.ok(
+      cleanup.updates.some(
+        (update) => update.path.endsWith("reference/style.md") && update.content === null,
+      ),
+    );
+    const cleaned = await prepareCommit(root, edited, cleanup.updates);
+    assert.equal(
+      git(root, "ls-tree", cleaned, "--", "plugins/alpha/skills/draft/reference/style.md"),
+      "",
+    );
+    assert.equal(git(root, "rev-parse", `${cleaned}^`), edited);
+  });
+});
+
+test("CI requires committed migration output before resource validation", async () => {
+  const workflow = parseDocument(
+    await readFile(new URL("../.github/workflows/prepare-release.yml", import.meta.url), "utf8"),
+  ).toJS() as {
+    jobs: { validate: { steps: { name?: string; run?: string }[] } };
+  };
+  const steps = workflow.jobs.validate.steps;
+  const migrate = steps.findIndex((step) => step.name === "Migrate references");
+  const committed = steps.findIndex((step) => step.name === "Require committed migration output");
+  const validate = steps.findIndex((step) => step.name === "Validate migrated resources");
+  assert.ok(migrate >= 0 && migrate < committed && committed < validate);
+  assert.match(steps[committed]?.run ?? "", /git diff --exit-code/);
+  assert.match(steps[committed]?.run ?? "", /git ls-files --others/);
 });

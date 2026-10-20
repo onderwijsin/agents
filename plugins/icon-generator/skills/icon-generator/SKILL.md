@@ -25,11 +25,11 @@ Beschrijf een relevante beperking alleen via het gevolg voor de gebruiker, bijvo
    Vraag bij ontbrekende of tegenstrijdige merkkeuze eenmaal welke van de drie stijlen bedoeld is.
 2. Lees alleen de bijbehorende stijlgids en inspecteer de daarin aangewezen referentie-iconen:
 
-   | Merk                  | Stijlgids                                                          |
-   | --------------------- | ------------------------------------------------------------------ |
-   | Onderwijs in          | [onderwijs-in](../../references/onderwijs-in.md)                   |
-   | Trainees in onderwijs | [trainees-in-onderwijs](../../references/trainees-in-onderwijs.md) |
-   | Onderwijsloket        | [onderwijsloket](../../references/onderwijsloket.md)               |
+   | Merk                  | Stijlgids                                                   |
+   | --------------------- | ----------------------------------------------------------- |
+   | Onderwijs in          | [onderwijs-in](reference/onderwijs-in.md)                   |
+   | Trainees in onderwijs | [trainees-in-onderwijs](reference/trainees-in-onderwijs.md) |
+   | Onderwijsloket        | [onderwijsloket](reference/onderwijsloket.md)               |
 
 3. Controleer of de gids concrete regels bevat en de eigen referentiebeelden visueel
    toegankelijk zijn. Volg bij een onvoltooide gids de ontbrekende-bronneninstructie in

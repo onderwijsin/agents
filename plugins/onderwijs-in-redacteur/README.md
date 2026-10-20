@@ -26,17 +26,20 @@ toolkit, rapportage, opiniestuk, inzicht, handreiking, developer resource en cas
 
 ## Referenties en eigenaarschap
 
-Voor websitewerk begin je bij [de websitewerkwijze](references/werkwijze-websiteredactie.md).
+Voor websitewerk begin je bij [de websitewerkwijze](skills/contentconcept-schrijven/reference/werkwijze-websiteredactie.md).
 Voor mailings begin je bij `nieuwsbrief-redactie` en zijn eigen referenties.
-Beide kanalen delen [spelling](references/spelling.md) en de
-[merkstem](references/toon-en-stijl.md); de merkstem legt geen universele
+Beide kanalen delen [spelling](skills/contentconcept-schrijven/reference/spelling.md) en de
+[merkstem](skills/contentconcept-schrijven/reference/toon-en-stijl.md); de merkstem legt geen universele
 websitezoekronde of websiteopbouw op. De website-typegidsen beschrijven uitsluitend
-websitecontent. [Bronnen ophalen](references/bronnen-ophalen.md) blijft de publieke
+websitecontent. [Bronnen ophalen](skills/contentconcept-schrijven/reference/bronnen-ophalen.md) blijft de publieke
 websiteleesroute; de nieuwsbriefskill gebruikt die wanneer inhoudsverificatie nodig is.
 
-De plugin bezit alle eigen skills en referenties binnen zijn pakket. Installeer het
-hele pakket; losse skillmappen zijn niet zelfstandig distributabel. De inhoudelijke
-[subject- en previewgids](references/subject-en-previewtekst.md) is hier canonical.
+De plugin bezit alle eigen skills en referenties binnen zijn pakket. Gedeelde
+bronnen staan in root `reference/`; de skills lezen uitsluitend hun eigen
+`reference/`-map. `pnpm references:sync` onderhoudt uitsluitend de benodigde
+kopieën per skill en hun ownershipmanifest. Bewerk de gedeelde bronnen in root
+`reference/`, niet de gegenereerde kopieën. Installeer het hele pakket. De inhoudelijke
+[subject- en previewgids](skills/nieuwsbrief-redactie/reference/subject-en-previewtekst.md) is hier canonical.
 Opmaak en exacte deep dive-structuur blijven canonical bij `nieuwsbrief-style-review`.
 Externe dependencies worden via de host ontdekt, niet via repositorypaden gekoppeld.
 
@@ -57,7 +60,7 @@ Na beide routes vraagt de skill apart of een volledige stijlreview gewenst is.
 Voor Loops-werk installeer je ook de
 [Loops-plugin](https://chatgpt.com/plugins/plugin_asdk_app_6a76060a3cbc81919eaaca7e37e830fe)
 en `nieuwsbrief-style-review` uit de repositorymarketplace. Lees
-[nieuwsbrief-stijlregels](references/nieuwsbrief-stijlregels.md) voor de
+[nieuwsbrief-stijlregels](skills/nieuwsbrief-redactie/reference/nieuwsbrief-stijlregels.md) voor de
 resource-overdracht en grenzen. Appmapping installeert externe skills/plugins niet.
 Zonder dependencies blijft chatredactie mogelijk; live schrijven wacht op herstel.
 De volledige stijlreview is optioneel, maar de stijlregels toepassen bij een
@@ -87,7 +90,7 @@ de beheerder zowel pluginbeleid als app-beschikbaarheid.
 [OpenAI-presentatiemetadata](https://developers.openai.com/plugins/build/plugins#add-openai-specific-metadata).
 Sync de marketplace na het bijwerken van het bestand en controleer beide weergaven.
 
-[Bronnen ophalen](references/bronnen-ophalen.md) beschrijft de Onderwijs in-app in ChatGPT,
+[Bronnen ophalen](skills/contentconcept-schrijven/reference/bronnen-ophalen.md) beschrijft de Onderwijs in-app in ChatGPT,
 de MCP-verbinding op andere hosts, tools, resources, paginering,
 statusfilters en een herstelroute wanneer subtype-metadata en toolschema verschillen.
 Bij websitewerk pauzeert de inhoudelijke taak bij onbereikbaar verplicht brononderzoek.

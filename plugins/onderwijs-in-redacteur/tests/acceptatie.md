@@ -16,7 +16,7 @@ hostruns. Test ze in iedere beoogde host en leg resultaten vast in het pakket-RE
 1. Installeer vanuit de lokale catalogus in een testomgeving.
 2. Controleer weergavenaam, versie en zes beschikbare skills.
 3. Open voor iedere skill een nieuwe chat en controleer activatie bij de eigen voorbeeldtaak.
-4. Controleer bij de websiteskills dat `../../references/werkwijze-websiteredactie.md`, de toon/spellinggids,
+4. Controleer bij de websiteskills dat `reference/werkwijze-websiteredactie.md`, de toon/spellinggids,
    de juiste typegids en bij expertise ook de subtypegids kan lezen.
 5. Controleer na workspace-sync dat de plugin geen Desktop only-label heeft.
    Controleer ook logo en composericoon. Verifieer dat de bestaande Onderwijs in-app

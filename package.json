@@ -35,7 +35,9 @@
     "lint": "pnpm lint:md && pnpm lint:ts",
     "typecheck": "tsc --noEmit",
     "validate": "tsx scripts/validate.ts",
-    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm validate && pnpm test",
+    "references:sync": "node scripts/sync-references.ts",
+    "references:check": "node scripts/sync-references.ts --check",
+    "check": "pnpm references:check && pnpm format:check && pnpm lint && pnpm typecheck && pnpm validate && pnpm test",
     "test": "tsx --test scripts/*.test.ts",
     "release:prepare": "node scripts/release.ts write",
     "release:check": "node scripts/release.ts check",
@@ -43,6 +45,7 @@
   },
   "devDependencies": {
     "@types/node": "26.6.5",
+    "consola": "3.4.2",
     "husky": "9.1.7",
     "lint-staged": "17.6.0",
     "markdownlint-cli2": "0.23.3",

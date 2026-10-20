@@ -9,8 +9,8 @@ realistic task examples, and clear expected results. Follow the
 Use `plugins/<plugin-name>/skills/<skill-name>/SKILL.md` and document usage in the plugin README.
 Create a single-skill plugin for an independent capability, or add the skill to an existing
 plugin when its audience and ownership fit. Follow [plugin authoring](creating-plugins.md)
-for the manifest and both catalog entries. Optional `references/`, `assets/`, and `scripts/`
-belong inside the skill or its containing plugin. The following is a documentation skeleton,
+for the manifest and both catalog entries. Runtime `reference/`, `assets/`, and `scripts/`
+belong inside the skill directory. The following is a documentation skeleton,
 not an existing capability:
 
 ```text
@@ -19,7 +19,8 @@ plugins/<plugin-name>/
   README.md
   skills/<skill-name>/
     SKILL.md
-    references/  (only if needed)
+    reference/  (only if needed)
+    assets/     (only if needed)
 ```
 
 ```yaml
@@ -48,11 +49,20 @@ available before beginning agent-authored instruction changes.
 
 Explain inputs, steps, expected outputs, verification, and when to ask for missing information.
 Keep the body focused and put detailed reference material in local files linked with relative
-Markdown paths. Skills may
-share resources inside their plugin root when the plugin is their explicit installation boundary;
-document that they cannot be installed separately. Do not reference a sibling package or rely on
+Markdown paths. Follow the resource contract below. Do not reference a sibling skill or package or rely on
 files installed only on the author's computer. Describe external services and environment
 requirements explicitly. Avoid model names, host-specific tools, and credentials by default.
+
+## Resource paths and validation
+
+Keep runtime references and assets inside the consuming skill. Use singular
+`reference/` for Markdown reference material and `assets/` for images; plugin
+presentation icons remain at plugin root.
+
+For shared sources, generated copies, Markdown dependency selection, ownership,
+cleanup and synchronization commands, follow
+[reference synchronization](reference-synchronization.md). Run synchronization after
+changing shared references or their consuming links, then run `pnpm check`.
 
 Use UTF-8 Markdown, one H1, fenced code blocks with languages, and YAML frontmatter only at the
 start of `SKILL.md`. Dutch instructions are welcome for Dutch-language work; explain the audience

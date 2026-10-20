@@ -1,8 +1,9 @@
 import { execFileSync } from "node:child_process";
-import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import type { ReferenceTree, ResourceUpdate } from "./sync-references.ts";
 
 /**
  * Manifest-native release planning shared by CI and local preparation.
@@ -12,7 +13,7 @@ import { fileURLToPath } from "node:url";
  */
 type Bump = "patch" | "minor" | "major";
 type Manifest = { name: string; version: string; [key: string]: unknown };
-type Update = { path: string; content: string };
+type Update = ResourceUpdate;
 /**
  * `updates` contains manifest replacements still needed in the head snapshot.
  * `versions` reports release candidates, including plugins already correctly bumped
@@ -232,6 +233,10 @@ export async function prepareCommit(
       execFileSync("git", args, { cwd: root, env, encoding: "utf8" });
     indexGit(["read-tree", head]); // Seed the isolated index with the complete PR snapshot.
     for (const update of updates) {
+      if (update.content === null) {
+        indexGit(["update-index", "--force-remove", "--", update.path]);
+        continue;
+      }
       const object = git(root, ["hash-object", "-w", "--stdin"], update.content).trim();
       indexGit(["update-index", "--add", "--cacheinfo", `100644,${object},${update.path}`]);
     }
@@ -252,6 +257,39 @@ export async function prepareCommit(
   } finally {
     await rm(directory, { recursive: true, force: true });
   }
+}
+
+/** Read only regular PR blobs for migration; reject symlinks/submodules before planning. */
+function referenceSnapshot(root: string, headRef: string): ReferenceTree {
+  const head = commit(root, headRef);
+  const entries = git(root, ["ls-tree", "-r", "-z", head, "--", "plugins/"])
+    .split("\0")
+    .filter(Boolean);
+  const paths = entries.map((entry) => {
+    const match = /^(100644|100755) blob [a-f0-9]+\t(.+)$/s.exec(entry);
+    if (!match?.[2]) throw new Error(`Reference migration requires regular plugin files: ${entry}`);
+    return match[2];
+  });
+  return { paths, read: async (path) => blob(root, head, path) };
+}
+
+/**
+ * Synchronize before version planning so generated resource changes also cause a bump.
+ * The temporary migration commit is only a Git object used for comparing snapshots;
+ * the final prepared commit has the original PR head as its parent and includes both
+ * resources and versions. No PR code is checked out or executed in the trusted job.
+ */
+export async function planPreparation(
+  root: string,
+  base: string,
+  head: string,
+  labels: string[] = [],
+): Promise<ReleasePlan> {
+  const { planReferences } = await import("./sync-references.ts");
+  const resources = await planReferences(referenceSnapshot(root, head));
+  const migrated = await prepareCommit(root, head, resources);
+  const versions = planRelease(root, base, migrated, labels);
+  return { updates: [...resources, ...versions.updates], versions: versions.versions };
 }
 
 /**
@@ -304,7 +342,23 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     if (mode === "tags") {
       console.log(releaseTags(root, base, head).join("\n"));
     } else {
-      const plan = planRelease(root, base, head, labels);
+      if (mode === "write") {
+        if (git(root, ["status", "--porcelain"]).trim())
+          throw new Error("Commit your changes before release:prepare");
+        if (commit(root, head) !== commit(root, "HEAD")) throw new Error("write requires HEAD");
+      }
+      if (mode === "check") {
+        const { planReferences } = await import("./sync-references.ts");
+        const drift = await planReferences(referenceSnapshot(root, head));
+        if (drift.length)
+          throw new Error(
+            `Reference migration is out of date: ${drift.map((update) => update.path).join(", ")}`,
+          );
+      }
+      const plan =
+        mode === "check"
+          ? planRelease(root, base, head, labels)
+          : await planPreparation(root, base, head, labels);
       // Keep diagnostics on stderr: CI captures prepare's stdout as a single SHA,
       // while the tagging workflow consumes one tag per stdout line.
       console.error(JSON.stringify(plan.versions));
@@ -314,10 +368,8 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
         );
       }
       if (mode === "write") {
-        if (git(root, ["status", "--porcelain"]).trim())
-          throw new Error("Commit your changes before release:prepare");
-        if (commit(root, head) !== commit(root, "HEAD")) throw new Error("write requires HEAD");
-        for (const update of plan.updates) await writeFile(join(root, update.path), update.content);
+        const { applyResourceUpdates } = await import("./sync-references.ts");
+        await applyResourceUpdates(root, plan.updates);
       }
       if (mode === "prepare") console.log(await prepareCommit(root, head, plan.updates));
     }

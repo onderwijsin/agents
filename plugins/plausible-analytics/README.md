@@ -96,7 +96,7 @@ discovery is unknown configuration, not evidence of absent sites or goals. Remai
 query limits include one breakdown dimension, no arbitrary ordering, no timestamp bounds
 or time-zone override, no behavioral session filters and no time-label inclusion option.
 Breakdown pages contain at most 1000 rows; conversion pages at most 10000. The
-[self-contained query guide](skills/plausible-analysis/references/queries.md) describes
+[self-contained query guide](skills/plausible-analysis/reference/queries.md) describes
 parameters, defaults, pagination, filters, coverage and examples.
 
 Conversions require configured, measurable goals. The skill cannot infer visitor

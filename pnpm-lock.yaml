@@ -11,6 +11,9 @@ importers:
       '@types/node':
         specifier: 26.6.5
         version: 26.6.5
+      consola:
+        specifier: 3.4.2
+        version: 3.4.2
       husky:
         specifier: 9.1.7
         version: 9.1.7
@@ -618,6 +621,10 @@ packages:
   commander@8.3.0:
     resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
     engines: {node: '>= 12'}
+
+  consola@3.4.2:
+    resolution: {integrity: sha512-5IKcdX0nnYavi6G7TtOhwkYzyjfJlatbjMjuLSfE2kYT5pMDOilZ4OvMhi637CcDICTmz3wARPoyhqyX1Y+XvA==}
+    engines: {node: ^14.18.0 || >=16.10.0}
 
   debug@4.4.3:
     resolution: {integrity: sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==}
@@ -1255,6 +1262,8 @@ snapshots:
   character-reference-invalid@2.0.1: {}
 
   commander@8.3.0: {}
+
+  consola@3.4.2: {}
 
   debug@4.4.3:
     dependencies:

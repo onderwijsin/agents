@@ -22,16 +22,16 @@ compatibility: Vereist het hele Redacteur-pakket. Voor Loops-werk zijn de Loops-
    bij redactie: “Wil je de wijzigingen direct in Loops laten maken?” Wacht op
    toestemming voor schrijven in Loops; werk intussen aan de inhoud. Een nee
    betekent volledige tekst in de chat, geen Loops-mutaties of previewverzending.
-3. Lees [de gedeelde merkstem](../../references/toon-en-stijl.md),
-   [spelling](../../references/spelling.md),
-   [nieuwsbrief-tone-of-voice](../../references/nieuwsbrief-tone-of-voice.md),
-   [nieuwsbrief-vorm-en-inhoud](../../references/nieuwsbrief-vorm-en-inhoud.md) en
-   [subject-en-previewtekst](../../references/subject-en-previewtekst.md).
+3. Lees [de gedeelde merkstem](reference/toon-en-stijl.md),
+   [spelling](reference/spelling.md),
+   [nieuwsbrief-tone-of-voice](reference/nieuwsbrief-tone-of-voice.md),
+   [nieuwsbrief-vorm-en-inhoud](reference/nieuwsbrief-vorm-en-inhoud.md) en
+   [subject-en-previewtekst](reference/subject-en-previewtekst.md).
    De websitewerkwijze en website-typegidsen gelden hier niet.
 4. Gebruik aangeleverde feiten en auteursnotities. Verifieer nieuwe organisatieclaims,
    artikelinhoud, functies, datums en bestemmingen bij relevante actuele bronnen.
    Gebruik daarvoor waar nodig de discovery- en leesroute in
-   [bronnen ophalen](../../references/bronnen-ophalen.md), zonder het verplichte
+   [bronnen ophalen](reference/bronnen-ophalen.md), zonder het verplichte
    websiteonderzoek of websiteoplevering over te nemen. Een complete, aangeleverde
    mail vraagt geen zoekronde alleen voor spelling. Als verificatie niet lukt:
    schrijf wat wel onderbouwd is en markeer onzekerheid; claim geen voltooid onderzoek.
@@ -87,7 +87,7 @@ browserfallback. Chatredactie kan doorgaan zonder Loops-interactie.
 
 ## Werk in Loops na toestemming
 
-1. Lees vóór Loops-werk [nieuwsbrief-stijlregels](../../references/nieuwsbrief-stijlregels.md).
+1. Lees vóór Loops-werk [nieuwsbrief-stijlregels](reference/nieuwsbrief-stijlregels.md).
    Controleer de Loops-plugin en de geïnstalleerde `nieuwsbrief-style-review` met
    zijn referenties. Gebruik `loops-lmx` en de aangewezen resources voor markup;
    gebruik de overige Loops-skills alleen waar hun eigen trigger geldt.

@@ -14,24 +14,24 @@ Deze skill behandelt websitecontent. Voor nieuwsbrieven en mailings gebruik je
 
 1. Stel bronmateriaal, onderwerp, doelgroep en doel vast.
    Zonder tekst of concrete route vraag je om het bronmateriaal.
-   Lees [bronnen ophalen](../../references/bronnen-ophalen.md) en zoek vóór de
+   Lees [bronnen ophalen](reference/bronnen-ophalen.md) en zoek vóór de
    inhoudelijke taak via de Onderwijs in-verbinding naar relevant bestaand materiaal. Lees de geselecteerde
    documenten volledig; haal ook het bronitem op als een publieke route is aangeleverd.
    Gebruik de gevonden teksten als referentie voor deze taak. Bij een onbereikbare app of MCP-verbinding
    volg je de herstelroute; een tekst uit een eerdere taak vervangt deze stap niet.
-2. Lees [de gedeelde redactionele werkwijze](../../references/werkwijze-websiteredactie.md),
-   [toon en stijl](../../references/toon-en-stijl.md) en
-   [spelling](../../references/spelling.md). Kies en lees de contenttypegids;
+2. Lees [de gedeelde redactionele werkwijze](reference/werkwijze-websiteredactie.md),
+   [toon en stijl](reference/toon-en-stijl.md) en
+   [spelling](reference/spelling.md). Kies en lees de contenttypegids;
    bepaal bij expertise het subtype via actuele metadata en lees de subtypegids.
    Gebruik de gevonden voorbeelden om de toepassing van de schrijfregels af te stemmen.
    Vraag om een keuze wanneer het type de uitkomst wezenlijk verandert.
-3. Lees [structuur en samenhang](../../references/structuur.md). Inventariseer alle
+3. Lees [structuur en samenhang](reference/structuur.md). Inventariseer alle
    inhoudelijke punten en bronnen. Bepaal kernantwoord en volgorde voor dit contenttype.
 4. Herorden secties en alinea's, herschrijf overgangen en maak passende koppen.
    Schrap doublures met behoud van unieke informatie. Vul ontbrekende onderdelen
    uitsluitend uit de aangeleverde tekst/gelezen bron, anders met een invulpunt.
 5. Controleer punt voor punt dat geen betekenis of voorwaarde is verloren.
-   Voer de volledige [spellingcontrole](../../references/spelling.md) uit en houd
+   Voer de volledige [spellingcontrole](reference/spelling.md) uit en houd
    de basisstem passend zonder ongevraagde stilistische verbouwing.
 6. Lever de volledige tekst met de nieuwe structuur in de chat. Licht maximaal drie
    belangrijke ingrepen toe en vermeld eventuele inhoudelijke gaten.

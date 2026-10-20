@@ -14,7 +14,7 @@ voorgestelde vervolgcontroles afzonderlijk.
 
 Bepaal site/domein, rapportagetijdzone van de site, exacte periode, vraag, meetwaarden en
 gewenste uitvoervorm uit het gesprek en de site-instellingen. Lees vóór de eerste query
-de [querygids](references/queries.md). Gebruik `get_sites` om de bedoelde site, tijdzone
+de [querygids](reference/queries.md). Gebruik `get_sites` om de bedoelde site, tijdzone
 en lokale datum (`today`) op te halen: met `site_id` voor een genoemde site, met
 `use_default: true` voor de ingestelde standaardsite, of zonder selectie om toegankelijke
 sites te vinden. Vraag alleen om een keuze wanneer meerdere sites passend zijn.
@@ -121,7 +121,7 @@ campagne-effectiviteit. Omzet vereist een expliciet beschikbare, ingestelde meti
 
 ## Lever de gewenste uitvoer
 
-Lees voor grafieken of PDF de [uitvoervormen](references/output-modes.md). Lever standaard
+Lees voor grafieken of PDF de [uitvoervormen](reference/output-modes.md). Lever standaard
 een beknopt chatrapport. Vermeld site, exacte datums, rapportagetijdzone, volledigheid,
 KPI-waarden of gerangschikte resultaten, een korte interpretatie, relevante beperkingen
 en een notitie waarmee de analyse kan worden herhaald. Gebruik de taal van de gebruiker

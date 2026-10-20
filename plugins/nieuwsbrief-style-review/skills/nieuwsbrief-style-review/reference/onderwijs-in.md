@@ -85,13 +85,13 @@ OI-HEADER-01: als een illustratieve header past, gebruik een goedgekeurde
 transparante PNG uit `assets/onderwijsin/header/` binnen dit pluginpakket.
 Volledige contentbreedte (`width=580`), intacte beeldverhouding, geen witte
 kaart of toegevoegde radius. Header is algemeen optioneel; bij deep dives verplicht.
-De bestanden [1.png](../../../assets/onderwijsin/header/1.png) tot en met
-[6.png](../../../assets/onderwijsin/header/6.png) vormen de poppetjes/blokken-serie.
+De bestanden [1.png](../assets/onderwijsin/header/1.png) tot en met
+[6.png](../assets/onderwijsin/header/6.png) vormen de poppetjes/blokken-serie.
 Een andere gehoste bestandsnaam vraagt beeldvergelijking of betrouwbare mapping.
 
 OI-ICOON-01: gebruik voor het illustratieve icoonpatroon waar passend een PNG uit
-`assets/onderwijsin/icons/`, met zachte lichtpaarse achtergrond `#ebe9ee` en radius 8. Voorbeelden: [Boeken.png](../../../assets/onderwijsin/icons/Boeken.png) en
-[Code laptop.png](../../../assets/onderwijsin/icons/Code%20laptop.png).
+`assets/onderwijsin/icons/`, met zachte lichtpaarse achtergrond `#ebe9ee` en radius 8. Voorbeelden: [Boeken.png](../assets/onderwijsin/icons/Boeken.png) en
+[Code laptop.png](../assets/onderwijsin/icons/Code%20laptop.png).
 Het veelgebruikte compacte patroon is links icoon, rechts titel/beschrijving:
 `Columns gap=12 widths=22,78 stackOnMobile=false paddingTop=12 paddingBottom=12`,
 `Image width=87.08 borderRadius=8`, beschrijving 12 px grijs.

@@ -14,19 +14,19 @@ Deze skill behandelt websitecontent. Voor nieuwsbrieven en mailings gebruik je
 
 1. Stel bronmateriaal, onderwerp, doelgroep en doel vast.
    Zonder concreet idee vraag je om het idee en de beoogde lezer.
-   Lees [bronnen ophalen](../../references/bronnen-ophalen.md) en zoek vóór de
+   Lees [bronnen ophalen](reference/bronnen-ophalen.md) en zoek vóór de
    inhoudelijke taak via de Onderwijs in-verbinding naar relevant bestaand materiaal. Lees de geselecteerde
    documenten volledig; haal ook het bronitem op als een publieke route is aangeleverd.
    Gebruik de gevonden teksten als referentie voor deze taak. Bij een onbereikbare app of MCP-verbinding
    volg je de herstelroute; een tekst uit een eerdere taak vervangt deze stap niet.
-2. Lees [de gedeelde redactionele werkwijze](../../references/werkwijze-websiteredactie.md),
-   [toon en stijl](../../references/toon-en-stijl.md) en
-   [spelling](../../references/spelling.md). Kies en lees de contenttypegids;
+2. Lees [de gedeelde redactionele werkwijze](reference/werkwijze-websiteredactie.md),
+   [toon en stijl](reference/toon-en-stijl.md) en
+   [spelling](reference/spelling.md). Kies en lees de contenttypegids;
    bepaal bij expertise het subtype via actuele metadata en lees de subtypegids.
    Gebruik de gevonden voorbeelden om de toepassing van de schrijfregels af te stemmen.
    Vraag om een keuze wanneer het type de uitkomst wezenlijk verandert.
-3. Lees [ideecriteria](../../references/ideecriteria.md) en
-   [bronnen ophalen](../../references/bronnen-ophalen.md). Zoek bestaande content op
+3. Lees [ideecriteria](reference/ideecriteria.md) en
+   [bronnen ophalen](reference/bronnen-ophalen.md). Zoek bestaande content op
    onderwerp én verwante lezersvragen. Lees de beste overeenkomsten volledig.
    Controleer ook relevante initiatieven en domeinen; zoekresultaten alleen zijn
    onvoldoende om overlap of nieuwheid te beoordelen.

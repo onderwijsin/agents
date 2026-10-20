@@ -113,13 +113,18 @@ toolbeleid; dit pakket verandert geen workspacebeleid.
 ChatGPT Business en Codex zijn beoogde hosts. De Claude-catalogus bevat dezelfde
 package-identiteit voor consistentie, maar er is geen Claude MCP-configuratie
 meegeleverd: de OpenAI-appmapping levert daar geen Loops-verbinding. Installatie,
-activatie en runtimegedrag zijn nog niet volledig geverifieerd. In issue #19 is
-bevestigd dat ChatGPT de skill laadt, maar plugin-rootreferenties niet kan lezen.
-Versie 0.1.3 verplaatst de zeven Markdown-referenties naar de skillmap om dit te
-testen; de regels blijven gelijk. Afbeeldingen blijven op pluginroot en hun
-toegankelijkheid via de skillreader blijft afzonderlijk ongeverifieerd.
-Zie het [experimentlog](https://github.com/onderwijsin/agents/blob/main/docs/nieuwsbrief-resource-experiment.md) voor de
-openstaande sync- en leestest. Installeer het hele pluginpakket.
+activatie en runtimegedrag zijn nog niet volledig geverifieerd. De skill leest
+uitsluitend eigen `reference/`- en `assets/`-resources. De zeven canonieke gidsen
+staan in plugin-root `reference/`; `pnpm references:sync` onderhoudt de benodigde
+skill-local kopieën en `.reference-manifest.json`. Bewerk de canonieke gidsen,
+niet de gegenereerde kopieën. De referentiebeelden staan in
+`skills/nieuwsbrief-style-review/assets/`; alleen het pluginicoon blijft onder
+root `assets/`. Installeer het hele pluginpakket.
+
+Controleer na marketplace-sync in een nieuwe chat dat alle zeven gidsen werkelijk
+leesbaar zijn en dat een review hun regels toepast. Controleer ook de beeldtoegang.
+Leg de geïmporteerde versie, exacte resource-URI's en resultaten vast bij de
+hostacceptatie. Deze runtimechecks blijven open; repositorychecks bewijzen ze niet.
 
 ## Acceptatie vóór ingebruikname
 

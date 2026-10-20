@@ -14,18 +14,18 @@ Deze skill behandelt websitecontent. Voor nieuwsbrieven en mailings gebruik je
 
 1. Stel bronmateriaal, onderwerp, doelgroep en doel vast.
    Zonder onderwerp of bruikbare brief vraag je naar de lezersvraag en het beschikbare materiaal.
-   Lees [bronnen ophalen](../../references/bronnen-ophalen.md) en zoek vóór de
+   Lees [bronnen ophalen](reference/bronnen-ophalen.md) en zoek vóór de
    inhoudelijke taak via de Onderwijs in-verbinding naar relevant bestaand materiaal. Lees de geselecteerde
    documenten volledig; haal ook het bronitem op als een publieke route is aangeleverd.
    Gebruik de gevonden teksten als referentie voor deze taak. Bij een onbereikbare app of MCP-verbinding
    volg je de herstelroute; een tekst uit een eerdere taak vervangt deze stap niet.
-2. Lees [de gedeelde redactionele werkwijze](../../references/werkwijze-websiteredactie.md),
-   [toon en stijl](../../references/toon-en-stijl.md) en
-   [spelling](../../references/spelling.md). Kies en lees de contenttypegids;
+2. Lees [de gedeelde redactionele werkwijze](reference/werkwijze-websiteredactie.md),
+   [toon en stijl](reference/toon-en-stijl.md) en
+   [spelling](reference/spelling.md). Kies en lees de contenttypegids;
    bepaal bij expertise het subtype via actuele metadata en lees de subtypegids.
    Gebruik de gevonden voorbeelden om de toepassing van de schrijfregels af te stemmen.
    Vraag om een keuze wanneer het type de uitkomst wezenlijk verandert.
-3. Lees [structuur](../../references/structuur.md). Verifieer bestaande organisatie-
+3. Lees [structuur](reference/structuur.md). Verifieer bestaande organisatie-
    en projectfeiten met de gelezen Onderwijs in-bronnen. Haal aanvullende documenten op
    als de brief feiten noemt die deze bronnen nog niet onderbouwen.
 4. Bepaal een invalshoek en opbouw volgens de type- en eventuele subtypegids.
@@ -35,7 +35,7 @@ Deze skill behandelt websitecontent. Voor nieuwsbrieven en mailings gebruik je
 5. Controleer alle inhoudelijke claims op herkomst en actualiteit. Markeer onbekende
    namen, cijfers, voorwaarden, citaten, status en links met gerichte invulpunten.
    Geef de lezer voldoende uitleg zonder ontbrekend bewijs met overtuigende taal te vullen.
-6. Voer de volledige [spellingcontrole](../../references/spelling.md) uit.
+6. Voer de volledige [spellingcontrole](reference/spelling.md) uit.
    Lever het complete concept rechtstreeks in de chat, met daarna korte bronvermelding
    en de gegevens die nog aangevuld of bevestigd moeten worden.
 

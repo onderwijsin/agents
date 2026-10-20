@@ -39,10 +39,13 @@ voor de vaste structuur en templatespecifieke blokken. Campagnes, gepauzeerde wo
 drafts vallen binnen de review. Volledige huisstijlgoedkeuring en runtimecompatibiliteit
 zijn nog niet aangetoond. Zie de package-README voor rechten, bronnen en acceptatiechecks.
 
-Versie 0.1.3 test skill-local Markdown-referenties na gemelde leesfouten op
-plugin-rootreferenties. Het [experimentlog](nieuwsbrief-resource-experiment.md)
-bevat de kandidaatversie, teststappen en nog in te vullen sync- en leesresultaten.
-Dit is nog geen bevestigde oplossing of algemene verpakkingsregel voor andere plugins.
+Referenties worden vanuit hun canonieke plugin-rootbronnen naar de benodigde
+skill-local `reference/`-mappen gesynchroniseerd. De
+[resourceafspraken](reference-synchronization.md) beschrijven
+eigenaarschap en paden; de [releaseworkflow](releases.md) commit de kopieën vóór
+merge. Na **Sync now** blijft een nieuwe chat nodig om werkelijke referentie-inhoud,
+beeldtoegang en toepassing van de regels te controleren. Repositoryvalidatie
+bewijst geen geïnstalleerde resource-toegang.
 
 ## Nieuwsbriefredactie en afhankelijkheden
 
