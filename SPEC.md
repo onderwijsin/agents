@@ -90,8 +90,9 @@ starterskill `adviesvraag-onderbouwen` is vervangen en vormt geen zesde skill.
    Referenties en voorbeelden beschrijven processen en antwoordvormen, geen statische
    onderwijsfeiten of aanbodinformatie.
 
-Feedback deelt volgens het huidige servercontract de volledige huidige conversatie;
-dat vraagt een afzonderlijk consentproces, ook bij professionele casussen.
+Feedback deelt de volledige server-snapshot in de webchat; externe clients kunnen
+gedeeltelijke JSON-context aanleveren of die weglaten. Toestemming moet de werkelijke
+deling beschrijven, ook bij professionele casussen.
 Plugininstructies verlenen of beperken geen servicerechten: eventuele strengere
 backofficepermissies moeten door de service en workspace worden afgedwongen.
 

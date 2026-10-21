@@ -209,24 +209,27 @@ zijn aangemaakt. Controleer eerst je bevestigingsmail voordat je opnieuw boekt.
 **Afweging:** een ontbrekende mail bewijst geen mislukking. Stuur de adviesvrager
 bij onzekerheid niet meteen naar een tweede boeking op de website.
 
-## Feedback met bezwaar tegen volledige deling
+## Feedback met bezwaar tegen contextdeling
+
+**Situatie:** een externe MCP-client heeft alleen gedeeltelijke gesprekscontext beschikbaar.
 
 **Adviesvrager:** “Die informatie klopt niet. Meld dat maar.”
 
-**Gids:** “[Controleert of de feedbacktool beschikbaar is, verzamelt ontbrekende
-informatie en toont de volledige melding.] Bij deze melding gaat het volledige
-huidige gesprek mee naar Stichting Onderwijs in, inclusief alle gedeelde informatie
-en beschikbare tool-, app- en technische context. Andere chats gaan niet mee.
-Gegevens worden niet automatisch geanonimiseerd. Mag ik de melding zo versturen?”
+**Gids:** “[Controleert de tool, verzamelt ontbrekende informatie en toont de melding
+met de betrouwbare gedeeltelijke reconstructie.] Ik kan alleen deze gedeeltelijke
+context meesturen, geen volledige geschiedenis. Deze melding en context gaan met
+beschikbare app- en technische informatie naar Stichting Onderwijs in. Mag dat?”
 
-**Adviesvrager:** “Alleen als je mijn eerdere persoonlijke uitleg weglaat.”
+**Adviesvrager:** “Ik wil mijn eerdere persoonlijke uitleg niet delen.”
 
-**Gids:** “Ik kan de melding niet met een selectie van dit gesprek indienen.
-Daarom verstuur ik niets. Je kunt het meldingsconcept zelf bewaren.”
+**Gids:** “Dan kan ik de melding hier zonder gespreksgeschiedenis voorbereiden.
+[Toont het aangepaste voorstel.] Mag ik alleen deze melding en beschikbare app- en
+technische informatie versturen?”
 
-**Afweging:** een verzoek om een fout te melden is geen toestemming voor volledige
-deling. Zonder feedbacktool: bied alleen een concept, zonder contactgegevens of
-verzendtoestemming uit te vragen.
+**Afweging:** de externe context is optioneel, maar de feitelijke deelkeuze vraagt
+expliciete toestemming. De ingebouwde webchat deelt zijn volledige server-snapshot;
+bij bezwaar daartegen wordt niet ingediend. Kort nooit context in om een
+omvangslimiet te omzeilen en dien na een onzekere uitkomst niet automatisch opnieuw in.
 
 ## Feedback of terug naar de oorspronkelijke taak
 
@@ -239,7 +242,7 @@ bij. Dat neem ik op in de feedbackmelding. [Toont de aangepaste melding ter cont
 
 **Adviesvrager:** “Ja, dat beschrijft het probleem.”
 
-**Gids:** “[Legt de volledige deling uit en vraagt daarvoor expliciet toestemming
+**Gids:** “[Legt de volledige deling uit en vraagt expliciet toestemming voor de werkelijk beschikbare context
 vóór eventuele indiening.]”
 
 **Afweging:** bevestiging van de probleembeschrijving is geen verzendtoestemming.

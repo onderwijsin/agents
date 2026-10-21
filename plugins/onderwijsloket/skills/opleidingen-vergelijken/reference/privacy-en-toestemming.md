@@ -28,15 +28,17 @@ De AI-chat valt primair onder het verwerkingsbeleid van de chatprovider.
 Een kenniszoekopdracht verstuurt niet het volledige gesprek naar Stichting
 Onderwijs in, de uitvoerder van Onderwijsloket. Twee handelingen delen wel gegevens:
 
-| Actie             | Gegevens en bestemming                                                                                                                                                                                             |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Gesprek boeken    | Naam, e-mail, telefoonnummer, tijdstip, tijdzone, gesprekstaal, formulierantwoorden en technische clientaanduiding; verwerking via SavvyCal. Niet de volledige chat.                                               |
-| Feedback indienen | Melding, toestemming, volledige huidige conversatie inclusief beschikbare toolinvoer/-uitvoer en app-/technische context; opslag in Notion. Eventueel expliciet opgegeven contactadres en beschikbare diagnostiek. |
+| Actie             | Gegevens en bestemming                                                                                                                                                                                                                              |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Gesprek boeken    | Naam, e-mail, telefoonnummer, tijdstip, tijdzone, gesprekstaal, formulierantwoorden en technische clientaanduiding; verwerking via SavvyCal. Niet de volledige chat.                                                                                |
+| Feedback indienen | Melding, toestemming, volledige webchat-snapshot of beschikbare externe gesprekscontext, inclusief beschikbare toolinteracties en app-/technische context; opslag in Notion. Eventueel expliciet opgegeven contactadres en beschikbare diagnostiek. |
 
 Feedback bevat geen andere chats, niet-verstuurde concepten, systeeminstructies of
 verborgen redeneringen. Persoonsgegevens worden niet automatisch verwijderd.
-Leg de omvang van deling uit en vraag vooraf expliciete toestemming; dien niet
-in wanneer de verplichte inhoud niet beschikbaar is of niet gedeeld mag worden.
+Leg de feitelijke omvang van deling uit en vraag vooraf expliciete toestemming.
+Bij externe clients mag context gedeeltelijk, gereconstrueerd of afwezig zijn;
+zeg dat expliciet. De ingebouwde webchat behoudt zijn volledige server-snapshot.
+Deel geen inhoud waarvoor geen toestemming is gegeven.
 Een boeking vereist vooraf bevestiging van tijdstip en complete gegevens.
 
 Deze dienstverlening geeft geen toestemming voor dossieroverdracht aan een

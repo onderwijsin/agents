@@ -51,7 +51,7 @@ De API-documentatie-app vervangt de inhoudsbron niet.
 
 Boeken en feedback vereisen hun eigen actietools en expliciete toestemming. De
 skills controleren beschikbaarheid vóór persoonlijke intake. Feedback deelt de
-volledige huidige conversatie; dossiers worden nooit doorgestuurd naar verwijspartijen.
+volledige webchat-snapshot of beschikbare externe context na passende toestemming; dossiers worden nooit doorgestuurd naar verwijspartijen.
 Dit pakket biedt geen inbox-, CRM- of CMS-schrijftoegang.
 
 ## Referenties en verificatie
