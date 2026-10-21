@@ -13,7 +13,9 @@
       "apps": "./.app.json",
       "interface": {
         "displayName": "Onderwijsloket",
-        "shortDescription": "Verken jouw mogelijkheden om in het onderwijs te werken."
+        "shortDescription": "Verken jouw mogelijkheden om in het onderwijs te werken.",
+        "logo": "./assets/plugin-icon.png",
+        "composerIcon": "./assets/plugin-icon.png"
       }
     }
   }

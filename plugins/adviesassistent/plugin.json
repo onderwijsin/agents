@@ -12,7 +12,9 @@
     "com.openai": {
       "interface": {
         "displayName": "Adviesassistent Onderwijsloket",
-        "shortDescription": "Onderbouw advies, mails en content met Onderwijsloket."
+        "shortDescription": "Onderbouw advies, mails en content met Onderwijsloket.",
+        "logo": "./assets/plugin-icon.png",
+        "composerIcon": "./assets/plugin-icon.png"
       },
       "apps": "./.app.json"
     }
