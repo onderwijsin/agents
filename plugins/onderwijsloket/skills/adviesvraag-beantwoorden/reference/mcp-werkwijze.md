@@ -1,9 +1,12 @@
-# Werken met de Onderwijsloket MCP
+# Werken met de onderwijsloket-app
+
+In ChatGPT is toegang tot de geregistreerde onderwijsloket-app nodig. Deze biedt
+toegang tot de MCP-server. Andere hosts gebruiken een directe MCP-verbinding.
 
 ## Live informatie als uitgangspunt
 
 Haal onderwijsinformatie, routevoorwaarden, aanbod, diensten en contactgegevens
-via de Onderwijsloket MCP op. Skills en referenties bevatten werkwijzen en
+via de onderwijsloket-app op. Skills en referenties bevatten werkwijzen en
 voorbeeldpatronen, geen antwoordenbank. Gebruik ook bij bekende onderwerpen de
 MCP; verzin geen ontbrekende feiten of hergebruik voorbeeldgegevens als bewijs.
 Reeds in het huidige gesprek gelezen informatie mag worden hergebruikt als die

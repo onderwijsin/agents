@@ -2,7 +2,7 @@
 name: onderwijsroute-verkennen
 description: Verken mogelijke routes vanuit iemands opleiding naar gewenst werk in het onderwijs, of leg een specifieke route uit. Gebruik de actuele MCP-routevragen voor persoonlijke matching, niet voor een losse begripsvraag.
 license: MIT
-compatibility: Vereist de inhouds-MCP van Onderwijsloket en de meegeleverde skillreferenties.
+compatibility: Vereist in ChatGPT toegang tot de geregistreerde onderwijsloket-app; in andere hosts een directe MCP-verbinding. Gebruikt de meegeleverde skillreferenties.
 ---
 
 # Onderwijsroute verkennen

@@ -2,7 +2,7 @@
 name: onderwijsvraag-verkennen
 description: Verhelder brede interesse of een onduidelijke informatiebehoefte over werken in het onderwijs. Gebruik bij vragen als waar begin ik of welke richting past; beantwoord een al concrete vraag zonder volledige intake.
 license: MIT
-compatibility: Vereist de inhouds-MCP van Onderwijsloket en de meegeleverde skillreferenties.
+compatibility: Vereist in ChatGPT toegang tot de geregistreerde onderwijsloket-app; in andere hosts een directe MCP-verbinding. Gebruikt de meegeleverde skillreferenties.
 ---
 
 # Onderwijsvraag verkennen

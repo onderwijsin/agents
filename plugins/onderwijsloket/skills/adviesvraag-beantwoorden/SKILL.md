@@ -2,7 +2,7 @@
 name: adviesvraag-beantwoorden
 description: Beantwoord een concrete vraag over werken in het Nederlandse onderwijs, zoals begrippen, kwalificaties, opleidingsmogelijkheden of arbeidsvragen. Gebruik voor een inhoudelijk antwoord of vervolgvraag, niet voor een volledige oriëntatie-intake.
 license: MIT
-compatibility: Vereist de inhouds-MCP van Onderwijsloket en de meegeleverde skillreferenties.
+compatibility: Vereist in ChatGPT toegang tot de geregistreerde onderwijsloket-app; in andere hosts een directe MCP-verbinding. Gebruikt de meegeleverde skillreferenties.
 ---
 
 # Adviesvraag beantwoorden

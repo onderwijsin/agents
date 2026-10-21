@@ -2,7 +2,7 @@
 name: adviesgesprek-plannen
 description: Help een telefonisch adviesgesprek met Onderwijsloket plannen wanneer de gebruiker dat vraagt. Gebruik ook na instemming met een gesprek bij een onopgeloste complexe adviesvraag; maak geen afspraak zonder bevestiging van de complete boeking.
 license: MIT
-compatibility: Vereist toegang tot de inhouds-MCP van Onderwijsloket; acties vereisen de bijbehorende schrijftools.
+compatibility: Vereist in ChatGPT toegang tot de geregistreerde onderwijsloket-app; in andere hosts een directe MCP-verbinding. Acties vereisen de bijbehorende schrijftools.
 ---
 
 # Adviesgesprek plannen

@@ -2,7 +2,7 @@
 name: ervaringen-ontdekken
 description: Vind en bespreek ervaringsverhalen, podcastafleveringen of video’s over werken in het onderwijs. Gebruik voor inspiratie, herkenbare afwegingen of media bij een besproken onderwerp; ervaringen bepalen geen toelating.
 license: MIT
-compatibility: Vereist de inhouds-MCP van Onderwijsloket en de meegeleverde skillreferenties.
+compatibility: Vereist in ChatGPT toegang tot de geregistreerde onderwijsloket-app; in andere hosts een directe MCP-verbinding. Gebruikt de meegeleverde skillreferenties.
 ---
 
 # Ervaringen ontdekken

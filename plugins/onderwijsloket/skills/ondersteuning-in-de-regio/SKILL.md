@@ -2,7 +2,7 @@
 name: ondersteuning-in-de-regio
 description: Zoek regionale onderwijsadviesloketten en oriëntatieondersteuning rond een plaats of regio. Gebruik voor lokaal advies, meelooporiëntatie of contactmogelijkheden; vergelijk opleidingen met de opleidingsworkflow.
 license: MIT
-compatibility: Vereist de inhouds-MCP van Onderwijsloket en de meegeleverde skillreferenties.
+compatibility: Vereist in ChatGPT toegang tot de geregistreerde onderwijsloket-app; in andere hosts een directe MCP-verbinding. Gebruikt de meegeleverde skillreferenties.
 ---
 
 # Ondersteuning in de regio

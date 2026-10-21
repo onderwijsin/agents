@@ -2,7 +2,7 @@
 name: adviesgesprek-voorbereiden
 description: Bereid een Onderwijsloket-adviesgesprek voor op basis van een hulpvraag, casus of eerdere correspondentie. Lever een compacte interne voorbereiding met bronfeiten, open vragen en agenda; gebruik niet om een afspraak te boeken.
 license: MIT
-compatibility: Vereist de inhouds-MCP van Onderwijsloket en de meegeleverde skillreferenties.
+compatibility: Vereist in ChatGPT toegang tot de geregistreerde onderwijsloket-app; in andere hosts een directe MCP-verbinding. Gebruikt de meegeleverde skillreferenties.
 ---
 
 # Adviesgesprek voorbereiden

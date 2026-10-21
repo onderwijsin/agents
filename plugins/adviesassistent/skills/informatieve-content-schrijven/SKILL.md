@@ -2,7 +2,7 @@
 name: informatieve-content-schrijven
 description: Schrijf nieuwe Onderwijsloket-artikelen, FAQ-antwoorden of andere informatieve concepten uit een lezersvraag en brief. Gebruik ook voor ervaringscontent met echt bronmateriaal; bestaande teksten controleren hoort bij kenniscontent-controleren.
 license: MIT
-compatibility: Vereist de inhouds-MCP van Onderwijsloket en de meegeleverde skillreferenties.
+compatibility: Vereist in ChatGPT toegang tot de geregistreerde onderwijsloket-app; in andere hosts een directe MCP-verbinding. Gebruikt de meegeleverde skillreferenties.
 ---
 
 # Informatieve content schrijven

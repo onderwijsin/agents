@@ -2,7 +2,7 @@
 name: opleidingen-vergelijken
 description: Vergelijk concrete opleidingen of opleidingsvarianten voor werken in het onderwijs, of zoek alternatieven voor een bekende opleiding. Gebruik bij een keuze tussen aanbieders, trajecten, locaties of studievormen.
 license: MIT
-compatibility: Vereist de inhouds-MCP van Onderwijsloket en de meegeleverde skillreferenties.
+compatibility: Vereist in ChatGPT toegang tot de geregistreerde onderwijsloket-app; in andere hosts een directe MCP-verbinding. Gebruikt de meegeleverde skillreferenties.
 ---
 
 # Opleidingen vergelijken

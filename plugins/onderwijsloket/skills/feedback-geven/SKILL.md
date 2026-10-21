@@ -2,7 +2,7 @@
 name: feedback-geven
 description: Bereid een melding voor over onjuiste informatie, een technisch probleem of andere feedback op Onderwijsloket. Controleer de melding en vraag expliciete toestemming voor verzending van de melding en de werkelijk beschikbare gesprekscontext.
 license: MIT
-compatibility: Vereist toegang tot de inhouds-MCP van Onderwijsloket; acties vereisen de bijbehorende schrijftools.
+compatibility: Vereist in ChatGPT toegang tot de geregistreerde onderwijsloket-app; in andere hosts een directe MCP-verbinding. Acties vereisen de bijbehorende schrijftools.
 ---
 
 # Feedback geven

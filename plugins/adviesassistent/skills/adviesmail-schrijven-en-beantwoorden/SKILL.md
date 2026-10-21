@@ -2,7 +2,7 @@
 name: adviesmail-schrijven-en-beantwoorden
 description: Schrijf een nieuwe adviesmail of antwoord op een aangeleverde mailwisseling voor een Onderwijsloket-adviseur. Gebruik ook om een bestaande adviesmail te redigeren; lever een concept voor de adviesvrager, geen verzending.
 license: MIT
-compatibility: Vereist de inhouds-MCP van Onderwijsloket en de meegeleverde skillreferenties.
+compatibility: Vereist in ChatGPT toegang tot de geregistreerde onderwijsloket-app; in andere hosts een directe MCP-verbinding. Gebruikt de meegeleverde skillreferenties.
 ---
 
 # Adviesmail schrijven en beantwoorden

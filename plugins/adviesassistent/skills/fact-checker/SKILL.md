@@ -2,7 +2,7 @@
 name: fact-checker
 description: Toets een concrete feitelijke claim over werken in het onderwijs met Onderwijsloket-bronnen. Gebruik voor een onderbouwd oordeel over een bewering of haar deelclaims; volledige tekstredactie hoort bij kenniscontent-controleren.
 license: MIT
-compatibility: Vereist de inhouds-MCP van Onderwijsloket en de meegeleverde skillreferenties.
+compatibility: Vereist in ChatGPT toegang tot de geregistreerde onderwijsloket-app; in andere hosts een directe MCP-verbinding. Gebruikt de meegeleverde skillreferenties.
 ---
 
 # Fact-checker

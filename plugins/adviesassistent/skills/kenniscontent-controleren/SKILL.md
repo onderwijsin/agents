@@ -2,7 +2,7 @@
 name: kenniscontent-controleren
 description: Controleer of redigeer bestaande Onderwijsloket-kenniscontent op juistheid, volledigheid, structuur, toon en spelling. Gebruik voor een volledige tekst of een gerichte redactie-ingreep; een losse feitelijke claim hoort bij fact-checker.
 license: MIT
-compatibility: Vereist de inhouds-MCP van Onderwijsloket en de meegeleverde skillreferenties.
+compatibility: Vereist in ChatGPT toegang tot de geregistreerde onderwijsloket-app; in andere hosts een directe MCP-verbinding. Gebruikt de meegeleverde skillreferenties.
 ---
 
 # Kenniscontent controleren

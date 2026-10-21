@@ -1,9 +1,12 @@
-# Werken met de Onderwijsloket MCP
+# Werken met de onderwijsloket-app
+
+In ChatGPT is toegang tot de geregistreerde onderwijsloket-app nodig. Deze biedt
+toegang tot de MCP-server. Andere hosts gebruiken een directe MCP-verbinding.
 
 ## Brononderzoek
 
 Haal onderwijsfeiten, routevoorwaarden, aanbod, bedragen, dienstverlening en
-contactgegevens via de Onderwijsloket MCP op. Referenties geven werkwijzen en
+contactgegevens via de onderwijsloket-app op. Referenties geven werkwijzen en
 schrijfafspraken; voorbeelden tonen een antwoordvorm, geen actuele waarheid.
 Aangeleverde mails en notities beschrijven de casus of te controleren tekst;
 verifieer hun onderwijsclaims via de MCP. Gebruik geen statische antwoordenbank.
