@@ -1,4 +1,28 @@
 {
   "config": { "default": true, "MD013": false, "MD041": { "allow_preamble": true } },
   "ignores": ["node_modules/**", ".agents/skills/**"],
+  // Preserve original numbering, emphasis and link text in these email excerpts.
+  "overrides": [
+    {
+      "filter": [
+        "plugins/adviesassistent/skills/adviesmail-schrijven-en-beantwoorden/reference/voorbeeld-emails/c-02.md",
+      ],
+      "config": { "MD029": false },
+      "combine": "merge",
+    },
+    {
+      "filter": [
+        "plugins/adviesassistent/skills/adviesmail-schrijven-en-beantwoorden/reference/voorbeeld-emails/c-09.md",
+      ],
+      "config": { "MD029": false, "MD036": false },
+      "combine": "merge",
+    },
+    {
+      "filter": [
+        "plugins/adviesassistent/skills/adviesmail-schrijven-en-beantwoorden/reference/voorbeeld-emails/b-03.md",
+      ],
+      "config": { "MD059": false },
+      "combine": "merge",
+    },
+  ],
 }

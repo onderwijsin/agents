@@ -17,6 +17,13 @@ skills in `.agents/skills/` are separate and are not distributed through our mar
 
 ## Use the collection
 
+Onderwijsloket development scaffolds: [Onderwijsloket](plugins/onderwijsloket/README.md)
+for people exploring education careers and
+[Adviesassistent Onderwijsloket](plugins/adviesassistent/README.md)
+for advisers. See [SPEC.md](SPEC.md) for proposed skills and
+required references. Both reference the same registered ChatGPT app; connection and host acceptance
+remain unverified.
+
 | Name                                                                   | Type   | Description                                                                                                                                |
 | ---------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | [Onderwijs in Redacteur](plugins/onderwijs-in-redacteur/README.md)     | Plugin | Edit and write Dutch website content and newsletters; return text in chat or prepare a Loops draft with separate style-review support.     |
