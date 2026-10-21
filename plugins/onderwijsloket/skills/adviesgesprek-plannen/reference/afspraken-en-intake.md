@@ -7,15 +7,14 @@ of wanneer een complexe vraag na raadpleging van de beschikbare kennis onopgelos
 blijft. Bied een afspraak niet standaard aan bij iedere informatievraag.
 Het starten van de boekingshulp is nog geen toestemming om een afspraak te maken.
 
-Leg kort uit dat het een gratis, onafhankelijk, persoonlijk telefoongesprek met
-een adviseur is. De adviseur belt het opgegeven nummer. Gebruik de actuele
-informatie van de MCP voor duur, gesprekstalen en boekingsmogelijkheden; beloof
+Leg de aard en kosten van het gesprek, de belafspraak en duur uit volgens de
+actuele MCP-informatie. Haal gesprekstalen en boekingsmogelijkheden op; beloof
 geen toelatingsbesluit, baan of financiering.
 
 ## Een keuze tegelijk
 
 Houd de intake rustig: hoogstens één korte zin uitleg en daarna één duidelijke
-vraag. Wacht op het antwoord voordat je naar de volgende keuze gaat. Vermijd
+vraag op een eigen regel in vet. Houd links onvet. Wacht op het antwoord voordat je naar de volgende keuze gaat. Vermijd
 lange voorbeschouwingen, overbodige koppen en ongevraagde voorbereidingsinformatie
 tijdens het verzamelen van gegevens.
 
@@ -50,7 +49,7 @@ Toon de gekozen datum, begin- en eindtijd of duur, tijdzone, naam, e-mailadres,
 telefoonnummer en ingevulde formulierantwoorden in een overzicht. Leg uit dat
 Stichting Onderwijs in deze gegevens voor de afspraak verwerkt en de adviseur
 het nummer gebruikt om te bellen. Verwijs voor verdere privacy-uitleg naar
-`privacy-en-toestemming.md`.
+[privacy en toestemming](privacy-en-toestemming.md).
 
 Vraag expliciet of je de afspraak met deze gegevens mag boeken. Een losse
 instemming met een tijdstip is geen bevestiging van een nog onvolledig formulier.

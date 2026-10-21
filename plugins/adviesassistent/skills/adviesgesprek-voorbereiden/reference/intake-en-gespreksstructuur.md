@@ -28,11 +28,11 @@ bij voorkeur geanonimiseerde casusgegevens vast.
 2. Noteer ontbrekende informatie die een conclusie nog verhindert.
 3. Verzamel actuele bronnen voor de concrete vraag en scheid bronfeiten van
    mogelijke vervolgrichtingen. De bronregels staan in de gedeelde
-   `bronnen-en-feitencontrole.md`.
+   [bronnen en feitencontrole](bronnen-en-feitencontrole.md).
 4. Maak een korte agenda: wat eerst verduidelijken, welke opties bespreken en
    welke vragen aan de opleider of andere instantie voorleggen.
 5. Eindig met een voorgestelde vervolgstap en benoem wie de open vraag kan beantwoorden.
-   Gebruik daarvoor de gedeelde `advies-en-doorverwijzen.md`.
+   Gebruik daarvoor de gedeelde [advies en doorverwijzen](advies-en-doorverwijzen.md).
 
 Een instellingspraktijk levert geen individuele kansberekening of landelijke
 toelatingsvoorwaarde op. Een diploma dat niet wordt genoemd, ontbreekt niet

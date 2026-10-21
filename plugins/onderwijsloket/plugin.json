@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "onderwijsloket",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Verken werken in het onderwijs met een digitale assistent van het Onderwijsloket.",
   "author": {
     "name": "Onderwijs in"

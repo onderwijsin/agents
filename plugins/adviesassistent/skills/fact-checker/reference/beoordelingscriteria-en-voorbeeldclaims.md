@@ -10,7 +10,7 @@ een juist onderdeel compenseert een onjuist onderdeel niet.
 Een factcheck stelt vast wat het beschikbare bewijs ondersteunt. Hij vervangt
 geen individuele toelatingsbeslissing, subsidiebesluit of juridische beoordeling.
 Gebruik voor het ophalen en controleren van informatie
-`bronnen-en-feitencontrole.md`.
+[bronnen en feitencontrole](bronnen-en-feitencontrole.md).
 
 ## Oordeellabels
 
@@ -30,7 +30,7 @@ meer precisie suggereert dan de bewijsbasis toelaat.
 
 ## Bewijs beoordelen
 
-Gebruik `bronnen-en-feitencontrole.md` voor directheid,
+Gebruik [bronnen en feitencontrole](bronnen-en-feitencontrole.md) voor directheid,
 verantwoordelijke partij, reikwijdte, actualiteit, volledigheid en tegenbewijs.
 Splits rekenkundige juistheid van de juistheid van aannames. Geen bewijs betekent
 niet onwaar; laat een onopgelost bronconflict open.
@@ -51,7 +51,7 @@ die persoon contact op en stuur geen dossier naar een derde.
 
 ## Voorbeelden gericht raadplegen
 
-De casussen tonen oordeelsvorming op basis van het geschetste bewijsbeeld.
+De casussen tonen oordeelsvorming op basis van hypothetische bewijsbeelden.
 Controleer actuele informatie opnieuw bij een echte claim; fictieve bedragen
 en instellingsnamen zijn geen aanbodinformatie.
 

@@ -1,96 +1,76 @@
 # Kwalificaties en persoonlijke conclusies
 
-## 1. Ondersteund binnen een afgebakende sector
+Alle bewijsbeelden hieronder zijn hypothetisch. Ze oefenen de oordeelsvorming;
+haal bij een echte claim de voorwaarden en het bewijs opnieuw via de MCP op.
 
-**Claim:** “Een onderwijsbevoegdheid voor het basisonderwijs vervalt niet alleen
-doordat iemand een tijd buiten het onderwijs heeft gewerkt.”
+## 1. Ondersteund binnen een afbakening
 
-**Bewijsbeeld:** de uitleg over herintreden vermeldt dat de bevoegdheid geldig
-blijft. De primaire informatie over terugkeren naar het basisonderwijs bevestigt
-dat iemand met die bevoegdheid kan solliciteren, ook na een loopbaanonderbreking.
+**Claim:** “Kwalificatie A blijft na een loopbaanonderbreking geldig voor functie B.”
 
-**Oordeel:** Ondersteund.
+**Bewijsbeeld:** stel dat passende, volledig gelezen informatie voor dezelfde
+kwalificatie, functie en periode expliciet die geldigheid bevestigt.
 
-**Grens:** dit bewijst niet dat elk oud diploma dezelfde reikwijdte heeft of dat
-iemand zonder verdere beoordeling wordt aangenomen.
+**Oordeel:** Ondersteund binnen die afbakening.
 
-**Betere formulering:** “Een loopbaanonderbreking laat je bevoegdheid voor het
-basisonderwijs niet vervallen. Controleer bij twijfel waarvoor je diploma geldt.”
+**Grens:** geldigheid bewijst geen aanstelling of gelijke reikwijdte van alle diploma's.
+
+**Betere formulering:** behoud de bevestigde afbakening; voeg geen baangarantie toe.
 
 ## 2. Een verzonnen vervaltermijn
 
-**Claim:** “Na vijf jaar buiten het basisonderwijs moet iedere bevoegde leraar
-opnieuw de pabo afronden.”
+**Claim:** “Na vijf jaar moet iedereen kwalificatie A opnieuw behalen.”
 
-**Bewijsbeeld:** dezelfde informatie als bij voorbeeld 1 bevestigt de geldigheid
-van de bevoegdheid en beschrijft bijscholing als mogelijke voorbereiding.
+**Bewijsbeeld:** stel dat passende informatie juist bevestigt dat de kwalificatie
+niet door een loopbaanonderbreking vervalt en nieuwe scholing niet verplicht stelt.
 
-**Oordeel:** Tegengesproken. De verplichte hernieuwde pabo-opleiding volgt niet
-uit een loopbaanonderbreking.
+**Oordeel:** Tegengesproken door dit bewijsbeeld.
 
-**Betere formulering:** “Bijscholing kan helpen bij terugkeer; stel opnieuw de
-pabo volgen niet als algemene voorwaarde.”
+**Betere formulering:** schrap de niet-onderbouwde vervaltermijn en beschrijf alleen
+de gecontroleerde voorwaarden. Dit voorbeeld stelt zelf geen geldigheidsregel vast.
 
-## 3. Van geldig diploma naar gegarandeerde baan
+## 3. Van bewijsstuk naar gegarandeerde baan
 
-**Claim:** “Je bevoegdheid is nog geldig. Je kunt dus zonder verdere voorwaarden
-morgen bij elke basisschool beginnen.”
+**Claim:** “Het bewijsstuk is geldig; dus kan ik morgen bij elke school beginnen.”
 
-**Bewijsbeeld:** geldigheid is bevestigd. Een aanstelling, functie-eisen en de
-relevante voorwaarden voor indiensttreding zijn niet vastgesteld.
+**Bewijsbeeld:** stel dat geldigheid vaststaat, maar aanstelling, toepassingsbereik
+en overige voorwaarden niet zijn beoordeeld.
 
-**Oordeel:** de eerste zin is Ondersteund binnen de afbakening van voorbeeld 1;
-de garantie in de tweede zin heeft Onvoldoende bewijs.
+**Oordeel:** geldigheid is Ondersteund; de algemene baangarantie heeft Onvoldoende bewijs.
 
-**Betere formulering:** “Je bevoegdheid kan een basis zijn om te solliciteren.
-De school beoordeelt de concrete aanstelling en toepasselijke voorwaarden.”
+**Betere formulering:** scheid het bewezen kwalificatieresultaat van de nog te
+beoordelen aanstelling. Geef geen totaaloordeel dat dit verschil verbergt.
 
-## 4. PDG is niet hetzelfde als een vakinhoudelijke bachelor
+## 4. Het resultaat van een traject
 
-**Claim:** “Met een PDG toon je pedagogisch-didactische bekwaamheid voor het
-mbo-docentschap aan.”
+**Claim:** “Traject A levert kwalificatie B op voor functie C.”
 
-**Bewijsbeeld:** de volledige PDG-uitleg beschrijft dit kwalificatieresultaat.
-De primaire toelichting op het landelijke raamwerk bevestigt de pedagogische en
-didactische kennis, inzichten en vaardigheden waarop het getuigschrift ziet.
+**Bewijsbeeld:** stel dat actuele volledige trajectinformatie precies dit resultaat
+voor die functie beschrijft, inclusief de bepalende voorwaarden.
 
-**Oordeel:** Ondersteund.
+**Oordeel:** Ondersteund voor het beschreven traject en toepassingsbereik.
 
-**Grens:** dit oordeel stelt een PDG niet gelijk aan een bachelordiploma of een
-bevoegdheid om ieder schoolvak in iedere sector te geven.
+**Grens:** hiermee zijn een andere graad, andere sector of individuele toelating
+niet aangetoond. Noem het bewijsstuk zoals de gecontroleerde uitleg het noemt.
 
-**Betere formulering:** de claim kan blijven staan; voeg bij een persoonlijke
-routevraag toe welke andere voorwaarden nog beoordeeld moeten worden.
+## 5. Eén uitzondering weerlegt iedereen
 
-## 5. Een bron kent zichzelf geen landelijke reikwijdte toe
+**Claim:** “Alle trajecten met dezelfde naam leveren dezelfde kwalificatie op.”
 
-**Claim:** “Elke educatieve minor aan elke hogeschool en universiteit levert
-dezelfde beperkte tweedegraads bevoegdheid op.”
+**Bewijsbeeld:** stel dat volledig gelezen informatie voor twee concrete varianten
+verschillende resultaten bevestigt.
 
-**Bewijsbeeld:** de volledige uitleg over de educatieve minor onderscheidt een
-universitaire minor of module van minors bij hogescholen. Daarmee is de
-veralgemening niet houdbaar.
+**Oordeel:** Tegengesproken. De geverifieerde uitzondering weerlegt alle.
 
-**Oordeel:** Tegengesproken.
-
-**Grens:** het precieze toepassingsbereik van een specifieke kwalificatie blijft
-een afzonderlijke controlevraag.
-
-**Betere formulering:** “Controleer per traject welk getuigschrift en welke
-bevoegdheid het oplevert; de naam educatieve minor alleen is niet genoeg.”
+**Betere formulering:** benoem het resultaat per gecontroleerde variant.
 
 ## 6. Een onopgeloste reikwijdtevraag
 
-**Claim:** “De beperkte tweedegraads bevoegdheid geldt voor alle vmbo-leerwegen.”
+**Claim:** “Kwalificatie A geldt voor alle leerwegen.”
 
-**Bewijsbeeld:** een gelezen artikel zegt het gehele vmbo. Er is nog geen
-passende primaire informatie gelezen die deze precieze reikwijdte bevestigt.
-Een verwijzing naar regelgeving is wel aanwezig, maar niet inhoudelijk gecontroleerd.
+**Bewijsbeeld:** stel dat de ene uitleg dit suggereert, maar een andere passende
+uitleg een beperktere reikwijdte noemt. Periode en variant zijn nog niet opgehelderd.
 
-**Oordeel:** Onvoldoende bewijs voor een definitief oordeel over de actuele regel.
+**Oordeel:** Onvoldoende bewijs voor een definitieve actuele conclusie.
 
-**Vervolg:** lees de toepasselijke regelgeving of primaire uitleg en controleer
-of het artikel en die regel dezelfde kwalificatie en situatie beschrijven.
-
-**Betere formulering:** “Controleer voor deze kwalificatie de toegestane
-leerwegen; neem de algemene formulering niet zonder verificatie over.”
+**Vervolg:** controleer variant, periode en toepassingsbereik met passende gelezen
+informatie. Neem een gelinkte maar ongelezen primaire bron niet als bevestiging over.

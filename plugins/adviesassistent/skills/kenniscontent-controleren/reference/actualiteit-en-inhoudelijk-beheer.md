@@ -10,7 +10,7 @@ zijn wanneer zij het kernantwoord verandert.
 Controleer veranderingsgevoelige informatie zoals bedragen, termijnen,
 regelingen, toelatingseisen en opleidingsaanbod bij de verantwoordelijke partij.
 Een recente paginawijziging of werkende link bewijst geen inhoudelijke actualiteit.
-Volg voor bewijsbeoordeling `bronnen-en-feitencontrole.md`.
+Volg voor bewijsbeoordeling [bronnen en feitencontrole](bronnen-en-feitencontrole.md).
 
 ## Bevindingen prioriteren
 

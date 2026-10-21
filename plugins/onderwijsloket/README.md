@@ -1,19 +1,29 @@
 # Onderwijsloket
 
-Ontwikkelscaffold voor mensen die werken in het onderwijs verkennen.
-De gids helpt iemand een vraag te verhelderen en een passende volgende stap te vinden.
+Digitale gids voor mensen die werken in het onderwijs verkennen. Het pakket bevat
+acht workflows met taakgerichte referenties:
 
-## Startpunt
+| Skill                                                                  | Gebruik                                                              |
+| ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| [onderwijsvraag-verkennen](skills/onderwijsvraag-verkennen/SKILL.md)   | Een brede interesse of onduidelijke vraag verhelderen                |
+| [adviesvraag-beantwoorden](skills/adviesvraag-beantwoorden/SKILL.md)   | Een concrete informatie- of adviesvraag beantwoorden                 |
+| [onderwijsroute-verkennen](skills/onderwijsroute-verkennen/SKILL.md)   | Routes uitleggen of persoonlijk verkennen met de actuele routevragen |
+| [opleidingen-vergelijken](skills/opleidingen-vergelijken/SKILL.md)     | Opleidingen en varianten vergelijken op relevante voorkeuren         |
+| [ondersteuning-in-de-regio](skills/ondersteuning-in-de-regio/SKILL.md) | Passende regionale ondersteuning vinden                              |
+| [ervaringen-ontdekken](skills/ervaringen-ontdekken/SKILL.md)           | Verhalen, podcasts en video's selecteren en bespreken                |
+| [adviesgesprek-plannen](skills/adviesgesprek-plannen/SKILL.md)         | Een gesprek plannen na bevestiging van tijdstip en intake            |
+| [feedback-geven](skills/feedback-geven/SKILL.md)                       | Een melding voorbereiden en na toestemming indienen                  |
 
-Het pakket bevat één eerste skill: `onderwijsvraag-verkennen`. Dit is een beperkte basis voor
-brononderzoek; de verdere workflows staan in de repositorybrede specificatie.
-Voorbeeld: “Ik wil in het onderwijs werken. Waar begin ik?”
-Installeer het hele pakket en verbind de host met Onderwijsloket Assistent.
+Voorbeelden: “Ik wil in het onderwijs werken. Waar begin ik?”, “Vergelijk deze
+opleidingen” en “Ik wil een adviesgesprek plannen”. Installeer het hele pakket en
+verbind de host met Onderwijsloket Assistent.
 
-De gekozen skillset staat in `SPEC.md` in de repositoryroot. Skills worden één voor
-één uitgewerkt met referenties die de gebruiker op dat moment aanlevert.
+## Bronnen en gegevens
 
-## Dezelfde bronverbinding
+Onderwijsinformatie wordt via de actuele Onderwijsloket MCP opgehaald. Referenties
+beschrijven werkwijzen en grenzen; voorbeeldantwoorden zijn patronen met invulplekken
+voor gelezen broninformatie. Webonderzoek is alleen een gerichte fallback binnen de
+organisaties uit de doorverwijsreferentie.
 
 Beide Onderwijsloket-plugins gebruiken dezelfde
 [Onderwijsloket Assistent](https://github.com/onderwijsin/onderwijsloket-assistent).
@@ -22,44 +32,38 @@ Beide pakketten koppelen via `.app.json` dezelfde geregistreerde ChatGPT-app:
 Het manifest verwijst ernaar via `extensions.com.openai.apps`, volgens de
 [OpenAI-pluginhandleiding](https://developers.openai.com/plugins/build/plugins).
 Appbeschikbaarheid en rechten worden afzonderlijk door de workspace beheerd.
-De mapping en toegang zijn nog niet in ChatGPT getest. Een deployment-URL voor
-rechtstreekse MCP-configuratie op andere hosts is nog nodig; er is geen `mcp.json`
-of provider-overlay opgenomen.
-De API-documentatie-app is een andere verbinding en vervangt deze inhoudsbron niet.
+De mapping en toegang zijn nog niet in ChatGPT getest. Voor rechtstreekse
+MCP-configuratie op andere hosts is een deployment-URL nodig; er is geen `mcp.json`
+of provider-overlay opgenomen. De API-documentatie-app vervangt de inhoudsbron niet.
 
-De kenniscollecties zijn alleen-lezen. De server biedt daarnaast boeken en feedback
-indienen; die acties hebben eigen bevestigings- en toestemmingsvereisten.
-Dit pakket biedt daarvoor nog geen workflow. Het biedt ook geen inbox, CRM,
-CMS-publicatie of vacaturebank. Eventuele concepten blijven in de chat.
-Verschillende doelgroepen leveren geen verschillende servicerechten op.
+Boeken en feedback vereisen hun eigen actietools en expliciete toestemming. De
+skills controleren beschikbaarheid vóór persoonlijke intake. Feedback deelt de
+volledige huidige conversatie; dossiers worden nooit doorgestuurd naar verwijspartijen.
+Dit pakket biedt geen inbox-, CRM- of CMS-schrijftoegang.
 
-## Packaging en verificatie
+## Referenties en verificatie
+
+Gedeelde referenties worden onderhouden in plugin-root `reference/`.
+`pnpm references:sync` kopieert de benodigde documenten binnen elke skillgrens;
+taakspecifieke referenties blijven in de betreffende skill. Alle acht skills laden
+hun referenties via lokale Markdown-links.
+
+Repositorychecks: `pnpm format` en `pnpm check`. Live leesproeven controleren de
+MCP-bronnen voor routes, opleidingen, regionale ondersteuning en verhalen. Boeken
+en feedback kunnen alleen worden beproefd als hun actietools beschikbaar zijn.
+De huidige sessie biedt deze actietools niet aan; dat is geen bewijs dat ze op
+de deployment ontbreken. Voor uitrol zijn een echte boeking en feedbackinzending
+met expliciete toestemming en controle van de bevestiging nog vereist.
 
 De structuur volgt [Agent Plugins 1.0.0](https://agent-plugins.org/specification)
-en de [Agent Skills-specificatie](https://agentskills.io/specification),
-geraadpleegd op 21 oktober 2026. Beide repositorycatalogi bevatten dit pakket.
-Dat bewijst geen runtimecompatibiliteit. Beoogd zijn ChatGPT/Codex en, na
-verificatie van de verbinding, Claude Code; geen van deze hosts is getest.
+en de [Agent Skills-specificatie](https://agentskills.io/specification).
+Beide repositorycatalogi bevatten dit pakket. Installatie, activatie, appmapping
+en resourcegebruik in ChatGPT/Codex of Claude Code zijn nog niet getest; de
+bestandsstructuur bewijst geen runtimecompatibiliteit.
 
-Voor uitrol: appmapping controleren, installatie en skillactivatie testen,
-brontoegang controleren en de voorbeeldvraag met bronlinks beantwoorden.
-Test ook ontbrekende toegang, lege resultaten en onvolledige broninhoud.
-Repositorychecks: `pnpm format` en `pnpm check`.
+De artikel-, FAQ- en ervaringsverhalenanalyses in de repositorymap `docs/`
+verantwoorden de redactionele referenties en zijn geen runtimevereiste.
 
-## Onderbouwing van de referenties
-
-De artikelanalyse in `docs/onderwijsloket-artikelanalyse.md` in de repositoryroot
-verantwoordt de
-redactionele aanscherpingen op basis van tien volledig via Onderwijsloket MCP
-gelezen artikelen. De gedeelde referenties zijn voorbereid voor verdere
-skilluitwerking; de huidige startskill laadt ze nog niet. De analyse is
-ontwikkeldocumentatie en geen runtimevereiste van het pakket.
-
-De aanvullende analyse in `docs/onderwijsloket-faq-analyse.md` verantwoordt de
-lezing van alle 126 beschikbare FAQ's en de daaruit afgeleide aanscherpingen.
-Het leesregister gebruikt record-ID's omdat de FAQ's geen eigen publieke URL
-teruggeven. Ook deze analyse is ontwikkeldocumentatie.
-
-De analyse in `docs/onderwijsloket-ervaringsverhalen-analyse.md` onderbouwt de
-aanvullingen over persoonlijke stemmen, citaten, verhaalopbouw en mediaselectie
-met tien volledig gelezen ervaringsverhalen. Ook deze analyse is ontwikkeldocumentatie.
+Voorbeeldgesprekken staan gedeeld in [voorbeeldgesprekken](reference/voorbeeldgesprekken.md).
+De repositorynotitie `docs/onderwijsloket-prerelease-review.md` beschrijft
+de broncodevergelijking, repositorychecks en resterende hostacceptatie.

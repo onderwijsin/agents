@@ -41,7 +41,7 @@ horen daar niet bij.
 De feedbacktool verwijdert persoonsgegevens niet automatisch. Beloof geen
 geanonimiseerde of ingekorte verzending. Bespreek opslagleveranciers alleen als
 de adviesvrager daarom vraagt; voor verdere uitleg is
-`privacy-en-toestemming.md` beschikbaar wanneer die referentie voor de taak is gekoppeld.
+[privacy en toestemming](privacy-en-toestemming.md).
 
 De ingebouwde webchat voegt de huidige conversatie zelf toe. Bij een andere
 MCP-client moet de volledige beschikbare huidige conversatie worden aangeleverd.

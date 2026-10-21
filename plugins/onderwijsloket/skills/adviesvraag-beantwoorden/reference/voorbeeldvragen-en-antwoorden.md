@@ -2,8 +2,9 @@
 
 ## Gebruik
 
-Gebruik de voorbeelden voor antwoordopbouw, toon en afwegingen. Pas ze aan de
-concrete vraag aan en controleer veranderlijke informatie vóór hergebruik.
+Gebruik de voorbeelden voor antwoordopbouw, toon en afwegingen. Vierkante haken
+zijn invulinstructies: haal de inhoud via de MCP op vóór je antwoordt. Toon deze
+instructies niet aan de adviesvrager en behandel voorbeelden nooit als feitenbron.
 Voeg een beschrijvende link toe naar de daadwerkelijk gelezen, ondersteunende
 pagina wanneer die het antwoord controleerbaar maakt of een vervolgstap biedt.
 Verzin geen FAQ-URL als er geen publieke bestemming beschikbaar is.

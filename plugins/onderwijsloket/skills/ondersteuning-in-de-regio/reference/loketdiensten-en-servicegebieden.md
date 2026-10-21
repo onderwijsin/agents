@@ -6,7 +6,7 @@ Gebruik bekende hulpvraag en locatie. Vraag alleen ontbrekende voorkeuren die de
 selectie veranderen; leg geen ongevraagde sector- of dienstfilter op. Zoek een
 kleine kansrijke selectie en lees de actuele loketdetails.
 
-Gebruik `geografisch-zoeken.md` voor locatieherkenning,
+Gebruik [geografisch zoeken](geografisch-zoeken.md) voor locatieherkenning,
 afstand, dekking en verruimen van de zoekruimte.
 
 ## Ondersteuning controleren
@@ -25,7 +25,7 @@ geen bezoek, bemiddeling, plaatsing of vergoeding zonder bevestiging.
 Geef per relevant loket waarom het past, de beschreven dienst en dekking, een
 bruikbare contactroute en bronlink. Markeer wat nog bevestigd moet worden.
 De adviesvrager neemt zelf contact op volgens
-`advies-en-doorverwijzen.md`; stuur geen dossier of
+[advies en doorverwijzen](advies-en-doorverwijzen.md); stuur geen dossier of
 introductie, ook niet op verzoek.
 
 Bij geen resultaat onderscheid je lege zoekuitkomsten, ontbrekende gegevens en

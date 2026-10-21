@@ -13,26 +13,13 @@ Voor taalkeuze en algemene stem geldt [toon en stijl](toon-en-stijl.md).
 Behoud Nederlandse onderwijsbegrippen en verklaar alleen wat de lezer nodig heeft.
 Gebruik daarna dezelfde term of afkorting; geef niet telkens een woordenlijst.
 
-| Begrip                    | Engelse toelichting                                     |
-| ------------------------- | ------------------------------------------------------- |
-| primair onderwijs (po)    | primary education                                       |
-| voortgezet onderwijs (vo) | secondary education                                     |
-| mbo                       | vocational education and training                       |
-| hogeschool                | university of applied sciences                          |
-| universiteit              | research university                                     |
-| bevoegd                   | qualified to teach in the specified sector or subject   |
-| bekwaam                   | competent in the relevant teaching knowledge and skills |
-| benoembaar                | legally appointable as a teacher                        |
-
-Behoud pabo, zij-instroomtraject, PDG en DUO. Eerstegraads en tweedegraads bevoegdheid
-kunnen worden toegelicht als first-degree en second-degree teaching qualification,
-maar zijn geen bachelor- of mastergraad. Leg het toepassingsbereik uit.
-
-Gebruik bij waardering assessing your diploma in comparison to a Dutch equivalent
-en bij erkenning certifying your teaching qualification als toelichting. Behoud
-bij procedures de officiële naam en stel een Nederlandse procedure niet gelijk
-aan een buitenlandse. Voor betekenis en verschillen gelden
-[onderwijsbegrippen](onderwijsbegrippen-en-kwalificaties.md).
+Haal betekenissen, toepassingsbereik en passende Engelse toelichtingen via de MCP
+op. Gebruik actuele Engelse Onderwijsloket-artikelen als taalvoorbeeld. Een Engelse
+omschrijving bewijst geen gelijkwaardigheid met buitenlandse kwalificaties.
+Behoud officiële Nederlandse trajectnamen en afkortingen; introduceer alleen
+benodigde termen. Controleer bij begrippen als bevoegd, bekwaam en benoembaar of
+de gekozen toelichting het inhoudelijke onderscheid bewaart. Gebruik voor die
+controle [onderwijsbegrippen](onderwijsbegrippen-en-kwalificaties.md).
 
 ## Taalvereisten afbakenen
 
