@@ -302,14 +302,12 @@ async function connections(
     });
   }
   const appReference = openAI?.apps;
-  let appValid = true;
   if (appReference) {
     const appPath = resolve(path, appReference);
-    const app = await checks.run("Registered app mapping", appPath, async () => {
+    await checks.run("Registered app mapping", appPath, async () => {
       await containedFile(appPath, path);
       return appMetadata.parse(await json(appPath));
     });
-    appValid = app !== undefined;
   }
   const mcpPath = join(path, "mcp.json");
   const hasMcp = await checks.run("MCP configuration discovery", mcpPath, () => exists(mcpPath));
@@ -346,14 +344,6 @@ async function connections(
     checks.skip("Claude MCP consistency", overlayPath, "MCP configuration could not be validated.");
     return;
   }
-  if (!hasMcp && !appValid) {
-    checks.skip(
-      "Claude MCP consistency",
-      overlayPath,
-      "Registered app mapping could not be validated.",
-    );
-    return;
-  }
   await checks.run("Claude MCP consistency", overlayPath, () => {
     if (mcp) {
       if (Object.keys(overlay.mcpServers).length !== Object.keys(mcp.mcpServers).length)
@@ -362,9 +352,8 @@ async function connections(
         if (server.url !== mcp.mcpServers[serverName]?.url)
           throw new Error(`${overlayPath}: MCP endpoint must match root mcp.json`);
       }
-    } else if (!appReference || Object.keys(overlay.mcpServers).length === 0) {
-      throw new Error(`${overlayPath}: MCP servers require root mcp.json or a registered app`);
     }
+    // Claude connects directly; an OpenAI app mapping neither supplies nor authorizes this server.
   });
 }
 

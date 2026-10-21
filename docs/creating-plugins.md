@@ -59,7 +59,10 @@ can coexist with a bundled MCP server for hosts that support that packaging.
 The initial MCP validation subset supports root `mcp.json` with the Agent Plugins 1.0.0
 schema identifier and named `streamable-http` HTTPS connections without headers or credentials.
 An optional `.claude-plugin/plugin.json` overlay repeats identity and translates these connections
-to Claude's `http` transport; validation requires matching names, versions, descriptions and URLs.
+to Claude's `http` transport; validation requires matching names, versions, descriptions and URLs when root `mcp.json` is present.
+A Claude-only inline connection is also valid without root `mcp.json` or an
+OpenAI app mapping; its HTTPS transport and endpoint are checked independently.
+An OpenAI app ID is not a Claude connection URL.
 OpenAI presentation checks require nonempty display name and short description when provided.
 Other transport, authentication and overlay fields need focused validation before introduction.
 OpenAI `logo` and `composerIcon` point to existing PNG files under
@@ -105,3 +108,6 @@ For a skill-only plugin using the standard `skills/` layout, Claude documents it
 optional and derives the name from the marketplace entry. No overlay or empty MCP configuration
 is needed. See [Agent-instructie](../plugins/agent-instructie/README.md) for this pattern and
 its unverified runtime status.
+
+The [integration audit](plugin-integrations.md) records the per-plugin provider
+boundaries, live protocol checks and unresolved deployment details.

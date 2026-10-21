@@ -45,8 +45,20 @@ Appbeschikbaarheid en rechten worden door de workspace beheerd; de professionele
 plugin krijgt geen aanvullende datarechten. De API-documentatie-app vervangt deze
 inhoudsbron niet.
 
-Voor rechtstreekse MCP-configuratie op andere hosts is
-een deployment-URL nodig; er is geen `mcp.json` of provider-overlay opgenomen.
+### Claude Code
+
+[`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) configureert een directe
+HTTP MCP-verbinding met `https://assistent.onderwijsin.nl/mcp`. Dit is de bestaande
+Onderwijsloket-deployment; er worden geen server of credentials meegeleverd.
+De ChatGPT-appmapping blijft afzonderlijk bestaan en wordt niet door Claude gebruikt.
+Er is geen root-`mcp.json`, zodat de beheerde ChatGPT-verbinding behouden blijft.
+
+De configuratie volgt de
+[Claude-manifestreferentie](https://code.claude.com/docs/en/plugins-reference#mcpservers)
+en [MCP-configuratie](https://code.claude.com/docs/en/mcp).
+Protocolinitialisatie en tool discovery zijn gecontroleerd. De Claude CLI is lokaal
+niet beschikbaar in PATH; native laden en hostauthenticatie zijn hier niet geverifieerd.
+
 De structuur volgt [Agent Plugins 1.0.0](https://agent-plugins.org/specification)
 en de [Agent Skills-specificatie](https://agentskills.io/specification).
 
@@ -62,4 +74,4 @@ Voer `pnpm format` en `pnpm check` uit. De artikel-, FAQ- en ervaringsverhalenan
 
 Voorbeeldgesprekken staan gedeeld in [voorbeeldgesprekken](reference/voorbeeldgesprekken.md).
 De repositorynotitie `docs/onderwijsloket-prerelease-review.md` beschrijft
-de broncodevergelijking, repositorychecks.
+de broncodevergelijking en repositorychecks.

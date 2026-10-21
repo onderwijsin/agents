@@ -81,8 +81,8 @@ starterskill `adviesvraag-onderbouwen` is vervangen en vormt geen zesde skill.
 1. Beide pakketten koppelen de door de gebruiker opgegeven ChatGPT-app
    `asdk_app_6ad7ee6307588191b1302257d85671cc` via `.app.json` en
    `extensions.com.openai.apps`. Verifieer de mapping en workspace-toegang.
-   De API-documentatie-app is niet de inhouds-MCP. Voor andere hosts is een
-   gedeelde deployment-URL nog nodig.
+   De API-documentatie-app is niet de inhouds-MCP. De Claude-overlays verbinden
+   rechtstreeks met de bestaande deployment `https://assistent.onderwijsin.nl/mcp`.
 2. Houd benodigde referenties binnen het installabele pakket en synchroniseer
    gedeelde bronnen na wijzigingen. Brondata blijft live via MCP.
 3. Beide plugins halen onderwijsinformatie uit MCP op; webonderzoek is

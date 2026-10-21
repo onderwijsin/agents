@@ -32,9 +32,22 @@ Beide pakketten koppelen via `.app.json` dezelfde geregistreerde ChatGPT-app:
 Het manifest verwijst ernaar via `extensions.com.openai.apps`, volgens de
 [OpenAI-pluginhandleiding](https://developers.openai.com/plugins/build/plugins).
 Appbeschikbaarheid en rechten worden afzonderlijk door de workspace beheerd.
-Voor rechtstreekse
-MCP-configuratie op andere hosts is een deployment-URL nodig; er is geen `mcp.json`
-of provider-overlay opgenomen. De API-documentatie-app vervangt de inhoudsbron niet.
+
+### Claude Code
+
+[`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) configureert een directe
+HTTP MCP-verbinding met `https://assistent.onderwijsin.nl/mcp`. Dit is de bestaande
+Onderwijsloket-deployment; er worden geen server of credentials meegeleverd.
+De ChatGPT-appmapping blijft afzonderlijk bestaan en wordt niet door Claude gebruikt.
+Er is geen root-`mcp.json`, zodat de beheerde ChatGPT-verbinding behouden blijft.
+
+De configuratie volgt de
+[Claude-manifestreferentie](https://code.claude.com/docs/en/plugins-reference#mcpservers)
+en [MCP-configuratie](https://code.claude.com/docs/en/mcp).
+Protocolinitialisatie en tool discovery zijn gecontroleerd. De Claude CLI is lokaal
+niet beschikbaar in PATH; native laden en hostauthenticatie zijn hier niet geverifieerd.
+
+De API-documentatie-app vervangt de inhoudsbron niet.
 
 Boeken en feedback vereisen hun eigen actietools en expliciete toestemming. De
 skills controleren beschikbaarheid vóór persoonlijke intake. Feedback deelt de
@@ -59,4 +72,4 @@ verantwoorden de redactionele referenties en zijn geen runtimevereiste.
 
 Voorbeeldgesprekken staan gedeeld in [voorbeeldgesprekken](reference/voorbeeldgesprekken.md).
 De repositorynotitie `docs/onderwijsloket-prerelease-review.md` beschrijft
-de broncodevergelijking, repositorychecks.
+de broncodevergelijking en repositorychecks.
