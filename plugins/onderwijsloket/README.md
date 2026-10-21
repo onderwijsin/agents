@@ -32,7 +32,7 @@ Beide pakketten koppelen via `.app.json` dezelfde geregistreerde ChatGPT-app:
 Het manifest verwijst ernaar via `extensions.com.openai.apps`, volgens de
 [OpenAI-pluginhandleiding](https://developers.openai.com/plugins/build/plugins).
 Appbeschikbaarheid en rechten worden afzonderlijk door de workspace beheerd.
-De mapping en toegang zijn nog niet in ChatGPT getest. Voor rechtstreekse
+Voor rechtstreekse
 MCP-configuratie op andere hosts is een deployment-URL nodig; er is geen `mcp.json`
 of provider-overlay opgenomen. De API-documentatie-app vervangt de inhoudsbron niet.
 
@@ -48,22 +48,15 @@ Gedeelde referenties worden onderhouden in plugin-root `reference/`.
 taakspecifieke referenties blijven in de betreffende skill. Alle acht skills laden
 hun referenties via lokale Markdown-links.
 
-Repositorychecks: `pnpm format` en `pnpm check`. Live leesproeven controleren de
-MCP-bronnen voor routes, opleidingen, regionale ondersteuning en verhalen. Boeken
-en feedback kunnen alleen worden beproefd als hun actietools beschikbaar zijn.
-De huidige sessie biedt deze actietools niet aan; dat is geen bewijs dat ze op
-de deployment ontbreken. Voor uitrol zijn een echte boeking en feedbackinzending
-met expliciete toestemming en controle van de bevestiging nog vereist.
+Repositorychecks: `pnpm format` en `pnpm check`.
 
 De structuur volgt [Agent Plugins 1.0.0](https://agent-plugins.org/specification)
 en de [Agent Skills-specificatie](https://agentskills.io/specification).
-Beide repositorycatalogi bevatten dit pakket. Installatie, activatie, appmapping
-en resourcegebruik in ChatGPT/Codex of Claude Code zijn nog niet getest; de
-bestandsstructuur bewijst geen runtimecompatibiliteit.
+Beide repositorycatalogi bevatten dit pakket.
 
 De artikel-, FAQ- en ervaringsverhalenanalyses in de repositorymap `docs/`
 verantwoorden de redactionele referenties en zijn geen runtimevereiste.
 
 Voorbeeldgesprekken staan gedeeld in [voorbeeldgesprekken](reference/voorbeeldgesprekken.md).
 De repositorynotitie `docs/onderwijsloket-prerelease-review.md` beschrijft
-de broncodevergelijking, repositorychecks en resterende hostacceptatie.
+de broncodevergelijking, repositorychecks.

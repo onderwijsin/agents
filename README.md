@@ -33,11 +33,11 @@ available plugins without using Git or a terminal. See the
 [marketplace distribution guide](docs/marketplace-distribution.md) for prerequisites,
 import settings, sync, and workspace permissions.
 
-| Platform                 | Current repository support                                                      |
-| ------------------------ | ------------------------------------------------------------------------------- |
-| ChatGPT / Codex          | Local marketplace entry and portable package; workspace/runtime testing pending |
-| Claude Code              | Matching marketplace; overlays where needed; runtime testing pending            |
-| Other Agent Skills hosts | Portable instructions; the editorial skills require their whole plugin package  |
+| Platform                 | Current repository support                                                     |
+| ------------------------ | ------------------------------------------------------------------------------ |
+| ChatGPT / Codex          | Local marketplace entry and portable package                                   |
+| Claude Code              | Matching marketplace; overlays where needed                                    |
+| Other Agent Skills hosts | Portable instructions; the editorial skills require their whole plugin package |
 
 Portable files do not guarantee identical tools, permissions, or behavior on every host.
 

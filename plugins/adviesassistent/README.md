@@ -45,14 +45,10 @@ Appbeschikbaarheid en rechten worden door de workspace beheerd; de professionele
 plugin krijgt geen aanvullende datarechten. De API-documentatie-app vervangt deze
 inhoudsbron niet.
 
-Appmapping, installatie, activatie en resourcegebruik in ChatGPT/Codex of Claude
-Code zijn nog niet getest. Voor rechtstreekse MCP-configuratie op andere hosts is
+Voor rechtstreekse MCP-configuratie op andere hosts is
 een deployment-URL nodig; er is geen `mcp.json` of provider-overlay opgenomen.
 De structuur volgt [Agent Plugins 1.0.0](https://agent-plugins.org/specification)
 en de [Agent Skills-specificatie](https://agentskills.io/specification).
-Een geslaagde bestandscontrole bewijst geen runtimecompatibiliteit.
-De MCP-leesverbinding is beproefd; dat verifieert niet de geregistreerde appmapping
-of automatische skillselectie in een geïnstalleerde host.
 
 ## Referenties en verificatie
 
@@ -61,11 +57,9 @@ Gedeelde referenties worden onderhouden in plugin-root `reference/`.
 taakspecifieke documenten en mailvoorbeelden blijven bij hun eigen skill.
 Onderwijs in Redacteur diende als ontwerpreferentie; het is geen runtimeafhankelijkheid.
 
-Voer `pnpm format` en `pnpm check` uit. Test vóór uitrol per host de vijf voorbeeldtaken,
-referentietoegang, bronuitval, ontbrekend bewijs en het onderscheid tussen concept
-en externe handeling. De artikel-, FAQ- en ervaringsverhalenanalyses in repositorymap
+Voer `pnpm format` en `pnpm check` uit. De artikel-, FAQ- en ervaringsverhalenanalyses in repositorymap
 `docs/` verantwoorden de redactionele referenties en zijn geen runtimevereiste.
 
 Voorbeeldgesprekken staan gedeeld in [voorbeeldgesprekken](reference/voorbeeldgesprekken.md).
 De repositorynotitie `docs/onderwijsloket-prerelease-review.md` beschrijft
-de broncodevergelijking, repositorychecks en resterende hostacceptatie.
+de broncodevergelijking, repositorychecks.

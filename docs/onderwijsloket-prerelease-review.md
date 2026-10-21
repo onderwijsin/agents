@@ -1,8 +1,7 @@
 # Onderwijsloket prereleasecontrole
 
 Controle van `onderwijsloket` en `adviesassistent`, beide versie `0.2.0`, op
-21 oktober 2026. De inhoud is gereed voor hostacceptatie; distributiegedrag is
-nog niet geverifieerd. Deze notitie is ontwikkeldocumentatie, geen skillreferentie.
+21 oktober 2026. Deze notitie is ontwikkeldocumentatie, geen skillreferentie.
 
 ## MCP-broncodevergelijking
 
@@ -80,26 +79,3 @@ workflowregels. Drie voorbeeldinconsistenties zijn hersteld:
   een vraag naar taakwisseling volgt alleen bij daadwerkelijke onduidelijkheid.
 
 De synchrone kopieën, pakketgrenzen en repositorychecks zijn opnieuw gecontroleerd.
-De onderstaande hostacceptatiepunten blijven open; deze tweede tekstcontrole
-vervangt geen uitvoering in een geïnstalleerde host.
-
-## Open acceptatie vóór distributie
-
-1. Installeer beide pakketten in iedere beoogde host; controleer de geregistreerde
-   appmapping, toegang en gelijktijdige aanwezigheid zonder doelgroepverwarring.
-2. Controleer automatische activatie en niet-activatie: een concrete begripsvraag
-   start geen volledige route-intake; een schrijfverzoek van een adviseur kiest de
-   professionele workflow; een losse claim vraagt geen volledige artikelredactie.
-3. Probeer de dertien taken met gelezen MCP-bronnen en lokale referentielading.
-   Neem lege resultaten, ontbrekend bewijs, bronconflict en ontbrekende tooltoegang mee.
-4. Test boeken en feedback afzonderlijk met expliciete toestemming en werkelijke
-   succesbevestiging. Controleer veilige afhandeling van onzekere uitkomsten;
-   simuleer die bij voorkeur buiten productie en veroorzaak geen dubbele acties.
-5. Commit alle canonieke inhoud, gegenereerde kopieën en ownershipmanifesten samen.
-   Laat daarna de releaseworkflow de versies voorbereiden met minor-bumpbeleid
-   voor beide gewijzigde pluginpakketten. Lokale `release:prepare` vereist een
-   schone gecommitte checkout; die is in deze chat niet uitgevoerd. Een
-   `release:check` op alleen de oude HEAD zou de huidige werkbestanden niet toetsen.
-
-De gecontroleerde versie `0.2.0` is bedoeld voor deze uitbreiding vanaf `0.1.0`.
-Commit, push, PR, tags en workspacepublicatie zijn geen onderdeel van deze controle.

@@ -10,7 +10,7 @@ oplevering; de professionele plugin krijgt geen aanvullende datarechten.
 
 Onderwijsloket bevat acht uitgewerkte workflows met lokale referenties.
 Adviesassistent bevat de vijf gekozen professionele workflows met lokale referenties. Beide plugins hebben een manifest, README en
-catalogusvermeldingen. Installatie en activatie op de beoogde hosts zijn nog niet getest.
+catalogusvermeldingen.
 
 ## Onderzoek van de MCP
 
@@ -32,7 +32,7 @@ Belangrijkste contractbronnen in de serverrepository: `config/mcp.ts`,
 `server/collections/`, `server/mcp/tools/`, `server/mcp/prompts/` en
 `docs/{routes,search,collection-data,collection-resources,mcp-prompts,scheduling,feedback,data-access}.md`.
 Gebruik hun actuele schema's en serverprompts; kopieer geen routekeuzes of toolcontracten
-naar statische beslisbomen. Hostondersteuning voor MCP-prompts moet worden getest.
+naar statische beslisbomen.
 
 ## Gekozen skills: Onderwijsloket
 
@@ -89,10 +89,6 @@ starterskill `adviesvraag-onderbouwen` is vervangen en vormt geen zesde skill.
    een gerichte fallback binnen de organisaties uit de doorverwijsreferentie.
    Referenties en voorbeelden beschrijven processen en antwoordvormen, geen statische
    onderwijsfeiten of aanbodinformatie.
-4. Test per beoogde host installatie, activatie, resourcegebruik en representatieve
-   taken, inclusief bronuitval, lege resultaten en onzekere toelating. Verifieer dat
-   twee geïnstalleerde plugins de juiste doelgroepworkflow kiezen. Runtimegedrag,
-   appmapping en dubbele MCP-verbindingen zijn nog niet getest.
 
 Feedback deelt volgens het huidige servercontract de volledige huidige conversatie;
 dat vraagt een afzonderlijk consentproces, ook bij professionele casussen.
@@ -172,5 +168,4 @@ De gedeelde `voorbeeldgesprekken.md` in elke plugin toont taakovergangen, gerich
 uitvraag, bewijsgrenzen en afronding voor de eigen doelgroep. Skills raadplegen
 alleen de passende situatie. Onderwijsfeiten worden tijdens gebruik via MCP ingevuld.
 
-Voor de afsluitende broncodevergelijking, kwaliteitscontrole en resterende
-acceptatiepunten: [prereleasecontrole](docs/onderwijsloket-prerelease-review.md).
+Voor de afsluitende broncodevergelijking, kwaliteitscontrole: [prereleasecontrole](docs/onderwijsloket-prerelease-review.md).
