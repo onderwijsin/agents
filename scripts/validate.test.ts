@@ -399,7 +399,46 @@ test("Claude overlays must match canonical identity and MCP endpoints", async ()
     }
     await writeOverlay(overlay);
     await rm(join(path, "mcp.json"));
-    await assert.rejects(validate(root), /require root mcp.json or a registered app/);
+    await validate(root);
+  });
+});
+
+test("Claude direct MCP validation is independent of OpenAI app mappings", async () => {
+  await fixture(async (root) => {
+    const path = await addPlugin(root);
+    const manifestPath = join(path, "plugin.json");
+    const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+    manifest.extensions = {
+      "com.openai": {
+        interface: { displayName: "Draft", shortDescription: "Draft text." },
+        apps: "./missing-app.json",
+      },
+    };
+    await writeFile(manifestPath, JSON.stringify(manifest));
+    await mkdir(join(path, ".claude-plugin"));
+    const overlayPath = join(path, ".claude-plugin/plugin.json");
+    const overlay = {
+      name: "draft",
+      version: "0.1.0",
+      description: "Draft text.",
+      mcpServers: { docs: { type: "http", url: "https://example.com/mcp" } },
+    };
+    await writeFile(overlayPath, JSON.stringify(overlay));
+    let report = await inspect(root);
+    assert.equal(report.results.find((r) => r.rule === "Registered app mapping")?.status, "failed");
+    assert.equal(report.results.find((r) => r.rule === "Claude MCP consistency")?.status, "passed");
+    await writeFile(
+      overlayPath,
+      JSON.stringify({
+        ...overlay,
+        mcpServers: { docs: { type: "http", url: "http://example.com/mcp" } },
+      }),
+    );
+    report = await inspect(root);
+    assert.equal(
+      report.results.find((r) => r.rule === "Claude overlay metadata")?.status,
+      "failed",
+    );
   });
 });
 

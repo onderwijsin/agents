@@ -19,6 +19,8 @@ skills in `.agents/skills/` are separate and are not distributed through our mar
 
 | Name                                                                   | Type   | Description                                                                                                                                |
 | ---------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Onderwijsloket](plugins/onderwijsloket/README.md)                     | Plugin | Explore education careers, pathways, programs, regional support and experiences; plan consultations or prepare feedback with consent.      |
+| [Adviesassistent Onderwijsloket](plugins/adviesassistent/README.md)    | Plugin | Draft advice emails, prepare consultations, write or review knowledge content and fact-check claims using Onderwijsloket sources.          |
 | [Onderwijs in Redacteur](plugins/onderwijs-in-redacteur/README.md)     | Plugin | Edit and write Dutch website content and newsletters; return text in chat or prepare a Loops draft with separate style-review support.     |
 | [Agent-instructie](plugins/agent-instructie/README.md)                 | Plugin | Schrijf en verbeter Nederlandstalige prompts en skills voor niet-technische taken, met duidelijke opdrachten en controleerbare resultaten. |
 | [Plausible](plugins/plausible-analytics/README.md)                     | Plugin | Analyze website traffic, acquisition and measured conversions in your language, with chat, chart and PDF reporting.                        |
@@ -31,11 +33,11 @@ available plugins without using Git or a terminal. See the
 [marketplace distribution guide](docs/marketplace-distribution.md) for prerequisites,
 import settings, sync, and workspace permissions.
 
-| Platform                 | Current repository support                                                      |
-| ------------------------ | ------------------------------------------------------------------------------- |
-| ChatGPT / Codex          | Local marketplace entry and portable package; workspace/runtime testing pending |
-| Claude Code              | Matching marketplace; overlays where needed; runtime testing pending            |
-| Other Agent Skills hosts | Portable instructions; the editorial skills require their whole plugin package  |
+| Platform                 | Current repository support                                                     |
+| ------------------------ | ------------------------------------------------------------------------------ |
+| ChatGPT / Codex          | Local marketplace entry and portable package                                   |
+| Claude Code              | Matching marketplace; overlays where needed                                    |
+| Other Agent Skills hosts | Portable instructions; the editorial skills require their whole plugin package |
 
 Portable files do not guarantee identical tools, permissions, or behavior on every host.
 

@@ -17,6 +17,17 @@ Its README records the identifier-format caveat, MCP limitations and pending acc
 matrix. Enable the app for intended roles separately from installing the plugin, then
 verify the mapping in a new chat. Charts and PDF export depend on host capabilities.
 
+## Onderwijsloket en Adviesassistent
+
+[Onderwijsloket](../plugins/onderwijsloket/README.md) en
+[Adviesassistent](../plugins/adviesassistent/README.md) delen dezelfde geregistreerde
+ChatGPT-app. Hun afzonderlijke Claude-manifesten configureren HTTP MCP naar
+`https://assistent.onderwijsin.nl/mcp`. De appmapping levert die verbinding niet;
+de Claude-configuratie hergebruikt de bestaande deployment zonder server of
+credentials te bundelen. Beide plugins houden hun eigen skills en doelgroep.
+Zie de [integratieaudit](plugin-integrations.md) voor de gecontroleerde
+providergrenzen, protocolresultaten en beperkingen.
+
 ## Icon-generator
 
 [Icon-generator](../plugins/icon-generator/README.md) bevat één skill met drie gescheiden

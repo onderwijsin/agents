@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "onderwijsloket",
+  "version": "0.2.0",
+  "description": "Verken werken in het onderwijs met een digitale assistent van het Onderwijsloket.",
+  "author": {
+    "name": "Onderwijs in"
+  },
+  "repository": "https://github.com/onderwijsin/agents",
+  "license": "MIT",
+  "extensions": {
+    "com.openai": {
+      "apps": "./.app.json",
+      "interface": {
+        "displayName": "Onderwijsloket",
+        "shortDescription": "Verken jouw mogelijkheden om in het onderwijs te werken.",
+        "logo": "./assets/plugin-icon.png",
+        "composerIcon": "./assets/plugin-icon.png"
+      }
+    }
+  }
+}

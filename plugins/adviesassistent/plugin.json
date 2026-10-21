@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "adviesassistent",
+  "version": "0.2.0",
+  "description": "Onderbouw advies en conceptteksten voor onderwijsprofessionals met Onderwijsloket.",
+  "author": {
+    "name": "Onderwijs in"
+  },
+  "repository": "https://github.com/onderwijsin/agents",
+  "license": "MIT",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Adviesassistent Onderwijsloket",
+        "shortDescription": "Onderbouw advies, mails en content met Onderwijsloket.",
+        "logo": "./assets/plugin-icon.png",
+        "composerIcon": "./assets/plugin-icon.png"
+      },
+      "apps": "./.app.json"
+    }
+  }
+}

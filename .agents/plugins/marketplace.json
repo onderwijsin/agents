@@ -68,6 +68,32 @@
       },
       "category": "Productivity",
       "description": "Genereer PNG-iconen in de stijl van Onderwijs in, Trainees in onderwijs of Onderwijsloket."
+    },
+    {
+      "name": "onderwijsloket",
+      "source": {
+        "source": "local",
+        "path": "./plugins/onderwijsloket"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity",
+      "description": "Verken werken in het onderwijs met een digitale gids op basis van Onderwijsloket."
+    },
+    {
+      "name": "adviesassistent",
+      "source": {
+        "source": "local",
+        "path": "./plugins/adviesassistent"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity",
+      "description": "Onderbouw advies en conceptteksten voor onderwijsprofessionals met Onderwijsloket."
     }
   ]
 }

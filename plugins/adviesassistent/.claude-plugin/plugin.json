@@ -1,0 +1,11 @@
+{
+  "name": "adviesassistent",
+  "version": "0.2.0",
+  "description": "Onderbouw advies en conceptteksten voor onderwijsprofessionals met Onderwijsloket.",
+  "mcpServers": {
+    "onderwijsloket": {
+      "type": "http",
+      "url": "https://assistent.onderwijsin.nl/mcp"
+    }
+  }
+}
