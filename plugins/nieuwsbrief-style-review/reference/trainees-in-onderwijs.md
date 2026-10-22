@@ -46,7 +46,10 @@ Gebruik geen inline Strong-tag binnen een Button. Links en buttons hebben echte
 bestemmingen; een templatevoorbeeld als `https://google.com` is geen passende CTA.
 
 TIO-RADIUS-01: secties, callouts en afbeeldingen gebruiken radius **12 px**.
-Buttons en datumvlakken zijn vaste uitzonderingen met radius **8 px**. Het ongeronde buitenste mailvlak met `borderRadius=0` is
+Buttons en datumvlakken zijn vaste uitzonderingen met radius **8 px**.
+De teamfoto in component `Team` en het footerlogo in component
+`Logo Trainees in onderwijs` blijven ongerond (radius **0 px**);
+een ontbrekende radius is bij deze afbeeldingen correct. Het ongeronde buitenste mailvlak met `borderRadius=0` is
 geen sectie en hoeft geen radius 12 te krijgen. De lokale radiusregels zijn
 leidend boven afwijkende waarden in het theme. Bewaar proporties van logo's
 en componentbeelden; pas een ontbrekende afbeeldingsradius zo nodig alleen
@@ -99,7 +102,8 @@ Beschrijf kort wat relevant is voor de ontvanger; raad geen onbekende identiteit
 Een bestandsnaam of “afbeelding” is onvoldoende. Bij onbekende inhoud: markeer
 de ontbrekende beschrijving voor bevestiging.
 
-TIO-BEELD-02: behoud beeldverhouding en radius 12. Benut bij voorkeur de volle
+TIO-BEELD-02: behoud beeldverhouding en pas TIO-RADIUS-01 toe: radius 12
+voor gewone afbeeldingen, ongerond voor de teamfoto en het footerlogo. Benut bij voorkeur de volle
 beschikbare breedte van de eigen container of kolom, met responsief gedrag.
 Dit is een voorkeur, geen opdracht om een icoon, portret, teambeeld of logo
 naar mailbreedte op te rekken. De patroonbreedten gaan voor; vermijd vervorming
@@ -132,13 +136,13 @@ TIO-FOOTER-01: het laatste zichtbare blok is de vaste tweekolomsfooter:
 links logo-component `cms91sxip00000jzqlzur2j3z` (`Logo Trainees in onderwijs`);
 rechts website, LinkedIn, Facebook en Instagram in die volgorde.
 
-| Onderdeel      | Verplichte opmaak                                                         |
-| -------------- | ------------------------------------------------------------------------- |
-| Columns        | `gap=20`, `stackOnMobile=false`; geen geforceerde eigen kolomverhouding.  |
-| Beide kolommen | `verticalAlignment=middle`.                                               |
-| Logowrapper    | `paddingTop=4`, `paddingBottom=4`.                                        |
-| Logo Image     | `width=90`, alt “Logo van Trainees in onderwijs”, radius 12 mailgebonden. |
-| Icons          | `align=right`, `gap=14`, `size=18`, `color=#808080`.                      |
+| Onderdeel      | Verplichte opmaak                                                                        |
+| -------------- | ---------------------------------------------------------------------------------------- |
+| Columns        | `gap=20`, `stackOnMobile=false`; geen geforceerde eigen kolomverhouding.                 |
+| Beide kolommen | `verticalAlignment=middle`.                                                              |
+| Logowrapper    | `paddingTop=4`, `paddingBottom=4`.                                                       |
+| Logo Image     | `width=90`, alt “Logo van Trainees in onderwijs”, ongerond (radius 0 of niet ingesteld). |
+| Icons          | `align=right`, `gap=14`, `size=18`, `color=#808080`.                                     |
 
 | Icon              | Bestemming                                                  |
 | ----------------- | ----------------------------------------------------------- |
@@ -157,8 +161,8 @@ fragmenten en personalisatie. Wijzig componenten uitsluitend mailgebonden.
 ## Theme-tokens
 
 Deze tabel legt de basisconfiguratie van het verplichte theme vast. De lokale
-regels hierboven bepalen de toepassing: radius 12 voor secties en afbeeldingen,
-radius 8 voor buttons en datumvlakken.
+regels hierboven bepalen de toepassing volgens TIO-RADIUS-01, inclusief de
+uitzonderingen voor buttons, datumvlakken, de teamfoto en het footerlogo.
 Wijzig het gedeelde theme niet om een mail te herstellen.
 Lege kleurwaarden betekenen niet ingesteld; verzin hiervoor geen kleur.
 Afmetingen en letterspatiëring zijn px; regelhoogten percentages.
