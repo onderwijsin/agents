@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "onboarding",
+  "version": "0.1.0",
+  "description": "Verken en personaliseer ChatGPT Business met de Bert-bot van de IT-afdeling, in twaalf praktische onboardingmodules.",
+  "author": {
+    "name": "Onderwijs in"
+  },
+  "repository": "https://github.com/onderwijsin/agents",
+  "homepage": "https://onderwijsin.nl",
+  "license": "MIT",
+  "keywords": ["onboarding", "chatgpt", "werkplek"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Onboarding",
+        "shortDescription": "Ontdek je ChatGPT-werkplek met de Bert-bot van de IT-afdeling.",
+        "developerName": "Onderwijs in",
+        "category": "Productivity",
+        "websiteURL": "https://onderwijsin.nl",
+        "defaultPrompt": [
+          "Ik wil beginnen met de onboarding.",
+          "Hervat mijn onboarding.",
+          "Toon mijn onboardingvoortgang."
+        ],
+        "logo": "./assets/plugin-icon.png",
+        "composerIcon": "./assets/plugin-icon.png"
+      }
+    }
+  }
+}

@@ -72,6 +72,16 @@ stijl, structuur en uitsluitend subject/preview-aanwezigheid en lengte.
 De bestaande Claude-overlay levert alleen de publieke website-MCP. Loops-werk is
 niet voor Claude geconfigureerd. Zie de package-README en acceptatiecriteria.
 
+## Onboarding
+
+[Onboarding](../plugins/onboarding/README.md) is een skill-only pakket voor ChatGPT
+Business. De catalogus gebruikt voorlopig `AVAILABLE` voor gecontroleerde tests;
+er zijn geen workspace-installatiepolicies gewijzigd. Controleer installatie,
+activatie, resource-loading, hervatten in een nieuwe chat en isolatie met twee accounts.
+Zie de [plugin-README](../plugins/onboarding/README.md) voor vereisten en beperkingen.
+Standaardinstallatie volgt pas na geslaagde acceptatie, pilot en aparte uitrolgoedkeuring.
+De Claude-vermelding borgt catalogusconsistentie en claimt geen ChatGPT-functionaliteit.
+
 ## Discovery and synchronization boundaries
 
 The [official plugin management guide](https://learn.chatgpt.com/docs/enterprise/plugin-management)

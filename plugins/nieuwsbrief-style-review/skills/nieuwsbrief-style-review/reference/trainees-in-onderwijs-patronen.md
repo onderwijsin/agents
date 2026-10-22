@@ -92,7 +92,7 @@ geldt. De groet mag formeler of informeler bij de doelgroep passen.
 
 TIO-TEAM-02: de componentwrapper heeft `paddingTop=4`, `paddingBottom=4`.
 De afbeelding is 232 px breed, met alt “Het team van Trainees in onderwijs”,
-mailgebonden radius 12 en bestemming `https://traineesinonderwijs.nl/over-ons/ons-team`
+ongerond (radius 0 of niet ingesteld) volgens TIO-RADIUS-01 en bestemming `https://traineesinonderwijs.nl/over-ons/ons-team`
 met UTM's. Behoud componentidentiteit, personen en metadata. Pas de namen alleen
 aan bij bevestigde teaminformatie; raad geen actuele bezetting. Dit kleine
 teambeeld hoeft niet naar volle sectiebreedte te worden vergroot.

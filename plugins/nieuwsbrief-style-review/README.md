@@ -203,18 +203,20 @@ er zijn geen Loops-objecten gewijzigd. De meegeleverde header en iconen zijn
 als referentieassets onderzocht. Dit bewijst geen geïnstalleerde hostactivatie
 of volledige visuele weergave. De volgende hostchecks staan nog open:
 
-| Scenario                                 | Verwacht resultaat                                                                         |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Vrije sectievolgorde of andere aantallen | Geen deep dive-structuur of onnodige secties afdwingen.                                    |
-| Header                                   | Juiste component en beeld, padding top/bottom, alttekst; nul witregels vóór eerste sectie. |
-| Secties en footer                        | Lichtblauw, 40/30 padding, radius 12; één spacer tussen secties, nul na footer.            |
-| Buttons en datumvlakken                  | Radius 8; overige afgeronde content en beelden radius 12.                                  |
-| Icoonlijst                               | Witte goedgekeurde icoonbeelden, rand 1 px #c7e6ee, vaste kolommen en itempadding.         |
-| Interviewquote                           | Quote links en portret rechts; typegroottes, spacer en brongetrouw citaat behouden.        |
-| Teamgroet en gesprek niet relevant       | Geen harde verplichting; vaste footer blijft wel vereist.                                  |
-| Ontbrekende alt in beide teams           | Concrete ontbrekende beschrijving melden of veilig mailgebonden corrigeren.                |
-| Eigen subdomein met referrer/variabele   | UTM toevoegen met behoud van overige query en personalisatie.                              |
-| Gedeeld component met afwijking          | Alleen mailgebonden correctie; anders handmatige actie melden.                             |
+| Scenario                                 | Verwacht resultaat                                                                                           |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Vrije sectievolgorde of andere aantallen | Geen deep dive-structuur of onnodige secties afdwingen.                                                      |
+| Header                                   | Juiste component en beeld, padding top/bottom, alttekst; nul witregels vóór eerste sectie.                   |
+| Secties en footer                        | Lichtblauw, 40/30 padding, radius 12; één spacer tussen secties, nul na footer.                              |
+| Buttons en datumvlakken                  | Radius 8; overige afgeronde content en beelden radius 12.                                                    |
+| Teamfoto en footerlogo zonder radius     | Correct volgens TIO-RADIUS-01, TIO-BEELD-02, TIO-TEAM-02 en TIO-FOOTER-01; geen radiuscorrectie voorstellen. |
+| Gewone afbeelding zonder radius          | Ontbrekende radius 12 melden volgens TIO-RADIUS-01 en TIO-BEELD-02.                                          |
+| Icoonlijst                               | Witte goedgekeurde icoonbeelden, rand 1 px #c7e6ee, vaste kolommen en itempadding.                           |
+| Interviewquote                           | Quote links en portret rechts; typegroottes, spacer en brongetrouw citaat behouden.                          |
+| Teamgroet en gesprek niet relevant       | Geen harde verplichting; vaste footer blijft wel vereist.                                                    |
+| Ontbrekende alt in beide teams           | Concrete ontbrekende beschrijving melden of veilig mailgebonden corrigeren.                                  |
+| Eigen subdomein met referrer/variabele   | UTM toevoegen met behoud van overige query en personalisatie.                                                |
+| Gedeeld component met afwijking          | Alleen mailgebonden correctie; anders handmatige actie melden.                                               |
 
 ## Team bepalen uit een object-ID
 

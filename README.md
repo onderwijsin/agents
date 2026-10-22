@@ -17,15 +17,16 @@ skills in `.agents/skills/` are separate and are not distributed through our mar
 
 ## Use the collection
 
-| Name                                                                   | Type   | Description                                                                                                                                |
-| ---------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| [Onderwijsloket](plugins/onderwijsloket/README.md)                     | Plugin | Explore education careers, pathways, programs, regional support and experiences; plan consultations or prepare feedback with consent.      |
-| [Adviesassistent Onderwijsloket](plugins/adviesassistent/README.md)    | Plugin | Draft advice emails, prepare consultations, write or review knowledge content and fact-check claims using Onderwijsloket sources.          |
-| [Onderwijs in Redacteur](plugins/onderwijs-in-redacteur/README.md)     | Plugin | Edit and write Dutch website content and newsletters; return text in chat or prepare a Loops draft with separate style-review support.     |
-| [Agent-instructie](plugins/agent-instructie/README.md)                 | Plugin | Schrijf en verbeter Nederlandstalige prompts en skills voor niet-technische taken, met duidelijke opdrachten en controleerbare resultaten. |
-| [Plausible](plugins/plausible-analytics/README.md)                     | Plugin | Analyze website traffic, acquisition and measured conversions in your language, with chat, chart and PDF reporting.                        |
-| [Nieuwsbrief stijl review](plugins/nieuwsbrief-style-review/README.md) | Plugin | Review Loops newsletter drafts for team style and formatting, with optional draft corrections and test previews.                           |
-| [Icon-generator](plugins/icon-generator/README.md)                     | Plugin | Genereer PNG-iconen voor drie merken; met eigen referentie-iconen en afgeleide stijlregels per merk.                                       |
+| Name                                                                   | Type   | Description                                                                                                                                 |
+| ---------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Onboarding](plugins/onboarding/README.md)                             | Plugin | Doorloop twaalf praktische ChatGPT Business-modules met de Bert-bot van de IT-afdeling; implementatie voor installatie- en gebruikerstests. |
+| [Onderwijsloket](plugins/onderwijsloket/README.md)                     | Plugin | Explore education careers, pathways, programs, regional support and experiences; plan consultations or prepare feedback with consent.       |
+| [Adviesassistent Onderwijsloket](plugins/adviesassistent/README.md)    | Plugin | Draft advice emails, prepare consultations, write or review knowledge content and fact-check claims using Onderwijsloket sources.           |
+| [Onderwijs in Redacteur](plugins/onderwijs-in-redacteur/README.md)     | Plugin | Edit and write Dutch website content and newsletters; return text in chat or prepare a Loops draft with separate style-review support.      |
+| [Agent-instructie](plugins/agent-instructie/README.md)                 | Plugin | Schrijf en verbeter Nederlandstalige prompts en skills voor niet-technische taken, met duidelijke opdrachten en controleerbare resultaten.  |
+| [Plausible](plugins/plausible-analytics/README.md)                     | Plugin | Analyze website traffic, acquisition and measured conversions in your language, with chat, chart and PDF reporting.                         |
+| [Nieuwsbrief stijl review](plugins/nieuwsbrief-style-review/README.md) | Plugin | Review Loops newsletter drafts for team style and formatting, with optional draft corrections and test previews.                            |
+| [Icon-generator](plugins/icon-generator/README.md)                     | Plugin | Genereer PNG-iconen voor drie merken; met eigen referentie-iconen en afgeleide stijlregels per merk.                                        |
 
 Our deployment target is the _ChatGPT Business workspace_ marketplace. Administrators
 can import a GitHub catalog through the GUI, then colleagues can discover and install
