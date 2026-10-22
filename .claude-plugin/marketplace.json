@@ -5,6 +5,7 @@
     "email": "hallo@onderwijsin.nl"
   },
   "plugins": [
+    { "name": "onboarding", "source": "./plugins/onboarding" },
     {
       "name": "onderwijs-in-redacteur",
       "source": "./plugins/onderwijs-in-redacteur"
