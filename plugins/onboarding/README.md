@@ -34,7 +34,7 @@ een nieuwe chat. Catalogusmetadata installeert geen gekoppelde accounts of recht
 Modules 1–3 vormen de basis. De overige modules zijn afzonderlijk te kiezen.
 De lessen omvatten voice, echte personalisatie-instellingen, een Space-pagina,
 projectinstructies en documentupload, lokale bestandsbewerking, plugins, geplande taken,
-agent- en skillcreatie, delen en Meetings. [SPEC.md](SPEC.md) blijft het ontwerpdocument.
+agent- en skillcreatie, delen en Meetings.
 
 Alle runtimebestanden staan binnen [de skill](skills/onboarding/SKILL.md).
 De referenties zijn skill-private en hebben geen gegenereerde duplicaten nodig.
@@ -87,7 +87,6 @@ De host bewaart en autoriseert de gegevens. Er is geen externe voortgangsopslag.
 
 ## Verificatie en beperkingen
 
-Zie [testplan en bewijs](TESTING.md) voor de uitgevoerde controles en uitrolvoorwaarden.
 De native Pages-proef in deze ontwikkelchat kon een private pagina aanmaken, lezen,
 bijwerken en opnieuw terugvinden. Een edit met een verouderde hash werd afgewezen.
 Dit bewijst geen installatie, activatie of hervatting door de plugin in een nieuwe chat.
@@ -184,7 +183,8 @@ interface, beschikbare skillselectie en routering in de doelworkspace vóór pub
 Bouw geen eigen Slack-bot of API-integratie als impliciete workaround.
 
 Er zijn geen Slack-berichten verstuurd, instellingen gewijzigd of agents gepubliceerd.
-De benodigde kanaal- en afhankelijkheidstests staan in het testplan.
+Controleer vóór publicatie de kanaalroutering, bronrechten en beschikbaarheid van de
+vereiste skill in de doelworkspace.
 
 ## Contentverbeteraar — auteurschap, bronnen en planning
 

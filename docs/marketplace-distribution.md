@@ -76,9 +76,9 @@ niet voor Claude geconfigureerd. Zie de package-README en acceptatiecriteria.
 
 [Onboarding](../plugins/onboarding/README.md) is een skill-only pakket voor ChatGPT
 Business. De catalogus gebruikt voorlopig `AVAILABLE` voor gecontroleerde tests;
-er zijn geen workspace-installatiepolicies gewijzigd. Volg het
-[testplan](../plugins/onboarding/TESTING.md) voor installatie, activatie,
-resource-loading, hervatten in een nieuwe chat en isolatie met twee accounts.
+er zijn geen workspace-installatiepolicies gewijzigd. Controleer installatie,
+activatie, resource-loading, hervatten in een nieuwe chat en isolatie met twee accounts.
+Zie de [plugin-README](../plugins/onboarding/README.md) voor vereisten en beperkingen.
 Standaardinstallatie volgt pas na geslaagde acceptatie, pilot en aparte uitrolgoedkeuring.
 De Claude-vermelding borgt catalogusconsistentie en claimt geen ChatGPT-functionaliteit.
 
