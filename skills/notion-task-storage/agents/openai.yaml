@@ -1,0 +1,5 @@
+interface:
+  display_name: "Notion Task Storage"
+  short_description: "Map and persist tasks in a configured Notion database"
+  icon_small: "./assets/icon-small.png"
+  icon_large: "./assets/icon-large.png"

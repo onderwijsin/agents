@@ -1,0 +1,5 @@
+interface:
+  display_name: "Task Processing"
+  short_description: "Qualify and deduplicate evidence-backed tasks"
+  icon_small: "./assets/icon-small.png"
+  icon_large: "./assets/icon-large.png"

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title">
+  <title id="title">GitHub Activity Discovery</title>
+  <g stroke="#243447" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 13v35m0-12h12c10 0 14-5 14-14v-9" stroke="#243447" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19" cy="12" r="6" fill="#EDE9FE" stroke="#243447" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19" cy="49" r="6" fill="#EDE9FE" stroke="#243447" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="45" cy="12" r="6" fill="#EDE9FE" stroke="#243447" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="44" cy="43" r="10" fill="#EDE9FE" stroke="#243447" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="m51 50 7 7m-18-14h8m-4-4v8" stroke="#243447" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

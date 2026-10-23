@@ -7,8 +7,8 @@ interface:
     docs, env docs, changelogs, examples, comments, generated docs, and user-facing
     instructions. This is not a general code review; it compares what the docs claim
     against what the code does.
-  icon_small: assets/icon.svg
-  icon_large: assets/icon.svg
+  icon_small: "./assets/icon-small.png"
+  icon_large: "./assets/icon-large.png"
 policy:
   products:
     - chatgpt

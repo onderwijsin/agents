@@ -30,6 +30,19 @@ skills/<skill-name>/
   agents/openai.yaml    (optional presentation metadata)
 ```
 
+Workspace skill icons live in `assets/icon.svg` with transparent PNG exports at
+`assets/icon-small.png` (48 × 48) and `assets/icon-large.png` (512 × 512).
+Point `interface.icon_small` and `interface.icon_large` in `agents/openai.yaml` to
+those skill-relative PNG paths. Keep the vector source for editing and use a distinct,
+legible symbol for each skill. These are presentation assets; no skill instructions
+or consumer declarations change when an icon is replaced.
+
+The [OpenAI presentation metadata reference](https://github.com/openai/skills/blob/main/skills/.system/skill-creator/references/openai_yaml.md)
+defines the icon fields and skill-relative asset paths (consulted 23 October 2026).
+The export sizes are repository conventions. Icon display in ChatGPT workspace
+uploads and other hosts still requires manual verification; bundled metadata alone
+does not establish host support.
+
 Every root workspace skill requires an explicit consumer list. A standalone-only skill has an
 empty array; a skill also used by agents lists their directory names:
 

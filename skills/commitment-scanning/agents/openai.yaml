@@ -1,0 +1,5 @@
+interface:
+  display_name: "Commitment Scanning"
+  short_description: "Find outstanding promises in communication sources"
+  icon_small: "./assets/icon-small.png"
+  icon_large: "./assets/icon-large.png"
