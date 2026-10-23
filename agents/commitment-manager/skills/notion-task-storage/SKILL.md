@@ -1,6 +1,6 @@
 ---
 name: notion-task-storage
-description: Discover a configured Notion task database, map its live schema, search all task states, and create and verify authorized tasks. Use as the Notion provider for task-storage; accepts destination and mapping overrides without personal database defaults.
+description: Discover a configured Notion task database, map its live schema, list and read scoped tasks, search all task states, and create, update and verify authorized tasks. Use as the Notion provider for task-storage; accepts destination and mapping overrides without personal database defaults.
 license: MIT
 ---
 
@@ -32,6 +32,9 @@ Receive normalized records from `task-storage` and the caller's authority. Consu
    dates, evidence, stable identity and body structure. Return its actual ID and returned URL;
    include a numeric display ID only if the schema provides one. For uncertain responses, search
    before retrying. Keep one writer within the run; Notion offers no uniqueness guarantee here.
+
+For list, read and update operations, follow the maintenance mapping in the reference and the
+caller-provided policy. Return unsupported operations explicitly; never substitute creation.
 
 Existing tasks remain unchanged under Commitment Manager. A formatting-only repair of a page
 created during this run is permitted only when the caller allows it; fetch again afterwards.

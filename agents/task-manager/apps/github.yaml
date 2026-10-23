@@ -1,0 +1,10 @@
+account_type: end-user
+action_safety: allow-low-risk
+safety_constraints: []
+write_actions: false
+read_actions: true
+capability_description: >-
+  Read issues, pull requests, commits, checks and related evidence through the
+  authenticated end user's existing access, restricted to invocation-selected
+  repositories when provided. All GitHub writes are disabled, including comments,
+  issue changes, reviews, merges, repository changes and workflow dispatches.

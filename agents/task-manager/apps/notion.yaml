@@ -1,0 +1,15 @@
+account_type: end-user
+action_safety: allow-low-risk
+safety_constraints: []
+write_actions: true
+read_actions: true
+capability_description: >-
+  Read accessible task databases, pages, comments, identities and metadata using
+  the authenticated end user's account. Write only targeted task property and
+  page-body updates in the invocation's resolved destination and task scope.
+  Routine updates follow Task Manager's narrow editorial and verified-context
+  policy; substantive changes need explicit approval. Read-only invocations
+  perform no writes. Task creation, schema changes, deletion, relocation,
+  comments, notifications and other collaboration writes are outside this agent's
+  workflow. These are intended boundaries; configure available action controls
+  and service permissions separately. Prose does not enforce row-level access.

@@ -81,6 +81,18 @@ when needed, and mailbox selection in existing schedules. Old unscoped execution
 incompatible and must not be reused. The host owns schedule timing; no schedule is embedded here.
 The separate onboarding exercise remains an introductory template, not this agent's deployed source.
 
+## Storage maintenance compatibility
+
+The storage contract also supports scoped list/read and caller-authorized update operations for
+[Task Manager](../task-manager/README.md). These capabilities do not change Commitment Manager's
+creation-only policy: existing tasks remain unchanged except permitted formatting repair of its
+own same-run creations. Review this boundary when updating the uploaded storage skills.
+
+For now, `task-storage`, `notion-task-storage` and `notion-formatting` have complete identical
+copies under both agents, at the maintainer's request. Keep both source copies aligned; shared
+reference tooling is deferred. In ChatGPT, check which agents link to a workspace skill before
+updating it: duplicate source folders do not establish distinct deployed skill identities.
+
 ## Compatibility and limitations
 
 The target is ChatGPT workspace agents with separately connected apps and manually uploaded
