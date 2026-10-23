@@ -151,7 +151,9 @@ Directly pasting Markdown into the agent instructions editor can insert it as a
 string literal rather than formatted instructions. Use this builder prompt instead:
 
 ```text
-Add these instructions unchanged except for converting the named file and skills into their actual agent references. When you are done, check the formatting of the instructions. Make sure there are no formatting errors like unintended line breaks.
+Add these instructions unchanged except for converting the named app, file and skills
+into their actual agent references. When you are done, check the formatting of the
+instructions. Make sure there are no formatting errors like unintended line breaks.
 
 ---
 
