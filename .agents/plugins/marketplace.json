@@ -6,8 +6,14 @@
   "plugins": [
     {
       "name": "onboarding",
-      "source": { "source": "local", "path": "./plugins/onboarding" },
-      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "source": {
+        "source": "local",
+        "path": "./plugins/onboarding"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
       "category": "Productivity",
       "description": "Verken en personaliseer ChatGPT Business met de Bert-bot van de IT-afdeling, in twaalf praktische onboardingmodules."
     },

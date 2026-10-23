@@ -98,8 +98,9 @@ our initial validation contract; introduce them with focused validation and docu
 
 Run `pnpm check` and test installation and behavior on each claimed host before requesting review.
 Do not claim compatibility based solely on portable files. Before distributing the first plugin,
-verify workspace import and Claude loading in the intended environments. Every distributable
-skill has one canonical source inside one plugin. Plugin versions are authoritative for all
+verify workspace import and Claude loading in the intended environments. Every marketplace-distributed
+skill has one canonical source inside one plugin. Standalone workspace-agent skills use the
+separate [manual deployment route](agent-deployment.md); agents cannot use plugin-bundled skills. Plugin versions are authoritative for all
 bundled changes; there is no independent skill version. The
 [release workflow](releases.md) updates manifest versions before merge; use PR labels
 for minor or major bumps.

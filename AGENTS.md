@@ -47,7 +47,10 @@ Use provider-specific metadata only where the host requires it; share the underl
 Verify claimed host behavior through installation and representative tasks, rather than inferring
 runtime compatibility from matching file formats.
 
-Create distributable skills inside exactly one plugin; keep its resources within that package.
+Create marketplace-distributed skills inside exactly one plugin; keep resources within that package.
+For workspace agents, author standalone skills under `agents/<agent-name>/skills/` for manual upload.
+Workspace agents can use apps (MCPs) and standalone workspace skills, but cannot use plugins or
+plugin-bundled skills. Follow [agent deployment](docs/agent-deployment.md) for this separate route.
 Use the containing plugin version for bundled skill changes. Keep `.agents/skills/` for repository
 development capabilities outside marketplace distribution.
 Keep repository validation separate from runtime capabilities and service integrations.

@@ -11,7 +11,7 @@ An **Agent Skill** is a folder of Markdown instructions and optional resources t
 teaches an AI assistant when and how to perform a reusable task. A **plugin** packages
 skills and, when needed, connections to external services for installation together.
 A **marketplace** is a catalog that helps people discover and install plugins. Every
-distributable skill belongs to a plugin; plugins are our discovery, installation, synchronization,
+marketplace-distributed skill belongs to a plugin; plugins are our discovery, installation, synchronization,
 and versioning units. A plugin may contain one skill or several. Repository development
 skills in `.agents/skills/` are separate and are not distributed through our marketplaces.
 
@@ -47,11 +47,13 @@ Portable files do not guarantee identical tools, permissions, or behavior on eve
 Workspace agents in [`agents/`](agents/) combine instructions and configuration,
 connected-app policies, reference files, and reusable workspace skill dependencies.
 They are a separate resource class alongside plugins, with Git as the maintained
-source and ChatGPT as the runtime.
+source and ChatGPT as the runtime. Workspace agents use apps (MCPs) and separately uploaded
+standalone workspace skills; they cannot use plugins or plugin-bundled skills. Agent skill
+sources live under `agents/<agent-name>/skills/` for manual upload.
 
-| Agent                                                          | Purpose                                                                                            |
-| -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| [Commitment Manager](agents/commitment-manager/INSTRUCTION.md) | Find verified outstanding personal commitments and create missing Notion tasks without duplicates. |
+| Agent                                                     | Purpose                                                                                                          |
+| --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| [Commitment Manager](agents/commitment-manager/README.md) | Find verified personal commitments and create tasks in a configurable destination; Notion is the first provider. |
 
 **Deployment limitation:** Agent definitions are maintained manually in the ChatGPT
 web UI; this repository provides no agent marketplace import or automatic sync.

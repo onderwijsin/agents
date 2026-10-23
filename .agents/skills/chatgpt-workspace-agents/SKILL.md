@@ -12,6 +12,14 @@ guidance to instruction and skill changes. Read
 behavior; read [agent deployment](../../../docs/agent-deployment.md) when preparing
 a manual sync or checking source-to-UI mappings.
 
+## Dependency boundary
+
+Workspace agents can use apps (MCPs) and separately uploaded standalone workspace skills.
+They cannot use plugins or plugin-bundled skills. Author dependencies under the agent's
+`skills/` directory with all resources needed for individual upload. Upload and link every
+required skill separately, including cross-skill dependencies; marketplace installation is
+not an agent deployment route.
+
 ## Layout and names
 
 ```text
@@ -45,7 +53,10 @@ apps:
   - microsoft_outlook_email
 skills:
   - notion-formatting
-  - notion-task-management
+  - commitment-scanning
+  - task-processing
+  - task-storage
+  - notion-task-storage
 files:
   - commitment-manager-reference.md
 memory: true
@@ -97,8 +108,9 @@ metadata, verifying provider-specific changes against current official guidance.
 Agent-local skill sources document dependencies available through the user's workspace;
 they are not owned exclusively by this agent. Inspect other consumers before changing
 a shared skill. Maintain one authored source and reference it from other definitions.
-Keep marketplace-distributed skill sources in their plugin and use plugin versioning
-for those changes; agent-local snapshots are not marketplace packages.
+Keep workspace-agent skill sources in `agents/<agent-name>/skills/` for standalone upload,
+with one canonical source when reused by other agents. These sources are outside marketplace
+catalogs and plugin versioning. Plugin-bundled skills cannot satisfy agent dependencies.
 
 Use UTF-8 Markdown, inline code for literal names, numbered steps for workflows,
 and fenced code blocks with language tags. Use relative Markdown links for local

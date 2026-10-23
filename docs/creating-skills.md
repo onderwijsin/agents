@@ -1,8 +1,19 @@
-# Creating a skill within a plugin
+# Creating skills
 
 A skill teaches a reusable capability, including when to use it. Start with a specific audience,
 realistic task examples, and clear expected results. Follow the
 [Agent Skills specification](https://agentskills.io/specification).
+
+## Choose the deployment route
+
+For a workspace agent, create a standalone skill under
+`agents/<agent-name>/skills/<skill-name>/`. Keep resources in its `references/` and `assets/`
+directories and upload each skill separately, then link it in the agent builder. Workspace agents
+can use apps (MCPs) and standalone workspace skills; plugins and plugin-bundled skills are
+unavailable to them. Follow [agent deployment](agent-deployment.md) for that route.
+
+The plugin packaging and versioning rules below apply to marketplace distribution, not to
+standalone workspace-agent skills. The instruction and frontmatter guidance applies to both.
 
 ## Layout and metadata
 
