@@ -5,8 +5,8 @@
 ## Database and identity
 
 - **Notion database:** Acties (icon: 📌)
-- **Database URL:** https://app.notion.com/p/15c2a18de08d4fc48026625625173da9
-- **Linked database / working views:** https://app.notion.com/p/f49a28a1cd1c4f8bb5787fc42e7e39dc
+- **Database URL:** <https://app.notion.com/p/15c2a18de08d4fc48026625625173da9>
+- **Linked database / working views:** <https://app.notion.com/p/f49a28a1cd1c4f8bb5787fc42e7e39dc>
 - **Data source:** `collection://b6671e64-e68f-4254-9952-3eb599ae5b6a`
 - **User ID for personal scope:** `8d725767-28e2-411d-b5cd-907ed7bf85cb`
 - **User URI:** `user://8d725767-28e2-411d-b5cd-907ed7bf85cb`

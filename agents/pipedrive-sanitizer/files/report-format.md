@@ -8,7 +8,7 @@ Use this order and these headings. All dates and times should display `Europe/Am
 
 ### 1. Heading and outcome
 
-```
+```text
 # Pipedrive Sanitizer — [Daily | Historical | Remediation]
 Run: <Notion run link> · Status: <Completed | Partial | Failed>
 Window: <local start> to <local end>; Pipedrive filter: <7732 | 7731 | n/a>

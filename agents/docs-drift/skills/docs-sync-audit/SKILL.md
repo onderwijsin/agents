@@ -159,7 +159,7 @@ This skill is one of seven review skills that share a single report contract:
 every finding carries a `P0`-`P3` severity and a `path:line` you can open.
 `test-gap-audit` is the other one in this repository. The remaining five cover
 launch readiness, security, repo structure, improvement ideas, and pull
-request communication, at https://github.com/specialone0007/review-skills.
+request communication, at <https://github.com/specialone0007/review-skills>.
 
 ## Agent Portability Notes
 

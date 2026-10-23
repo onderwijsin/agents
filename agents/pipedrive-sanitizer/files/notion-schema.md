@@ -2,15 +2,15 @@
 
 ## Authoritative locations
 
-| Purpose                               | URL or data source                                        | Permission   |
-| ------------------------------------- | --------------------------------------------------------- | ------------ |
-| Current company AI policy             | https://app.notion.com/p/401b66e1be6980a3a490ff33ccff5d05 | Read         |
-| Personal-data classification database | https://app.notion.com/p/401b66e1be698057b301c2d8c24474c0 | Read         |
-| Classification data source            | `collection://401b66e1-be69-8027-89fb-000beb09331f`       | Read         |
-| **Sanitizer Runs** database           | https://app.notion.com/p/401b66e1be69809c8f9cfaa80bdf4b08 | Read + write |
-| Runs data source                      | `collection://401b66e1-be69-8031-ab8c-000b3c0eec36`       | Read + write |
-| **Sanitizer Results** database        | https://app.notion.com/p/401b66e1be698005a4c1fa2b53e89fc7 | Read + write |
-| Results data source                   | `collection://401b66e1-be69-80bd-b05d-000b3f29cd61`       | Read + write |
+| Purpose                               | URL or data source                                          | Permission   |
+| ------------------------------------- | ----------------------------------------------------------- | ------------ |
+| Current company AI policy             | <https://app.notion.com/p/401b66e1be6980a3a490ff33ccff5d05> | Read         |
+| Personal-data classification database | <https://app.notion.com/p/401b66e1be698057b301c2d8c24474c0> | Read         |
+| Classification data source            | `collection://401b66e1-be69-8027-89fb-000beb09331f`         | Read         |
+| **Sanitizer Runs** database           | <https://app.notion.com/p/401b66e1be69809c8f9cfaa80bdf4b08> | Read + write |
+| Runs data source                      | `collection://401b66e1-be69-8031-ab8c-000b3c0eec36`         | Read + write |
+| **Sanitizer Results** database        | <https://app.notion.com/p/401b66e1be698005a4c1fa2b53e89fc7> | Read + write |
+| Results data source                   | `collection://401b66e1-be69-80bd-b05d-000b3f29cd61`         | Read + write |
 
 ## Load policy on each run
 
