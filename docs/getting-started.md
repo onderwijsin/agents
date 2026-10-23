@@ -71,6 +71,11 @@ Use [skill authoring](creating-skills.md) or [plugin authoring](creating-plugins
 
 ## Repository tooling and validation scope
 
+The validator removes regular `.DS_Store` files it encounters while enumerating
+repository content. Other files and directories are preserved; symlinks are not
+followed or removed. Cleanup errors other than an already missing file are reported
+as validation failures. This cleanup does not scan unrelated or excluded directories.
+
 This is a content repository. Its validation utilities use TypeScript with strict type checking,
 Zod v4 for JSON/YAML boundaries, and Node's test runner through tsx. Keep new utilities lightweight;
 JavaScript with JSDoc is preferred unless the task benefits from additional TypeScript modeling.

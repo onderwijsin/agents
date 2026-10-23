@@ -25,7 +25,8 @@ algemene afdeling, teamrol, onderwerp, een auteursnaam in lopende tekst of zoekr
 
 ## Connector en volledige inventaris
 
-Gebruik de beschikbare website-MCP met leestools. Ontdek de werkelijk aangeboden
+Gebruik uitsluitend een volgens het organisatiebeleid toegestane website-MCP met publieke leestools.
+Gebruik geen Notion of private CMS-data als fallback. Ontdek de werkelijk aangeboden
 contenttypen, filters, auteursrelaties, details, canonieke URL's en pagineringsvelden.
 Neem geen Directus-, CMS- of schrijfrechten aan. Een ontbrekende authorfilter maakt
 selectie niet onmogelijk als detaildocumenten de auteurs wel bevatten.

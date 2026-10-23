@@ -2,13 +2,21 @@
 
 Doel: de zakelijke werkplek herkennen en een bruikbaar vervolggesprek voeren.
 Controleer eerst of de medewerker de Business-workspace gebruikt, zonder privé-
-en zakelijke gesprekken samen te voegen. Leg Chat en Work kort uit en wijs
-Space/Pages, Projects, plugins, agents en skills aan met de beschikbare interface.
-Een plugin bundelt instructies en eventueel koppelingen; een skill beschrijft een
-herbruikbare werkwijze; een agent ondersteunt een afgebakend proces met gekozen tools.
+en zakelijke gesprekken samen te voegen. Gebruik het al opgeslagen werkprofiel en ervaringsniveau; vul
+ontbrekende intake
+vóór deze oefening aan via [profiel en leertempo](learner-profile.md).
+Leg Chat uit bij de eerste vraag en Work wanneer een taak tools of een bestand nodig
+heeft. Wijs nu alleen aan waar een nieuwe chat begint. Pages, Projects, plugins,
+skills en agents worden bij hun eigen oefening geïntroduceerd; geef geen rondleiding
+langs alle schermen. Geef vóór invoer kort de gegevensgrens uit
+[medewerkersbeleid](organization-policy.md): oefenen met fictieve of publieke inhoud.
 Bespreek de modellen en redeneerniveaus die de medewerker daadwerkelijk ziet:
 voor een eenvoudige oefening volstaat een lichte beschikbare optie, voor een complexe
 opdracht kan meer redeneren passend zijn. Maak er geen modelcatalogus van.
+
+Licht kort toe: “[Codex](https://learn.chatgpt.com/docs/prompting#prompting-codex)
+is de programmeerassistent van OpenAI voor code schrijven, begrijpen en verbeteren.
+Voor deze onboarding heb je Codex niet nodig.” Bied geen Codex-oefening of installatie aan.
 
 Laat één veilige vraag kiezen, of een eigen vraag:
 
@@ -30,4 +38,5 @@ handsfree waar toegestaan en met aandacht voor het verkeer; vraag geen schermhan
 onderweg. Ontbrekende voice blokkeert de basismodule niet.
 
 Afronding: eerste vraag en vervolgvraag zijn uitgevoerd; de medewerker kan aanwijzen
-waar de zakelijke workspace en de genoemde hoofdonderdelen te vinden zijn.
+waar de zakelijke workspace en een nieuwe chat te vinden zijn.
+Het werkprofiel, de organisatieonderdelen en AI-ervaring zijn opgeslagen of als checkpoint meegegeven.

@@ -1,11 +1,30 @@
 # Ondersteunende skill — Webcontent best practices
 
-Deze volledige SKILL.md-definitie hoort bij Contentverbeteraar. Laat de medewerker
-de skill via de beschikbare creator toevoegen en in de agent selecteren. Controleer
-in een proef dat de opgeslagen skill daadwerkelijk wordt toegepast. Dit lesmateriaal
-installeert geen extra onboarding-subskill en verandert de drie keuzes in module 9 niet.
+## Gebruik als referentie
 
-## SKILL.md
+Dit bestand is inspiratie en kwaliteitsreferentie voor Bert, volgens
+[begeleid zelf bouwen](bouwbegeleiding.md). De ideeën en input van de medewerker
+zijn leidend; de uitwerking hieronder is één mogelijkheid. Gebruik vragen en
+gerichte fragmenten bij behoefte, geen ongevraagde volledige bouwinstructie.
+
+Begeleidingsvraag: Welke verbetering voor de lezer zoekt de medewerker, en wat kan die zelf aan het resultaat controleren?
+
+Kwaliteitsfocus: Kijk naar concrete voorstellen met bewijs en het verschil tussen tekstuele en werkelijk waargenomen visuele kwaliteit.
+
+Deze uitwerking kan helpen bij een eigen skill voor webcontentreview en bij een
+agent die zo'n skill hergebruikt. Laat de medewerker de eigen criteria en aanpak
+bepalen. Hergebruik is een ontwerpkeuze, geen vaste route voor Contentverbeteraar.
+Het voorbeeld installeert geen extra onboarding-subskill.
+
+## Configuratie en invoer
+
+Geschikt voor webredacteuren en contentbeheerders. Bevestig pagina, doelgroep,
+lezersdoel en welke bronnen of gerelateerde pagina's beschikbaar zijn. Gebruik
+publieke of fictieve inhoud. De skill bepaalt zelf geen auteurschap of websitebrede scope.
+Ze werkt met aangeleverde volledige teksten; actuele bron- of linkcontrole vereist
+apart beschikbare, toegestane publieke leestoegang. Er is geen los runtimebestand nodig.
+
+## Uitgewerkt SKILL.md-voorbeeld
 
 ```markdown
 ---
@@ -77,10 +96,24 @@ voor de inhoudelijke claims op een specifieke website.
 - [Google Search Central: link best practices](https://developers.google.com/search/docs/crawling-indexing/links-crawlable)
   voor context en bruikbare linktekst bij relevante interne links.
 
-## Testen
+## Verwacht resultaat
+
+Concrete voorstellen met bronpassage, bewijs, lezersvoordeel en prioriteit.
+Feitelijke problemen, ontbrekende controle en redactionele voorkeuren blijven
+onderscheiden. Zonder concrete bevinding is een kort bericht voldoende.
+
+## Testen en hergebruiken
 
 Gebruik een fictieve pagina met een lange onduidelijke intro, een actueel relevant
 linkdoel en één niet-onderbouwde datumclaim. Verwacht concrete structuur- en
 linkvoorstellen en een verificatievraag voor de datum, geen verzonnen vervanging.
 Test daarna een historisch artikel en een Markdown-extract zonder visuele gegevens:
 geen automatische actualisering of bewezen layout-/contrastprobleem claimen.
+
+Ontbrekende context: lever alleen een titel aan en vraag een volledige review.
+Verwacht een verzoek om pagina-inhoud of melding van de beperkte dekking, geen
+volledige beoordeling op basis van de titel.
+
+Hergebruik de opgeslagen skill met een tweede pagina. Controleer dat alleen
+bijbehorende feiten en linkdoelen worden gebruikt en eventuele resource- of
+leestoegang werkelijk beschikbaar is.

@@ -10,17 +10,17 @@ op alle platforms. Vraag welke opties zichtbaar zijn als de route afwijkt.
 
 ## Productroutes
 
-| Functie             | Startpunt                                                                             | Controle                                                                                |
-| ------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| Plugin kiezen       | Typ `@` en kies Onboarding; eventueel via Plugins in Customize of het plusmenu        | Gebruik de selector, neem geen exacte mention aan                                       |
-| Personalisatie      | Settings → Personalization                                                            | Kies beschikbare toon/voorkeuren en sla op; de getoonde opties verschillen per omgeving |
-| ChatGPT Project     | Projects → nieuw project; Sources voor projectbestanden                               | Instructies, upload en projectgesprek gebruiken dezelfde context                        |
-| Lokaal Work-project | Desktopapp → Projects → nieuw lokaal project; projectmenu → Edit project → Add folder | Start een nieuwe Work-chat met toegang tot de oefenmap                                  |
-| Space-pagina        | Space; maken of bewerken via native Pages in Work                                     | Lees opgeslagen inhoud terug; controleer eigenaar en delen                              |
-| Geplande taak       | Vraag in chat om een taak; beheer onder Scheduled                                     | Controleer opgeslagen timing, status en instructie                                      |
-| Agent of skill      | Gebruik de beschikbare creator of Customize-interface                                 | Een tekstconcept is pas klaar na aanmaken en een echte test                             |
-| Voice               | Start voice chat; eerste keer microfoontoestemming en stem kiezen                     | Beschikbaarheid en starten/stoppen controleren; dicteren is alleen tekstinvoer          |
-| Meetings            | Zoek Meetings in de macOS-desktopapp                                                  | Controleer opnamefunctie en toestemming; gebruik geen verzonnen Windows-releasedatum    |
+| Functie             | Startpunt                                                                             | Controle                                                                                     |
+| ------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Plugin kiezen       | Typ `@` en kies Onboarding; eventueel via Plugins in Customize of het plusmenu        | Gebruik de selector, neem geen exacte mention aan                                            |
+| Personalisatie      | Settings → Personalization                                                            | Bekijk geheugen, schrijfstijl en aangepaste instructies; kies en bevestig opgeslagen waarden |
+| ChatGPT Project     | Projects → nieuw project; Sources voor projectbestanden                               | Instructies, upload en projectgesprek gebruiken dezelfde context                             |
+| Lokaal Work-project | Desktopapp → Projects → nieuw lokaal project; projectmenu → Edit project → Add folder | Start een nieuwe Work-chat met toegang tot de oefenmap                                       |
+| Space-pagina        | Space; maken of bewerken via native Pages in Work                                     | Lees opgeslagen inhoud terug; controleer eigenaar en delen                                   |
+| Geplande taak       | Vraag in chat om een taak; beheer onder Scheduled                                     | Controleer opgeslagen timing, status en instructie                                           |
+| Agent of skill      | Gebruik de beschikbare creator of Customize-interface                                 | Een tekstconcept is pas klaar na aanmaken en een echte test                                  |
+| Voice               | Start voice chat; eerste keer microfoontoestemming en stem kiezen                     | Beschikbaarheid en starten/stoppen controleren; dicteren is alleen tekstinvoer               |
+| Meetings            | Zoek Meetings in de macOS-desktopapp                                                  | Controleer opnamefunctie en toestemming; gebruik geen verzonnen Windows-releasedatum         |
 
 Chat is geschikt voor vragen en korte concepten. Work voert grotere opdrachten met
 tools uit. Space bewaart pagina's; een ChatGPT Project bundelt gesprekken, bestanden

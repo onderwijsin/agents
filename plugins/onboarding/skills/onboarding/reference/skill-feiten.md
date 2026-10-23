@@ -1,17 +1,37 @@
 # Voorbeeldskill — fact-checker
 
-Maak deze zelfstandige skill in module 9, met de technische naam `fact-checker`.
+## Gebruik als referentie
+
+Dit bestand is inspiratie en kwaliteitsreferentie voor Bert, volgens
+[begeleid zelf bouwen](bouwbegeleiding.md). De ideeën en input van de medewerker
+zijn leidend; de uitwerking hieronder is één mogelijkheid. Gebruik vragen en
+gerichte fragmenten bij behoefte, geen ongevraagde volledige bouwinstructie.
+
+Begeleidingsvraag: Welk soort claims wil de medewerker toetsen, en wat zou overtuigend bewijs of juist een bewijsgrens zijn?
+
+Kwaliteitsfocus: Kijk naar afbakening, gelezen bewijs, tegenbewijs en gemotiveerde onzekerheid.
+
+Dit is één mogelijke factcheck-skill voor module 9. Laat de medewerker zelf doel,
+naam en aanpak bepalen; `fact-checker` is alleen de naam in dit voorbeeld.
 De werkwijze is gebaseerd op de gelijknamige skill in Adviesassistent Onderwijsloket:
 onderwijsclaims afbakenen, bewijs en tegenbewijs lezen en het oordeel begrenzen.
 De benodigde criteria staan hier volledig in de instructietekst; deze compacte
 voorbeeldvariant heeft geen losse runtimebestanden uit die andere plugin nodig.
 
-Gebruik de beschikbare skillcreator en maak Onderwijsloket MCP beschikbaar voor de
-proef. Controleer dat de opgeslagen persoonlijke skill werkelijk wordt toegepast.
-De Onderwijsloket Fact Check Agent in module 10 kan vervolgens deze skill selecteren;
+De uitgewerkte voorbeeldvariant gebruikt Onderwijsloket MCP. Bij het eigen ontwerp
+kiest de medewerker passende toegestane bronnen en controleert de toepassing in
+de beschikbare creator; neem deze koppeling niet automatisch als vereiste over.
+Een eigen factcheck-agent kan desgewenst de zelfgemaakte skill hergebruiken;
 het voorbeeld installeert geen extra onboarding-subskill of gelijknamige pluginskill.
 
-## SKILL.md
+## Configuratie en invoer
+
+Geschikt voor adviseurs en onderzoekers die een afgebakende onderwijsclaim toetsen.
+Bevestig exacte claim, relevante periode en doelgroep. De proef vereist publieke
+Onderwijsloket-leestools; er worden geen persoonlijke dossiers gevraagd.
+Deze zelfstandige definitie bevat alle criteria in de SKILL.md-tekst.
+
+## Uitgewerkt SKILL.md-voorbeeld
 
 ```markdown
 ---
@@ -90,23 +110,29 @@ te veranderen. Initieer geen contact, melding of dossieroverdracht en wijzig gee
 publicaties; lever alleen het feitenoordeel in het huidige gesprek.
 ```
 
+## Verwacht resultaat
+
+Een gemotiveerd oordeel per relevante deelclaim, met daadwerkelijk gelezen
+bronlinks, bepalende voorwaarden en bewijsgrenzen. De uitvoer ondersteunt een
+inhoudelijke beoordeling; hij vervangt geen individueel besluit.
+
 ## Testen en hergebruiken
 
 Normaal: laat de medewerker een concrete onderwijsclaim kiezen, bijvoorbeeld
 “Met iedere hbo-opleiding mag je direct voor de klas staan.” Laat de skill de claim
 met actuele MCP-bronnen toetsen; vul het oordeel vooraf niet in. Controleer exacte
 afbakening, gelezen bronnen en voorwaarden. Herhaal met een andere claim via de
-opgeslagen skill en bewaar de veilige skillverwijzing voor module 10.
+opgeslagen skill. Bewaar alleen bij gekozen later hergebruik een veilige verwijzing.
 
 Grens: test een mening, een meerledige claim, een bepalende uitzondering, een
 ongelezen externe bronverwijzing en ontbrekende MCP-toegang. Verwacht passende
 labels en bewijsgrenzen, geen geforceerd totaaloordeel of aangenomen onderwijsregel.
 Met fictieve bronnen geldt een proefuitkomst uitsluitend voor de oefensituatie.
 
-## Gebruiken in de volgende module
+## Mogelijk hergebruik in een agent
 
-Selecteer in module 10 de Onderwijsloket Fact Check Agent en voeg de zojuist gemaakte
-persoonlijke `fact-checker` toe. Controleer de herkomst als er ook een gelijknamige
-Adviesassistent-skill beschikbaar is. De agent regelt Slack-context en antwoordvorm;
-de skill regelt de inhoudelijke feitencontrole. Test dat de agent werkelijk deze
-opgeslagen skill toepast, zonder verborgen vervanging of installatie van een andere skill.
+Als de medewerker de zelfontworpen skill in een eigen factcheck-agent wil gebruiken,
+begeleid dan het afzonderlijk beschikbaar maken en selecteren van juist die skill.
+Naam en workflow volgen de eigen keuzes, niet verplicht het voorbeeld. Controleer
+herkomst en toepassing als er gelijknamige pluginskills bestaan. Een andere agent
+of een ontwerp zonder skillhergebruik kan even goed passen bij module 10.

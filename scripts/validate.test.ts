@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import {
   access,
+  lstat,
   mkdtemp,
   mkdir,
   readFile,
@@ -79,6 +80,56 @@ test("empty catalogs and a single-skill plugin without connections pass", async 
     await validate(root);
     await addSkill(root, "name: draft\ndescription: Write a draft when asked.");
     await validate(root);
+  });
+});
+
+test("validation removes only regular .DS_Store files in enumerated directories", async () => {
+  await fixture(async (root) => {
+    const plugin = await addPlugin(root);
+    const agent = await addWorkspaceAgent(root);
+    const directories = [
+      root,
+      join(root, "plugins"),
+      plugin,
+      join(plugin, "skills"),
+      join(plugin, "skills/draft/reference"),
+      join(root, "skills"),
+      join(root, "skills/shared/references"),
+      join(root, "agents"),
+      agent,
+      join(root, "docs"),
+    ];
+    const kept = join(plugin, "skills/draft/reference/.DS_Store.backup");
+    await writeFile(kept, "keep this file");
+    for (const directory of directories) await writeFile(join(directory, ".DS_Store"), "Finder");
+    const source = join(plugin, "skills/draft/SKILL.md");
+    const original = await readFile(source);
+    await validate(root);
+    for (const directory of directories)
+      await assert.rejects(access(join(directory, ".DS_Store")), { code: "ENOENT" });
+    assert.equal(await readFile(kept, "utf8"), "keep this file");
+    assert.deepEqual(await readFile(source), original);
+    await validate(root);
+  });
+});
+
+test("validation preserves .DS_Store directories and rejects metadata symlinks", async () => {
+  await fixture(async (root) => {
+    const plugin = await addPlugin(root);
+    const target = join(root, "keep.txt");
+    const link = join(plugin, "skills/draft/reference/.DS_Store");
+    const directory = join(plugin, "skills/.DS_Store");
+    await writeFile(target, "keep the target");
+    await symlink(target, link);
+    await mkdir(directory);
+    await writeFile(join(directory, "keep.txt"), "keep the directory contents");
+    await assert.rejects(validate(root), /symlinks are not distributable/);
+    assert.ok((await lstat(link)).isSymbolicLink());
+    assert.equal(await readFile(target, "utf8"), "keep the target");
+    assert.equal(
+      await readFile(join(directory, "keep.txt"), "utf8"),
+      "keep the directory contents",
+    );
   });
 });
 

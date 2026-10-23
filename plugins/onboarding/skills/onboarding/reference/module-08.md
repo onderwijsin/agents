@@ -2,6 +2,11 @@
 
 Doel: een daadwerkelijk opgeslagen taak maken en deze beheren.
 Controleer Scheduled en de relevante rechten; lees de [uitvoeringsregels](onboarding-rules.md).
+Leg bij de bronkeuze uit dat een geplande run dezelfde gegevens- en toolgrenzen
+heeft als een gewone chat. Gebruik de [beleidsstand](organization-policy.md);
+plan geen scans van mail, Slack, CRM of Notion. Start met een herinnering zonder
+koppelingen of een publieke bron. Test apart of de geplande uitvoering toegang
+heeft tot de gekozen toegestane bron; chattoegang bewijst dat niet.
 
 Bied drie opdrachten en ruimte voor een eigen keuze:
 

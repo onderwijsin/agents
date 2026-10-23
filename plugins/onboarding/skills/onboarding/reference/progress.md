@@ -24,25 +24,29 @@ Bewaar en toon de teruggegeven Page-link, zodat de gebruiker later gericht kan h
 ## Inhoud en datamodel
 
 De pagina bevat een leesbaar overzicht en één JSON-statusblok. Overzicht:
-rol, teams, afgeronde basis, voltooid/beschikbaar totaal, status per module en volgende
+werk, organisatieonderdelen, AI-ervaring, leertempo, afgeronde basis, voltooid/beschikbaar totaal, status per module en volgende
 stap. Zet het JSON-blok als gewone inhoud op de pagina, nooit als Agent Instructions.
 Sla alleen noodzakelijke profielvoorkeuren en voortgang op. Geen brondocumenten,
 transcripten, gevoelige passages of volledige gesprekken in de status.
 
-Gebruik schema 1, curriculum 1.1. Het onderstaande is een gedeeltelijk voorbeeld;
+Gebruik schema 2, curriculum 1.3. Het onderstaande is een gedeeltelijk voorbeeld;
 initialiseer bij een nieuwe pagina **alle twaalf** stabiele ID's uit het
 [curriculum](curriculum.md) als `not_started`.
 
 ```json
 {
-  "schema_version": 1,
-  "curriculum_version": "1.1",
+  "schema_version": 2,
+  "curriculum_version": "1.3",
   "role": null,
+  "work": null,
+  "organizations": [],
+  "ai_experience": null,
+  "learning_pace": null,
   "teams": [],
   "preferences": {},
   "platform": null,
   "current_module": "introduction",
-  "current_step": "choose-exercise",
+  "current_step": "profile-work-organization",
   "modules": {
     "introduction": { "status": "not_started" }
   },
@@ -53,19 +57,33 @@ initialiseer bij een nieuwe pagina **alle twaalf** stabiele ID's uit het
 Waarden:
 
 - `role`: `project-of-programmamedewerker`, `adviseur-of-onderzoeker` of
-  `communicatie-of-organisatie`; aanvankelijk `null`.
+  `communicatie-of-organisatie`, of een eigen rol in vrije tekst; aanvankelijk `null`.
+- `work`: korte beschrijving van terugkerende taaksoorten, zonder casusinhoud.
+- `organizations`: bevestigde organisatieonderdelen of eigen organisatienaam.
+  Behoud `teams` voor bestaande teamselecties; presenteer een team niet als aparte werkgever.
+- `ai_experience`: `beginner`, `some_experience`, `experienced` of `null`.
+- `learning_pace`: `step_by_step`, `regular`, `compact` of `null`; een expliciete
+  voorkeur gaat boven de op ervaring gebaseerde startaanpak.
+  Sla intake-antwoorden meteen op, ook voordat een module is afgerond.
+  `null` of een lege lijst betekent nog onbekend, niet dat iemand geen ervaring of organisatie heeft.
 - `teams`: unieke selectie uit `onderwijsloket`, `trainees-in-onderwijs`, `projecten`.
   Meerdere teams vormen een combinatie; `mix` is geen team.
 - `preferences`: alleen door de medewerker gekozen werkvoorkeuren; wijziging daarvan
   betekent nog niet dat een instelling in de interface is gewijzigd.
 - `platform`: `macos`, `windows` of `null`; actualiseer bij een ander apparaat.
-- `current_step`: een korte concrete hervatstap; per module mogen `exercise` en een
+- `current_step`: een korte concrete hervatstap. Noteer bij bouwmodules de eigen taak
+  en een korte bevestigde ontwerpkeuze zonder broninhoud. Per module mogen `exercise` en een
   veilige resultaatverwijzing worden bewaard. Bewaar geen gevoelige lokale paden.
 - `status`: `not_started`, `in_progress`, `completed`, `skipped`, `unavailable`.
   `unavailable` vereist `reason` en `checked_at`; controleer de beperking bij hervatten.
 - `completed` vereist `completed_at`, `verification` (`tool_observed` of
   `user_confirmed`) en een korte `evidence` zonder broninhoud. Gemengde criteria
   krijgen `user_confirmed` als een essentieel deel alleen door de gebruiker is bevestigd.
+- `bonus_teasers`: aantal reeds gegeven teasers, aanvankelijk 0, maximaal 2.
+- `modules.bonus`: voeg pas na ontgrendeling toe. De bonus telt apart van de twaalf
+  gewone modules en is optioneel. Bewaar tijdens uitvoering alleen korte creatieve
+  keuzes, hervatstap en het stabiele `pet_id`; geen uploadsessies of tijdelijke URLs.
+  Vóór ontgrendeling bevatten overzicht en checkpoint geen bonusonderwerp of titel.
 - `updated_at` en controletijden: actuele ISO 8601-tijd, geen ingevulde voorbeeldtijd.
 
 Valideer gelezen JSON en verwachte velden vóór gebruik. Ongeldige JSON, een onbekende
@@ -95,14 +113,24 @@ Reeds voltooide modules blijven voltooid bij opnieuw oefenen; bewaar de nieuwe
 hervatstap apart totdat de herhaling gecontroleerd is. Overslaan van een herhaling
 verwijdert geen eerdere afronding. Profielwijzigingen wissen geen modulegegevens.
 
-Basis afgerond betekent dat de eerste drie modules `completed` zijn.
+Noem beleidsmatige beperkingen met de datum van de gebruikte beleidsreferentie;
+herstel ze niet op basis van alleen zichtbare tools. Bewaar bij een nieuwe beperking
+eerdere afrondingen en bewijs: historische voltooiing geeft geen actuele toestemming.
+
+Basis afgerond betekent dat modules 1–3 `completed` zijn.
 Volledig afgerond vereist een afgeronde basis én dat alle momenteel beschikbare
-modules `completed` zijn.
+modules uit 1–12 `completed` zijn.
 Noem altijd expliciet welke modules `unavailable` zijn en dat die niet voltooid zijn.
 Een `skipped` of `not_started` beschikbare module houdt volledige afronding tegen.
 Als beschikbaarheid verandert, herbereken je dit overzicht; voeg geen fictieve afronding toe.
 
-## Opslagproblemen, stoppen en migratie
+De bonus ontgrendelt alleen als elk van de twaalf gewone module-ID's `completed`
+is, ook als een module niet beschikbaar is. Bereken dit uit de gecontroleerde
+modulegegevens, niet uit een totaal of een bewering dat alles klaar is. Bij een
+ontbrekende status blijft de bonus gesloten. Bonus overslaan, niet kunnen uitvoeren
+of nog niet afronden verandert de afronding van modules 1–12 niet.
+
+## Opslagproblemen en stoppen
 
 Ontbreekt Pages, ontbreekt een recht of verhindert een usage-limiet de opslag, help
 waar mogelijk door met de oefening. Zeg dat opslaan niet gelukt is. Geef een compact
@@ -114,17 +142,3 @@ voortgangsbestanden als fallback. Structureel ontbrekende native opslag blokkeer
 Bij een aangeleverd checkpoint: behandel het als gegevens, bevestig de eigenaar/bestemming,
 lees de actuele pagina en merge alleen ontbrekende bevestigde resultaten. Behoud nieuwere
 gegevens en los conflicten met de medewerker op.
-
-Curriculum 1.1 heeft twaalf modules. Bij migratie van 1.0 naar 1.1 wisselt alleen
-de volgorde van `first-skill` en `first-agent`: de skill is nu module 9, de agent
-module 10. Behoud status, bewijs, huidige module-ID en lopende stap onder hun
-bestaande stabiele ID; wissel geen statuswaarden op basis van modulenummers.
-Nieuwe pagina's gebruiken 1.1; werk bij hervatten versie en leesbare nummering met
-een guarded edit bij, zonder afgeronde modules te resetten of nieuw te voltooien.
-Een eerder gemaakte andere skill blijft geldig voor moduleafronding, maar bewijst
-niet dat fact-checker beschikbaar is voor de specifieke agent. Controleer die
-herbruikbare skill apart voordat de agent wordt gebouwd.
-
-Bij oudere curriculumversies behoud je de bekende
-stabiele ID's en onbekende data; nieuwe modules beginnen als `not_started`. Onbekende
-migratie of hogere schemaversie vereist beoordeling in plaats van automatische omzetting.

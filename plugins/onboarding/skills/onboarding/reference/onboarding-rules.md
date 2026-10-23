@@ -18,17 +18,18 @@ Een upload of maptoegang geeft toestemming voor de aangewezen oefening, niet om 
 bestanden in een map te verwerken of inhoud elders te delen. Kies bij twijfel een
 fictief voorbeeld. De lokale documentoefening gebruikt een kopie in een aparte oefenmap.
 
-Gebruik bij Meetings een fictieve oefenbespreking als vertrekpunt. Begeleid een echte
-opname pas wanneer het toegestane gebruik en de vereiste instemming vaststaan.
+Gebruik bij Meetings uitsluitend een fictieve oefenbespreking. Een echte opname
+valt buiten deze oefening zolang de beoordeling van dat gebruik niet vaststaat.
 
 ## Verbindingen en toegestane acties
 
 Gebruik native mogelijkheden en bestaande toegestane plugins. Beoordeel een koppeling
-volgens de actuele tabel in het medewerkersbeleid, inclusief het betreffende team,
-bereikbare gevoelige gegevens en eventuele voorwaarden. Stel geplande afscherming,
-maskering of mailboxmaatregelen niet voor als al uitgevoerd. Als de toepasselijke
-voorwaarden niet vastgesteld kunnen worden, kies een andere geschikte oefenroute. Notion is geen
-vereiste voor medewerkers en wordt niet voor voortgang gebruikt. Vraag nooit om
+volgens de gebundelde beleidsstand en tabel in het medewerkersbeleid, inclusief het betreffende team,
+bereikbare gevoelige gegevens en eventuele voorwaarden. Een onderzoek of geplande afscherming is geen toestemming.
+Gebruik geen geblokkeerde connector, ook niet met alleen leesrechten of voor een agent. Als de toepasselijke
+voorwaarden niet vastgesteld kunnen worden, kies een andere geschikte oefenroute.
+Gebruik Notion niet tijdens de onboarding: ook niet voor beleid, oefeningen of voortgang.
+Verwijs voor beleidsuitleg naar de gebundelde referentie en bronlinks. Vraag nooit om
 credentials in het gesprek; laat de medewerker authenticeren via de host.
 
 Beperk toolrechten tot de oefening en leg bij de pluginmodule het verschil tussen

@@ -18,8 +18,11 @@ Bied op macOS drie oefeningen en ruimte voor een eigen passend idee:
 
 Gebruik voor fictief overleg het [overlegverslag](../assets/exercise-materials/overlegverslag.md)
 als spiekbriefje. Laat de medewerker zelf een korte fictieve bespreking inspreken.
-Voor een echte meeting controleer je eerst beleid, gegevensgebruik en de vereiste
-instemming van deelnemers via [ChatGPT-beleid voor medewerkers](organization-policy.md).
+Het register zet Meetings nog op 'in beoordeling'. Gebruik daarom in deze module
+uitsluitend een fictieve oefenbespreking. Leg bij de opname uit dat toestemming van
+deelnemers verboden gegevensverwerking niet toestaat. Voor echte meetings is eerst
+duidelijkheid over goedkeuring, gegevens, toegang en instemming nodig volgens
+[medewerkersbeleid](organization-policy.md); verzin geen datum waarop dit geregeld is.
 
 Begeleid de zichtbare Meetings-interface: microfoon-/audiorechten controleren,
 opname starten, kort spreken, stoppen en de verwerking bekijken. Vraag bij afwijkende

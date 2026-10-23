@@ -1,109 +1,76 @@
 # Module 7 — Installeer en gebruik een plugin
 
-Doel: zelf het installatieproces doorlopen en een plugin succesvol gebruiken.
-Leg het verschil uit tussen installatie, een account verbinden en toestemming
-voor een concrete handeling. Lees het [ChatGPT-beleid voor medewerkers](organization-policy.md)
-en controleer de beschikbare plugins, verbindingen en rechten.
+Doel: een plugin zelf installeren, gebruiken en haar toegang kunnen beoordelen.
+Lees eerst [medewerkersbeleid](organization-policy.md). Gebruik het werkprofiel
+voor één aanbeveling met hooguit twee alternatieven. Controleer het daadwerkelijke
+aanbod en de persoonlijke toegang; onderstaande opties zijn geen live inventaris.
 
-## Vooraf geïnstalleerd
+## Eerst het begrip, dan de handeling
 
-Deze plugins zijn volgens de workspace-inrichting vooraf geïnstalleerd:
+Een plugin bundelt herbruikbare werkwijzen (skills) en soms een verbinding met een
+andere dienst (app). Het voordeel is gericht gereedschap en minder herhaalde uitleg.
+Het risico hangt af van instructies, gegevens, ontwikkelaar en toegestane functies.
+Ook een plugin zonder koppeling kan slechte of ongewenste instructies bevatten.
+Gebruik een vertrouwde, beoordeelde plugin voor een duidelijk doel.
 
-- Slack
-- Icon-generator
-- Agent-instructie
-- Onderwijs in Redacteur
-- Onderwijsloket
-- Plausible
-- Canva
-- tldraw
-- Loops
+Laat de medewerker bij de gekozen plugin aanwijzen: bevat deze alleen instructies,
+of ook een app? Welke gegevens worden bereikbaar en wat kan zij wijzigen?
+Leg installatie, accountverbinding en toestemming voor een handeling pas bij die
+stap uit. Een app hoeft niet te worden verbonden als de oefening zonder kan.
 
-Ze zijn allemaal kandidaten voor de oefening. Vooraf geïnstalleerd betekent niet
-dat een account al verbonden is of dat alle toolrechten zijn verleend.
+## Kandidaten uit de gebundelde beleidsstand
 
-## Zelf te installeren
+- Onderwijsloket of Onderwijs in: publieke inhoud opzoeken en tegen de bron controleren;
+  de achterliggende MCP's staan als vooraf geïnstalleerd in het register.
+- Plausible: geaggregeerde websitecijfers vergelijken, mits de medewerker toegang heeft.
+- tldraw: een eenvoudig fictief proces tekenen, met controle van opslag en toegang.
+- Outlook Calendar: zelf installeren als die nog ontbreekt; alleen een passend overleg
+  lezen, na beoordeling van zakelijke accountverbinding en bereikbare gegevens.
+- Loops: voor een communicatiecollega uitsluitend een fictief nieuwsbriefconcept
+  bekijken of bewerken, na controle van rechten; geen transactionele mail versturen.
+- Een beoordeelde plugin met uitsluitend instructies, bijvoorbeeld Agent-instructie:
+  alleen als deze in het huidige aanbod beschikbaar en toegestaan is. Gebruik een
+  fictieve opdracht zonder extra gegevenskoppeling.
 
-Raad afhankelijk van rol, werk en toegang een van deze plugins aan:
-
-- Outlook Calendar
-- Adviesassistent Onderwijsloket
-- Nieuwsbrief stijl review
-- Meetings — alleen op Mac
-- Writing Style
-- Teams
-- Outlook Email
-
-Controleer welke plugins al geïnstalleerd zijn voordat je een installatieopdracht
-kiest. Bied Meetings alleen aan een macOS-gebruiker aan als de functie beschikbaar is.
-Voor Outlook Email gelden de specifieke uitzondering en maatregelen uit het
-medewerkersbeleid; beschikbaarheid alleen bewijst niet dat aan de voorwaarden is voldaan.
-
-## Opdracht kiezen
-
-Bied drie concrete oefeningen uit de bovenstaande plugins, afgestemd op de medewerker,
-en ruimte voor een eigen passende keuze. Mogelijke voorstellen:
-
-1. Plausible: vraag bezoekersaantallen op, vergelijk met een jaar eerder en laat de
-   uitkomst in een grafiek zien. Gebruik de oefenroute hieronder.
-2. Icon-generator: maak een icoon voor een fictief initiatief en beoordeel het resultaat.
-3. Outlook Calendar: installeer de plugin, verbind het werkaccount en raadpleeg de
-   agenda-informatie voor een gekozen overleg, zonder uitnodigingen te wijzigen.
-
-Kies andere voorbeelden uit de lijsten als die beter passen bij rol, team of toegang.
-Ook een vooraf geïnstalleerde plugin mag de inhoudelijke oefening leveren.
-
-## Oefenroute — Plausible
-
-Plausible is een laagdrempelige, vooraf geïnstalleerde oefenplugin. Laat de medewerker
-een website kiezen waarvoor die toegang heeft. Begeleid daarna deze drie vragen
-één voor één, zodat de medewerker ook het stellen van vervolgvragen ervaart:
-
-1. “Hoeveel bezoekers had mijn website [website] vorige maand?”
-2. “Hoeveel procent meer of minder was dat ten opzichte van dezelfde maand een jaar eerder?”
-3. “Kun je dat ook in een grafiek laten zien?”
-
-Laat de Plausible-plugin de daadwerkelijke gegevens ophalen. Bevestig de gekozen
-website en de exacte kalendermaanden op basis van de tijdzone van de site. Vergelijk
-bezoekers met bezoekers en dezelfde maand een jaar eerder, niet met het hele vorige
-jaar. Laat beide aantallen en de procentuele verandering zien. Bij een referentiewaarde
-van nul is die procentuele verandering niet te berekenen; benoem dat in plaats van
-een percentage te verzinnen.
-
-Een eenvoudige staafgrafiek met de bezoekersaantallen van beide maanden volstaat.
-Laat de medewerker controleren of site, maandlabels en aantallen overeenkomen met
-het eerdere antwoord. Ontbreekt historische data of een grafiekfunctie, benoem de
-beperking en bied waar mogelijk een tabel aan; verzin geen meetwaarden of grafiek.
-De inhoudelijke oefening is geslaagd wanneer daadwerkelijk opgehaalde gegevens zijn
-gebruikt en het resultaat is gecontroleerd; vermeld welke vervolgstappen door een
-beperking niet konden worden uitgevoerd. Kan er helemaal geen resultaat worden
-opgehaald, kies dan een andere toegankelijke website of oefening. De afzonderlijke
-installatieoefening blijft nodig, omdat Plausible al vooraf geïnstalleerd is.
+Gebruik Slack, Teams, Outlook Email, SharePoint, Pipedrive, Typeform, Algolia en
+Notion niet als oefenroute. Leg bij vragen de reden uit de beleidsreferentie uit.
+Andere zichtbare plugins zijn pas kandidaten na passende beoordeling; hun aanwezigheid
+in een catalogus bewijst geen goedkeuring. Een hoge prioriteit in een ideeënlijst evenmin.
 
 ## Installeren en oefenen
 
-1. Kies samen een geschikte plugin die de medewerker nog niet heeft geïnstalleerd.
-   Laat de medewerker deze vinden, de informatie en gevraagde rechten bekijken en
-   zelf het installatieproces afronden. Begeleid de interface; installeren namens
-   de medewerker laat die het proces niet zelf ervaren.
-2. Laat zo nodig het werkaccount via de host verbinden en de gevraagde rechten
-   beoordelen. Een plugin zonder accountverbinding kan ook geschikt zijn om het
-   installatieproces te leren. Controleer de installatie in het pluginoverzicht.
-3. Voer één kleine concrete oefening uit met de nieuw geïnstalleerde plugin of met
-   een plugin uit de vooraf geïnstalleerde lijst. Gebruik de gekozen bronnen of
-   maak een controleerbaar resultaat; beperk de opdracht tot wat de oefening nodig heeft.
-4. Laat de medewerker het resultaat beoordelen. Controleer bronlinks bij een zoek-
-   of samenvattingsopdracht en het gemaakte resultaat bij een creatieve opdracht.
-   Leg vast welke plugin zelf is geïnstalleerd en met welke plugin is geoefend.
+1. Laat de medewerker een geschikte nog niet geïnstalleerde plugin vinden en informatie,
+   ontwikkelaar en gevraagde toegang bekijken. Laat zelf installeren en in het overzicht
+   controleren. Installeer niet ongemerkt namens de medewerker.
+2. Verbind alleen waar nodig een toegestaan werkaccount via de host. Wijs hier op
+   2FA en het onderscheid tussen appautorisatie en verboden social login voor werkaccounts.
+   Een onduidelijke of te ruime toestemming gaat naar een beheerder; kies intussen een
+   oefening zonder die verbinding. Vraag geen inloggegevens in chat.
+3. Voer één kleine opdracht uit met de nieuwe of een al geïnstalleerde geschikte plugin.
+   Laat de medewerker een gerichte vervolgvraag stellen en het resultaat controleren.
+4. Vraag wat de plugin kon lezen of veranderen en welk risico alleen-lezen nog heeft.
+   Benadruk dat bronrechten, koppelingstoestemming en toolbeperkingen samen gelden;
+   'lees geen gevoelige gegevens' is geen technische afscherming.
 
-Is de gekozen oefenplugin al geïnstalleerd, kies dan daarnaast een geschikte plugin
-voor de installatieoefening. Alleen activeren, verbinden of gebruiken telt niet als
-zelf installeren. Verwijder geen vooraf geïnstalleerde plugin om installatie na te
-bootsen. Als geen geschikte installatie mogelijk is door rechten of beschikbaarheid,
-mag het oefenen doorgaan, maar blijft de installatiestap open met de concrete reden.
+Een plugin die al aanwezig is kan de gebruiksproef leveren; de installatieproef
+vereist daarnaast een geschikte nieuwe plugin. Verwijder geen plugin om die proef
+na te bootsen. Is er geen geschikte nieuwe optie, oefen waar mogelijk verder en
+leg het ontbrekende installatiedeel vast; claim geen afronding.
 
-Afronding: de medewerker heeft zelf minimaal één plugin geïnstalleerd én één concrete
-pluginoefening succesvol uitgevoerd en beoordeeld. Dat mogen twee verschillende plugins
-zijn. De medewerker kan installatie, accountverbinding en actietoestemming onderscheiden.
-Noteer de installatie als `user_confirmed` wanneer je die alleen via de medewerker
-kunt controleren. Markeer de module pas als voltooid wanneer beide onderdelen zijn afgerond.
+## Oefenroute — Plausible
+
+Laat één voor de medewerker toegankelijke site kiezen. Begeleid één vraag per beurt:
+
+1. Hoeveel bezoekers had deze website vorige maand?
+2. Hoe verschilt dat van dezelfde maand een jaar eerder?
+3. Kun je beide aantallen in een eenvoudige grafiek tonen?
+
+Controleer site, site-tijdzone, exacte kalendermaanden en gelijke meeteenheid.
+Gebruik werkelijk opgehaalde aantallen. Bij een referentie van nul is een procentuele
+verandering niet te berekenen. Ontbrekende historie of grafiekmogelijkheden krijgen
+een expliciete beperking, eventueel een tabel; geen verzonnen meetwaarden.
+
+Afronding: minstens één plugin zelf geïnstalleerd, één concrete gebruiksproef met
+gecontroleerd resultaat, en installatie/accountverbinding/actietoestemming én het
+gegevensrisico uitgelegd door de medewerker. Leg beide gekozen plugins vast, zonder
+broninhoud. Alleen verbinden of activeren telt niet als zelf installeren.
