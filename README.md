@@ -3,9 +3,11 @@
 # Onderwijs in · Agents
 
 Reusable AI capabilities for communications, editorial work, research,
-and operations. [Onderwijs in](https://onderwijsin.nl) is a Dutch nonprofit helping
-more talented people find their way into education. We share generic capabilities
-under the [MIT license](LICENSE) so other organizations can reuse and improve them.
+and operations, distributed as plugins and maintained workspace-agent definitions.
+[Onderwijs in](https://onderwijsin.nl) is a Dutch nonprofit helping more talented
+people find their way into education. The collection is shared under the
+[MIT license](LICENSE); some capabilities are generic, while others require
+organization-specific sources, services or configuration.
 
 An **Agent Skill** is a folder of Markdown instructions and optional resources that
 teaches an AI assistant when and how to perform a reusable task. A **plugin** packages
@@ -15,32 +17,35 @@ marketplace-distributed skill belongs to a plugin; plugins are our discovery, in
 and versioning units. A plugin may contain one skill or several. Repository development
 skills in `.agents/skills/` are separate and are not distributed through our marketplaces.
 
-## Use the collection
+## Plugins
 
-| Name                                                                   | Type   | Description                                                                                                                                 |
-| ---------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Onboarding](plugins/onboarding/README.md)                             | Plugin | Doorloop twaalf praktische ChatGPT Business-modules met de Bert-bot van de IT-afdeling; implementatie voor installatie- en gebruikerstests. |
-| [Onderwijsloket](plugins/onderwijsloket/README.md)                     | Plugin | Explore education careers, pathways, programs, regional support and experiences; plan consultations or prepare feedback with consent.       |
-| [Adviesassistent Onderwijsloket](plugins/adviesassistent/README.md)    | Plugin | Draft advice emails, prepare consultations, write or review knowledge content and fact-check claims using Onderwijsloket sources.           |
-| [Onderwijs in Redacteur](plugins/onderwijs-in-redacteur/README.md)     | Plugin | Edit and write Dutch website content and newsletters; return text in chat or prepare a Loops draft with separate style-review support.      |
-| [Agent-instructie](plugins/agent-instructie/README.md)                 | Plugin | Schrijf en verbeter Nederlandstalige prompts en skills voor niet-technische taken, met duidelijke opdrachten en controleerbare resultaten.  |
-| [Plausible](plugins/plausible-analytics/README.md)                     | Plugin | Analyze website traffic, acquisition and measured conversions in your language, with chat, chart and PDF reporting.                         |
-| [Nieuwsbrief stijl review](plugins/nieuwsbrief-style-review/README.md) | Plugin | Review Loops newsletter drafts for team style and formatting, with optional draft corrections and test previews.                            |
-| [Icon-generator](plugins/icon-generator/README.md)                     | Plugin | Genereer PNG-iconen voor drie merken; met eigen referentie-iconen en afgeleide stijlregels per merk.                                        |
+| Name                                                                   | Type   | Description                                                                                                                                        |
+| ---------------------------------------------------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Onboarding](plugins/onboarding/README.md)                             | Plugin | Explore ChatGPT Business through twelve practical modules with the IT department’s Bert bot; installation and user acceptance remain to be tested. |
+| [Onderwijsloket](plugins/onderwijsloket/README.md)                     | Plugin | Explore education careers, pathways, programs, regional support and experiences; plan consultations or prepare feedback with consent.              |
+| [Adviesassistent Onderwijsloket](plugins/adviesassistent/README.md)    | Plugin | Draft advice emails, prepare consultations, write or review knowledge content and fact-check claims using Onderwijsloket sources.                  |
+| [Onderwijs in Redacteur](plugins/onderwijs-in-redacteur/README.md)     | Plugin | Edit and write Dutch website content and newsletters; return text in chat or prepare a Loops draft with separate style-review support.             |
+| [Agent-instructie](plugins/agent-instructie/README.md)                 | Plugin | Write and improve Dutch prompts, skills and AI instructions for nontechnical tasks, with clear requests and verifiable outcomes.                   |
+| [Plausible](plugins/plausible-analytics/README.md)                     | Plugin | Analyze website traffic, acquisition and measured conversions in your language, with chat, chart and PDF reporting.                                |
+| [Nieuwsbrief stijl review](plugins/nieuwsbrief-style-review/README.md) | Plugin | Review Loops newsletter drafts for team style and formatting, with optional draft corrections and test previews.                                   |
+| [Icon-generator](plugins/icon-generator/README.md)                     | Plugin | Generate PNG icons for three brands using packaged reference icons and brand-specific style rules.                                                 |
 
-Our deployment target is the _ChatGPT Business workspace_ marketplace. Administrators
+The primary plugin deployment target is the _ChatGPT Business workspace_ marketplace. Administrators
 can import a GitHub catalog through the GUI, then colleagues can discover and install
 available plugins without using Git or a terminal. See the
 [marketplace distribution guide](docs/marketplace-distribution.md) for prerequisites,
 import settings, sync, and workspace permissions.
 
-| Platform                 | Current repository support                                                     |
-| ------------------------ | ------------------------------------------------------------------------------ |
-| ChatGPT / Codex          | Local marketplace entry and portable package                                   |
-| Claude Code              | Matching marketplace; overlays where needed                                    |
-| Other Agent Skills hosts | Portable instructions; the editorial skills require their whole plugin package |
+| Platform                 | Current repository support                                                                                      |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| ChatGPT / Codex          | Local marketplace entry and portable package                                                                    |
+| Claude Code              | Matching marketplace; overlays where needed                                                                     |
+| Other Agent Skills hosts | Portable skill content with its packaged resources; tools and service connections require host-specific support |
 
-Portable files do not guarantee identical tools, permissions, or behavior on every host.
+Catalog entries describe repository packaging, not live availability or verified runtime support.
+Consult each package README for required apps and external skills, host-specific limitations,
+and pending acceptance checks. Portable files do not guarantee identical tools, permissions,
+or behavior on every host.
 
 ## Workspace agents
 
@@ -51,9 +56,18 @@ source and ChatGPT as the runtime. Workspace agents use apps (MCPs) and separate
 standalone workspace skills; they cannot use plugins or plugin-bundled skills. Agent skill
 sources live under `agents/<agent-name>/skills/` for manual upload.
 
-| Agent                                                     | Purpose                                                                                                          |
-| --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| [Commitment Manager](agents/commitment-manager/README.md) | Find verified personal commitments and create tasks in a configurable destination; Notion is the first provider. |
+| Agent                                                       | Purpose                                                                                                                                                            |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Commitment Manager](agents/commitment-manager/README.md)   | Find verified personal commitments and create tasks in a configurable destination; Notion is the first provider.                                                   |
+| [Task Manager](agents/task-manager/README.md)               | Review existing tasks, propose planning and priority decisions, and apply narrow verified improvements; invocation-configured with Notion storage.                 |
+| [Docs Drift](agents/docs-drift/README.md)                   | Audit documentation against repository activity or explicit full-audit targets, prepare documentation-only draft PRs, and maintain workflow PRs on scheduled runs. |
+| [Pipedrive Sanitizer](agents/pipedrive-sanitizer/README.md) | Check Onderwijsloket Pipedrive persons and notes against current policy, record findings in Notion, and apply approved redactions through manual remediation.      |
+
+Agent READMEs document setup, permissions, configuration and verification status.
+Commitment Manager and Task Manager accept personal settings through invocation;
+Docs Drift accepts audit scope and mode; Pipedrive Sanitizer retains a fixed
+organization-specific service configuration. A listed definition does not establish
+that the agent is deployed or available to colleagues.
 
 **Deployment limitation:** Agent definitions are maintained manually in the ChatGPT
 web UI; this repository provides no agent marketplace import or automatic sync.
@@ -76,6 +90,9 @@ can contribute task examples, instructions, and feedback without writing softwar
 - [Contributor setup](docs/getting-started.md): local tools and quality checks.
 - [Creating skills](docs/creating-skills.md): portable instructions and metadata.
 - [Creating plugins](docs/creating-plugins.md): packaging and provider compatibility.
+- [Plugin integrations](docs/plugin-integrations.md): app mappings, MCP connections and provider boundaries.
+- [Agent deployment](docs/agent-deployment.md): manual setup, skill uploads and runtime verification.
+- [Agent best practices](docs/agent-best-practices.md): instruction design, authority and recurring workflows.
 - [Agent instructions](AGENTS.md): working contract for coding assistants.
 
 The organization may later manage dynamic skill references through Directus and MCP.
