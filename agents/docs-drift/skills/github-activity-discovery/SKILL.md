@@ -16,9 +16,9 @@ rolling seven days preceding invocation. The procedure below uses `main`; substi
 the caller's target branch consistently when another branch is requested. Preserve
 an existing run's fixed timestamps when retrying or investigating it.
 
-For a diagnostic request, execute only the requested probes and report their exact
-arguments, results, and errors. Do not expand a diagnostic into repository discovery
-or an audit unless requested.
+For a diagnostic request, execute only the requested probes, using the request ledger
+below, and return it with a concise outcome summary. Do not expand a diagnostic into
+repository discovery or an audit unless requested.
 
 ## Discover repositories
 
@@ -38,12 +38,40 @@ or an audit unless requested.
 }
 ```
 
-Use the qualifier-only query as shown. `org:OWNER` inside `query` is an alternative to the `org` argument. `branch:main` is not a commit-search branch filter; adding message terms such as `fix` also excludes valid commits. The connector's description may claim a text term is required; this qualifier-only request has been verified in the deployed agent.
+Execute the qualifier-only request above for the first interval of each owner as
+the discovery probe; retain its results and process it like every other interval.
+Successful probes keep the remaining intervals on the organization-wide search
+path. `org:OWNER` inside `query` is an alternative to the `org` argument.
+`branch:main` is not a commit-search branch filter; guessed message terms such as
+`fix` exclude valid commits. Preserve the qualifier-only query even when the tool
+description claims a message term is required: observed calls determine support.
+
+### Record request evidence
+
+For every discovery probe, search, retry, and fallback lookup, append a separate
+entry to the per-run ledger. Record:
+
+- An entry ID, exact tool name, configured connection, and effective arguments,
+  including owner/repository scope, full query string, UTC start/end, sort, order,
+  and `topn`. Distinguish omitted arguments and known defaults from explicit values;
+  mark unavailable effective values unknown rather than inventing them.
+- Observed success/error, returned result count (unknown on an error without
+  results), any completeness metadata, and exact error text/code when supplied.
+  Distinguish malformed-query/validation errors from other connector failures.
+- Interval status, parent/child IDs, retry linkage, and retained results needed
+  for repository/SHA deduplication.
+- Before switching to direct history, the affected scope and interval, concrete
+  reason, and IDs of preceding requests/errors or discrepancy evidence, such as a
+  known default-branch SHA and committed timestamp missing from search.
+
+Keep successful empty results distinct from errors and inconsistent results.
+Without an actual failed call, report the cause as unverified; connector-description
+text alone establishes neither a failure nor a limitation. A successful search must
+not be described as unsupported.
 
 ### Process the interval queue
 
-Maintain a run-local ledger for each owner or repository scope and interval: UTC
-bounds, request arguments, returned count, status, and any child intervals or error.
+Maintain interval coverage alongside the request evidence above.
 Use statuses `pending`, `split`, `covered`, and `unresolved`. Retain it across retries
 within this run; rebuild the inventory and window for the next run.
 
@@ -66,12 +94,16 @@ within this run; rebuild the inventory and window for the next run.
    to those requests. Use direct target-branch history for repository intervals
    that remain saturated or incomplete, following available history pagination.
    Mark them covered only when that interval's history has been fully retrieved.
-5. If a search fails or unexpectedly returns zero, retry once with the owner
-   qualifier inside `query` and check a known recent default-branch commit when
-   available. Use targeted history checks for the affected scope if search remains
-   unreliable. Honor service retry guidance for rate limits. If a lookup cannot
-   be completed, mark its scope and interval `unresolved`, retain the exact failed
-   request and error, and continue other pending intervals.
+5. A successful empty response follows step 1 unless concrete evidence contradicts
+   it. For a failed request or demonstrated discrepancy, retry once with the owner
+   qualifier inside `query`, preserving the UTC bounds, sort, order, `topn`, and
+   qualifier-only form. Correct malformed arguments according to the observed
+   validation error before this retry and record the correction. Check a known
+   default-branch commit within the interval when available. Honor service retry
+   guidance for rate limits. If failure or incorrect/unresolved search coverage
+   persists, use targeted history for the affected scope and interval; record the
+   reason and preceding evidence first. If the lookup cannot be completed, mark
+   the interval `unresolved` and continue other pending intervals.
 6. Finish when no pending intervals remain. A split interval is covered only when
    all its children or replacement repository checks are covered. Report overall
    discovery as `incomplete coverage` if any interval, owner, inventory page, or
@@ -80,8 +112,12 @@ within this run; rebuild the inventory and window for the next run.
 
 Search coverage describes the returned index results, not verified index freshness.
 Disclose missing completeness metadata and observed index discrepancies. Use direct
-history for affected repositories when search disagrees with known activity. A
-limited response is never a complete commit count.
+history for affected repositories when search disagrees with known activity. Direct
+history is limited to these coverage/failure cases after retry, saturation remaining
+after partitioning, and default-branch exceptions in discovery step 4. A successful
+probe alone never justifies whole-inventory fallback; an owner-wide failure may
+require checking all repositories in that affected scope. A limited response is
+never a complete commit count.
 
 ## Return selection evidence
 
@@ -97,6 +133,9 @@ Return:
   unresolved scopes or lookups as separate outcomes.
 - Search-index and completeness limitations, including exact failed requests and
   errors when applicable.
+- A concise summary of failed requests, retries, and evidence-backed fallback
+  reasons, linked to verbose ledger entries. For diagnostics, expose the exact
+  qualifier-only request and its observed result or error in the returned ledger.
 
 Selection is finished when every non-archived inventory repository is accounted for
 by a covered search scope, a direct branch check, or an explicit unresolved outcome.
