@@ -29,9 +29,10 @@ urgency, dependency readiness and what would be displaced. Use actual mapped sta
 missing next-up mapping limits this to a prioritization recommendation.
 
 **Coherence:** identify completed tasks with future planned dates, blocked tasks without a known
-dependency, stale planned dates, absent accountable/next-action owners, ongoing responsibilities
-classified as short tasks, duplicates and unsupported/inconsistent context. Query terminal tasks
-separately when needed; do not imply terminal records were checked after an active-only query.
+dependency, stale planned dates, missing ownership where the shared workflow expects it, ongoing
+responsibilities classified as short tasks, duplicates and unsupported/inconsistent context.
+Personal database mode needs no owner properties or values; omit missing-owner warnings there.
+Query terminal tasks separately when needed; do not imply terminal records were checked after an active-only query.
 Report issues rather than silently changing substantive values.
 
 ## Authority by change

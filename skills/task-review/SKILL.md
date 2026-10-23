@@ -8,7 +8,7 @@ metadata:
 
 # Review and maintain tasks
 
-Receive the resolved subject, task selection, evidence and planning bounds, timezone, limits,
+Receive the resolved subject, database mode, task selection, evidence and planning bounds, timezone, limits,
 source restrictions and read-only flag from the calling agent. Use `task-storage` for discovery,
 list/read, updates and verification. Read [review policy](references/review-policy.md) each run
 for decision rules and the authority required by each patch. Provider fields belong in the adapter.

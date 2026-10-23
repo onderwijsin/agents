@@ -37,6 +37,14 @@ Notion mappings are inferred only when unambiguous. Supply field/status override
 the [mapping example](../../skills/notion-task-storage/references/notion-mapping.md) preserves the earlier
 Acties naming conventions without embedding a personal identity or database.
 
+Both personal and shared task databases are supported. Set `task_database_mode: personal` or
+say “This is my personal task database” when owner properties are absent or should not define
+scope. Ownership from verified commitment evidence is preserved in a mapped property or page body.
+The default `shared` mode requires a writable accountable-owner mapping and a verified assignment
+value for creation. Missing owner fields alone never select personal mode. Duplicate searches
+remain complete in either mode, including potentially matching unassigned or differently assigned
+tasks in shared databases. See the [storage contract](../../skills/task-storage/references/task-contract.md).
+
 Timezone defaults to `Europe/Amsterdam`, including daylight saving. Override with
 `timezone: America/New_York` or “Use New York time.”
 
@@ -103,6 +111,19 @@ Notion is the only implemented provider; other names produce a configuration err
 Duplicate checks are not atomic: concurrent runs against the same destination may race. Avoid
 overlapping schedules for the same user/destination. Incomplete searches and uncertain write
 responses remain pending rather than triggering blind retries.
+
+Before rollout, exercise both database modes in ChatGPT with authorized fixtures:
+
+| Case                                                     | Expected result                                                                                   |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Explicit personal database without owner properties      | Create with verified ownership in the body; duplicate lookup and read-back remain complete.       |
+| Shared database with mapped owner                        | Create with the verified subject assigned; retain full duplicate searches including other owners. |
+| Shared/default mode without a writable owner mapping     | Block creation and request configuration; preserve the schema.                                    |
+| Conflicting mode settings or missing subject attribution | Skip dependent work and report the unresolved configuration or evidence.                          |
+| Retry or mode change against the same destination        | Live duplicate checks prevent recreating an existing commitment.                                  |
+
+These mode-specific cases remain runtime-unverified; source review and repository checks do not
+establish connector coverage or deployed behavior.
 
 Checked 2026-10-23 against the official
 [Agent Skills specification](https://agentskills.io/specification),

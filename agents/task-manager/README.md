@@ -27,13 +27,14 @@ No marketplace or plugin changes are required. Every skill contains its own runt
 ## Invocation configuration
 
 A destination and verified human identity are essential. Resolve identity from trusted invocation
-and authenticated-account context; ask when ambiguous. Default scope is accountable owner OR
-next-action owner, including individually qualifying subtasks. Contextual parents outside scope
+and authenticated-account context; ask when ambiguous. Use `task_database_mode: personal` for a
+personal database, where membership defines scope and owner fields are optional. The default
+`shared` mode selects accountable owner OR next-action owner, including individually qualifying subtasks. Contextual parents outside scope
 remain read-only. Optional mappings that cannot be inferred unambiguously require clarification
 or a reported omission. No personal database, account or user ID is embedded here.
 
 ```text
-Review my tasks in this Notion database: <database URL>.
+Review all tasks in my personal Notion task database: <database URL>.
 Use only email from alex@example.com, GitHub and Notion as evidence.
 Look back seven days. Propose up to five additional tasks for this workweek.
 Use Europe/Amsterdam time. For this first review, make no changes.
@@ -48,8 +49,10 @@ The host sets the interval separately. Save complete configuration in its schedu
 a different interval does not silently adjust evidence or planning bounds.
 
 The [Notion mapping](../../skills/notion-task-storage/references/notion-mapping.md) documents aliases,
-field/status overrides and optional maintenance concepts. Missing next-action-owner mapping
-limits scope to accountable owner and is reported. `review_status_mappings` refine open lifecycle
+field/status overrides and optional maintenance concepts. In shared mode, missing ownership
+mappings limit owner-based scope and are reported; no usable owner mapping requires an explicit
+selection or clarification. Missing owner fields are supported in personal mode. Selecting a
+database URL alone does not establish personal mode. `review_status_mappings` refine open lifecycle
 states for backlog/next-up/blocked reviews. Missing optional progress, deferral or type fields
 skip dependent checks; required scope and lifecycle ambiguity blocks the affected review.
 
@@ -127,6 +130,8 @@ Before rollout, exercise these cases in ChatGPT using authorized fixtures:
 | Case                                                                     | Expected result                                                                                 |
 | ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
 | Two users, different destinations, missing or stale Memory               | Separate identity/scope/history; no destination reuse or cross-user decisions.                  |
+| Personal database without owner fields or with mixed owner values        | Complete database scope; no owner filtering, reassignment or missing-owner warnings.            |
+| Shared database without usable owner mappings                            | Ask for an explicit selection or clarification; no automatic database-wide scope.               |
 | Owner-only, next-action-owner-only, subtask and contextual parent        | Independent OR scope, complete pagination; out-of-scope relatives remain untouched.             |
 | Renamed fields, no numeric ID, ambiguous status, missing optional fields | Live mapping; real IDs/links; essential ambiguity blocks; optional omissions reported.          |
 | Configured period/workdays, weekend, different cadence, planning limit 0 | Correct fixed bounds; no elapsed planning days; no invented capacity or silent window change.   |
