@@ -1,0 +1,34 @@
+account_type: end-user
+action_safety: allow-low-risk
+safety_constraints: []
+write_actions: true
+read_actions: true
+capability_description: >-
+  Read and selectively modify Pipedrive CRM data using the authenticated
+  end user's account, within their existing permissions.
+
+  Read access is focused on contact persons and their associated notes.
+  The agent can list, search, and retrieve persons, inspect their
+  properties and custom fields, and retrieve notes for classification
+  and sensitive-data detection. It can also retrieve basic account
+  context needed to interpret CRM fields and configuration.
+
+  Write access is limited to updating existing persons and notes.
+  The agent can modify contact properties and note content to remove
+  or sanitize sensitive information. Note updates may also change
+  associations with CRM entities.
+
+  All other write operations are disabled. The agent cannot create
+  or delete persons or notes, modify activities, or create or modify
+  deals, leads, organizations, projects, products, or other CRM data.
+  Email operations and broader CRM administration are also disabled.
+
+  The intended scope is identifying and sanitizing sensitive data
+  in existing contact records and notes. Enabled update operations
+  are not technically restricted to sensitive fields or specific
+  records.
+
+  Access is governed by the currently enabled tools, the end user's
+  Pipedrive permissions, and the configured low-risk action safety
+  policy. Newly introduced tools should follow these capability
+  boundaries rather than being implicitly permitted.

@@ -1,0 +1,33 @@
+account_type: agent-owned
+action_safety: allow-low-risk
+safety_constraints: []
+write_actions: true
+read_actions: true
+capability_description: >-
+  Read and selectively interact with Slack using a dedicated
+  agent-owned account, within its existing workspace permissions.
+
+  The agent can search, discover, and retrieve Slack messages,
+  threads, channels, files, lists, canvases, user profiles,
+  and workspace metadata.
+
+  Write access is primarily intended for sending notifications
+  and reporting results. The agent can send messages to channels
+  or users, create message drafts, edit its own messages, and
+  add emoji reactions. It can also join public channels and
+  leave existing conversations.
+
+  Administrative and content management operations are restricted.
+  The agent cannot delete messages, schedule messages, upload files,
+  create or modify channels, manage channel memberships, update
+  user profiles, or create and modify Slack lists and canvases.
+
+  The intended scope is operational communication and notifications,
+  not general Slack administration. Enabled messaging tools are not
+  technically restricted to specific notification channels.
+
+  Access is governed by the currently enabled tools, the
+  agent-owned account's workspace permissions, and the configured
+  low-risk action safety policy. Newly introduced tools should
+  follow these capability boundaries rather than being
+  implicitly permitted.
