@@ -16,6 +16,10 @@ The sole title property is normally unambiguous. Map owner, status, deadline, pl
 recipient, context and source fields by explicit configuration or clear schema semantics.
 Names alone are insufficient where several properties could fit. Resolve people using service
 metadata, not copied cross-service IDs. Do not assume a task's creator is its owner.
+Apply the database mode resolved by `task-storage`: personal scope uses data-source membership without owner filters; shared scope uses mapped ownership or
+an explicit user selection. Owner properties are optional in personal mode. For shared creation,
+require a writable accountable-owner property and verified assignment value; report missing or
+ambiguous mappings before writing.
 
 Map lifecycle options to open/completed/cancelled. Completion groups can help, but distinguish
 cancelled from completed using actual options and context. Unknown states block decisions that
@@ -72,11 +76,15 @@ Resolve optional mappings for `next_action_owner`, `parent`, `children`, `task_t
 Use `review_status_mappings` for backlog, not-started, next-up, in-progress and blocked; lifecycle
 mappings still distinguish completed/cancelled. Infer only unambiguous semantics, validating types
 and select options. Workstream values must exist and be unambiguous; never create options implicitly.
-Keep accountable owner and next-action owner independent. An absent next-action owner mapping
-limits scope to accountable owner and is reported; ambiguous ownership blocks scope resolution.
+Keep accountable owner and next-action owner independent. For shared owner-based selection, use
+the available unambiguous mappings and report missing mappings; if neither is usable, request an
+explicit selection or clarification. Personal mode and explicit selections need no owner mapping.
+Ambiguous ownership blocks only operations that depend on it.
 
-List active tasks using the caller's resolved selection, defaulting to an OR over mapped owner and
-next-action owner. Apply explicit ID/filter selections and paginate the data source.
+List active tasks using the caller's resolved database mode and selection. In personal mode,
+paginate the entire data source subject to explicit ID/filter selections; owner values do not
+exclude records. In shared mode, default to an OR over available mapped owner and next-action
+owner unless the user explicitly selects a different scope. Paginate every selected record.
 Retrieve parent/child relations; individually test each related task against the configured scope.
 Fetch bodies where needed for evidence or review conventions. Saved-view filters never substitute
 for the requested complete scope. Query terminal tasks separately for coherence checks when needed.

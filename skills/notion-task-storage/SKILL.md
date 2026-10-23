@@ -8,7 +8,8 @@ metadata:
 
 # Notion task storage
 
-Receive normalized records from `task-storage` and the caller's authority. Consult
+Receive normalized records, resolved database mode and task selection from `task-storage`, and
+the caller's authority. Consult
 [Notion mapping](references/notion-mapping.md) before discovery, querying or writing.
 
 1. Fetch the configured database or URL through the current connector. Resolve its underlying

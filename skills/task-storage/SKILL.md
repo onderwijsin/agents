@@ -9,14 +9,16 @@ metadata:
 # Store tasks
 
 Read [task contract](references/task-contract.md) for every storage operation. Receive the resolved
-provider, destination, subject identity, optional field/status mappings and caller's authority.
+provider, destination, subject identity, database mode, explicit task selection, optional field/status
+mappings and caller's authority. Resolve mode and ownership requirements using the task contract.
 These instructions grant no additional write permission.
 
 1. Select the provider from explicit configuration or an unambiguous destination URL. Currently
    only `notion` is implemented: invoke `notion-task-storage`. For any other provider, report
    unsupported storage and perform no writes or fallback to another service.
 2. Ask the provider to resolve and validate the exact destination, account access, live schema,
-   ownership mapping and lifecycle mapping. Missing essential configuration blocks dependent work.
+   mode-dependent ownership requirements, task scope and lifecycle mapping. Missing essential
+   configuration blocks dependent work.
 3. Pass normalized requests: discover, list, read, search, create, update or verify. Require list and search results to carry
    pagination/completeness and lifecycle information. Require the provider to preserve title,
    ownership semantics and evidence; preserve any existing commitment identity during maintenance

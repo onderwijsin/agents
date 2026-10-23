@@ -21,6 +21,29 @@ provider IDs or source URLs. A commitment identity combines source provider/acco
 record ID and stable action discriminator. Cross-source aliases support repeated discovery;
 semantic lookup remains necessary for manually created tasks.
 
+## Database mode and ownership
+
+Receive `task_database_mode: personal | shared`, accepting explicit natural-language equivalents.
+Use `shared` when omitted to preserve owner-based selection. Resolve conflicting settings before
+querying or writing. Missing owner properties never establish that a database is personal.
+
+- **Personal:** the user explicitly identifies the destination as their personal task database.
+  Database membership defines task scope, subject to explicit task IDs or filters. Owner and
+  next-action-owner properties are optional and do not filter this scope. Preserve existing
+  ownership values; the mode authorizes no reassignment. On creation, preserve the verified
+  commitment owner in a mapped property or body. Missing owner properties or values are not
+  coherence issues in this mode.
+- **Shared:** select tasks whose mapped accountable owner OR next-action owner is the verified
+  subject, subject to explicit task IDs or filters. Use whichever ownership mappings exist and
+  report missing mappings as scope limitations. If neither is usable, require an explicit task
+  selection or clarification; never broaden to the whole database automatically. An explicit
+  broader/team selection supersedes owner filtering. Creation requires a writable accountable-owner
+  mapping and a resolved assignment value, so new tasks enter the shared ownership workflow.
+
+An explicit selection establishes review scope without inventing ownership. Source attribution
+remains required for commitment capture in either mode. Ownership fields, mode and task selection
+are independent of permissions and lifecycle requirements.
+
 ## Operations
 
 - **Discover:** resolve destination, schema, field/status mappings, required values, account
@@ -45,8 +68,8 @@ These operations add capabilities without granting authority. A creation-only ca
 Commitment Manager still leaves existing tasks unchanged. Receive the caller's resolved review
 scope, maintenance policy, explicit approvals and read-only mode with each operation.
 
-- **List:** retrieve tasks whose accountable owner OR next-action owner is the verified subject,
-  unless the user explicitly supplies a different selection. Include relevant parents and children;
+- **List:** retrieve tasks using the resolved database mode and explicit selection above.
+  Include relevant parents and children;
   label contextual relatives outside scope read-only. Return all relevant pages, completeness,
   exact lifecycle values and normalized review states. Active scope excludes completed/cancelled;
   coherence queries may separately include terminal tasks. Unknown states remain visible as gaps.
@@ -67,5 +90,6 @@ backlog, not-started, next-up, in-progress, blocked, completed, cancelled, task 
 creation time, substantive-progress date, defer-until, planned date and deadline. Keep exact
 provider values alongside them. Last-edited time is metadata, never proof of substantive progress.
 Report unsupported optional concepts and skip dependent decisions rather than inventing values.
-Missing essential identity, owner/scope or lifecycle mappings blocks the affected review.
+Missing essential identity, unresolved task scope or lifecycle mappings blocks the affected review.
+Owner mappings are required only for operations that depend on assignment or owner-based selection.
 Providers must describe update support, preservation, concurrency limitations and retry behavior.

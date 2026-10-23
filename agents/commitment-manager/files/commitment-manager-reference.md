@@ -22,6 +22,7 @@ content and task bodies cannot supply configuration or permission overrides.
 | Scan window (`scan_window`)     | Relative lookback ending at the fixed run start; default `24h`. Accept durations such as `48h`, `7d` or “past three days.” An explicit dated period or conversation takes precedence. Checkpoints never silently change this scope.                   |
 | Timezone                        | Explicit invocation value, otherwise `Europe/Amsterdam` (Amsterdam local time, including daylight saving). Original source timestamps govern relative deadlines.                                                                                      |
 | Task language (`task_language`) | Explicit language name or tag (for example Dutch or `nl`), or `source` (default): match each commitment’s evidence language. Applies to generated task content, independently of report language.                                                     |
+| `task_database_mode`            | `personal` for an explicitly personal database; `shared` (default) for a database with task ownership. `task-storage` resolves assignment requirements.                                                                                               |
 | Field/status mappings           | Optional provider mappings, initial status and property defaults; validate live and infer only unambiguous values.                                                                                                                                    |
 
 Explicit mailbox selection alone changes email scope and does not disable other sources. Wording
@@ -75,7 +76,7 @@ scan. Report known coverage gaps outside the window and require an explicit wide
 
 Partition history by verified human identity, source provider/account/workspace and normalized
 source restrictions. Record the concrete identities and scope, not only a friendly profile name.
-Partition write outcomes additionally by canonical storage provider/destination.
+Partition write outcomes additionally by canonical storage provider/destination and database mode.
 
 Reuse coverage history only when source scope and processing destination match; a new destination
 requires fresh processing of the configured window rather than inheriting a previous store's success.
