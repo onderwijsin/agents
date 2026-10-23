@@ -44,8 +44,36 @@ and [REST search endpoint](https://docs.github.com/en/rest/search/search#search-
   same 148 pairs. The CLI and connector used their respective authentication;
   this matching result does not establish equal permissions in other scopes.
 
-The historical failing requests were not available, so their exact cause remains
-unconfirmed. Search-based discovery relies on GitHub's index; partitioning handles
+For [issue #36](https://github.com/onderwijsin/agents/issues/36), the maintainer
+confirmed that the preceding skill revision was deployed before the reported run.
+Missing deployment does not explain that incident. The historical tool-call trace
+was not available, so its root cause remains unverified.
+
+A read-only Codex replay on 2026-10-23 used the Agents connection and the exact tool
+`mcp__codex_apps__github_search_commits`. Every call explicitly supplied
+`org: onderwijsin`, `sort: committer-date`, `order: desc`, and `topn: 100`, with
+`query: committer-date:START..END` and the bounds below. The connection identifier
+was supplied through the tool's required `link_id` argument. All seven responses
+reported `isError:false` and contained `commits`, without completeness metadata.
+
+| UTC start            | UTC end              | Returned commits |
+| -------------------- | -------------------- | ---------------- |
+| 2026-10-16T15:20:00Z | 2026-10-17T15:20:00Z | 4                |
+| 2026-10-17T15:20:00Z | 2026-10-18T15:20:00Z | 0                |
+| 2026-10-18T15:20:00Z | 2026-10-19T15:20:00Z | 9                |
+| 2026-10-19T15:20:00Z | 2026-10-20T15:20:00Z | 26               |
+| 2026-10-20T15:20:00Z | 2026-10-21T15:20:00Z | 54               |
+| 2026-10-21T15:20:00Z | 2026-10-22T15:20:00Z | 42               |
+| 2026-10-22T15:20:00Z | 2026-10-23T15:20:00Z | 13               |
+
+Deduplication by repository/SHA retained all 148 commits across nine repositories,
+matching the issue's expected result. No requests failed, no intervals saturated,
+and no retries or direct-history fallback were needed. The empty interval was a
+successful search response. This tests the connector path in Codex, not execution
+of the revised instructions inside Docs Drift. Runtime ledgers remain per-run
+artifacts rather than repository content.
+
+Search-based discovery relies on GitHub's index; partitioning handles
 result limits but does not prove index freshness. Timestamp partitioning, saturated
 repository fallback, alternate-default-branch handling, and the revised complete
 workflow still require testing in the deployed agent.
@@ -80,6 +108,17 @@ selection evidence and unresolved coverage without auditing or writing changes.
 Include a same-second saturation case and an unresolved child interval; verify that
 the ledger never marks their parent covered prematurely. These fallback cases were
 not exercised by the live connector probes above.
+
+For the issue #36 acceptance check, run a read-only diagnostic in Docs Drift over
+2026-10-16T15:20:00Z through 2026-10-23T15:20:00Z using seven 24-hour intervals.
+Inspect the actual tool trace and returned ledger for the exact qualifier-only
+arguments, observed counts/errors, and any discrepancy from the replay above.
+Confirm successful searches stay on the organization-wide path and empty results
+remain distinct from malformed-query errors and connector failures. Exercise those
+error branches separately and verify the one-retry rule and evidence-backed fallback
+scope. Preserve the actual trace when investigating the prior incident; its deployed
+skill status is already confirmed. The revised source has not been deployed or
+preview-tested by this repository change.
 
 Repository checks validate source quality, not installation or runtime behavior.
 Editing Git alone does not update the deployed agent or its schedule.

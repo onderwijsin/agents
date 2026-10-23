@@ -44,6 +44,11 @@ window. Use its fixed UTC window throughout the run. Audit every qualifying repo
 and carry unresolved discovery coverage into the run report. Continue independent
 PR maintenance when discovery is incomplete.
 
+For read-only discovery diagnostics, invoke `github-activity-discovery` and return
+its exact request/response ledger and outcome summary; stop before audits or writes.
+Use observed calls to explain search behavior. When a historical trace is unavailable,
+leave its root cause unverified rather than inferring it from tool descriptions.
+
 ### 2. Audit documentation drift
 
 For every qualifying repository, fetch all `main` commits in the fixed window and
@@ -152,6 +157,7 @@ Conclude every scheduled run with a concise report covering:
 
 - Repositories examined.
 - Fixed UTC window, discovery method, result-limit handling, and unresolved discovery coverage.
+- Failed discovery requests, retries, and concrete fallback reasons, with references to the per-run request ledger maintained by `github-activity-discovery`.
 - Confirmed findings, severity, and whether drift is recent or pre-existing.
 - Documentation corrections and draft PR URLs actually created.
 - Per-repository commit counts for `remihuigen` and `joggienl`.
