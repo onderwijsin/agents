@@ -1,6 +1,6 @@
 ---
 name: chatgpt-workspace-agents
-description: Create, edit, or review ChatGPT workspace agent source under agents/, including instruction/config files, app policies, connected references, and workspace skill dependencies. Prepare manual deployment handoffs for these definitions.
+description: Create, edit, or review ChatGPT workspace agents under agents/ and shared workspace skills under skills/, including instructions, app policies, connected references and consumer declarations. Prepare manual deployment handoffs for these definitions.
 ---
 
 # Maintain ChatGPT workspace agents
@@ -10,28 +10,31 @@ and its dependencies before editing. Apply the repository's writing-for-agents
 guidance to instruction and skill changes. Read
 [agent best practices](../../../docs/agent-best-practices.md) when designing or reviewing
 behavior; read [agent deployment](../../../docs/agent-deployment.md) when preparing
-a manual sync or checking source-to-UI mappings.
+manual workspace updates or checking source-to-UI mappings.
 
 ## Dependency boundary
 
 Workspace agents can use apps (MCPs) and separately uploaded standalone workspace skills.
-They cannot use plugins or plugin-bundled skills. Author dependencies under the agent's
-`skills/` directory with all resources needed for individual upload. Upload and link every
-required skill separately, including cross-skill dependencies; marketplace installation is
+They cannot use plugins or plugin-bundled skills. Author shared sources under root
+`skills/<skill-name>/` with all resources needed for individual upload. Upload each source once
+to the workspace for standalone use, attachment to agents, or both. Make every required
+skill available separately, including cross-skill dependencies; marketplace installation is
 not an agent deployment route.
 
 ## Layout and names
 
 ```text
 agents/<agent-name>/
+  README.md
   INSTRUCTION.md
   apps/<app-id>.yaml
   files/<reference-name>.md
-  skills/<skill-name>/
-    SKILL.md
-    agents/openai.yaml
-    references/<topic>.md
-    assets/<asset-name>
+skills/<skill-name>/
+  SKILL.md
+  agents/openai.yaml
+  references/<topic>.md
+  assets/<asset-name>
+  scripts/<helper>
 ```
 
 Use lowercase kebab-case for agent and skill directories and reference filenames.
@@ -66,7 +69,9 @@ memory: true
 This is a local authoring convention, not an official import format. Use sequences
 for dependencies and a Boolean for `memory`. App entries resolve to YAML filename
 stems; files resolve directly under `files/`. Skills resolve to workspace dependencies
-with matching `SKILL.md` names, locally documented or at an existing canonical source.
+in root `skills/<name>/` with matching `SKILL.md` names. `pnpm validate` checks all declared
+skills, app files and connected files; agent-local skill directories are rejected. Keep the
+root README inventories current when adding or removing agents or skills.
 Do not introduce speculative configuration keys for future importers.
 
 Begin the runtime body with `## Role`, then use descriptive H2 sections for the
@@ -101,16 +106,20 @@ agent workflow and record any restriction the UI cannot enforce.
 Use connected Markdown files for agent-specific detail, with one descriptive H1 and
 sections grouped by responsibility. Reference them by the exact deployed filename.
 Keep reusable procedures and supporting schemas in workspace skills. Use standard
-skill YAML frontmatter (`name`, `description`) followed by Markdown; names match
-directories. Preserve applicable `agents/openai.yaml` presentation and invocation
+skill YAML frontmatter (`name`, `description`) followed by Markdown; names match directories.
+Root workspace skills additionally require a `metadata.agents` array; use `[]` for standalone-only
+skills. Follow [skill authoring](../../../docs/creating-skills.md) for its repository-only extension
+and host acceptance limits. Plugin skill metadata retains the standard string-only contract. Preserve applicable `agents/openai.yaml` presentation and invocation
 metadata, verifying provider-specific changes against current official guidance.
 
-Agent-local skill sources document dependencies available through the user's workspace;
-they are not owned exclusively by this agent. Inspect other consumers before changing
-a shared skill. Maintain one authored source and reference it from other definitions.
-Keep workspace-agent skill sources in `agents/<agent-name>/skills/` for standalone upload,
-with one canonical source when reused by other agents. These sources are outside marketplace
-catalogs and plugin versioning. Plugin-bundled skills cannot satisfy agent dependencies.
+Root `skills/` holds shared standalone workspace skills outside marketplace catalogs and plugin
+versioning. Declare dependencies in agent `INSTRUCTION.md` skill lists and matching consumer
+arrays in each root skill's `metadata.agents`. Keep both lists aligned; the validator checks equality.
+`pnpm validate` derives and prints the reverse consumer index; fix invalid declarations before
+relying on it. Before changing a shared skill, read every consumer's instructions and connected
+references and preserve its inputs, outputs, permissions and behavior. Review representative tasks
+for all affected consumers; structural checks alone do not prove compatibility. Keep resources
+inside each skill; no per-agent copies or synchronization strategy is used.
 
 Use UTF-8 Markdown, inline code for literal names, numbered steps for workflows,
 and fenced code blocks with language tags. Use relative Markdown links for local
@@ -125,7 +134,9 @@ safety across instructions, files, skills, and app policies. Preserve unrelated 
 content unless the task authorizes its correction; report relevant contradictions.
 
 Run `pnpm format` and `pnpm check`. Review the full diff, including untracked files.
-Repository checks do not validate this local YAML contract or prove ChatGPT behavior.
+Repository checks validate frontmatter, dependencies, consumer agreement, README inventories and
+resource links, not
+live app policy enforcement, uploaded configuration or ChatGPT behavior.
 Report changed source files, affected UI settings/apps/skills/files, exact check results,
 and unverified activation, resource loading, or runtime behavior. Local authoring alone
 does not authorize changing a live agent or shared workspace skill. When deployment is

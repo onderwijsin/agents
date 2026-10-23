@@ -6,8 +6,8 @@ or scheduled prompt; no personal database or identity is embedded in the package
 
 ## Installation and use
 
-Upload each directory under `skills/` as a separate standalone workspace skill, including
-its `SKILL.md`, `references/`, assets and presentation metadata when present. Link all five skills
+Upload each required directory from root `skills/` once as a standalone workspace skill, including
+its `SKILL.md`, references, assets, scripts and presentation metadata when present. Link all five skills
 in the workspace agent builder: `commitment-scanning`, `task-processing`, `task-storage`,
 `notion-task-storage` and `notion-formatting`. Cross-skill calls require every named skill to be
 uploaded and linked separately; uploading one does not install its dependencies.
@@ -18,8 +18,8 @@ Copy the body of [INSTRUCTION.md](INSTRUCTION.md) into the agent instructions an
 separately. Editing Git does not update a live agent or uploaded workspace skills.
 
 Workspace agents can use apps (MCPs) and standalone workspace skills. They cannot use plugins
-or skills bundled in plugins. This directory is a manual upload source, outside marketplace
-catalogs, plugin manifests and plugin versioning.
+or skills bundled in plugins. This directory defines the agent; its reusable skills are shared root sources. Both use manual
+workspace setup, outside marketplace catalogs, plugin manifests and plugin versioning.
 
 For example, save this as the invocation prompt for a host-managed schedule:
 
@@ -34,7 +34,7 @@ provider also accepts `database_id` as a destination alias. See the agent's
 [configuration reference](files/commitment-manager-reference.md)
 for precedence, defaults, source selection and checkpoint isolation. With a destination alone,
 Notion mappings are inferred only when unambiguous. Supply field/status overrides when necessary;
-the [mapping example](skills/notion-task-storage/references/notion-mapping.md) preserves the earlier
+the [mapping example](../../skills/notion-task-storage/references/notion-mapping.md) preserves the earlier
 Acties naming conventions without embedding a personal identity or database.
 
 Timezone defaults to `Europe/Amsterdam`, including daylight saving. Override with
@@ -69,8 +69,8 @@ service-enforced; instructions do not enforce database-level access restrictions
 ## Migration
 
 Replace the former agent-local `notion-task-management` dependency with the five skills above.
-The `notion-formatting` source remains under this agent's `skills/` directory; update existing workspace skill
-content rather than keeping divergent copies. Existing consumers of `notion-task-management`
+The `notion-formatting` source is in root `skills/`; update the existing workspace skill
+rather than creating a separate copy per agent. Existing consumers of `notion-task-management`
 need explicit migration to `task-processing`/`task-storage` and invocation configuration; this is
 not a drop-in replacement for its broader existing-task maintenance workflow. No live skill is
 removed or updated by this repository change.
@@ -81,13 +81,24 @@ when needed, and mailbox selection in existing schedules. Old unscoped execution
 incompatible and must not be reused. The host owns schedule timing; no schedule is embedded here.
 The separate onboarding exercise remains an introductory template, not this agent's deployed source.
 
+## Storage maintenance compatibility
+
+The storage contract also supports scoped list/read and caller-authorized update operations for
+[Task Manager](../task-manager/README.md). These capabilities do not change Commitment Manager's
+creation-only policy: existing tasks remain unchanged except permitted formatting repair of its
+own same-run creations. Review this boundary when updating the uploaded storage skills.
+
+`task-storage`, `notion-task-storage` and `notion-formatting` each have one source under root
+`skills/`, shared with Task Manager. Keep their `metadata.agents` arrays aligned with agent
+frontmatter; `pnpm validate` checks both sides and prints the reverse index. Review both callers before changing or uploading these skills.
+There are no per-agent copies or synchronization steps.
+
 ## Compatibility and limitations
 
 The target is ChatGPT workspace agents with separately connected apps and manually uploaded
 standalone workspace skills. No plugin installation path is provided. At the user's request,
 upload, activation, resource loading, representative tasks and acceptance tests were skipped;
-production use is the planned first runtime exercise. Repository checks cover formatting and
-existing repository tooling, but do not validate agent-local skill deployment or behavior.
+production use is the planned first runtime exercise. Repository checks cover formatting, dependency presence, consumer lists, inventories and skill resources, but do not validate deployed configuration or behavior.
 Notion is the only implemented provider; other names produce a configuration error without writes.
 Duplicate checks are not atomic: concurrent runs against the same destination may race. Avoid
 overlapping schedules for the same user/destination. Incomplete searches and uncertain write

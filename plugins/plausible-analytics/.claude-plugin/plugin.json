@@ -1,6 +1,6 @@
 {
   "name": "plausible-analytics",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Analyseer websiteverkeer, campagnes en conversies met Plausible en rapporteer in de chat of als PDF.",
   "mcpServers": {
     "plausible": {

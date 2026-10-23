@@ -171,7 +171,9 @@ op `plugins/adviesassistent/skills/fact-checker/SKILL.md`, maar bevat de nodige 
 en criteria zelf. Er worden geen runtimebestanden uit de Adviesassistent-plugin vereist
 of automatisch als extra onboarding-subskill geïnstalleerd. Controleer in de agentproef
 dat de juiste persoonlijke skill wordt toegepast, ook als een gelijknamige pluginskill
-beschikbaar is. De agentdefinitie voegt Slack-contextselectie en antwoordvorm toe.
+beschikbaar is. De medewerker maakt de persoonlijke skill afzonderlijk beschikbaar in de
+workspace en koppelt die aan de agent; installatie of synchronisatie van de onboardingplugin
+voert die stap niet uit. De agentdefinitie voegt Slack-contextselectie en antwoordvorm toe.
 
 De gewenste handle is `@factcheck`. De aangeleverde voorbeelden noemden ook
 `@factchecker`; dat is geen tweede geconfigureerde handle. De

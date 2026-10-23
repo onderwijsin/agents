@@ -50,22 +50,23 @@ See [Husky setup](https://typicode.github.io/husky/get-started.html) and
 | `pnpm lint:md`          | Lint Markdown                                                              |
 | `pnpm lint:ts`          | Lint TypeScript with Oxlint                                                |
 | `pnpm typecheck`        | Check strict TypeScript types                                              |
-| `pnpm references:sync`  | Synchronize required canonical references into installed skill directories |
-| `pnpm references:check` | Check generated reference drift without changing files                     |
-| `pnpm validate`         | Validate content, catalogs, and local Markdown file links                  |
+| `pnpm references:sync`  | Synchronize shared plugin references into their skill directories          |
+| `pnpm references:check` | Check generated plugin-reference drift without changing files              |
+| `pnpm validate`         | Validate plugins, workspace dependencies, consumers, inventories and links |
 | `pnpm test`             | Exercise validator and release contracts in temporary fixtures             |
 | `pnpm check`            | Run all quality gates                                                      |
 
 The validator prints compact category summaries, followed by individual failures
-with responsible files and reasons. Successful entries stay out of the detailed
-output, and identical skipped-check reasons are grouped. Consola provides terminal
+with responsible files and reasons. Individual successful checks stay out of the detailed output; the declared workspace skill
+consumer index is printed separately. Identical skipped-check reasons are grouped. Consola provides terminal
 styling; `NO_COLOR=1` disables colors for plain output. It collects independent failures, including every
 broken local target in a document, before exiting with status 1 if any check failed.
 Checks blocked by invalid metadata are marked skipped; unrelated checks continue.
 Reports use repository-relative paths for terminals and CI. Fix the source;
-do not weaken checks to hide a failure. Empty plugin catalogs remain valid; distributable
-skills belong in `plugins/<plugin-name>/skills/<skill-name>/`, with a README and manifest
-at the plugin root. A repository-level `skills/` directory fails validation.
+do not weaken checks to hide a failure. Empty plugin catalogs remain valid. Plugin-bundled skills
+belong in `plugins/<plugin-name>/skills/<skill-name>/`, with a README and manifest at plugin root.
+Shared workspace skills live in root `skills/` for standalone use, agent attachment, or both;
+they are manually uploaded and stay outside marketplace synchronization. Agent-local `skills/` directories fail validation.
 Use [skill authoring](creating-skills.md) or [plugin authoring](creating-plugins.md) for content work.
 
 ## Repository tooling and validation scope
@@ -75,17 +76,35 @@ Zod v4 for JSON/YAML boundaries, and Node's test runner through tsx. Keep new ut
 JavaScript with JSDoc is preferred unless the task benefits from additional TypeScript modeling.
 Oxfmt formats source and Markdown; Oxlint lints scripts; markdownlint-cli2 checks Markdown rules.
 
-The validator covers the local-only catalog subset, matching catalog names and paths, unique
-identities, required plugin and skill files, skill frontmatter, and relative Markdown file links.
-Empty plugin catalogs are accepted; repository-level distributable skills are rejected. Plugin validation checks required identity fields rather
-than certifying the full portable schema. It also checks the documented credential-free HTTPS MCP
-subset, matching Claude overlays, OpenAI PNG presentation assets, singular `reference/`
-directories and skill-local runtime resources. Missing resources fail at their exact
-linked locations, including transitive references and assets; plugin-root sources
-are not a fallback. Shared source links are checked in their installed skill copies.
-Validation is read-only and runs after `pnpm references:sync`. The read-only drift
-check `pnpm references:check` runs first in `pnpm check`; CI also rejects migration
-output missing from the committed revision. See the [resource contract](reference-synchronization.md).
+Plugin validation covers the local-only catalog subset, matching names and paths, unique identities,
+required files, standard skill frontmatter and Markdown links. It checks the supported credential-free
+HTTPS MCP subset, matching Claude overlays, PNG presentation assets and singular `reference/`
+directories. This checks the repository's supported subset, not the complete upstream manifest schema.
+
+Root workspace skill validation checks frontmatter, required `metadata.agents` arrays and skill-local
+resource links, with plural `references/` allowed. Agent validation checks the local instruction
+frontmatter contract, resolves skills to root `skills/<name>/SKILL.md`, apps to each agent's
+`apps/<id>.yaml` and connected files to its `files/<name>.md`. It checks dependency existence and
+consumer agreement in both directions. Missing or malformed agent declarations prevent a complete
+consumer comparison; dependent checks are reported as skipped, with the underlying failure retained.
+App policy YAML contents and service-level permission enforcement are not checked.
+
+Root README inventory tables under **Plugins**, **Skills** and **Workspace agents** must list each
+corresponding directory exactly once, linking to its `README.md` or `SKILL.md`. Missing, stale or
+duplicate entries and incorrect link targets fail. Prose links and fenced examples do not count.
+The check does not validate purpose text or human-readable agent names in the table's other columns.
+
+For both deployment routes, referenced files must exist at their exact paths; sibling skills are
+not fallbacks. Symlinks and file links escaping a skill's boundary are rejected. Missing linked
+resources fail even when a matching source exists elsewhere. Root and documentation links are
+checked within the repository boundary; agent README links can navigate to shared root skills.
+
+Plugin reference synchronization is a separate authoring step. Run `pnpm references:sync` when
+changing shared plugin sources or their links; `pnpm references:check` detects drift without writing
+and runs first in `pnpm check`. CI also requires generated plugin output to be committed. Root
+workspace skills have no generated copies or synchronization step. See the
+[resource contract](reference-synchronization.md).
+
 Advanced manifest extensions, other MCP configuration, Markdown anchors, external URLs,
 and runtime behavior require targeted checks when introduced.
 

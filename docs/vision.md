@@ -6,11 +6,12 @@ campaign should be able to find a relevant capability in their AI workspace and 
 managing prompts, repositories, or developer tools.
 
 This repository should become the maintained, open-source collection behind that experience.
-It brings reusable skills, installable plugins, and clear contribution practices together.
-Plugins containing one or more skills are the distribution and versioning units; repository
-development skills stay separate in `.agents/skills/`. The direction described here guides future
-work; it does not claim that these capabilities
-are implemented. [ARCHITECTURE.md](../ARCHITECTURE.md) defines the architectural boundaries.
+It brings reusable skills, installable plugins, workspace agents and clear contribution practices
+together. Plugins containing one or more skills are marketplace distribution and versioning
+units. Root `skills/` contains shared workspace skills for manual upload, standalone use and agent
+attachment; `agents/` contains manually configured agent definitions. Repository development skills
+stay separate in `.agents/skills/`. This vision describes intended experiences; current deployment
+and acceptance status lives in the capability READMEs. [ARCHITECTURE.md](../ARCHITECTURE.md) defines the architectural boundaries.
 
 ## The experience we want to enable
 
@@ -18,6 +19,11 @@ A colleague discovers a plugin through the workspace marketplace, understands wh
 with, and installs it under the organization's workspace policies. The plugin provides reusable
 capabilities that adapt to the task: editorial support should help with different articles and
 audiences, rather than enforce one fixed sequence for every assignment.
+
+A colleague may also invoke an uploaded workspace skill directly or use a shared agent that
+combines several skills and apps. Maintainers upload each root skill once and attach it to its
+consuming agents; marketplace sync does not supply those resources. Shared skill changes require
+review of all declared consumers while preserving each agent's authority.
 
 Instructions should make expectations clear, request missing context when needed, and help the
 colleague assess the result. Relevant references should be available when the task needs them.
@@ -32,8 +38,8 @@ should become as approachable as using it.
 ## Principles for growth
 
 - **GUI-first distribution:** prioritize discovery and use through the ChatGPT Business workspace
-  marketplace. Local tooling supports authors and maintainers; it should not become a requirement
-  for ordinary users.
+  marketplace, alongside manually uploaded workspace skills and shared agents. Local tooling
+  supports authors and maintainers; it should not become a requirement for ordinary users.
 - **Portable content:** author skills in an open, Markdown-based format and keep provider-specific
   configuration small. Verify behavior on each supported host rather than promising equivalence.
 - **Reusable capabilities:** organize around recurring needs in communications, editorial work,
@@ -54,9 +60,9 @@ and available evidence allow it.
 | Priority                          | Work to pursue                                                                              | Evidence needed before broadening                                                          |
 | --------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | Establish a useful capability     | Choose a recurring colleague task; author a focused skill with examples and an owner        | Representative users can apply it and identify useful results and limitations              |
-| Prove the installation experience | Package related content and test marketplace import, installation, and updates              | A colleague can discover and use it through the intended workspace GUI                     |
+| Prove the installation experience | Test plugin import/updates and manual workspace skill upload/agent attachment               | A colleague can discover and use it through the intended workspace GUI                     |
 | Establish practical portability   | Test the same canonical content on additional hosts and document differences                | Each claimed host supports the capability without a second authored copy                   |
-| Make content easier to maintain   | Maintain plugin ownership, resource boundaries, versioning, and contributor workflows       | Shared content has clear ownership and produces self-contained packages                    |
+| Make content easier to maintain   | Maintain plugin boundaries, shared workspace skill consumers and contributor workflows      | Shared content has clear ownership and produces self-contained packages                    |
 | Introduce dynamic references      | Pilot access to published organizational references through an explicit service boundary    | Colleagues receive relevant, attributable material without exposing drafts or private data |
 | Enable assisted authoring         | Add discovery, editing, validation, and publication capabilities for organizational content | Authors and reviewers can control changes reliably through their AI workspace              |
 

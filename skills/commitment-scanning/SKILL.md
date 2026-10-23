@@ -2,6 +2,8 @@
 name: commitment-scanning
 description: Scan configured communications or meetings for attributable, outstanding personal commitments. Use for configured-window scans, historical investigations, or checking a specific promise; returns evidence-backed candidates without writing tasks.
 license: MIT
+metadata:
+  agents: [commitment-manager]
 ---
 
 # Scan commitments

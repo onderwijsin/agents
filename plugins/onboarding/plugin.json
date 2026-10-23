@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "onboarding",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Verken en personaliseer ChatGPT Business met de Bert-bot van de IT-afdeling, in twaalf praktische onboardingmodules.",
   "author": {
     "name": "Onderwijs in"

@@ -30,7 +30,8 @@ when the public capability changes. A major bump on `0.x.y` becomes `1.0.0`.
 
 All changed files inside an existing plugin count, including its README, assets,
 connections, bundled skills and references. Repository-level docs, catalogs and
-tooling alone do not bump plugins. A manifest edit that only changes the version is
+tooling alone do not bump plugins. Changes under root `skills/` or `agents/` also create no plugin
+release; apply them manually in the workspace after review and verify affected consumers. A manifest edit that only changes the version is
 restored to the base version; it does not create a release. Brand-new plugins retain
 their declared initial stable version. Removed plugins are not released; a renamed
 plugin is a new identity. Automation supports stable `major.minor.patch` versions;
@@ -145,7 +146,9 @@ ordinary workflow steps or focused functions as the concrete work requires.
 Marketplace consumers still receive the committed `main` content through the
 provider's GitHub synchronization. A tag does not trigger ChatGPT sync. Follow the
 [distribution guide](marketplace-distribution.md) and test installed behavior in a
-new chat. This release workflow changes version bookkeeping, not host compatibility.
+new chat. Root workspace skills and agents do not participate in this release or marketplace-sync
+route; follow [workspace deployment](agent-deployment.md) for their manual updates. This release
+workflow changes version bookkeeping, not host compatibility.
 
 GitHub documents that [GITHUB_TOKEN-triggered events](https://docs.github.com/en/enterprise-cloud@latest/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow)
 do not generally start ordinary workflows automatically, while explicit

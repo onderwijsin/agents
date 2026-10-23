@@ -93,14 +93,18 @@ Add the corresponding entry to `.claude-plugin/marketplace.json`:
 ```
 
 Paths resolve from the repository root, not the manifest's directory. The validator requires
-one entry per package in each catalog with matching names and paths. Remote sources are outside
+one entry per package in each catalog with matching names and paths. Add or remove the package
+in the root README's Plugins table at the same time; inventory validation checks that coverage. Remote sources are outside
 our initial validation contract; introduce them with focused validation and documentation.
 
 Run `pnpm check` and test installation and behavior on each claimed host before requesting review.
-Do not claim compatibility based solely on portable files. Before distributing the first plugin,
-verify workspace import and Claude loading in the intended environments. Every marketplace-distributed
-skill has one canonical source inside one plugin. Standalone workspace-agent skills use the
-separate [manual deployment route](agent-deployment.md); agents cannot use plugin-bundled skills. Plugin versions are authoritative for all
+Do not claim compatibility based solely on portable files. Verify marketplace import and native
+loading in each claimed host before distributing a new plugin. Every marketplace-distributed
+skill has one canonical source inside one plugin. Root workspace skills are authored separately
+under `skills/` and use the [manual deployment route](agent-deployment.md), whether standalone or
+attached to agents. Keep plugin skills packaged with their plugin; the workspace-only
+`metadata.agents` array is not valid plugin metadata. Agents cannot use plugin-bundled skills.
+Plugin versions are authoritative for all
 bundled changes; there is no independent skill version. The
 [release workflow](releases.md) updates manifest versions before merge; use PR labels
 for minor or major bumps.

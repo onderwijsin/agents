@@ -64,3 +64,51 @@ Checked 2026-10-23 against Notion's official
 databases contain data sources, and data source schemas define page properties. Actual connector
 operations and formatting differ from the public API; inspect live tools rather than hardcoding
 API payloads. Installation, connector support, mapping inference and writes remain runtime-unverified.
+
+## Maintenance mappings and updates
+
+Resolve optional mappings for `next_action_owner`, `parent`, `children`, `task_type`, `workstream`,
+`created_at`, `last_progress`, `defer_until` and `last_edited_at` alongside existing fields.
+Use `review_status_mappings` for backlog, not-started, next-up, in-progress and blocked; lifecycle
+mappings still distinguish completed/cancelled. Infer only unambiguous semantics, validating types
+and select options. Workstream values must exist and be unambiguous; never create options implicitly.
+Keep accountable owner and next-action owner independent. An absent next-action owner mapping
+limits scope to accountable owner and is reported; ambiguous ownership blocks scope resolution.
+
+List active tasks using the caller's resolved selection, defaulting to an OR over mapped owner and
+next-action owner. Apply explicit ID/filter selections and paginate the data source.
+Retrieve parent/child relations; individually test each related task against the configured scope.
+Fetch bodies where needed for evidence or review conventions. Saved-view filters never substitute
+for the requested complete scope. Query terminal tasks separately for coherence checks when needed.
+Return actual page IDs and URLs; numeric display IDs are optional and read-only.
+
+For an update, re-fetch the exact page, confirm its parent data source and current scope, then
+compare relevant properties/body with the proposed patch's observed values. Use targeted property
+changes or exact body edits supported by the connector. Apply `notion-formatting` for body writes;
+preserve child pages, relations, other properties, native references and commitment identity text.
+Read back every changed property and body section and check preservation. Await asynchronous
+completion before verification. On timeout or partial failure, fetch current values before retry;
+report discrepancies and conflicts instead of overwriting newer content. A pre-write read is not
+an atomic compare-and-swap: avoid overlapping writers and disclose unresolved race risk.
+If the connector lacks adequate queries, targeted updates or read-back, report the unsupported
+operation and leave it pending. Do not change database schemas or default missing dates/owners.
+
+For example, this optional maintenance override extends the earlier schema hints:
+
+```yaml
+field_mappings:
+  next_action_owner: Ligt bij
+  workstream: Onderdeel van
+  last_progress: Laatste inhoudelijke voortgang
+  defer_until: Niet opnieuw voorstellen vóór
+review_status_mappings:
+  backlog: [Backlog]
+  not_started: [Not started]
+  next_up: [Next up]
+  in_progress: [In progress, In review]
+  blocked: [Hold for input]
+```
+
+These are examples, not defaults. Resolve parent/child relations and system creation/edit metadata
+from live property types and connector metadata; verify every supplied override. Required access
+is operation-specific: list/read reviews need reads, while an authorized update also needs writes.

@@ -1,28 +1,69 @@
 # Creating skills
 
 A skill teaches a reusable capability, including when to use it. Start with a specific audience,
-realistic task examples, and clear expected results. Follow the
-[Agent Skills specification](https://agentskills.io/specification).
+realistic task examples and clear expected results. Use the [Agent Skills specification](https://agentskills.io/specification)
+for the portable format and the repository conventions below for its deployment route.
 
 ## Choose the deployment route
 
-For a workspace agent, create a standalone skill under
-`agents/<agent-name>/skills/<skill-name>/`. Keep resources in its `references/` and `assets/`
-directories and upload each skill separately, then link it in the agent builder. Workspace agents
-can use apps (MCPs) and standalone workspace skills; plugins and plugin-bundled skills are
-unavailable to them. Follow [agent deployment](agent-deployment.md) for that route.
+| Source                            | Use and distribution                                                                         | References                                                                      | Metadata and versioning                                                             |
+| --------------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `skills/<name>/`                  | Standalone workspace use, attachment to agents, or both; manually upload once per workspace. | Skill-local `references/`.                                                      | Required `metadata.agents` array; no plugin release or marketplace synchronization. |
+| `plugins/<plugin>/skills/<name>/` | Always packaged, installed and synchronized with its containing plugin.                      | Skill-local `reference/`; shared plugin references may be synchronized into it. | Standard string-only metadata; containing plugin version.                           |
+| `.agents/skills/<name>/`          | Repository development guidance for contributors.                                            | Keep resources with the contributor skill.                                      | Outside workspace uploads and marketplace distribution.                             |
 
-The plugin packaging and versioning rules below apply to marketplace distribution, not to
-standalone workspace-agent skills. The instruction and frontmatter guidance applies to both.
+Workspace agents use apps (MCPs) and separately uploaded workspace skills. They cannot use plugins
+or plugin-bundled skills. Follow [agent deployment](agent-deployment.md) for manual workspace setup
+and [plugin authoring](creating-plugins.md) for manifests and catalog entries. Root workspace skills
+remain shared sources; do not nest copies under consuming agents or add them to plugin catalogs.
 
-## Layout and metadata
+## Workspace skill layout and metadata
 
-Use `plugins/<plugin-name>/skills/<skill-name>/SKILL.md` and document usage in the plugin README.
-Create a single-skill plugin for an independent capability, or add the skill to an existing
-plugin when its audience and ownership fit. Follow [plugin authoring](creating-plugins.md)
-for the manifest and both catalog entries. Runtime `reference/`, `assets/`, and `scripts/`
-belong inside the skill directory. The following is a documentation skeleton,
-not an existing capability:
+Keep each independently uploadable directory complete:
+
+```text
+skills/<skill-name>/
+  SKILL.md
+  references/<topic>.md  (only if needed)
+  assets/<asset-name>    (only if needed)
+  scripts/<helper>      (only if needed)
+  agents/openai.yaml    (optional presentation metadata)
+```
+
+Every root workspace skill requires an explicit consumer list. A standalone-only skill has an
+empty array; a skill also used by agents lists their directory names:
+
+```yaml
+---
+name: skill-name
+description: Describe the capability and the tasks that should activate it.
+license: MIT
+metadata:
+  agents: []
+---
+```
+
+For a shared task skill, for example:
+
+```yaml
+metadata:
+  agents: [commitment-manager, task-manager]
+```
+
+List each dependency in its consuming agent's `INSTRUCTION.md` frontmatter too. Update both sides
+together: `pnpm validate` rejects missing, extra, unknown or duplicate consumers, ignoring array
+order. It derives a consumer index from agent declarations for review. Keep the root README's
+Skills table current; its entries must match the root skill directories.
+
+The array is a repository extension for workspace skills. The Agent Skills specification defines
+`metadata` as a string-to-string map, so array acceptance is not portable or verified in ChatGPT,
+Codex or Claude. Other workspace metadata entries remain strings. Check target-host acceptance
+before uploading; local validation does not prove it. This extension does not apply to plugin skills.
+
+## Plugin skill layout and metadata
+
+Create marketplace-distributed skills inside exactly one plugin and document them in that package's
+README. A single-skill plugin serves an independent capability; related skills may share a plugin.
 
 ```text
 plugins/<plugin-name>/
@@ -30,9 +71,12 @@ plugins/<plugin-name>/
   README.md
   skills/<skill-name>/
     SKILL.md
-    reference/  (only if needed)
-    assets/     (only if needed)
+    reference/<topic>.md  (only if needed)
+    assets/<asset-name>   (only if needed)
+    scripts/<helper>     (only if needed)
 ```
+
+Plugin skill frontmatter uses the standard format without the workspace-only consumer array:
 
 ```yaml
 ---
@@ -42,46 +86,47 @@ license: MIT
 ---
 ```
 
-Names must match the containing directory, be 1–64 characters, use lowercase letters, digits,
-and single hyphens, and have no leading/trailing hyphen. Descriptions are nonempty and at most
-1024 characters. Optional fields are `license`, `compatibility` (at most 500 characters),
-`metadata` (string-to-string mapping), and experimental `allowed-tools` (string).
-Provider support for experimental fields differs; tool hints do not confer service permissions.
+Use the containing plugin version for bundled changes. Keep both marketplace catalogs and the
+root README's Plugins table aligned with package additions and removals. Follow
+[reference synchronization](reference-synchronization.md) when changing shared plugin references;
+that mechanism does not copy or synchronize root workspace skills.
 
-## Write the instructions
+## Common authoring rules
 
-Before creating or editing a skill, read and apply the local writing-for-agents skill at
-`.agents/skills/writing-for-agents/SKILL.md` (relative to the repository root), then its
-`SKILL-MECHANICS.md` reference. It guides context pointers, progressive disclosure, completion
-criteria, and pruning. Use it for instruction design; the Agent Skills specification defines
-portable packaging and metadata. These contributor instructions are separate from the capability
-being authored and should not be bundled into it. If the skill is unavailable locally, make it
-available before beginning agent-authored instruction changes.
+Names match directories, are 1–64 characters, use lowercase letters, digits and single hyphens,
+and have no leading/trailing hyphen. Descriptions are nonempty and at most 1024 characters.
+Optional standard fields are `license`, `compatibility` (at most 500 characters), `metadata`
+(string values, except the workspace extension above) and experimental `allowed-tools` (string).
+Tool hints and presentation metadata grant no service permissions.
 
-Explain inputs, steps, expected outputs, verification, and when to ask for missing information.
-Keep the body focused and put detailed reference material in local files linked with relative
-Markdown paths. Follow the resource contract below. Do not reference a sibling skill or package or rely on
-files installed only on the author's computer. Describe external services and environment
-requirements explicitly. Avoid model names, host-specific tools, and credentials by default.
+Before creating or editing a skill, apply `.agents/skills/writing-for-agents/SKILL.md` and its
+`SKILL-MECHANICS.md` reference. These contributor instructions guide invocation, context pointers,
+progressive disclosure, completion criteria and pruning; do not bundle them into runtime skills.
+If unavailable locally, make them available before agent-authored instruction changes.
 
-## Resource paths and validation
+Explain inputs, steps, expected outputs, verification and when to ask for missing information.
+Use UTF-8 Markdown, one H1 and fenced code blocks with language tags. Keep the workflow focused
+and link detailed references from the steps that need them. Dutch instructions are welcome for
+Dutch-language tasks; explain the audience in the appropriate README. Keep private operational
+data and credentials out of examples.
 
-Keep runtime references and assets inside the consuming skill. Use singular
-`reference/` for Markdown reference material and `assets/` for images; plugin
-presentation icons remain at plugin root.
+Keep runtime files and transitive links inside the consuming skill's directory, including assets
+and helper scripts. Reference them relative to the containing document; sibling skills or plugin-root
+files are not runtime file fallbacks. Calls to other skills use their deployed skill names and require
+those dependencies to be available separately. Document required services and host capabilities.
 
-For shared sources, generated copies, Markdown dependency selection, ownership,
-cleanup and synchronization commands, follow
-[reference synchronization](reference-synchronization.md). Run synchronization after
-changing shared references or their consuming links, then run `pnpm check`.
+## Review, validation and deployment
 
-Use UTF-8 Markdown, one H1, fenced code blocks with languages, and YAML frontmatter only at the
-start of `SKILL.md`. Dutch instructions are welcome for Dutch-language work; explain the audience
-in the README. Never publish private operational examples.
+Before changing a shared workspace skill, inspect every `metadata.agents` consumer's instructions,
+connected files, inputs, outputs, permissions and representative tasks. An added capability must
+preserve each caller's authority. A consumer list exposes impact; it does not prove compatibility.
 
-Run `pnpm check`, then manually try representative tasks and activation/non-activation cases
-on each claimed host. The containing plugin is the installation and versioning unit; change
-its version when its bundled skills change. Individual skills need no independent version.
-`.agents/skills/` holds repository development skills and remains outside this distribution model.
-Other hosts can support standalone skill installation, but GitHub-to-ChatGPT marketplace sync
-discovers plugin entries and their bundled skills, not a repository-level skills directory.
+Run `pnpm format` and `pnpm check`. Local checks validate metadata, resource links, dependency
+presence, consumer consistency and root README inventories. They do not validate activation,
+uploaded resource access or behavior. Exercise representative positive, negative and failure cases
+on every claimed host and report anything unverified.
+
+Manually upload root workspace skills with their resources; subsequent source changes need a
+manual workspace update too. Reconcile UI-only edits before replacing an uploaded skill and verify
+all linked agents afterwards. Plugin skills instead follow their plugin's installation, release
+and synchronization route. Neither route grants app access or authenticates the user.

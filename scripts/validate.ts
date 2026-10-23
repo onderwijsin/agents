@@ -1,4 +1,4 @@
-import { access, readdir, readFile, realpath, stat } from "node:fs/promises";
+import { access, lstat, readdir, readFile, realpath, stat } from "node:fs/promises";
 import { dirname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseDocument } from "yaml";
@@ -113,6 +113,20 @@ const skillMetadata = z.strictObject({
   metadata: z.record(z.string(), z.string()).optional(),
   "allowed-tools": z.string().trim().min(1).optional(),
 });
+// Workspace-agent metadata is a repository authoring contract, not a host import schema.
+const dependencyList = (item: z.ZodString) =>
+  z.array(item).refine((items) => new Set(items).size === items.length, "duplicate dependencies");
+// Repository extension for manually uploaded workspace skills; plugin metadata stays portable.
+const workspaceSkillMetadata = skillMetadata.extend({
+  metadata: z.object({ agents: dependencyList(name) }).catchall(z.string()),
+});
+const agentMetadata = z.strictObject({
+  channel: z.literal("chatgpt"),
+  apps: dependencyList(z.string().regex(/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/)),
+  skills: dependencyList(name),
+  files: dependencyList(z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*\.md$/)),
+  memory: z.boolean(),
+});
 
 /** Read JSON as unknown data; schemas validate it at the call site. */
 async function json(path: string): Promise<unknown> {
@@ -175,7 +189,11 @@ export type ValidationResult = {
   status: "passed" | "failed" | "skipped";
   details: string[];
 };
-export type ValidationReport = { results: ValidationResult[] };
+export type ValidationReport = {
+  results: ValidationResult[];
+  /** Declared consumers, derived from valid agent frontmatter rather than repeated in skills. */
+  skillConsumers: Record<string, string[]>;
+};
 
 /** Flatten nested link failures and render schema issues without dumping raw input. */
 function diagnostics(error: unknown): string[] {
@@ -254,21 +272,24 @@ async function links(path: string, boundary: string): Promise<void> {
   if (errors.length) throw new AggregateError(errors, `Invalid local links in ${path}`);
 }
 
-/** Validate frontmatter separately so malformed metadata does not hide resource errors. */
-async function skill(path: string): Promise<void> {
-  const source = await file(join(path, "SKILL.md"));
+/** Parse YAML once and reject missing bodies or duplicate/invalid YAML keys. */
+async function frontmatter(path: string): Promise<unknown> {
+  const source = await file(path);
   const frontmatter = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/.exec(source);
-  if (!frontmatter?.[1]) throw new Error(`${path}/SKILL.md: missing YAML frontmatter`);
+  if (!frontmatter?.[1]) throw new Error(`${path}: missing YAML frontmatter`);
   const document = parseDocument(frontmatter[1]);
   if (document.errors.length)
-    throw new Error(
-      `${path}/SKILL.md: ${document.errors.map((error) => error.message).join("; ")}`,
-    );
-  const metadata = skillMetadata.parse(document.toJS());
+    throw new Error(`${path}: ${document.errors.map((error) => error.message).join("; ")}`);
+  if (!source.slice(frontmatter[0].length).trim()) throw new Error(`${path}: missing instructions`);
+  return document.toJS();
+}
+
+/** Validate frontmatter separately so malformed metadata does not hide resource errors. */
+async function skill<T extends { name: string }>(path: string, schema: z.ZodType<T>): Promise<T> {
+  const metadata = schema.parse(await frontmatter(join(path, "SKILL.md")));
   if (metadata.name !== path.split(sep).at(-1))
     throw new Error(`${path}: skill name must match directory`);
-  if (!source.slice(frontmatter[0].length).trim())
-    throw new Error(`${path}/SKILL.md: missing instructions`);
+  return metadata;
 }
 
 /** Missing optional configuration is not failure; permission and other I/O errors are. */
@@ -357,7 +378,12 @@ async function connections(
   });
 }
 
-type MarkdownContext = { boundary: string; referenceSource?: string; skillContainer?: string };
+type MarkdownContext = {
+  boundary: string;
+  referenceSource?: string;
+  skillContainer?: string;
+  allowPluralReferences?: boolean;
+};
 
 /**
  * Traverse without following symlinks. Each document gets one link result containing
@@ -379,7 +405,7 @@ async function markdownFiles(
       const child = join(path, entry.name);
       if (entry.isSymbolicLink())
         return [new Error(`${child}: symlinks are not distributable resources`)];
-      if (entry.isDirectory() && entry.name === "references")
+      if (entry.isDirectory() && entry.name === "references" && !context.allowPluralReferences)
         return [new Error(`${child}: use the singular reference/ directory`)];
       return [];
     });
@@ -406,6 +432,169 @@ async function markdownFiles(
     } else if (entry.name.endsWith(".md") && !isSource) {
       await checks.run("Markdown links", child, () => links(child, context.boundary));
     }
+  }
+}
+
+/** Optional workspace collections may be absent in plugin-only repositories and test fixtures. */
+async function workspaceDirectories(path: string, checks: Checks): Promise<string[]> {
+  let metadata;
+  try {
+    metadata = await lstat(path);
+  } catch (error: unknown) {
+    if (error instanceof Error && "code" in error && error.code === "ENOENT") return [];
+    throw error;
+  }
+  if (!metadata.isDirectory()) throw new Error(`${path}: expected a real directory`);
+  return directories(path, checks);
+}
+
+/** Validate shared upload sources and agent-local dependencies without generating any files. */
+async function workspace(root: string, checks: Checks): Promise<Record<string, string[]>> {
+  const skillRoot = join(root, "skills");
+  const names = await checks.run("Workspace skill directories", skillRoot, () =>
+    workspaceDirectories(skillRoot, checks),
+  );
+  const consumers = new Map<string, string[]>();
+  const declaredConsumers = new Map<string, string[]>();
+  for (const id of names ?? []) {
+    consumers.set(id, []);
+    const path = join(skillRoot, id);
+    const metadata = await checks.run("Workspace skill metadata", join(path, "SKILL.md"), () =>
+      skill(path, workspaceSkillMetadata),
+    );
+    if (metadata) declaredConsumers.set(id, metadata.metadata.agents);
+    await markdownFiles(path, { boundary: path, allowPluralReferences: true }, checks);
+  }
+  const agentRoot = join(root, "agents");
+  const agents = await checks.run("Workspace agent directories", agentRoot, () =>
+    workspaceDirectories(agentRoot, checks),
+  );
+  for (const id of agents ?? []) {
+    const path = join(agentRoot, id);
+    const instruction = join(path, "INSTRUCTION.md");
+    const metadata = await checks.run("Workspace agent metadata", instruction, async () =>
+      agentMetadata.parse(await frontmatter(instruction)),
+    );
+    await checks.run("Workspace agent layout", path, async () => {
+      if (await exists(join(path, "skills")))
+        throw new Error(
+          `${path}: workspace skills belong in root skills/, not agent-local skills/`,
+        );
+    });
+    if (metadata) {
+      for (const skillName of metadata.skills) {
+        // Retain missing declarations in the impact index; validation reports their failed targets.
+        const declared = consumers.get(skillName) ?? [];
+        declared.push(id);
+        consumers.set(skillName, declared);
+        const target = join(skillRoot, skillName, "SKILL.md");
+        await checks.run("Workspace agent skill dependency", instruction, async () => {
+          if (!names?.includes(skillName))
+            throw new Error(`Skill "${skillName}" must exist at ${target}`);
+          await containedFile(target, join(skillRoot, skillName));
+        });
+      }
+      for (const app of metadata.apps) {
+        const target = join(path, "apps", `${app}.yaml`);
+        await checks.run("Workspace agent app dependency", instruction, () =>
+          containedFile(target, join(path, "apps")),
+        );
+      }
+      for (const filename of metadata.files) {
+        const target = join(path, "files", filename);
+        await checks.run("Workspace agent file dependency", instruction, () =>
+          containedFile(target, join(path, "files")),
+        );
+      }
+    } else {
+      checks.skip("Workspace agent dependencies", instruction, "Agent metadata is invalid.");
+    }
+    await markdownFiles(path, { boundary: root, allowPluralReferences: true }, checks);
+  }
+  const incomplete = checks.results.some(
+    (result) =>
+      result.status === "failed" &&
+      (result.rule === "Workspace agent metadata" ||
+        result.rule === "Workspace agent directories" ||
+        (result.rule === "Content directory name" && dirname(result.file) === agentRoot)),
+  );
+  for (const [id, declared] of declaredConsumers) {
+    const path = join(skillRoot, id, "SKILL.md");
+    if (incomplete) {
+      checks.skip(
+        "Workspace skill agent consistency",
+        path,
+        "Agent declarations could not be fully validated.",
+      );
+      continue;
+    }
+    await checks.run("Workspace skill agent consistency", path, () => {
+      const actual = consumers.get(id) ?? [];
+      const missing = actual.filter((agent) => !declared.includes(agent));
+      const extra = declared.filter((agent) => !actual.includes(agent));
+      if (missing.length || extra.length)
+        throw new Error(
+          `metadata.agents must match agent skills lists; missing: ${missing.join(", ") || "none"}; unexpected: ${extra.join(", ") || "none"}`,
+        );
+    });
+  }
+  return Object.fromEntries(consumers);
+}
+
+/**
+ * Check the root README's three inventory tables, not incidental prose links or other tables.
+ * Each name cell must link to its canonical README/SKILL file exactly once. Fenced examples
+ * do not count. This intentionally supports the repository's pipe-table convention only.
+ */
+async function readmeInventories(root: string, checks: Checks): Promise<void> {
+  const path = join(root, "README.md");
+  const source = await checks.run("README inventory source", path, () => file(path));
+  if (source === undefined) return;
+  const content = source.replace(/^(`{3,}|~{3,}).*\n[\s\S]*?^\1[^\n]*$/gm, "");
+  for (const [collection, heading, label, filename] of [
+    ["plugins", "Plugins", "Name", "README.md"],
+    ["skills", "Skills", "Name", "SKILL.md"],
+    ["agents", "Workspace agents", "Agent", "README.md"],
+  ] as const) {
+    await checks.run(`README ${collection} inventory`, path, async () => {
+      const section = content.split(new RegExp(`^## ${heading}\\s*$`, "m"));
+      if (section.length !== 2) throw new Error(`Expected exactly one "${heading}" section`);
+      const lines = section[1]!.split(/^## /m)[0]!.split(/\r?\n/);
+      const headers = lines.flatMap((line, index) =>
+        new RegExp(`^\\|\\s*${label}\\s*\\|`).test(line) ? [index] : [],
+      );
+      if (headers.length !== 1) throw new Error(`Expected exactly one ${heading} inventory table`);
+      const header = headers[0]!;
+      if (!/^\|\s*:?-+:?\s*\|/.test(lines[header + 1] ?? ""))
+        throw new Error(`${heading}: missing table separator`);
+      const rows: string[] = [];
+      for (const line of lines.slice(header + 2)) {
+        if (!line.trimStart().startsWith("|")) break;
+        const cell = line.split("|")[1] ?? "";
+        const targets = localMarkdownLinks(cell);
+        if (targets.length !== 1)
+          throw new Error(`${heading}: each name cell must contain one local entry link`);
+        const target = resolve(root, decodeURIComponent(targets[0]!));
+        const id = relative(join(root, collection), dirname(target));
+        if (!name.safeParse(id).success || target !== resolve(root, collection, id, filename))
+          throw new Error(
+            `${heading}: expected ${collection}/<name>/${filename}, got ${targets[0]}`,
+          );
+        rows.push(id);
+      }
+      unique(rows, `${heading} README table`);
+      const directory = join(root, collection);
+      const entries = (await exists(directory))
+        ? await readdir(directory, { withFileTypes: true })
+        : [];
+      const names = entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name);
+      const missing = names.filter((id) => !rows.includes(id));
+      const extra = rows.filter((id) => !names.includes(id));
+      if (missing.length || extra.length)
+        throw new Error(
+          `${heading} table must match ${collection}/ directories; missing: ${missing.join(", ") || "none"}; unexpected: ${extra.join(", ") || "none"}`,
+        );
+    });
   }
 }
 
@@ -501,7 +690,9 @@ export async function inspect(root: string): Promise<ValidationReport> {
       if (bundled)
         for (const skillName of bundled) {
           const skillPath = join(path, "skills", skillName);
-          await checks.run("Skill metadata", join(skillPath, "SKILL.md"), () => skill(skillPath));
+          await checks.run("Skill metadata", join(skillPath, "SKILL.md"), () =>
+            skill(skillPath, skillMetadata),
+          );
         }
       else
         checks.skip(
@@ -525,12 +716,8 @@ export async function inspect(root: string): Promise<ValidationReport> {
       join(root, "plugins"),
       "Plugin directories could not be validated.",
     );
-  await checks.run("Distribution layout", root, async () => {
-    if ((await readdir(root)).includes("skills"))
-      throw new Error(
-        "Distributable skills belong inside plugins; root skills/ is not supported by this repository",
-      );
-  });
+  const skillConsumers = await workspace(root, checks);
+  await readmeInventories(root, checks);
   const rootEntries = await checks.run("Repository directory", root, () =>
     readdir(root, { withFileTypes: true }),
   );
@@ -542,11 +729,13 @@ export async function inspect(root: string): Promise<ValidationReport> {
   }
   // Contributor-local .agents/skills remain outside marketplace validation.
   await markdownFiles(join(root, "docs"), { boundary: root }, checks);
-  return { results: checks.results };
+  return { results: checks.results, skillConsumers };
 }
 
 /** Group low-level rules into a small summary while retaining every result internally. */
 function reportCategory(rule: string): string {
+  if (rule.startsWith("README")) return "README inventories";
+  if (rule.startsWith("Workspace agent")) return "Workspace agents";
   if (/catalog|Marketplace|^Unique .* entries/i.test(rule)) return "Catalogs";
   if (/^Plugin|^Content directory|^Distribution|^Repository/.test(rule)) return "Plugin packaging";
   if (/skill/i.test(rule)) return "Skills";
@@ -593,6 +782,28 @@ export function formatReport(report: ValidationReport, root: string, styled = fa
     lines.push(`  ${status} ${category.padEnd(24)} ${summary}`);
   }
   const failures = report.results.filter((result) => result.status === "failed");
+  const consumers = Object.entries(report.skillConsumers).sort(([a], [b]) =>
+    a.localeCompare(b, "en"),
+  );
+  if (consumers.length) {
+    lines.push("", paint("bold", "Workspace skill consumers (declared)"));
+    if (
+      report.results.some(
+        (result) =>
+          result.status === "failed" &&
+          [
+            "Workspace agent metadata",
+            "Workspace agent directories",
+            "Content directory name",
+          ].includes(result.rule),
+      )
+    )
+      lines.push(
+        "  Index may be incomplete: resolve invalid agent metadata or directory entries first.",
+      );
+    for (const [id, agents] of consumers)
+      lines.push(`  ${id}: ${agents.join(", ") || "no declared agents"}`);
+  }
   if (failures.length) {
     lines.push("", paint("red", `Failed (${failures.length})`));
     for (const result of failures) {
