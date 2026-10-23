@@ -42,6 +42,24 @@ import settings, sync, and workspace permissions.
 
 Portable files do not guarantee identical tools, permissions, or behavior on every host.
 
+## Workspace agents
+
+Workspace agents in [`agents/`](agents/) combine instructions and configuration,
+connected-app policies, reference files, and reusable workspace skill dependencies.
+They are a separate resource class alongside plugins, with Git as the maintained
+source and ChatGPT as the runtime.
+
+| Agent                                                          | Purpose                                                                                            |
+| -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| [Commitment Manager](agents/commitment-manager/INSTRUCTION.md) | Find verified outstanding personal commitments and create missing Notion tasks without duplicates. |
+
+**Deployment limitation:** Agent definitions are maintained manually in the ChatGPT
+web UI; this repository provides no agent marketplace import or automatic sync.
+Workspace skills are managed separately and linked to the agent. Local edits have
+no effect until copied into the workspace. See [agent deployment](docs/agent-deployment.md)
+for the complete sync procedure and [agent best practices](docs/agent-best-practices.md)
+for authoring guidance.
+
 ## Contribute
 
 Start with [CONTRIBUTING.md](CONTRIBUTING.md). Propose a reusable capability through a

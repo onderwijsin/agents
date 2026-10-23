@@ -1,0 +1,24 @@
+account_type: end-user
+action_safety: allow-low-risk
+safety_constraints: []
+write_actions: false
+read_actions: true
+capability_description: >-
+  Read-only access to Microsoft Outlook Email using the authenticated
+  end user's account, within their existing permissions.
+
+  The agent can search, discover, and retrieve emails, conversations,
+  attachments, mail folders, categories, contacts, and account information.
+  Read access extends to shared and delegated mailboxes where the user
+  has appropriate permissions, as well as available directory and
+  people-search information.
+
+  All write actions are disabled. The agent cannot create drafts,
+  send, reply to, forward, or schedule emails; modify, move, categorize,
+  or delete messages; change read/unread states; manage contacts,
+  folders, or categories; or otherwise modify mailbox data or settings.
+
+  Access is governed by the currently enabled tools, the end user's
+  permissions, and the configured low-risk action safety policy.
+  Newly introduced tools should follow these read-only capability
+  boundaries rather than being implicitly permitted.

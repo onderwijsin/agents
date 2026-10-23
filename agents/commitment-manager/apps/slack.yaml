@@ -1,0 +1,17 @@
+account_type: end-user
+action_safety: allow-low-risk
+safety_constraints: []
+write_actions: false
+read_actions: true
+capability_description: >-
+  Read-only access to Slack using the authenticated end user's account.
+  The agent can search, discover, and retrieve Slack content and metadata,
+  including messages, threads, channels, files, lists, canvases, user
+  profiles, and workspace information, within the user's existing permissions.
+
+  All write actions are disabled. The agent cannot send messages, add
+  reactions, create or modify content, manage conversations or memberships,
+  upload files, or otherwise change Slack data or settings.
+
+  These permissions describe the intended access policy and should remain
+  applicable as Slack tools are added, removed, or updated.

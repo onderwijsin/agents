@@ -1,0 +1,31 @@
+account_type: end-user
+action_safety: allow-low-risk
+safety_constraints: []
+write_actions: true
+read_actions: true
+capability_description: >-
+  Read and selectively modify Notion content using the authenticated end
+  user's account, within their existing permissions.
+
+  The agent can search, discover, and retrieve accessible Notion pages,
+  databases, data sources, comments, attachments, workspace information,
+  and metadata. Read access also includes supported connected services
+  such as calendars, contacts, email, agent sessions, personal memories,
+  and Notion Skills.
+
+  Write access is limited to content management and collaboration.
+  The agent can create, edit, duplicate, and move pages; create folders;
+  create and update database views; upload attachments and Notion Skills;
+  create and manage comments, reactions, and discussions; and create
+  calendar events.
+
+  Administrative and potentially destructive operations are restricted.
+  The agent cannot delete pages or databases, create or modify database
+  schemas, manage XL databases, modify workspace configuration, or
+  control Custom Agent sessions. Calendar event modification and
+  cancellation are also disabled.
+
+  Access is governed by the currently enabled tools, the end user's
+  permissions, and the configured low-risk action safety policy.
+  Newly introduced tools should follow these capability boundaries
+  rather than being implicitly permitted.
