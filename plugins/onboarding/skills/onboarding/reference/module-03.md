@@ -1,53 +1,63 @@
 # Module 3 — Personaliseer je ChatGPT
 
-Doel: rol, teams en voorkeuren vastleggen én de instellingen werkelijk toepassen.
+Doel: geheugen, schrijfstijl en aangepaste instructies bewust instellen voor het eigen werk.
+Gebruik het bekende profiel en begeleid één instelling tegelijk via
+[functienavigatie](feature-navigation.md). Vraag welke opties zichtbaar zijn als de
+interface afwijkt. Voorkeuren opslaan voor Bert wijzigt geen ChatGPT-instelling.
 
-## 1. Rol
+## 1. Geheugen bekijken en inschakelen aanraden
 
-Laat exact één primaire rol kiezen:
+Laat Settings → Personalization → Memory openen. Raad geheugen inschakelen aan:
+ChatGPT kan dan relevante werkcontext en voorkeuren meenemen, zodat minder herhaling
+nodig is. Laat de medewerker de beschikbare geheugenopties bekijken en zelf kiezen;
+begeleid het inschakelen en laat de opgeslagen stand bevestigen.
 
-- Project of programmamedewerker
-- Adviseur of onderzoeker
-- Communicatie of organisatie
+Laat ook zien waar herinneringen kunnen worden bekeken, gecorrigeerd of verwijderd.
+Gebruik hoogstens een onschuldige werkvoorkeur als oefening. Geheugen onthoudt niet
+alles en vervangt de voortgangspagina niet. Een chat verwijderen wist een afzonderlijk
+opgeslagen herinnering niet vanzelf. Het [gegevensbeleid](organization-policy.md)
+blijft gelden; geheugen is geen reden om gevoelige informatie aan te leveren.
 
-## 2. Teams
+## 2. Schrijfstijl kiezen
 
-Laat één of meer teams kiezen: Onderwijsloket, Trainees in onderwijs, Projecten.
-Een combinatie is mogelijk; introduceer geen afzonderlijk team Mix.
-Gebruik de statuswaarden uit [voortgang](progress.md).
+Laat de medewerker **Basisstijl en -toon** bekijken en een passende stijl kiezen.
+Bespreek daarna kort de zichtbare opties: **Warmte**, **Enthousiasme**, **Emoji's**,
+**Visuele antwoorden** en **Koppen en lijsten**. Laat eigen voorkeuren kiezen en
+opslaan; de standaard behouden mag ook. Neem geen voorbeeldwaarden automatisch over.
+Leg uit dat deze instellingen de antwoordstijl sturen; een specifieke schrijfopdracht
+kan een andere doelgroep of toon vragen.
 
-## 3. Werkvoorkeuren instellen
+Andere schakelaars, zoals opnamegeschiedenis, webzoeken en connectorzoeken, zijn
+aparte keuzes. Zet ze niet automatisch aan als onderdeel van geheugen of schrijfstijl;
+gebruik daarbij de bestaande beleidsgrenzen voor bronnen en opnames.
 
-Vraag in korte rondes naar beknopt/uitgebreid, bronnen, zakelijke/informele toon,
-direct een voorstel/opties vergelijken en omgaan met aannames. Gebruik bekende
-voorkeuren als vertrekpunt. Begeleid vervolgens Settings → Personalization via
-[functienavigatie](feature-navigation.md). Laat de medewerker de beschikbare opties,
-zoals basistoon, daadwerkelijk kiezen en opslaan. Vraag welke opties en waarden
-zijn opgeslagen. Verzin geen schakelaars voor voorkeuren die alleen tekstueel kunnen.
+## 3. Aangepaste instructies samen schrijven
 
-## 4. Persoonlijke instructies
+Lees [personalisatie-instructies schrijven](personalisatie-instructies.md).
+Vraag wat de medewerker in antwoorden prettig vindt, wat vaak bijsturing vraagt
+en welke werkcontext daarvoor relevant is. Gebruik bekende voorkeuren en stel
+hooguit twee vragen tegelijk. Laat kiezen wat breed voor werkgesprekken moet gelden;
+onboardingtempo wordt niet automatisch een algemene voorkeur.
 
-Stel een kort concept op dat alleen gekozen voorkeuren bevat. Bijvoorbeeld:
+Werk samen een kort eigen concept uit: relevante werkcontext, gewenste antwoordstijl
+en omgang met ontbrekende informatie of bronnen. Gebruik concrete formuleringen,
+passende voorwaarden en alleen bevestigde keuzes. De referentie biedt patronen,
+geen standaardtekst om over te nemen. Laat het concept beoordelen en aanpassen,
+dan invoeren bij **Aangepaste instructies / Custom Instructions** en opslaan.
+Controleer ook of personalisatie is ingeschakeld waar de interface die optie toont.
 
-```text
-Ik werk als [gekozen rol] voor [gekozen teams]. Antwoord in helder Nederlands.
-[Gewenste lengte en toon.] [Gewenste manier van voorstellen en vergelijken.]
-Onderbouw controleerbare feiten met bronnen als de taak dat vraagt. Benoem aannames
-en onzekerheid. Stel een vraag als ontbrekende informatie het resultaat wezenlijk verandert.
-```
+## 4. Proberen en bijstellen
 
-Vervang de invulplaatsen door bevestigde keuzes. Laat de medewerker het concept
-beoordelen, in de juiste persoonlijke instructies invoeren en opslaan. Een concept
-in chat telt nog niet als ingestelde personalisatie.
+Laat in een nieuw gewoon gesprek twee passende werkvragen proberen; gebruik het
+gekozen werkdoel en eigen materiaal met fictieve invoer als alternatief. Help bij
+de eerste vraag waar nodig, laat de tweede zelfstandig kiezen en beoordelen.
+Beoordeel of stijl, lengte en instructies helpen; verbeter één onhandige voorkeur en probeer
+opnieuw waar nodig. Een geslaagd antwoord bewijst niet dat alle instellingen zijn
+opgeslagen: laat de medewerker ook de ingestelde waarden bevestigen. De tweede
+vraag telt als zelfstandige afsluiting; voeg geen derde opdracht toe.
 
-## 5. Test
-
-Laat in een nieuw gesprek twee vergelijkbare veilige opdrachten uitvoeren, bijvoorbeeld
-een korte projectupdate en een overlegvoorbereiding uit fictieve notities. Vergelijk
-met de gekozen lengte, toon en bronnenvoorkeur; stel waar nodig bij en test opnieuw.
-Leg het verschil uit tussen brede persoonlijke instructies, optioneel geheugen,
-projectinstructies en een taakgebonden skill. Geheugen is geen voortgangsregistratie.
-
-Afronding: één rol en gekozen teams staan vast; de beschikbare personalisatie-opties
-zijn opgeslagen, persoonlijke instructies zijn ingesteld en beide testresultaten
-zijn beoordeeld. Bij bevestiging door de gebruiker noteer je `user_confirmed`.
+Afronding: geheugen en beheeropties zijn bekeken en de keuze is bevestigd;
+schrijfinstellingen zijn bewust gekozen; eigen aangepaste instructies zijn opgeslagen
+en met beide opdrachten beoordeeld. Geheugen aanzetten is aanbevolen, geen verplichting.
+Leg een ontbrekende instelling of bewuste keuze vast zonder een uitgevoerde wijziging
+te claimen. Gebruik bij bevestiging door de medewerker `user_confirmed`.

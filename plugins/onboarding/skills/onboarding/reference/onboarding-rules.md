@@ -6,29 +6,38 @@ Het [medewerkersbeleid](organization-policy.md) geldt daarnaast voor het gegeven
 
 ## Oefenmateriaal
 
-Start oefeningen met de meegeleverde fictieve bestanden of ander openbaar
-voorbeeldmateriaal. Vraag niet om echte persoonsgegevens of vertrouwelijke dossiers
-om een functie te demonstreren. Houd opdrachten klein en gebruik uitsluitend de
-bestanden of bronnen die voor de gekozen oefening nodig zijn.
+Begin bij eigen werk, documenten of een echte casus. Vraag bij benodigde invoer:
+“Heb je een document dat hiervoor geschikt is, of zal ik een fictief document
+aanleveren?” Vraag bij een oefening zonder document naar een passende eigen casus
+of bied een fictieve aan. Hergebruik al gekozen materiaal zonder dezelfde vraag
+te herhalen. Eigen inbreng is welkom, nooit verplicht.
 
-Als de medewerker zelf eigen materiaal aanbiedt, mag je dat voor de gekozen oefening
-gebruiken voor zover het gebruik volgens het medewerkersbeleid is toegestaan. Een expliciete upload of
+Leg vóór upload, openen of ophalen kort uit welke gegevens volgens het
+medewerkersbeleid geschikt zijn. Laat de medewerker uitgesloten gegevens vooraf
+zelf verwijderen of ander materiaal kiezen; lees geen verboden dossier om het
+daarna veilig te maken. Vraag niet om persoonsgegevens om een functie te demonstreren.
+Gebruik bij twijfel of ontbrekende eigen invoer direct een gebundeld fictief bestand
+of maak een klein passend fictief document en benoem dat het verzonnen is.
+Houd opdrachten klein en verwerk alleen de aangewezen bronnen.
+
+Een expliciete upload of
 maptoegang maakt uitgesloten gevoelige gegevens niet alsnog toegestaan.
 Een upload of maptoegang geeft toestemming voor de aangewezen oefening, niet om alle
 bestanden in een map te verwerken of inhoud elders te delen. Kies bij twijfel een
 fictief voorbeeld. De lokale documentoefening gebruikt een kopie in een aparte oefenmap.
 
-Gebruik bij Meetings een fictieve oefenbespreking als vertrekpunt. Begeleid een echte
-opname pas wanneer het toegestane gebruik en de vereiste instemming vaststaan.
+Gebruik bij Meetings uitsluitend een fictieve oefenbespreking. Een echte opname
+valt buiten deze oefening zolang de beoordeling van dat gebruik niet vaststaat.
 
 ## Verbindingen en toegestane acties
 
 Gebruik native mogelijkheden en bestaande toegestane plugins. Beoordeel een koppeling
-volgens de actuele tabel in het medewerkersbeleid, inclusief het betreffende team,
-bereikbare gevoelige gegevens en eventuele voorwaarden. Stel geplande afscherming,
-maskering of mailboxmaatregelen niet voor als al uitgevoerd. Als de toepasselijke
-voorwaarden niet vastgesteld kunnen worden, kies een andere geschikte oefenroute. Notion is geen
-vereiste voor medewerkers en wordt niet voor voortgang gebruikt. Vraag nooit om
+volgens de gebundelde beleidsstand en tabel in het medewerkersbeleid, inclusief het betreffende team,
+bereikbare gevoelige gegevens en eventuele voorwaarden. Een onderzoek of geplande afscherming is geen toestemming.
+Gebruik geen geblokkeerde connector, ook niet met alleen leesrechten of voor een agent. Als de toepasselijke
+voorwaarden niet vastgesteld kunnen worden, kies een andere geschikte oefenroute.
+Gebruik Notion niet tijdens de onboarding: ook niet voor beleid, oefeningen of voortgang.
+Verwijs voor beleidsuitleg naar de gebundelde referentie en bronlinks. Vraag nooit om
 credentials in het gesprek; laat de medewerker authenticeren via de host.
 
 Beperk toolrechten tot de oefening en leg bij de pluginmodule het verschil tussen

@@ -13,6 +13,11 @@ Laat de medewerker het concrete resultaat en de bedoelde collega kiezen. Control
 inhoud en gekoppelde bestanden op geschiktheid. Benoem dat kopieën en samenvattingen
 van bronmateriaal op een gedeelde pagina zichtbaar worden; bronrechten lossen dat niet op.
 Deel nooit de persoonlijke voortgangspagina als oefenmateriaal.
+Bij een agent controleer je ook meegedeelde bestanden, skills, apprechten en
+bereikbare gegevens. Een persoonlijke verbinding bewijst geen toegang voor de collega.
+Delen of publiceren blijft standaard uit waar het beleid dit vereist; voer de
+proef alleen uit als de concrete handeling afzonderlijk is toegestaan en beschermd.
+Ontbreekt die goedkeuring, bereid de keuze voor en registreer de beperking.
 
 Toon vóór uitvoering het document/project/agent, de geverifieerde ontvanger en het
 gekozen niveau (bijvoorbeeld bekijken of bewerken). Leg bij groepen of overgeërfde

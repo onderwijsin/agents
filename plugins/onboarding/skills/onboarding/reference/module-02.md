@@ -1,13 +1,26 @@
 # Module 2 — Veilig gebruik, organisatiebeleid en usage
 
-Doel: gegevens en pluginrechten verantwoord beoordelen en de eigen usage vinden.
+Doel: 2FA controleren, gegevens verantwoord kiezen en de eigen gebruikslimieten vinden.
 Lees [ChatGPT-beleid voor medewerkers](organization-policy.md) en [gebruik en limieten](usage.md).
 Leg kort uit: bronnen controleren, AI kan fouten maken, de medewerker beoordeelt
-het resultaat. Controleer de zakelijke workspace en bespreek welke gegevens de
+het resultaat. Gebruik de al gecontroleerde zakelijke workspace en bespreek welke gegevens de
 medewerker in ChatGPT mag invoeren, uploaden of via koppelingen ontsluiten.
 Vraag nooit om codes, wachtwoorden of een screenshot met gevoelige gegevens.
 
-Bespreek deze drie situaties één voor één en laat eerst de medewerker kiezen:
+## Verplicht: 2FA instellen
+
+Laat de medewerker in ChatGPT via Settings → Security and login → Multi-factor
+authentication 2FA inschakelen en de instelling controleren. Staat 2FA al aan,
+laat dat controleren en bevestigen. Begeleid één stap tegelijk volgens de
+[OpenAI-uitleg](https://help.openai.com/en/articles/7967234-managing-multi-factor-authentication-mfa).
+Laat codes en QR-codes uitsluitend in de beveiligingsinterface gebruiken, nooit in chat.
+Lukt instellen niet, help of verwijs naar de systeembeheerder; dit onderdeel blijft open.
+
+## Veilig gebruik en usage
+
+Bespreek deze drie situaties en laat eerst de medewerker kiezen. De laatste
+zelfstandig gemotiveerde keuze telt ook als afsluiting; voeg geen vierde scenario toe.
+Bij beginners behandel je ze één voor één:
 
 1. Een openbaar kennisbankartikel samenvatten. Geschikt voor de oefening; controleer
    de bron en samenvatting, ook als het onderwerp bekend lijkt.
@@ -15,12 +28,17 @@ Bespreek deze drie situaties één voor één en laat eerst de medewerker kiezen
    contactgegevens en adviesvoorkeuren mogen; medische informatie of gegevens uit
    een selectie- of HR-dossier niet. Laat de medewerker aangeven wat vóór gebruik
    moet worden verwijderd of gemaskeerd. Oefen met fictieve passages.
-3. Een plugin toegang tot organisatiegegevens geven. Controleer dienst, gegevens,
-   gevraagde rechten en bereikbare gevoelige gegevens. Bespreek het verschil tussen
-   geteste afscherming, een gepland maskerproces en de specifieke e-mailuitzondering.
-   Beschikbaarheid is geen bewijs dat de voorwaarden zijn ingevuld.
+3. Een plugin toegang tot organisatiegegevens geven. Laat kiezen tussen publieke
+   kennis via Onderwijsloket en de nog niet toegestane Outlook Email-koppeling.
+   Bespreek waarom zichtbaarheid of alleen-lezen geen toestemming bewijst.
+   De eigen plugin en concrete rechten worden in module 7 beoordeeld; houd het hier
+   bij de gegevenskeuze. Test geen echte verboden bron.
 
 Leg ook uit dat alleen de aangeboden ChatGPT Business-omgeving voor werk is toegestaan.
+Bespreek bij authenticatie kort de eigen inlogmethode per dienst, het verbod op
+social login en verplichte 2FA bij verwerking van persoonsgegevens. Maak duidelijk
+welke vragen bij de systeembeheerder of bedrijfsvoerder horen. Toon geen volledige
+beheerderschecklist: laat de medewerker één passende veiligheidskeuze uitleggen.
 De bewaartermijn voor gesprekken is nog niet bepaald; verwijderen van een bronbestand
 verwijdert overgenomen gegevens niet automatisch uit gesprekken.
 
@@ -29,6 +47,8 @@ de getoonde beperking en resetinformatie bekijken en uitleggen wat te doen bij e
 limiet. Gebruik de organisatieafspraak over uitsluitend inbegrepen gebruik;
 geen abonnementsvergelijking of betaalde uitwijkroute.
 
-Afronding: drie scenario's en de afspraken voor ChatGPT-gebruik zijn behandeld; de medewerker
+Afronding: 2FA is aantoonbaar actief of door de medewerker bevestigd (`user_confirmed`);
+zonder die bevestiging is deze verplichte basismodule niet voltooid. De drie scenario's
+en afspraken voor ChatGPT-gebruik zijn behandeld; de medewerker
 heeft de eigen usage gevonden of een gecontroleerde route daarnaartoe vastgesteld.
 Leg een ontbrekende usageweergave expliciet vast, zonder een limiet te verzinnen.

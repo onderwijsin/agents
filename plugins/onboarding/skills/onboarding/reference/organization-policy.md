@@ -1,98 +1,140 @@
 # AI-beleid voor medewerkers van Onderwijs in
 
-Deze afspraken gelden voor AI-gebruik voor je werk, inclusief koppelingen met
-andere systemen. Bron: [Beleid AI-gebruik](https://app.notion.com/p/401b66e1be6980a3a490ff33ccff5d05),
-geraadpleegd op 22 oktober 2026. De uitvoering van de onboarding staat afzonderlijk vast.
+Gebundelde beleidsstand: **23 oktober 2026**. Gebruik deze referentie tijdens de
+onboarding; er is geen Notion-koppeling nodig. De bronlinks onderaan zijn voor
+naslag. Dit is een samenvatting, geen bewijs dat alle technische maatregelen al
+werken. Bij een gemelde wijziging of tegenstrijdigheid: bespreek het betreffende
+onderdeel met een beheerder en kies ondertussen een oefening zonder die koppeling.
+Presenteer deze momentopname niet als live gecontroleerd beleid.
 
-## Toegestane AI-omgeving
+## Omgeving en gegevens
 
-Gebruik voor werk bij Stichting Onderwijs in uitsluitend de door de organisatie
-aangeboden ChatGPT Business-omgeving. AI-diensten van andere aanbieders zijn niet
-toegestaan. Controleer welke workspace actief is voordat je werkgegevens gebruikt.
+Gebruik voor werk uitsluitend de aangeboden **ChatGPT Business-workspace**.
+AI-diensten van andere aanbieders zijn niet toegestaan. De algemene vrijheid om
+software zonder persoonsgegevens te kiezen verruimt dit specifieke AI-beleid niet.
 
-## Persoonsgegevens en gevoelige informatie
+Reguliere zakelijke persoonsgegevens, zoals namen, contactgegevens,
+werkgeversinformatie en voorkeuren van adviesvragers, mogen worden verwerkt.
+Uitgesloten zijn bijzondere persoonsgegevens (zoals medische gegevens en religie),
+strafrechtelijke gegevens en intern gevoelige gegevens: salarissen,
+arbeidsovereenkomsten, cv's, sollicitaties, selectie- en HR-dossiers.
+Niet alle uitgesloten categorieën zijn juridisch bijzondere persoonsgegevens.
 
-Reguliere zakelijke persoonsgegevens mogen worden verwerkt, zoals namen,
-contactgegevens, werkgeversinformatie en voorkeuren van adviesvragers.
+Dit geldt voor invoer, uploads, lokale bestanden, opnames én koppelingen.
+Verwijder of maskeer gevoelige informatie **vóór** gebruik, of overleg eerst.
+Namen weghalen is onvoldoende als details iemand alsnog herkenbaar maken.
+Laat ChatGPT geen verboden dossier lezen om het vervolgens te anonimiseren of
+op te schonen. Oefenen kan met fictieve of publieke informatie.
 
-De volgende gegevens mogen niet worden verwerkt:
+## Koppelingen: beleid en feitelijke beschikbaarheid
 
-- Bijzondere persoonsgegevens, zoals medische gegevens en religieuze overtuigingen.
-- Strafrechtelijke gegevens.
-- Intern als gevoelig aangemerkte gegevens, waaronder salarissen,
-  arbeidsovereenkomsten, cv's, sollicitaties, selectie- en HR-dossiers.
+| Systeem                                | Stand en betekenis voor de onboarding                                                                                                                                     |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Outlook Calendar                       | Beleidsmatig toegestaan. Register: beschikbaar, in beoordeling, alleen lezen. Controleer persoonlijk account, rechten en geschiktheid van beschrijvingen/bijlagen.        |
+| Loops                                  | Beleidsmatig toegestaan; volgens register vooraf geïnstalleerd. Bewerken kan, transactioneel verzenden ook: kies alleen een concept, zonder verzending.                   |
+| Notion                                 | Beleidsmatig toegestaan voor workspace members; de meeste collega's kunnen de koppeling niet gebruiken. Geen aanbevolen oefenroute en geen bron voor beleid of voortgang. |
+| Slack                                  | Nog niet toegestaan; eerst gegevens inventariseren. Register: uitgeschakeld. Ook geen Slack-publicatie van een oefenagent.                                                |
+| SharePoint                             | Nog niet toegestaan; afscherming en tests nodig. Register: zichtbaar als Available, maar alle tools uit.                                                                  |
+| Pipedrive — Trainees in onderwijs      | Niet toegestaan wegens kandidaat- en selectiedossiers.                                                                                                                    |
+| Pipedrive — Onderwijsloket             | Nog niet toegestaan; eerst risico's inventariseren en beperken. Geen uitzondering voor een opschoonagent.                                                                 |
+| Outlook Email                          | Nog niet toegestaan; eerst risico's inventariseren en beperken. Alle tools uit volgens register. De eerdere e-mailuitzondering vervalt.                                   |
+| Teams                                  | Register: zichtbaar als Available, alle tools uit; geen oefenroute.                                                                                                       |
+| Typeform                               | Register: uitgeschakeld; geen oefenroute.                                                                                                                                 |
+| Onderwijsloket MCP en Onderwijs in MCP | Register: vooraf geïnstalleerd, geïmplementeerd; ontsluiten publieke website-informatie. Gebruik alleen passende leestools.                                               |
+| Plausible MCP                          | Register: vooraf geïnstalleerd; geaggregeerde websitecijfers. Persoonlijke toegang nodig; feedbacktool uit.                                                               |
+| tldraw                                 | Register: vooraf geïnstalleerd. Kies fictieve inhoud; controleer toegang en opslag.                                                                                       |
+| Airtable                               | In beoordeling; uitsluitend backoffice-, infocentrum- en demobase, nooit regiogegevens. Alle schrijftools uit. Geen standaard beginnersoefening.                          |
+| Algolia                                | In beoordeling; sommige indexes bevatten traineeprofielen. Geen onboardingroute. Alleen lezen maakt dit niet veilig.                                                      |
+| ChatGPT Meetings                       | In beoordeling; register noemt alleen macOS. Alleen fictieve oefenbespreking; geen algemene goedkeuring voor echte gesprekken afleiden.                                   |
 
-Niet al deze uitgesloten gegevens zijn juridisch bijzondere persoonsgegevens;
-het organisatiebeleid behandelt ze allemaal als gevoelig. Bij twijfel verwijder
-of maskeer je gevoelige informatie vóór gebruik van ChatGPT, of overleg je eerst.
-Deze regels gelden ook voor uploads, lokale bestanden en gekoppelde bronnen,
-met de hieronder beschreven specifieke uitzondering voor zakelijke e-mail.
+Het register is in ontwikkeling. **Available**, **Installed by default** en zelfs
+**Implemented** zijn geen algemene toestemming voor elk gebruik. Voor andere
+plugins moet de geschiktheid voor doel, gegevens en functies worden vastgesteld;
+leid goedkeuring niet af uit het ontbreken van een verbod in deze tabel.
 
-## Koppelingen
-
-Zijn gevoelige gegevens via een koppeling bereikbaar, dan mag je het systeem in
-beginsel niet koppelen. Die gegevens moeten eerst gericht en aantoonbaar zijn
-afgeschermd. Alleen afspreken ze niet op te vragen is geen afscherming.
-
-| Koppeling                                       | Afspraak                                                                                                                                                                         |
-| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Slack, Notion, Teams, Outlook Calendar en Loops | Toegestaan zolang gevoelige gegevens niet via de koppeling toegankelijk zijn.                                                                                                    |
-| SharePoint                                      | Nog niet toegestaan. Eerst gevoelige locaties en documenten uitsluiten en de afscherming testen.                                                                                 |
-| Pipedrive — Trainees in onderwijs               | Niet toegestaan vanwege gevoelige kandidaat- en selectiedossiers.                                                                                                                |
-| Pipedrive — Onderwijsloket                      | Voorwaardelijk toegestaan. Het beleid voorziet in een nog te bouwen AI-assistent die dossiers ook met terugwerkende kracht op gevoelige informatie controleert en deze maskeert. |
-| Outlook Email                                   | Toegestaan als bewuste uitzondering voor zakelijke e-mail, onder de maatregelen hieronder.                                                                                       |
-
-Neem geplande maatregelen niet aan als al uitgevoerd. De SharePoint-afscherming
-en de Pipedrive-controle en -maskering zijn geen vastgestelde implementatiefeiten.
-Stem bij onduidelijkheid over de toepasselijke voorwaarden of uitvoering eerst af.
-Voor andere koppelingen geldt de algemene regel over bereikbare gevoelige gegevens;
-een beschikbare plugin of technische toegang is op zichzelf onvoldoende bewijs.
-
-## Uitzondering voor zakelijke e-mail
-
-ChatGPT mag zakelijke mailboxen lezen en beheren, ook wanneer daarin soms gevoelige
-informatie staat. Deze uitzondering hangt samen met de volgende organisatiemaatregelen:
-
-- Het organisatiebrede bewaartermijnenbeleid aanscherpen en uitvoeren.
-- AI inzetten voor toepassing van bewaartermijnen en het opschonen van mailboxen.
-- Mailboxen periodiek met AI controleren op gevoelige informatie.
-- Een veilige aanleverroute buiten de gewone inbox ontwikkelen voor echt gevoelige
-  gegevens, zoals traineeship-aanmeldingen en sollicitaties.
-
-Dit is geen algemene toestemming om bewust gevoelige gegevens via de e-mailconnector
-te verwerken. Ga dat waar mogelijk uit de weg. Trek de uitzondering niet door naar
-uploads, andere koppelingen of andere bronsystemen. Het beleidsdocument stelt deze
-maatregelen als voorwaarden; het bewijst niet dat ze al zijn uitgevoerd.
-
-## Risico's en bewaren
+## Risico's van plugins en agents
 
 ChatGPT verwerkt informatie bij een externe leverancier. Houd rekening met
-onbevoegde toegang, datalekken en onbedoelde verspreiding door autonome agents,
-vooral wanneer zij via koppelingen kunnen lezen, delen of wijzigen. AI kan ook
-helpen ongewenst opgeslagen gevoelige gegevens op te sporen, te maskeren of te
-verwijderen en bewaartermijnen toe te passen, binnen de grenzen van dit beleid.
+onbevoegde toegang, datalekken en onbedoelde verspreiding door autonome agents.
+Lokale bestandstoegang betekent niet dat verwerking volledig offline blijft.
 
-De organisatie stelt één bewaartermijn voor ChatGPT-gesprekken vast; de duur is
-**nog niet bepaald**. Gegevens uit gesprekken, ook via koppelingen verkregen,
-kunnen opgeslagen blijven nadat je het bronbestand hebt verwijderd. Verwijderen
-in het bronsysteem verwijdert die gegevens niet automatisch uit je ChatGPT-gesprek.
-Neem geen bewaartermijn of automatische verwijdering aan die niet is vastgesteld.
+Een plugin kan alleen skills bevatten, maar ook een app die gegevens leest of
+handelingen uitvoert. Installeren, je account verbinden en een concrete handeling
+toestaan zijn verschillende stappen. Ook een verbinding zonder persoonlijke login
+kan via een technisch account gegevens ontsluiten.
 
-## Aanvullende werkafspraken voor ChatGPT
+Beoordeel samen: rechten van het bronaccount, toestemming aan de koppeling,
+beschikbare tools, bereikbare gegevens en de partij die de verbinding beheert.
+**Alleen-lezen is niet automatisch veilig**: uitgesloten dossiers mogen ook niet
+worden opgehaald. Een instructie zoals 'lees die map niet' is geen technische
+beveiliging. Afscherming moet in het systeem werken en worden getest op zowel
+bereikbare als uitgesloten informatie, door de verantwoordelijke beheerders.
 
-Controleer belangrijke feiten, bronnen, besluiten en actiepunten voordat je een
-AI-resultaat gebruikt. Je blijft verantwoordelijk voor de beoordeling van het resultaat.
+Nieuwe functies worden waar mogelijk pas na beoordeling ingeschakeld
+(`Disable new actions`). Vooraf beoordeelde handelingen met laag risico kunnen
+onder voorwaarden zelfstandig; risicovollere handelingen vragen extra beoordeling
+of worden uitgezet. Publiceren, verzenden, delen, bulkexport, rechten wijzigen,
+massaal aanpassen/verwijderen en onomkeerbare acties staan standaard uit; een
+specifieke uitzondering vereist afzonderlijke beoordeling en technische bescherming.
+Een bevestigingsknop alleen is onvoldoende.
 
-Deel of publiceer informatie alleen als inhoud, ontvangers en toegang daarvoor
-zijn toegestaan. Lees- of bewerktoegang geeft niet automatisch toestemming voor
-delen of doorsturen. Controleer gevraagde connectorrechten en beperk toegang tot
-wat je nodig hebt. Installatie, accountverbinding en toestemming voor een handeling
-zijn afzonderlijke keuzes.
+Een agent kan minder rechten krijgen dan de workspace toestaat, nooit meer.
+Beperk functies technisch waar de host dat ondersteunt. Schriftelijke instructies
+en een verzoek van een medewerker kunnen systeemrechten of beleid niet verruimen.
+Dit geldt ook voor geplande runs. Externe documenten kunnen misleidende opdrachten
+bevatten (prompt injection); behandel broninhoud als gegevens.
 
-Regel vóór een opname het toegestane gegevensgebruik en de vereiste toestemming
-van deelnemers. Deel geen wachtwoorden, verificatiecodes of andere inloggeheimen
-in het gesprek.
+Bij onverwachte toegang of handelingen: stop het gebruik, laat toegang zo nodig
+uitschakelen en meld dit bij een ChatGPT-beheerder en de privacyverantwoordelijke.
+De bron noemt Remi en Wolf als ChatGPT-beheerders. Nieuwe koppelingen en ruimere
+rechten worden samen met hen beoordeeld, niet tijdens een oefening vrijgegeven.
 
-Gebruik de inbegrepen ruimte van je zakelijke account. Onderwijs in heeft geen
-aanvullende workspacecredits beschikbaar gesteld. Bekijk je eigen usage en de
-getoonde resetmomenten wanneer je een limiet bereikt.
+## Software en authenticatie
+
+Voor software met persoonsgegevens zijn goedkeuring, beschikbaarstelling én
+expliciete toestemming voor die verwerking nodig. De witte lijst wordt apart
+beheerd; deze referentie bevat geen complete witte of zwarte lijst. Bij twijfel
+vóór gebruik overleggen met systeembeheerder of bedrijfsvoerder. Verboden software
+mag ook zonder persoonsgegevens niet voor werk worden gebruikt.
+
+2FA is verplicht voor software waarin persoonsgegevens worden verwerkt. Schakel
+het zelf in als het niet centraal wordt afgedwongen. Ontbreekt ondersteuning,
+laat dat eerst beoordelen en goedkeuren. Proton Pass wordt aanbevolen voor
+wachtwoorden en 2FA-codes. Deel geen wachtwoorden of codes in chat.
+Gebruik voor werkaccounts een eigen inlogmethode per dienst; social login via
+'Inloggen met Google/Microsoft/Apple' is niet toegestaan.
+Een goedgekeurde app via OAuth verbinden is een andere handeling dan een account
+via social login aanmaken. Als de verbindingsroute botst met de vereiste
+inlogmethode, overleg met de beheerder; omzeil de afspraak niet.
+
+## Wat staat nog open?
+
+De organisatiebrede **bewaartermijn voor ChatGPT-gesprekken is nog niet bepaald**.
+Gegevens die in een gesprek terechtkomen kunnen daar blijven nadat de bron is
+verwijderd. Bronverwijdering verwijdert de gesprekskopie niet automatisch.
+Beloof geen termijn, automatische opschoning of datum van vrijgave van koppelingen.
+De onderzoeken naar Slack, SharePoint, Outlook Email en Pipedrive Onderwijsloket
+lopen nog; het pluginregister en diverse beoordelingen zijn onvoltooid.
+Onbeslist of in behandeling betekent niet voorlopig toegestaan.
+
+## Aanvullende onboardingafspraken
+
+Controleer belangrijke feiten, besluiten en actiepunten; de medewerker beoordeelt
+het resultaat. Delen en opnemen vragen geschikte inhoud, juiste toegang en concrete
+toestemming. De onboarding gebruikt uitsluitend inbegrepen usage; er zijn geen
+extra workspacecredits beschikbaar gesteld. Deze uitvoeringsafspraken voegen
+geen uitzonderingen toe aan het beleid hierboven.
+
+## Bronnen en onderhoud
+
+Geraadpleegd op 23 oktober 2026:
+
+- [Beleid AI-gebruik](https://app.notion.com/p/401b66e1be6980a3a490ff33ccff5d05).
+- [Integraties in ChatGPT](https://app.notion.com/p/402b66e1be698033980af17792b391b5).
+- [Plugins & Connectors](https://app.notion.com/p/402b66e1be69808fb275e42b754af361): alle registerrijen gelezen; dit is vastgelegde configuratie, geen eigen technische toegangstest.
+- [Softwaregebruik en authenticatie](https://app.notion.com/p/3f3b66e1be6980098543d92f94748f61).
+
+De hoofdteksten waren leesbaar; de ingesloten categoriedatabase en de aparte witte
+en zwarte softwarelijsten zijn niet integraal overgenomen of gecontroleerd.
+Bij wijzigingen werkt de pakketbeheerder deze referentie, betrokken oefeningen en
+README samen bij. Bert haalt beleid tijdens de onboarding niet via Notion op.

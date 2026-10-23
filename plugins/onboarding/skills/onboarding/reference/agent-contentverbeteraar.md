@@ -1,5 +1,13 @@
 # Contentverbeteraar
 
+## Gebruik als referentie
+
+Voorbeeld voor een eigen ontwerp; volg [bouwbegeleiding](bouwbegeleiding.md) voor gebruik en toetsing.
+
+Begeleidingsvraag: Welke content wil de medewerker beoordelen, en welke selectie en verbetercriteria passen bij het eigen werk?
+
+Kwaliteitsfocus: Kijk naar bevestigde scope, onderbouwde voorstellen en transparante dekking; volledige websitecontrole is geen verplicht leerdoel.
+
 Beschrijving: controleert wekelijks de eigen gepubliceerde blogs, artikelen en
 webpagina's en geeft concrete, geprioriteerde verbeterkansen voor actualiteit,
 interne links, inhoud en presentatie. De agent wijzigt of publiceert niets.
@@ -11,15 +19,21 @@ Doelgroep: collega's die zelf websitecontent schrijven of onderhouden.
 - App: de MCP-connector van die website, als die beschikbaar is, met leesrechten
   voor inventarisatie, volledige content, auteursmetadata en relevante linkdoelen.
 - Skill: `webcontent-best-practices`, volgens de volledige
-  [voorbeelddefinitie](skill-webcontent-best-practices.md). Laat de medewerker deze
-  skill toevoegen aan de gemaakte agent en controleer dat die werkelijk geladen wordt.
+  [voorbeelddefinitie](skill-webcontent-best-practices.md). Bespreek of een
+  eigen reviewskill het proces helpt; de medewerker kan de criteria ook direct in
+  eigen agentinstructies verwerken. Bij gekozen hergebruik test je het werkelijk laden.
   Het is ondersteunend lesmateriaal, geen automatisch geactiveerde onboarding-subskill.
-- Bestand: voeg [content-review-reference.md](content-review-reference.md) als leesbaar
-  referentiebestand aan de agent toe. Een pluginpad noemen verleent geen bestandstoegang.
+- Bestand: de voorbeeldvariant gebruikt [content-review-reference.md](content-review-reference.md).
+  Bespreek of een los bestand bij de eigen scope nuttig is of dat eenvoudiger
+  instructies volstaan. Alleen gekozen resources worden toegevoegd en getest;
+  een pluginpad noemen verleent geen bestandstoegang.
 - Planning: voorstel is één keer per week. Laat de medewerker dag, tijd, tijdzone en
   rapportbestemming kiezen. Stel pas na expliciete toestemming een echte planning in
   en controleer de opgeslagen taak. Deze definitie maakt zelf geen geplande taak.
 
+Gebruik uitsluitend publieke content. Deze oefening maakt geen Notion-verbinding;
+controleer de [gebundelde beleidsstand](organization-policy.md) vóór bronselectie.
+Een publieke pagina maakt een willekeurige CMS-koppeling niet automatisch toegestaan.
 Kies bijvoorbeeld de Onderwijs in MCP voor onderwijsin.nl of de Onderwijsloket MCP
 voor Onderwijsloket-content. Controleer het actuele aanbod van de gekozen connector;
 neem geen uniforme authorfilters, CMS-toegang of schrijfrechten aan. Installeer of
@@ -41,7 +55,7 @@ Houd die selectie apart als door de medewerker bevestigde scope; presenteer haar
 niet als bewezen auteurschap. De uitvoeringsreferentie bevat de complete selectie-
 en dekkingsregels. Start een brede wekelijkse controle pas na bevestiging van deze scope.
 
-## Agentinstructies om over te nemen
+## Uitgewerkt instructievoorbeeld
 
 ```text
 Je bent Contentverbeteraar, mijn persoonlijke websitecontentreviewer. Onderzoek mijn

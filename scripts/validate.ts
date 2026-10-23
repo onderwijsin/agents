@@ -1,4 +1,4 @@
-import { access, lstat, readdir, readFile, realpath, stat } from "node:fs/promises";
+import { access, lstat, readdir, readFile, realpath, stat, unlink } from "node:fs/promises";
 import { dirname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseDocument } from "yaml";
@@ -7,7 +7,8 @@ import { createConsola } from "consola";
 import { colors } from "consola/utils";
 import { localMarkdownLinks } from "./markdown-links.ts";
 
-// Offline, read-only validation of repository packaging and installed resources.
+// Offline validation of repository packaging and installed resources.
+// Only regular .DS_Store files encountered during enumeration are removed.
 // Missing skill resources are errors even when matching shared sources exist.
 // Migration, provider installation and live service checks belong to other steps.
 
@@ -142,13 +143,28 @@ async function file(path: string): Promise<string> {
   return readFile(path, "utf8");
 }
 
+/** Remove only regular Finder metadata files while enumerating a validated directory. */
+async function contentEntries(path: string) {
+  const entries = await readdir(path, { withFileTypes: true });
+  for (const entry of entries) {
+    if (entry.name !== ".DS_Store" || !entry.isFile()) continue;
+    try {
+      await unlink(join(path, entry.name));
+    } catch (error: unknown) {
+      // Another scan or Finder may already have removed the same file.
+      if (!(error instanceof Error && "code" in error && error.code === "ENOENT")) throw error;
+    }
+  }
+  return entries.filter((entry) => entry.name !== ".DS_Store" || !entry.isFile());
+}
+
 /**
  * List content directories, reporting invalid entries without hiding valid siblings.
  * Empty collections and a regular .gitkeep are allowed; enumeration errors propagate
  * to the caller's rule, while invalid names/files/symlinks get their own failed rule.
  */
 async function directories(path: string, checks: Checks): Promise<string[]> {
-  const entries = await readdir(path, { withFileTypes: true });
+  const entries = await contentEntries(path);
   const names: string[] = [];
   for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name, "en"))) {
     if (entry.name === ".gitkeep" && entry.isFile()) continue;
@@ -396,9 +412,7 @@ async function markdownFiles(
   context: MarkdownContext,
   checks: Checks,
 ): Promise<void> {
-  const entries = await checks.run("Resource directory", path, () =>
-    readdir(path, { withFileTypes: true }),
-  );
+  const entries = await checks.run("Resource directory", path, () => contentEntries(path));
   if (!entries) return;
   await checks.run("Resource layout", path, () => {
     const errors = entries.flatMap((entry) => {
@@ -584,9 +598,7 @@ async function readmeInventories(root: string, checks: Checks): Promise<void> {
       }
       unique(rows, `${heading} README table`);
       const directory = join(root, collection);
-      const entries = (await exists(directory))
-        ? await readdir(directory, { withFileTypes: true })
-        : [];
+      const entries = (await exists(directory)) ? await contentEntries(directory) : [];
       const names = entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name);
       const missing = names.filter((id) => !rows.includes(id));
       const extra = rows.filter((id) => !names.includes(id));
@@ -599,7 +611,8 @@ async function readmeInventories(root: string, checks: Checks): Promise<void> {
 }
 
 /**
- * Collect independent results without logging, mutation or fail-fast behavior.
+ * Collect independent results without logging or fail-fast behavior.
+ * Enumeration removes regular .DS_Store files; authored content remains unchanged.
  * Invalid inputs skip only dependent checks; other plugins and documents still run.
  * The CLI renders this report before choosing its exit code. Tests and callers can
  * inspect it directly, or use validate() when they need rejection on any failure.
@@ -718,9 +731,7 @@ export async function inspect(root: string): Promise<ValidationReport> {
     );
   const skillConsumers = await workspace(root, checks);
   await readmeInventories(root, checks);
-  const rootEntries = await checks.run("Repository directory", root, () =>
-    readdir(root, { withFileTypes: true }),
-  );
+  const rootEntries = await checks.run("Repository directory", root, () => contentEntries(root));
   for (const entry of rootEntries?.sort((a, b) => a.name.localeCompare(b.name, "en")) ?? []) {
     if (entry.isFile() && entry.name.endsWith(".md") && entry.name !== "TASK.md") {
       const path = join(root, entry.name);

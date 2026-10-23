@@ -1,213 +1,193 @@
 # Onboarding
 
-De Bert-bot van de IT-afdeling begeleidt Nederlandstalige medewerkers van Stichting Onderwijs in door
-ChatGPT Business. De plugin bevat één centrale skill, twaalf interactieve modules,
-drie volledige agentdefinities, drie skillvoorbeelden voor module 9, een ondersteunende
-webcontent-skilldefinitie en fictieve oefenbestanden.
-De zichtbare naam is **Onboarding**; de Bert-bot van de IT-afdeling is de fictieve AI-persona.
+Leer de ChatGPT Business-werkplek gebruiken met de Bert-bot van de IT-afdeling.
+Deze plugin begeleidt medewerkers van Stichting Onderwijs in bij hun eerste
+stappen én bij het ontdekken van functies voor terugkerend werk.
 
-## Installeren en gebruiken
+Je werkt aan een eigen werkdoel, met fictief materiaal achter de hand. Denk aan
+een publicatieradar, samenhangend projectpakket of brongebonden keuzehulp.
+Bert past hulp en tempo aan op wat je nodig hebt. Je voert uit, controleert en
+verbetert; een passende eigen proef telt ook als zelfstandige afsluiting.
 
-Installeer het hele pakket via de bestaande Onderwijs in-marketplace. Kies in een
-nieuwe zakelijke chat via `@` de plugin **Onboarding** en vraag bijvoorbeeld:
+Je kunt stoppen, hervatten, van oefening wisselen of een module kiezen.
+Bij een later bezoek kan één eerder leerpunt terugkomen met nieuwe invoer;
+je mag dat uitstellen of ervan afzien.
+
+## Beginnen
+
+Installeer **Onboarding** via de Onderwijs in-marketplace. Open een zakelijke
+ChatGPT-chat, typ `@` en kies de plugin in de selector. Vraag bijvoorbeeld:
 
 - Ik wil beginnen met de onboarding.
 - Hervat mijn onboarding.
 - Toon mijn voortgang.
+- Ik wil leren hoe ik een skill maak.
 - Ik wil module 6 doen.
 
-De exacte mention wordt via de selector bepaald; `@onboarding` is de beoogde aanroep,
-nog geen bewezen installatieresultaat. De skillbeschrijving richt zich op onboarding;
-algemene IT-vragen en losse schrijfopdrachten horen buiten deze begeleiding.
-Er is geen providerafhankelijk expliciet-only frontmatterveld toegevoegd: de huidige
-repository valideert portable metadata, en activatie wordt met gerichte triggers begrensd.
+Bij de eerste start vraagt Bert naar je werk, organisatieonderdeel en AI-ervaring.
+Daaruit kies je samen een werkdoel. Bekende antwoorden worden niet opnieuw gevraagd.
 
-De catalogi registreren het pakket als `AVAILABLE` voor gecontroleerde tests. Er zijn
-geen workspace-instellingen gewijzigd. `INSTALLED_BY_DEFAULT` volgt pas na review,
-hosttests en afzonderlijk goedgekeurde uitrol; de specificatie vraagt nog geen uitrol.
-Synchroniseer de beoordeelde GitHub-revisie via de bestaande beheerroute en test in
-een nieuwe chat. Catalogusmetadata installeert geen gekoppelde accounts of rechten.
+De plugin begeleidt de onboarding en helpt bij problemen tijdens de oefeningen.
+Voor losse werkopdrachten gebruik je een gewone chat of een passende andere plugin;
+algemene IT-support loopt via de systeembeheerder.
 
-## Leerroute en resources
+## Wat leer je?
 
-[Curriculum](skills/onboarding/reference/curriculum.md) bevat de module-ID's en links.
-Modules 1–3 vormen de basis. De overige modules zijn afzonderlijk te kiezen.
-De lessen omvatten voice, echte personalisatie-instellingen, een Space-pagina,
-projectinstructies en documentupload, lokale bestandsbewerking, plugins, geplande taken,
-agent- en skillcreatie, delen en Meetings.
+Modules 1–3 en 7 vormen de verplichte basis. Na module 3 adviseert Bert eerst
+pluginmodule 7, die ook rechten en gegevensrisico's behandelt. Daarna kies je met
+Bert meestal twee of drie passende verdiepingsmodules. Je kunt bewust uitsluitend
+de basis doen of een langere route kiezen, en je selectie later wijzigen.
+De onboarding is afgerond zodra de basis en je gekozen verdieping klaar zijn;
+niet-gekozen of ontbrekende functies buiten je route houden dat niet tegen.
+Een bestaande pagina, project of plugin kan als uitgangspunt dienen; je hoeft
+geen extra module te doen alleen om iets te hebben om mee te oefenen.
 
-Alle runtimebestanden staan binnen [de skill](skills/onboarding/SKILL.md).
-De referenties zijn skill-private en hebben geen gegenereerde duplicaten nodig.
-Voorbeelden worden als lesmateriaal aangeboden, niet als automatisch geïnstalleerde
-agents of extra geactiveerde skills. De plugin bundelt geen MCP-server of appmapping.
+| Module | Onderwerp                                                 |
+| ------ | --------------------------------------------------------- |
+| 1      | Je eerste gesprek en gerichte vervolgvragen               |
+| 2      | 2FA instellen, veilig gebruik, beleid en gebruikslimieten |
+| 3      | Geheugen, schrijfstijl en eigen aangepaste instructies    |
+| 4      | Een pagina maken, bewerken en terugvinden                 |
+| 5      | Een project met instructies en bestanden inrichten        |
+| 6      | Een lokaal document rechtstreeks laten bewerken           |
+| 7      | Een plugin gebruiken en de toegang beoordelen             |
+| 8      | Een taak plannen en beheren                               |
+| 9      | Een eigen skill maken, testen en hergebruiken             |
+| 10     | Een eigen agent bouwen en testen                          |
+| 11     | Werk delen met de juiste toegang                          |
+| 12     | Een fictieve bespreking vastleggen met Meetings           |
+| 13     | Een bruikbaar document, presentatie of spreadsheet maken  |
 
-## Vereisten en rechten
+Een gebruikelijke route telt zes of zeven modules, verdeeld over passende sessies.
+Er is nog geen geteste totale tijdsduur. Eerder opgeslagen resultaten blijven behouden.
 
-Doelomgeving: ChatGPT Business met Work en native Pages. Volledige functionaliteit
-vereist privépagina's maken, lezen, terugvinden en bijwerken. Beschikbare native
-creators en Scheduled zijn nodig voor de bijbehorende bouwmodules. Sommige stappen
-worden via de interface uitgevoerd en daarna door de medewerker bevestigd.
+Het pakket bevat oefenbestanden, acht skillvoorbeelden en tien agentontwerpen
+voor Onderwijs in/Projecten, Onderwijsloket en Trainees in onderwijs. Die vormen
+een bibliotheek voor Bert, geen extra verplichte lessen. Bij skills en agents
+ontwerp, test en verbeter je zelf; voorbeelden helpen bij keuzes en beoordeling.
 
-Module 6 vereist de desktopapp, een nieuw lokaal Work-project en een gekoppelde
-veilige oefenmap. De geslaagde uitkomst is een gewijzigd bestand op schijf. Uploaden
-en downloaden via de webinterface geldt daar niet als vervanging. Module 5 oefent
-juist het uploaden van documenten naar de context van een ChatGPT Project.
+Bekijk het [curriculum](skills/onboarding/reference/curriculum.md), de
+[agentbibliotheek](skills/onboarding/reference/agent-examples.md) en de
+[skillbibliotheek](skills/onboarding/reference/skill-examples.md) voor de inhoud.
 
-Meetings wordt voor macOS aanbevolen. Windows-ondersteuning volgt volgens de opdracht
-later; een datum en actuele opname-interface zijn niet onafhankelijk geverifieerd.
-Controleer de werkelijke beschikbaarheid. Een leesconnector voor meetingnotities
-bewijst geen opnamefunctie. Onbeschikbare modules krijgen een afzonderlijke status.
+## Wat heb je nodig?
 
-Slack, Outlook Calendar, Onderwijsloket en Onderwijs in zijn optionele verbindingen,
-met eigen authenticatie en rechten. Andere koppelingen zijn in principe toegestaan
-binnen het beleid. Outlook Email kent een specifieke uitzondering voor zakelijke
-mailboxen; Pipedrive verschilt per team en SharePoint is nog niet toegestaan zonder
-geteste afscherming. De beleidsreferentie bevat de voorwaarden. Geplande maatregelen
-zijn geen bewijs dat een koppeling gebruiksklaar is.
-Notion is geen runtimevereiste. De plugin stelt geen betaalde uitbreiding van usage voor.
-Het [ChatGPT-beleid voor medewerkers](skills/onboarding/reference/organization-policy.md)
-bevat de algemene afspraken voor zakelijk ChatGPT-gebruik. De afzonderlijke
-[uitvoeringsregels](skills/onboarding/reference/onboarding-rules.md) sturen de plugin:
-oefenmateriaal, toolgebruik en bevestiging van acties. Die zijn geen medewerkersbeleid.
-De algemene afspraken moeten vóór uitrol door de beleidsbeheerder worden gecontroleerd;
-ze vormen geen complete privacybeoordeling.
+De plugin is ontworpen voor de zakelijke ChatGPT Business-workspace van Onderwijs in,
+met Work en native Pages. Volledige werking in Codex of Claude wordt niet ondersteund.
+Voor specifieke oefeningen gelden aanvullende vereisten:
 
-## Voortgang en privacy
+- **Voortgang en pagina's:** toegang tot eigen private native pagina's.
+- **Lokale bestanden:** de desktopapp, een lokaal Work-project en een veilige oefenmap.
+- **Skills, agents, planning en delen:** toegang tot de bijbehorende functies en rechten.
+- **Meetings:** een beschikbare opnamefunctie; de oefening richt zich op macOS.
+- **Gegevenskoppelingen:** een toegestane verbinding en waar nodig een eigen zakelijk account.
 
-Eén eigen private pagina, **Mijn onboarding met de Bert-bot van de IT-afdeling**, bewaart rol, teams, voorkeuren,
-huidige stap en module-uitkomsten. Geen transcript, brondocumenten of inhoud uit
-gekoppelde diensten wordt in de voortgang opgenomen. Eigenaar en deelrechten worden
-gecontroleerd; zichtbaarheid alleen bewijst geen eigenaarschap.
+Bert controleert wat beschikbaar is wanneer je het nodig hebt. Een ontbrekende
+functie wordt als beperking vastgelegd; je kunt met andere modules verder.
+Een ontbrekende of overgeslagen basismodule houdt afronding tegen. Een gekozen
+verdiepingsmodule die niet beschikbaar is, kun je met Bert vervangen of uit je
+route halen.
+Een skill uit een plugin is niet automatisch beschikbaar voor een workspace-agent.
+Bij die oefening maak je de eigen skill afzonderlijk beschikbaar en test je het hergebruik.
 
-De [opslaginstructies](skills/onboarding/reference/progress.md) vereisen verse reads,
-guarded edits, behoud van andere resultaten en readback. Bij een onzekere actie wordt
-eerst gecontroleerd wat is opgeslagen. Bij ontbrekende tools of limieten krijgt de
-medewerker een handmatig checkpoint; automatische hervatting wordt dan niet beloofd.
-De host bewaart en autoriseert de gegevens. Er is geen externe voortgangsopslag.
+## Veilig oefenen
 
-## Verificatie en beperkingen
+Oefeningen beginnen bij je eigen werk: “Heb je een document dat hiervoor geschikt
+is, of zal ik een fictief document aanleveren?” Ook eigen casussen en ideeën zijn
+welkom. Voor iedere oefening blijft fictief materiaal beschikbaar. Bert bespreekt
+vóór upload of openen welke gegevens geschikt zijn volgens het medewerkersbeleid.
+De verborgen foutoefening blijft fictief. Meetings gebruikt voorlopig ook uitsluitend
+een fictieve bespreking, omdat echte opnames nog in beoordeling zijn.
+Bert legt bij invoeren, verbinden, plannen, bouwen, delen en opnemen de relevante beleidsafspraak uit.
+Je leert zowel de mogelijkheden als de risico's van skills, plugins en agents kennen.
+Een zichtbare plugin of leesrecht betekent niet automatisch dat gegevensgebruik is toegestaan.
 
-De native Pages-proef in deze ontwikkelchat kon een private pagina aanmaken, lezen,
-bijwerken en opnieuw terugvinden. Een edit met een verouderde hash werd afgewezen.
-Dit bewijst geen installatie, activatie of hervatting door de plugin in een nieuwe chat.
+Het [medewerkersbeleid](skills/onboarding/reference/organization-policy.md) staat
+in het pakket, met peildatum en bronverwijzingen. Notion is niet nodig voor de
+onboarding en wordt niet gebruikt om beleid of voortgang op te halen.
+Geblokkeerde koppelingen zijn geen oefenroute. Open beleidsvragen, zoals de
+bewaartermijn voor gesprekken en lopende integratiebeoordelingen, worden als
+onbeslist benoemd. De gebundelde referentie wordt door de pakketbeheerder bijgehouden.
 
-ChatGPT Business is de beoogde host. De Claude-catalogusvermelding houdt de
-repositorycatalogi consistent; Claude en Codex hebben geen geclaimde volledige
-runtimecompatibiliteit met deze ChatGPT-leerroute. Er is geen onnodige Claude-overlay.
-Gebruik op andere hosts moet ontbrekende native functies als beperking rapporteren.
-Vóór uitrol zijn een echte installatie, resource-loadingtest, cross-chat-hervattest,
-isolatietest met twee accounts en pilot met drie rolprofielen nodig.
+## Voortgang bewaren
 
-## Officiële bronnen en compatibiliteit
+Bert bewaart je werkprofiel, leervoorkeuren, huidige stap en modulevoortgang op één
+eigen private pagina: **Mijn onboarding met de Bert-bot van de IT-afdeling**.
+De eerste intake wordt direct bewaard. Daarna slaat Bert op na een afgeronde
+oefenfase, bij een profiel- of routewijziging en vóór stoppen of wisselen van chat.
+Brondocumenten, transcripten en dossiers horen niet in die voortgang.
 
-Geraadpleegd op 22 oktober 2026. Deze productcontracten zijn veranderlijk;
-workspacebeschikbaarheid moet naast documentatie afzonderlijk worden getest.
+Bert bewaart ook je bevestigde leerroute en, als je wilt, bij welke komende taak
+je het geleerde gaat gebruiken. Bij een volgend bezoek vraagt hij op een passend
+moment hoe dat ging en helpt bij één concreet knelpunt. Een herinnering wordt
+alleen na afzonderlijke instemming daadwerkelijk gepland. Deze terugblik is geen
+extra vereiste voor het afronden van de onboarding.
 
-- [Portable pluginpackaging en marketplacebeleid](https://developers.openai.com/plugins/build/plugins).
-- [OpenAI skills en resourcegrenzen](https://developers.openai.com/plugins/build/skills).
-- [Presentatiemetadata en PNG-iconen](https://developers.openai.com/plugins/deploy/submission).
-- [ChatGPT Work](https://learn.chatgpt.com/docs/get-started-with-work).
-- [ChatGPT en lokale projecten](https://learn.chatgpt.com/docs/projects).
-- [Personalisatie](https://learn.chatgpt.com/docs/prompting#personalize-chatgpt).
-- [Space en rechten](https://learn.chatgpt.com/docs/enterprise/chatgpt-space).
-- [Geplande taken](https://learn.chatgpt.com/docs/automations).
-- [Voice](https://learn.chatgpt.com/docs/features/voice).
-- [Usage](https://learn.chatgpt.com/docs/pricing#where-can-i-see-my-current-usage-limits).
+Bij afronding biedt Bert één korte kansenscan aan, samen met je gebruiksvoornemen.
+Je bekijkt maximaal drie eigen taken op opbrengst, controleerbaarheid,
+gegevensrisico en benodigde inspanning; één passende taak kan al volstaan.
+Je kiest een toepassing, gebruiksmoment en belangrijke controle. Geen AI gebruiken
+kan ook een goede keuze zijn. De scan en het voornemen zijn vrijwillig en vormen
+geen extra afrondingsvoorwaarde.
 
-De agentvoorbeelden volgen de beschikbare toolbeschrijvingen. Onderwijsloket
-`list_articles` ondersteunt `-date_updated`; dat is een wijzigingsdatum en wordt
-niet als publicatiedatum voorgesteld. Concrete tools worden bij uitvoering opnieuw gecontroleerd.
+Bij hervatten gebruikt Bert je opgeslagen profiel en volgende stap. Als opslaan
+niet lukt, krijg je een compact checkpoint om zelf te bewaren en later mee te geven.
+Automatisch hervatten vereist werkende native paginaopslag.
 
-## Icoon
+## Onderhoud
 
-[Het pluginicoon](assets/plugin-icon.png) is met de ingebouwde ImageGen-tool gemaakt
-en visueel gecontroleerd. Hetzelfde vierkante PNG wordt voor logo en composer gebruikt.
-Het is een origineel fictief personage, geen medewerkersportret.
+De plugin bevat één centrale [onboardingskill](skills/onboarding/SKILL.md).
+Lesmateriaal en beleidsreferenties staan binnen die skill; de plugin heeft geen
+eigen MCP-server of appmapping nodig.
 
-Prompt voor hergebruik met de huidige naam (het bestaande icoon blijft ongewijzigd):
+| Onderdeel                          | Waar pas je het aan?                                                                       |
+| ---------------------------------- | ------------------------------------------------------------------------------------------ |
+| Starten, hervatten en begeleiden   | [SKILL.md](skills/onboarding/SKILL.md)                                                     |
+| Intake en leertempo                | [Profiel en leertempo](skills/onboarding/reference/learner-profile.md)                     |
+| Lesvolgorde en leerdoelen          | [Curriculum](skills/onboarding/reference/curriculum.md) en de daarin gelinkte modules      |
+| Algemene modulewerkwijze           | [Modulewerkwijze](skills/onboarding/reference/module-workflow.md)                          |
+| Begeleiding, feedback en herhaling | [Oefenen en feedback](skills/onboarding/reference/oefenen-en-feedback.md)                  |
+| Werkbestand maken                  | [Bestandsles](skills/onboarding/reference/module-13.md)                                    |
+| Eerste toepassing opvolgen         | [Gebruiksvoornemen en terugblik](skills/onboarding/reference/eerste-toepassing.md)         |
+| Beleid en integratiestatus         | [Medewerkersbeleid](skills/onboarding/reference/organization-policy.md)                    |
+| Oefenmateriaal en actiebevestiging | [Uitvoeringsregels](skills/onboarding/reference/onboarding-rules.md)                       |
+| Voortgangsopslag                   | [Voortgang](skills/onboarding/reference/progress.md)                                       |
+| Agent- en skillvoorbeelden         | De bibliotheken en definities onder `skills/onboarding/reference/`                         |
+| Optionele verrassing               | Ontgrendeling en onderhoud via het [curriculum](skills/onboarding/reference/curriculum.md) |
+| Fictieve oefenbestanden            | `skills/onboarding/assets/exercise-materials/`                                             |
+| Presentatie en icoon               | [plugin.json](plugin.json) en [pluginicoon](assets/plugin-icon.png)                        |
 
-```text
-Create one square 1024x1024 PNG plugin icon for Onboarding, a Dutch internal ChatGPT
-onboarding assistant whose persona is de Bert-bot van de IT-afdeling. Friendly fictional IT colleague,
-subtly dry humorous expression, simple round glasses and a laptop with a small
-welcoming arrow, no text or lettering. Clean bold flat illustration, professional
-yet approachable, warm coral red accent with dark navy and cream, clear large
-silhouette and readable at 32px, generous margin, opaque light cream background.
-Original fictional character, no real person's likeness. This is a production plugin listing icon.
+Controleer bij beleidswijzigingen de bronnen die in de beleidsreferentie staan.
+Werk de samenvatting, peildatum, betrokken modules en voorbeelden samen bij.
+Houd beleidsmatige toestemming, geregistreerde instellingen en persoonlijke toegang
+uit elkaar. Neem een geplande maatregel pas als beschikbaar op nadat die is bevestigd.
+
+Gebruik [bouwbegeleiding](skills/onboarding/reference/bouwbegeleiding.md) als uitgangspunt
+bij onderhoud van skill- en agentlessen. Houd eigen keuzes en passende afwijkingen
+mogelijk en gebruik referenties voor kwaliteit, niet als verplichte eindoplossingen.
+Houd bij leswijzigingen de uitleg, oefening en afrondingscriteria bij elkaar.
+Module 5 bevat een [verborgen foutoefening](skills/onboarding/reference/foutoefening.md)
+met een subtiele betekenisfout in fictieve inhoud. Bert bespreekt en herstelt die
+vóór afronding of stoppen; bronbestanden, beleid en echte gegevens blijven correct.
+Bewaar resources binnen de skill en laad detailinformatie alleen voor de relevante
+stap. Voeg voorbeelden toe aan de bibliotheken; laat Bert daaruit een kleine,
+werkgerichte selectie maken.
+
+## Controleren en distribueren
+
+Voer vanuit de repositoryroot uit:
+
+```sh
+pnpm format
+pnpm check
 ```
 
-## Herkomst en beheer van het medewerkersbeleid
+Zie de [praktijkcontrole](skills/onboarding/reference/praktijkcontrole.md) voor
+de scenario's die vóór uitrol nog in ChatGPT Business moeten worden getest.
+Repositorychecks bevestigen verpakking en verwijzingen, niet het gedrag of
+leereffect van de geïnstalleerde plugin.
 
-De algemene AI-afspraken zijn bijgewerkt op basis van
-[Beleid AI-gebruik](https://app.notion.com/p/401b66e1be6980a3a490ff33ccff5d05),
-geraadpleegd op 22 oktober 2026. De geraadpleegde versie is laatst gewijzigd op
-22 oktober 2026 om 13:46 UTC. De hoofdtekst was volledig beschikbaar, inclusief
-de connectortabel, e-mailuitzondering en nog onbepaalde bewaartermijn. De ingesloten
-categoriedatabase is niet afzonderlijk opgehaald; de referentie volgt de expliciete
-categorieën uit de hoofdtekst. De gebruiker heeft dit document als gewijzigd beleid
-aangewezen; Notion toont geen native verificatiemarkering.
-
-Dit beleid vervangt de eerdere algemene aannames en blanketverboden voor Outlook
-Email en Pipedrive in deze plugin. Een nog te bouwen maskerproces, te testen
-afscherming of aangekondigde mailboxmaatregel wordt niet als uitgevoerd aangemerkt.
-Er is geen bewaartermijn ingevuld die niet in de bron is vastgesteld.
-
-De aanvullende afspraken over menselijke resultaatcontrole, delen/opnemen,
-inloggeheimen en uitsluitend inbegrepen usage blijven gebaseerd op de eerder
-vastgelegde workspace- en onboardingopdracht. Zij zijn afzonderlijk aangeduid en
-worden niet als nieuwe bepalingen uit Beleid AI-gebruik gepresenteerd.
-De uitvoeringsregels voor Bert staan in een afzonderlijke referentie.
-
-De systeembeheerder of bedrijfsvoerder bevestigt vóór uitrol de concrete
-beleidsbeheerder en de uitvoering van de connectorvoorwaarden. Medewerkers hoeven
-geen Notion-toegang te hebben om de gebundelde beleidsreferentie te gebruiken.
-
-## Onderwijsloket Fact Check Agent — afhankelijkheden en Slack
-
-De medewerker maakt eerst een persoonlijke `fact-checker` in module 9 en hergebruikt
-die in de Onderwijsloket Fact Check Agent in module 10. De zelfstandige
-[voorbeelddefinitie](skills/onboarding/reference/skill-feiten.md) is inhoudelijk gebaseerd
-op `plugins/adviesassistent/skills/fact-checker/SKILL.md`, maar bevat de nodige werkwijze
-en criteria zelf. Er worden geen runtimebestanden uit de Adviesassistent-plugin vereist
-of automatisch als extra onboarding-subskill geïnstalleerd. Controleer in de agentproef
-dat de juiste persoonlijke skill wordt toegepast, ook als een gelijknamige pluginskill
-beschikbaar is. De medewerker maakt de persoonlijke skill afzonderlijk beschikbaar in de
-workspace en koppelt die aan de agent; installatie of synchronisatie van de onboardingplugin
-voert die stap niet uit. De agentdefinitie voegt Slack-contextselectie en antwoordvorm toe.
-
-De gewenste handle is `@factcheck`. De aangeleverde voorbeelden noemden ook
-`@factchecker`; dat is geen tweede geconfigureerde handle. De
-[officiële Slack-setup](https://learn.chatgpt.com/docs/enterprise/chatgpt-slack-and-teams),
-geraadpleegd op 22 oktober 2026, beschrijft de beheerde `@ChatGPT`-surface, gedeelde
-verbindingen en toegangscontroles. Dat bewijst niet dat een afzonderlijke agent onder
-`@factcheck` kan worden gepubliceerd. Controleer de actuele Workspace Agent-/Slack-
-interface, beschikbare skillselectie en routering in de doelworkspace vóór publicatie.
-Bouw geen eigen Slack-bot of API-integratie als impliciete workaround.
-
-Er zijn geen Slack-berichten verstuurd, instellingen gewijzigd of agents gepubliceerd.
-Controleer vóór publicatie de kanaalroutering, bronrechten en beschikbaarheid van de
-vereiste skill in de doelworkspace.
-
-## Contentverbeteraar — auteurschap, bronnen en planning
-
-Het derde agentvoorbeeld richt zich op wekelijkse inhoudelijke websiteverbeteringen.
-Het bevat een volledige ondersteunende webcontent-skilldefinitie en een uitvoeringsreferentie.
-Deze worden aan de gemaakte agent toegevoegd; de onboarding houdt één actieve centrale skill.
-De schrijver, co-auteur en expliciet aangewezen beheerder vormen verschillende selectiegronden.
-Een ontbrekend auteurveld wordt geen automatisch eigenaarschapbewijs.
-
-Op 22 oktober 2026 zijn de openbare Onderwijs in MCP-tools voor blogs en pagina's
-steekproefsgewijs gelezen. Het blogoverzicht bevatte geen auteursvelden; één volledig
-blogdocument bevatte `authors` met naam en profielpad, naast `updated_at` en `publish_date`.
-Eén statische paginadetailweergave bevatte geen auteursvermelding. Dat bevestigt dat
-lijstmetadata onvoldoende kan zijn, maar bewijst geen complete auteurdekking voor
-alle websites, contenttypen of medewerkers. Er is geen persoonlijke corpusreview uitgevoerd.
-Onderwijsloket MCP is een andere beschikbare bron met eigen auteursmetadata; de
-gekozen connector en selectie worden bij de medewerker afzonderlijk gecontroleerd.
-
-De ondersteunende skill verwijst naar geraadpleegde primaire richtlijnen van W3C WAI
-en Google Search Central. Die geven reviewcriteria, geen automatisch inhoudelijk
-feitenbewijs of garantie op ranking, conversie of toegankelijkheidsconformiteit.
-
-De agent leest en rapporteert; er is geen websitecontent gewijzigd en geen wekelijkse
-taak aangemaakt. De medewerker kiest en bevestigt de werkelijke planning afzonderlijk.
+Gebruik de [releaseworkflow](https://github.com/onderwijsin/agents/blob/main/docs/releases.md) voor pluginversies en de
+[marketplacedistributie](https://github.com/onderwijsin/agents/blob/main/docs/marketplace-distribution.md) voor verspreiding.
+Installeer het hele pakket zodat de referenties en oefenbestanden meekomen.
+Workspacebeleid, toegestane apps en persoonlijke authenticatie worden afzonderlijk beheerd.
