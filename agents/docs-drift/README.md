@@ -6,6 +6,56 @@ Read-only repository selection and the request template are in the standalone
 [github-activity-discovery skill](skills/github-activity-discovery/SKILL.md).
 The GitHub account and action policy are in [apps/github.yaml](apps/github.yaml).
 
+## Operating modes
+
+One shared agent accepts invocation configuration in manual prompts and saved
+host-managed schedule prompts. Read the attached
+[configuration reference](files/docs-drift-reference.md) for accepted syntax,
+precedence, validation, and lifecycle scope.
+
+- `activity-scan` (default): discover accessible non-archived repositories with
+  `main` commits in a fixed UTC window. With no arguments, use the rolling seven
+  days ending at run start. Inspect changes and pre-existing drift in adjacent
+  documentation. Discovery, audit history, and reviewer counts share the bounds.
+- `full-audit`: inventory documentation and implementation across exactly the
+  named repositories at `branch` (default `main`), independent of recent commits.
+  Report inventoried/deeply inspected counts and remaining surfaces; partial
+  inspection never establishes complete coverage. PR branches start from and
+  target the selected branch. Missing targets/branches are reported without fallback.
+  Reviewer counts use a separate rolling seven-day window on that branch.
+
+```yaml
+mode: activity-scan
+scan_window: 14d
+```
+
+Equivalent: “Scan activity from the last 14 days.” Historical windows accept
+`scan_window` with `start` and `end` UTC timestamps; see the reference examples.
+
+```yaml
+mode: full-audit
+repositories:
+  - onderwijsin/nova
+  - https://github.com/onderwijsin/directus-extensions
+branch: develop
+```
+
+Equivalent: “Run a full documentation audit on onderwijsin/nova and
+onderwijsin/directus-extensions, branch develop.” A single repository string is
+also accepted. Invalid/conflicting configuration asks for clarification in manual
+runs and blocks the audit with a report in unattended runs.
+
+Both modes preserve substantiated documentation-only corrections, established
+coverage limits, `.agents/skills` exclusion, overlap checks, draft PR markers,
+reviewer selection, and no merge/auto-merge rules. Invocation settings do not
+extend access or permissions.
+
+Scheduled runs independently maintain existing workflow PRs across accessible
+repositories even when no new audit qualifies or audit configuration is blocked.
+Manual runs skip PR maintenance, keeping targeted full audits within their named
+targets. Scheduled full audits retain that separate maintenance task without
+expanding their new-audit targets.
+
 ## Commit-search compatibility
 
 Checked on 2026-10-23 against GitHub's official
@@ -84,12 +134,15 @@ Follow [agent deployment](../../docs/agent-deployment.md):
 
 1. Upload `skills/github-activity-discovery/` as a standalone workspace skill and
    link it to Docs Drift alongside `docs-sync-audit` and `code-documentation`.
-2. Copy the Markdown body of `INSTRUCTION.md`, excluding YAML frontmatter, into
+2. Attach `files/docs-drift-reference.md` as `docs-drift-reference.md`, preserving
+   its filename alongside the existing `pr-review-follow-up.md`.
+3. Copy the Markdown body of `INSTRUCTION.md`, excluding YAML frontmatter, into
    Docs Drift's instructions editor. Confirm the new skill loads for selection
    and read-only commit-search diagnostics. Audit and writing guidance now load
    when their respective workflow steps begin.
 
-App permissions and connected files are unchanged. This README is maintainer
+App permissions and standalone skills are unchanged; the configuration reference
+is a new required connected file. This README is maintainer
 documentation, not a connected file. Discovery uses seven 24-hour intervals for
 a seven-day window, bisects saturated intervals, and tracks coverage in a run-local
 ledger. At the timestamp precision limit it partitions by inventory repository,
@@ -122,3 +175,23 @@ preview-tested by this repository change.
 
 Repository checks validate source quality, not installation or runtime behavior.
 Editing Git alone does not update the deployed agent or its schedule.
+
+## Mode verification before deployment
+
+The mode changes are authored source, not a live-agent deployment. Upload the new
+reference and update the instruction body manually; retain the existing skills
+and PR-follow-up reference. Configure any custom mode/window in the schedule's
+saved prompt rather than changing agent-wide defaults.
+
+Preview both YAML and equivalent natural-language prompts. Verify the no-argument
+scheduled seven-day scan and independent PR maintenance; relative and historical
+windows must match discovery, audit history, and reviewer counts exactly. Exercise
+one/multiple full-audit targets, a repository with zero recent commits, and a
+non-`main` branch. Inspect inventory counts, remaining surfaces, branch reads,
+PR source/base, overlap checks, marker, and reviewer lookback. Test missing targets,
+missing branches, absent repositories, contradictory modes, malformed/future
+windows, and mode-inapplicable fields. Confirm a manual full audit skips maintenance
+and never discovers other repositories; scheduled maintenance remains independent.
+Verify configuration-reference loading and unchanged skill activation in ChatGPT.
+These mode, installation, resource-loading, and runtime scenarios remain unverified
+until exercised in the deployed host; repository checks do not establish them.
