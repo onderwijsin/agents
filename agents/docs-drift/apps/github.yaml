@@ -1,0 +1,38 @@
+account_type: agent-owned
+action_safety: allow-low-risk
+safety_constraints: []
+write_actions: true
+read_actions: true
+capability_description: >-
+  Read and selectively modify GitHub repositories using a dedicated
+  agent-owned account, within its existing repository permissions.
+
+  The agent can discover repositories and inspect source files,
+  branches, commits, issues, pull requests, reviews, comments,
+  diffs, repository metadata, and CI status.
+
+  Write access supports documentation maintenance through GitHub's
+  version control and pull request workflows. The agent can create
+  and update files, create branches and commits, update branch
+  references, delete files, and open pull requests.
+
+  The agent can manage pull request metadata, draft status, labels,
+  reviewers, review threads, and comments. It can request reviews,
+  respond to feedback, and resolve or reopen review discussions.
+
+  Repository administration and certain workflow operations are
+  restricted. The agent cannot merge pull requests, enable
+  auto-merge, rerun GitHub Actions workflows, create or update
+  issues, or submit formal pull request reviews. Access to
+  detailed workflow execution diagnostics is also restricted.
+
+  The intended scope is documentation maintenance through
+  reviewable pull requests. However, enabled file and Git
+  operations are not technically restricted to documentation
+  files or pull request branches.
+
+  Access is governed by the currently enabled tools, the
+  agent-owned account's repository permissions, and the configured
+  low-risk action safety policy. Newly introduced tools should
+  follow these capability boundaries rather than being
+  implicitly permitted.
