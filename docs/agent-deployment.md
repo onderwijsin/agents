@@ -29,7 +29,7 @@ See the [Commitment Manager checklist](../agents/commitment-manager/README.md) f
 | Source                                                 | Manual destination                                                             |
 | ------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | `INSTRUCTION.md` YAML frontmatter                      | Agent settings and dependency checklist                                        |
-| `INSTRUCTION.md` Markdown body after the closing `---` | Agent instructions editor                                                      |
+| `INSTRUCTION.md` Markdown body after the closing `---` | Agent builder prompt below, then verify the saved instructions                 |
 | `apps/<app-id>.yaml`                                   | Connected app account, actions, approval policy, and constraints               |
 | `files/<filename>`                                     | Agent's connected files, preserving the referenced filename                    |
 | `skills/<skill-name>/` standalone source               | Workspace skill managed in the ChatGPT skills editor, then linked to the agent |
@@ -72,17 +72,42 @@ belong with that workspace skill, rather than in the agent's connected files.
    other consumers. Agent builder skill linking alone does not edit skill content.
 4. Return to the agent builder and link each required workspace skill. Verify the
    selected skill's identity and content; matching display names alone are insufficient.
-5. Copy only the Markdown body of `INSTRUCTION.md` into the instructions editor.
-   Exclude the YAML frontmatter and its delimiter lines.
-6. Create or edit every connected file from `files/`, preserving names used in
+5. Create or edit every connected file from `files/`, preserving names used in
    instructions. Remove obsolete attachments only when part of the intended change;
    avoid retaining two conflicting versions under similar names.
+6. Give the agent builder the prompt under **Transfer instructions** below.
+   Include only the Markdown body of `INSTRUCTION.md`, excluding YAML frontmatter
+   and its delimiter lines. Have the builder resolve named files and skills into
+   actual agent references, then inspect the saved instructions for formatting.
 7. Configure the intended schedule separately if needed, including its timezone.
    A schedule written in instructions does not create an automation. Save and test
    the draft before updating the live agent through the UI's available controls.
 
 UI labels and available settings may vary. The source describes intent; inspect
 the actual controls rather than assuming a one-to-one mapping for each YAML key.
+
+### Transfer instructions
+
+Directly pasting Markdown into the agent instructions editor can insert it as a
+string literal rather than formatted instructions. Use this builder prompt instead:
+
+```text
+Add these instructions unchanged except for converting the named file and skills into their actual agent references. When you are done, check the formatting of the instructions. Make sure there are no formatting errors like unintended line breaks.
+
+---
+
+[INSTRUCTION.md contents]
+```
+
+Replace the placeholder with the Markdown body after the closing frontmatter
+delimiter. The `---` in the prompt separates the request from the instruction body;
+it is not part of the saved instructions. Make the connected files and workspace
+skills available before resolving their references.
+
+Compare the saved instructions with the source, allowing only the intended reference
+conversions. Check headings, lists, code blocks, unintended line breaks, literal
+quotes or escaped newlines, and that references resolve to the correct resources.
+The builder's confirmation does not replace this inspection.
 
 ## Verify and record deployment
 
@@ -116,6 +141,8 @@ for this repository on 2026-10-23, not inferred from plugin packaging or indepen
 The linked official controls describe skill governance; they do not establish plugin availability
 inside workspace agents. Our manual procedure and local YAML conventions are based on the supplied agent
 baseline and maintainer workflow, not a verified provider round-trip format.
+The Markdown string-literal paste issue and builder-prompt workaround were reported
+by the maintainer on 2026-10-23; they have not been independently reproduced here.
 No live ChatGPT installation, permissions, schedule, or task execution is established
 by this guide. Recheck current official documentation and the target workspace when
 changing deployment assumptions; marketplace support is not presumed.
