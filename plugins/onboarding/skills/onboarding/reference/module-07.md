@@ -1,6 +1,7 @@
-# Module 7 — Installeer en gebruik een plugin
+# Module 7 — Gebruik een plugin en beoordeel de toegang
 
-Doel: een plugin zelf installeren, gebruiken en haar toegang kunnen beoordelen.
+Doel: een plugin gebruiken, zo nodig installeren en haar toegang kunnen beoordelen.
+Deze module is verplicht vanwege rechten, gegevensrisico's en actiebevestiging.
 Lees eerst [medewerkersbeleid](organization-policy.md). Gebruik het werkprofiel
 voor één aanbeveling met hooguit twee alternatieven. Controleer het daadwerkelijke
 aanbod en de persoonlijke toegang; onderstaande opties zijn geen live inventaris.
@@ -26,11 +27,11 @@ stap uit. Een app hoeft niet te worden verbonden als de oefening zonder kan.
 - tldraw: een eenvoudig fictief proces tekenen, met controle van opslag en toegang.
 - Outlook Calendar: zelf installeren als die nog ontbreekt; alleen een passend overleg
   lezen, na beoordeling van zakelijke accountverbinding en bereikbare gegevens.
-- Loops: voor een communicatiecollega uitsluitend een fictief nieuwsbriefconcept
+- Loops: voor een communicatiecollega een geschikt eigen of fictief nieuwsbriefconcept
   bekijken of bewerken, na controle van rechten; geen transactionele mail versturen.
 - Een beoordeelde plugin met uitsluitend instructies, bijvoorbeeld Agent-instructie:
   alleen als deze in het huidige aanbod beschikbaar en toegestaan is. Gebruik een
-  fictieve opdracht zonder extra gegevenskoppeling.
+  geschikte eigen opdracht of een fictief alternatief zonder extra gegevenskoppeling.
 
 Gebruik Slack, Teams, Outlook Email, SharePoint, Pipedrive, Typeform, Algolia en
 Notion niet als oefenroute. Leg bij vragen de reden uit de beleidsreferentie uit.
@@ -39,9 +40,10 @@ in een catalogus bewijst geen goedkeuring. Een hoge prioriteit in een ideeënlij
 
 ## Installeren en oefenen
 
-1. Laat de medewerker een geschikte nog niet geïnstalleerde plugin vinden en informatie,
-   ontwikkelaar en gevraagde toegang bekijken. Laat zelf installeren en in het overzicht
-   controleren. Installeer niet ongemerkt namens de medewerker.
+1. Laat een passende toegestane plugin kiezen en informatie, ontwikkelaar en toegang
+   bekijken. Is zij nog niet geïnstalleerd, laat zelf installeren en in het overzicht
+   controleren. Is zij al aanwezig, controleer de installatie en leg uit hoe de
+   medewerker een nieuwe plugin zou beoordelen. Installeer niet ongemerkt namens de medewerker.
 2. Verbind alleen waar nodig een toegestaan werkaccount via de host. Wijs hier op
    2FA en het onderscheid tussen appautorisatie en verboden social login voor werkaccounts.
    Een onduidelijke of te ruime toestemming gaat naar een beheerder; kies intussen een
@@ -52,10 +54,13 @@ in een catalogus bewijst geen goedkeuring. Een hoge prioriteit in een ideeënlij
    Benadruk dat bronrechten, koppelingstoestemming en toolbeperkingen samen gelden;
    'lees geen gevoelige gegevens' is geen technische afscherming.
 
-Een plugin die al aanwezig is kan de gebruiksproef leveren; de installatieproef
-vereist daarnaast een geschikte nieuwe plugin. Verwijder geen plugin om die proef
-na te bootsen. Is er geen geschikte nieuwe optie, oefen waar mogelijk verder en
-leg het ontbrekende installatiedeel vast; claim geen afronding.
+Gebruik bij punt 4 de daadwerkelijk gekozen plugin; herhaal niet alle scenario's
+uit module 2. Een zelfstandig onderbouwde rechtenkeuze geldt als afsluiting.
+
+Een al geïnstalleerde geschikte plugin volstaat; leg vast of installatie zelf is
+uitgevoerd of al aanwezig was. Verwijder of installeer niets alleen voor de proef.
+Ontbreekt elke geschikte gebruiksroute, registreer `unavailable`; behandel de
+veiligheidskeuzes wel, maar claim geen afgeronde basis zonder de gebruiksproef.
 
 ## Oefenroute — Plausible
 
@@ -70,7 +75,7 @@ Gebruik werkelijk opgehaalde aantallen. Bij een referentie van nul is een procen
 verandering niet te berekenen. Ontbrekende historie of grafiekmogelijkheden krijgen
 een expliciete beperking, eventueel een tabel; geen verzonnen meetwaarden.
 
-Afronding: minstens één plugin zelf geïnstalleerd, één concrete gebruiksproef met
+Afronding: installatie of bestaande beschikbaarheid gecontroleerd, één concrete gebruiksproef met
 gecontroleerd resultaat, en installatie/accountverbinding/actietoestemming én het
-gegevensrisico uitgelegd door de medewerker. Leg beide gekozen plugins vast, zonder
-broninhoud. Alleen verbinden of activeren telt niet als zelf installeren.
+gegevensrisico uitgelegd door de medewerker. Leg de gekozen plugin of plugins vast, zonder
+broninhoud. Claim zelf installeren alleen als dat werkelijk is uitgevoerd.

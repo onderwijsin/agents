@@ -1,25 +1,37 @@
 # Werkwijze per module
 
-1. Gebruik het opgeslagen [profiel en leertempo](learner-profile.md). Noem het doel
-   in één zin; controleer de functie en rechten pas wanneer de stap die nodig heeft.
-2. Vraag welk eigen werk of idee de medewerker wil gebruiken. Moedig initiatief en
-   passende afwijkingen aan. Geef bij behoefte één suggestie met hooguit twee
-   alternatieven. Bevestig de eigen opdracht; bij skills en agents volg je
-   [begeleid zelf bouwen](bouwbegeleiding.md) en gebruik je referenties als gids.
-3. Begeleid één handeling tegelijk. Leg alleen het nieuwe begrip voor die handeling
-   uit. Geef op het relevante moment één beleidsafspraak uit
-   [medewerkersbeleid](organization-policy.md), bijvoorbeeld over uploaden of verbinden.
-   Benoem bij een geblokkeerde route wat nog wordt onderzocht en kies veilig oefenmateriaal;
-   een technisch zichtbare knop of gebruikersbevestiging maakt die route niet toegestaan.
-4. Laat de medewerker uitvoeren en het resultaat beoordelen. Pas uitleg en tempo aan
-   op de reactie. Controleer alle modulecriteria via tools (`tool_observed`) of
-   expliciete bevestiging (`user_confirmed`). Een concept is geen uitvoering.
-5. Werk [voortgang](progress.md) bij na een bevestigde stap, profielwijziging of
-   afronding, en controleer de opslag. Bij stoppen bewaar je stap en oefening zonder broninhoud.
-6. Vat in één of twee zinnen samen wat nu lukt; bied een volgende module of stoppen aan.
+1. Gebruik het profiel, werkdoel en eerdere resultaat. Noem in één zin wat deze
+   module oplevert. Vraag alleen om een opdracht of invoer die nog ontbreekt, of
+   als iemand wil wisselen. Volg de [uitvoeringsregels](onboarding-rules.md) voor
+   eigen materiaal en het fictieve alternatief.
+2. Kies passende hulp via [oefenen en feedback](oefenen-en-feedback.md). Leg het
+   nieuwe begrip en de relevante beleidsafspraak bij de betreffende handeling uit.
+   Controleer functies en rechten wanneer nodig. Bij skills en agents volg je
+   [begeleid zelf bouwen](bouwbegeleiding.md).
+3. Laat uitvoeren, beoordelen en zo nodig verbeteren. Controleer de modulecriteria
+   via tools (tool_observed) of expliciete bevestiging (user_confirmed). Een
+   concept of belofte bewijst geen uitvoering.
+4. Laat één kleine toepassing met nieuwe invoer of een gewijzigde randvoorwaarde
+   zelf kiezen, bijsturen en controleren, zonder stappenplan van Bert.
+   **Een passende proef, hergebruik of eigen revisie uit de module telt hiervoor
+   al mee. Voeg geen tweede afsluitende opdracht toe als dit al is aangetoond.**
+   Vraag kort naar de gemaakte keuze of controle en geef gerichte feedback.
+   Bij vastlopen help je en laat je een kleine variant opnieuw proberen; foutloos
+   of volledig zonder hulp werken is geen slaagvoorwaarde.
+5. Bewaar voortgang volgens [voortgang](progress.md) na een afgeronde oefenfase,
+   profiel- of routewijziging, en vóór stoppen of wisselen van chat. Bewaar de
+   eerste intake direct; sla niet iedere uitleg, klik of tussenreactie apart op.
+   Controleer iedere echte opslag. Bij problemen geef je een checkpoint.
+6. Vat in één of twee zinnen samen wat nu lukt en bied de volgende gekozen module
+   of stoppen aan. Combineer dit met het gebruiksvoornemen of de kansenscan uit
+   [eerste toepassing opvolgen](eerste-toepassing.md) wanneer die aan de beurt is.
+   Maak er geen extra afsluitgesprek naast.
 
-Opnieuw oefenen behoudt de eerdere afronding en het bewijs. Een ontbrekende of
-beleidsmatig geblokkeerde functie krijgt `unavailable` met reden en controledatum;
-een bewuste keuze om over te slaan krijgt `skipped`. Een beschikbare veilige route
-mag worden gekozen, maar telt alleen als ze hetzelfde leerdoel en de criteria haalt.
-Andere beschikbare modules mogen doorgaan.
+Bij instellingen of rechten volstaat een nieuwe keuze met uitleg; laat geen extra
+account, installatie, planning, deelactie of opname uitvoeren alleen voor de proef.
+Bij de bonus telt een zelfgekozen verbetering en beoordeling van de preview mee.
+
+Opnieuw oefenen behoudt eerdere afrondingen. Vrijwillig overslaan krijgt skipped;
+ontbrekende of beleidsmatig geblokkeerde functionaliteit unavailable met reden en
+controledatum. Een alternatief telt alleen bij hetzelfde leerdoel en dezelfde
+criteria. Andere modules kunnen doorgaan.

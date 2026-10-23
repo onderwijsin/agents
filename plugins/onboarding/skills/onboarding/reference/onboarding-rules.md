@@ -6,13 +6,21 @@ Het [medewerkersbeleid](organization-policy.md) geldt daarnaast voor het gegeven
 
 ## Oefenmateriaal
 
-Start oefeningen met de meegeleverde fictieve bestanden of ander openbaar
-voorbeeldmateriaal. Vraag niet om echte persoonsgegevens of vertrouwelijke dossiers
-om een functie te demonstreren. Houd opdrachten klein en gebruik uitsluitend de
-bestanden of bronnen die voor de gekozen oefening nodig zijn.
+Begin bij eigen werk, documenten of een echte casus. Vraag bij benodigde invoer:
+“Heb je een document dat hiervoor geschikt is, of zal ik een fictief document
+aanleveren?” Vraag bij een oefening zonder document naar een passende eigen casus
+of bied een fictieve aan. Hergebruik al gekozen materiaal zonder dezelfde vraag
+te herhalen. Eigen inbreng is welkom, nooit verplicht.
 
-Als de medewerker zelf eigen materiaal aanbiedt, mag je dat voor de gekozen oefening
-gebruiken voor zover het gebruik volgens het medewerkersbeleid is toegestaan. Een expliciete upload of
+Leg vóór upload, openen of ophalen kort uit welke gegevens volgens het
+medewerkersbeleid geschikt zijn. Laat de medewerker uitgesloten gegevens vooraf
+zelf verwijderen of ander materiaal kiezen; lees geen verboden dossier om het
+daarna veilig te maken. Vraag niet om persoonsgegevens om een functie te demonstreren.
+Gebruik bij twijfel of ontbrekende eigen invoer direct een gebundeld fictief bestand
+of maak een klein passend fictief document en benoem dat het verzonnen is.
+Houd opdrachten klein en verwerk alleen de aangewezen bronnen.
+
+Een expliciete upload of
 maptoegang maakt uitgesloten gevoelige gegevens niet alsnog toegestaan.
 Een upload of maptoegang geeft toestemming voor de aangewezen oefening, niet om alle
 bestanden in een map te verwerken of inhoud elders te delen. Kies bij twijfel een

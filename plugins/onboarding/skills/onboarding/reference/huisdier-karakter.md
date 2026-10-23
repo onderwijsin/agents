@@ -1,6 +1,6 @@
 # Karaktervragen voor de bonus
 
-Gebruik dit materiaal uitsluitend binnen [module 13](module-13.md). Vraag vier tot
+Gebruik dit materiaal uitsluitend binnen [module 14](module-14.md). Vraag vier tot
 zes dingen, hooguit twee per beurt. Sla vragen over die al beantwoord zijn in het
 profiel of eerdere gesprekken; vraag door waar het karakter nog weinig eigen is.
 Vrije antwoorden en eigen ideeën zijn welkom. Er is geen score of persoonlijkheidstest.

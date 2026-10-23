@@ -5,7 +5,8 @@ Deze module wordt in de **desktopapp** uitgevoerd. Controleer platform, zakelijk
 workspace, Work en lokale maptoegang via [functienavigatie](feature-navigation.md).
 Ontbreekt deze mogelijkheid, noteer `unavailable`; een web-upload/download voldoet niet.
 
-Bied drie opdrachten en ruimte voor een eigen passend document:
+Vraag eerst naar een geschikt eigen document en gebruik een kopie. Bied als
+alternatief fictieve documenten aan volgens de [uitvoeringsregels](onboarding-rules.md):
 
 1. Het [beleidsdocument](../assets/exercise-materials/beleidsdocument.md) inkorten.
 2. Het [projectvoorstel](../assets/exercise-materials/projectvoorstel.md) verbeteren.
@@ -14,7 +15,9 @@ Bied drie opdrachten en ruimte voor een eigen passend document:
 ## Uitvoering
 
 1. Laat een aparte oefenmap op de computer maken met een kopie van het gekozen veilige
-   bestand. Gebruik een klein Markdown-bestand voor een direct controleerbare oefening.
+   bestand. Controleer of Work het eigen bestandsformaat betrouwbaar kan bewerken;
+   gebruik de daarvoor beschikbare documentmogelijkheden. Bij ontbrekende ondersteuning
+   kies je samen een ondersteund formaat of een klein fictief Markdown-bestand.
    Indien nodig mag het gebundelde oefenmateriaal één keer lokaal worden opgeslagen.
 2. Laat in de desktopapp een **nieuw lokaal Work-project** maken en die map koppelen
    via de beschikbare projectinstellingen. Geef alleen de benodigde map toegang.
@@ -32,7 +35,8 @@ Bied drie opdrachten en ruimte voor een eigen passend document:
 
 5. Laat het bestand buiten het chatantwoord opnieuw openen vanaf de harde schijf.
    Controleer de opgeslagen wijziging, behoud van feiten en eventuele ongewenste edits.
-   Laat zo nodig één gerichte verbetering in hetzelfde bestand uitvoeren.
+   Laat zo nodig zelf één gerichte verbetering kiezen en in hetzelfde bestand
+   uitvoeren; een eigen revisie of controlekeuze kan de zelfstandige afsluiting aantonen.
 
 Laat de medewerker kiezen en toestemming geven voor het concrete oefenbestand;
 beperk wijzigingen daartoe. Gebruik een kopie zodat origineel werk behouden blijft.

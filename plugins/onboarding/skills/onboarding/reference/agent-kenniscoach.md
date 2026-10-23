@@ -2,10 +2,7 @@
 
 ## Gebruik als referentie
 
-Dit bestand is inspiratie en kwaliteitsreferentie voor Bert, volgens
-[begeleid zelf bouwen](bouwbegeleiding.md). De ideeën en input van de medewerker
-zijn leidend; de uitwerking hieronder is één mogelijkheid. Gebruik vragen en
-gerichte fragmenten bij behoefte, geen ongevraagde volledige bouwinstructie.
+Voorbeeld voor een eigen ontwerp; volg [bouwbegeleiding](bouwbegeleiding.md) voor gebruik en toetsing.
 
 Begeleidingsvraag: Wat wil de medewerker leren, en welke vorm van oefenen en feedback helpt daarbij?
 
@@ -21,11 +18,7 @@ Bevestig thema, leerdoel, ervaringsniveau en beschikbare tijd. Laat een publieke
 of fictieve bronpassage met titel, periode en herkomst aanleveren. Kies of begrip,
 toepassing of het herkennen van uitzonderingen centraal staat. Gebruik geen echte adviescasus.
 
-Onderstaande uitwerking laat één mogelijk ontwerp zien. Begeleid de medewerker
-bij eigen taakkeuzes, instructies en tests. Dit voorbeeld is volledig uitgeschreven
-voor Bert en voor gerichte uitleg, niet als verplichte configuratie. De voorbeeldvariant
-werkt zonder extra skill of los bestand; het eigen ontwerp kan andere passende
-keuzes maken binnen beschikbare functies en beleid.
+Deze voorbeeldvariant gebruikt geen aanvullende skill of los referentiebestand.
 
 ## Uitgewerkt instructievoorbeeld
 

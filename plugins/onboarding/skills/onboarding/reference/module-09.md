@@ -32,6 +32,7 @@ Lees desgewenst een verwante referentie als gids; een voorbeeld kiezen is niet n
 6. Laat een normale opdracht en een passende grensproef uit het eigen werk kiezen
    en via de opgeslagen skill uitvoeren. Bespreek de waargenomen kwaliteit en laat
    gericht bijstellen. Herhaal de relevante proef en gebruik de skill met andere invoer.
+   Laat die toepassing zelf kiezen en beoordelen; dit telt als zelfstandige afsluiting.
 
 Bij vastlopen toon je een klein relevant voorbeeld en laat je de medewerker dat
 vertalen naar de eigen taak. Op verzoek mag een volledig voorbeeld worden getoond;

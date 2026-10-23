@@ -1,46 +1,60 @@
-# Module 13 — Maak je eigen huisdier
+# Module 13 — Maak een bruikbaar werkbestand
 
-Alleen laden na de ontgrendeling in het [curriculum](curriculum.md). Deze module is
-optioneel en telt apart van de twaalf gewone modules.
+Doel: vanuit eigen bronmateriaal een document, presentatie of spreadsheet laten
+maken, openen, controleren en verbeteren. Dit is keuzeverdieping.
+Een chattekst of Space-pagina alleen is geen werkbestand.
 
-## Begeleiding
+## Bron en resultaat kiezen
 
-1. Onthul bij starten: “Je krijgt een eigen bewegend huisdier in ChatGPT. Dat hoeft
-   geen dier te zijn. De afdeling heeft ook een plant met managementambities gezien.”
-   Leg kort uit dat jullie het samen ontwerpen en daarna maken en activeren.
-   De medewerker kan op elk moment stoppen of afzien van de bonus.
-2. Gebruik het bestaande profiel en de [karaktervragen](huisdier-karakter.md).
-   Stel hooguit twee vragen tegelijk; maak er een gesprek van. Bewaar antwoorden
-   en hervatstap compact volgens [voortgang](progress.md).
-3. Stel één karakter voor: naam, vorm, twee karaktertrekken, één eigenaardigheid en
-   een korte visuele beschrijving. Leg met twee concrete aanknopingspunten uit
-   waarom het past. Vraag wat de medewerker wil aanpassen. Het voorstel is klaar
-   wanneer die de richting bevestigt; eigen ideeën gaan voor het voorstel.
-4. Controleer de beschikbare **Work Pets / create-pet**-skill, beeldgeneratie en
-   Pets-tools, plus toestemming volgens het [medewerkersbeleid](organization-policy.md).
-   Een zichtbare tool geeft geen beleidsmatige toestemming. Gebruik alleen het
-   creatieve ontwerp, zonder dossiers, foto's of informatie over collega's.
-   Ontbreekt een toegestane creatieroute, bewaar het ontwerp en registreer de
-   bonus als `unavailable` met reden; de twaalf modules blijven afgerond.
-5. Volg de actuele **create-pet**-skill inclusief haar gebundelde scripts,
-   animatievoorbeelden, Library-opslag en validatie. Geef haar het bevestigde
-   karakter, stijl en de wens om het resultaat te activeren mee. Toon de medewerker
-   de bewegende preview en verwerk eventuele aanpassingen. Houd de technische
-   productie achter de schermen; geef korte updates omdat dit enkele minuten kan duren.
-6. Na geslaagde validatie van de definitieve animatie: `prepare_pet_upload`,
-   `create_pet`, daarna `select_pet`. Volg de actuele toolcontracten voor upload
-   en herstel. Controleer dat `active_pet_id` het nieuwe stabiele ID is en zoek dat
-   ID via `list_pets` met paginering terug. Dit is het installeren en activeren;
-   alleen een afbeelding genereren is daarvoor onvoldoende.
+Gebruik het werkdoel en vraag volgens de [uitvoeringsregels](onboarding-rules.md)
+naar een geschikt eigen document of een echte casus, met fictief materiaal als
+alternatief. Een projectvoorstel, evaluatie, programma of eigen tabel kan dienen
+als bron, voor zover het [medewerkersbeleid](organization-policy.md) dat toestaat.
+Werk op een kopie; het origineel blijft behouden.
 
-## Hervatten en afronden
+Laat één bruikbaar resultaat kiezen, bijvoorbeeld:
 
-Bewaar het stabiele `pet_id` zodra creatie is bevestigd. Is alleen activering
-mislukt, activeer bij hervatten dat bestaande huisdier. Controleer bij een onzekere
-creatie eerst de bestaande huisdieren; maak geen duplicaat. Bestaande huisdieren
-blijven behouden; publiceer of deel het nieuwe huisdier niet automatisch.
+- Een presentatie met conclusies en bespreekpunten uit een evaluatie of projectplan.
+- Een spreadsheet met budgetscenario's, controleerbare berekeningen en een grafiek.
+- Een document met een samenhangend draaiboek uit een voorstel en losse notities.
 
-Afronding: het karakter is door de medewerker bevestigd, de bewegende preview is
-bekeken, het huisdier is aangemaakt én de actieve selectie is via tools bevestigd.
-Bewaar het ID en de verificatie. Sluit kort af met de naam en één passende droge
-opmerking; presenteer de bonus niet als een nieuwe werkverplichting.
+Vraag doelgroep en gewenst gebruik. Spreek één of twee controles af, bijvoorbeeld
+dat cijfers naar de bron herleidbaar zijn of dat open besluiten herkenbaar blijven.
+Laat bij gebrek aan eigen materiaal kiezen uit het fictieve
+[projectvoorstel](../assets/exercise-materials/projectvoorstel.md) en
+[overlegverslag](../assets/exercise-materials/overlegverslag.md). Vul ontbrekende
+evaluatiegegevens niet aan als feiten; kies een passende andere uitwerking of
+maak expliciet fictieve aanvullende gegevens.
+
+## Maken en verbeteren
+
+1. Controleer bestandscreatie en het gewenste formaat in de huidige Work-omgeving.
+   Gebruik de beschikbare document-, presentatie- of spreadsheetmogelijkheden en
+   hun actuele instructies. Verzin geen knoppen of ondersteuning. Kies bijvoorbeeld
+   `.docx`, `.pptx` of `.xlsx` wanneer dat formaat wordt ondersteund.
+2. Laat de medewerker doel, bron, opbouw en kwaliteitscriteria als opdracht geven.
+   Help waar nodig met formuleren. Maak een nieuw bestand op de gekozen private
+   bestemming, zonder het bronbestand te overschrijven of iets te delen.
+3. Laat het resultaat openen in de beschikbare preview of downloaden en openen
+   in een geschikte toepassing. Controleer met de medewerker inhoud én bruikbaarheid:
+   cijfers, bronbetekenis, leesbaarheid en bij een spreadsheet ook formules en labels.
+4. Laat de medewerker zelf één gerichte verbetering kiezen en vragen en de
+   bijgewerkte versie opnieuw openen; schrijf geen prompt voor.
+   Controleer dat de wijziging werkelijk in het bestand staat. Een getoonde belofte
+   of losse chattekst bewijst geen gemaakte of gewijzigde uitvoer. Deze eigen
+   revisie telt als zelfstandige afsluiting; vraag geen tweede wijziging alleen als proef.
+
+Ontbreekt alleen het gekozen formaat, bied een ander passend bestandsformaat aan.
+Ontbreekt bestandscreatie geheel, registreer `unavailable`; een tekstconcept is geen
+voltooiing. De medewerker kan de keuzeverdieping in overleg vervangen.
+
+Afronding: een bruikbaar bestand is werkelijk gemaakt en geopend, aan de gekozen
+criteria getoetst en via een beoordeelde eigen revisie verbeterd.
+Bewaar alleen een veilige resultaatverwijzing en korte verificatie in de voortgang.
+
+## Productbron en verificatie
+
+[OpenAI — Work with files](https://learn.chatgpt.com/docs/artifacts-viewer),
+geraadpleegd op 24 oktober 2026, beschrijft bestandscreatie en gericht reviseren op
+web en desktop. Beschikbare formaten, preview, opslag en resources moeten nog in
+de geïnstalleerde Business-plugin worden getest; documentatie bewijst geen accounttoegang.

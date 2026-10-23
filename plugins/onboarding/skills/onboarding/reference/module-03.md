@@ -48,11 +48,13 @@ Controleer ook of personalisatie is ingeschakeld waar de interface die optie too
 
 ## 4. Proberen en bijstellen
 
-Laat in een nieuw gewoon gesprek twee veilige werkvragen proberen, bijvoorbeeld
-een fictieve projectupdate en een overlegvoorbereiding. Beoordeel samen of stijl,
-lengte en gekozen instructies helpen; verbeter één onhandige voorkeur en probeer
+Laat in een nieuw gewoon gesprek twee passende werkvragen proberen; gebruik het
+gekozen werkdoel en eigen materiaal met fictieve invoer als alternatief. Help bij
+de eerste vraag waar nodig, laat de tweede zelfstandig kiezen en beoordelen.
+Beoordeel of stijl, lengte en instructies helpen; verbeter één onhandige voorkeur en probeer
 opnieuw waar nodig. Een geslaagd antwoord bewijst niet dat alle instellingen zijn
-opgeslagen: laat de medewerker ook de ingestelde waarden bevestigen.
+opgeslagen: laat de medewerker ook de ingestelde waarden bevestigen. De tweede
+vraag telt als zelfstandige afsluiting; voeg geen derde opdracht toe.
 
 Afronding: geheugen en beheeropties zijn bekeken en de keuze is bevestigd;
 schrijfinstellingen zijn bewust gekozen; eigen aangepaste instructies zijn opgeslagen

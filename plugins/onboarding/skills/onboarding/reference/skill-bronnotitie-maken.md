@@ -2,10 +2,7 @@
 
 ## Gebruik als referentie
 
-Dit bestand is inspiratie en kwaliteitsreferentie voor Bert, volgens
-[begeleid zelf bouwen](bouwbegeleiding.md). De ideeën en input van de medewerker
-zijn leidend; de uitwerking hieronder is één mogelijkheid. Gebruik vragen en
-gerichte fragmenten bij behoefte, geen ongevraagde volledige bouwinstructie.
+Voorbeeld voor een eigen ontwerp; volg [bouwbegeleiding](bouwbegeleiding.md) voor gebruik en toetsing.
 
 Begeleidingsvraag: Welke eigen onderzoeksvraag moet de notitie helpen beantwoorden, en welk bewijs is daarvoor nodig?
 
@@ -20,10 +17,6 @@ Bevestig onderzoeksvraag, doelgroep en gewenste lengte. Laat twee publieke of
 fictieve bronpassages aanleveren met titel, herkomst en beschikbare datum/link.
 De basis gebruikt aangeleverde teksten; live webonderzoek is geen vereiste of
 stilzwijgende vervolgstap.
-
-Onderstaande uitwerking laat één mogelijke skill zien. Help de medewerker een
-eigen naam, activatie, aanpak en tests ontwikkelen. De voorbeeldtekst bevat haar
-werkwijze volledig, zodat Bert die als kwaliteitsreferentie kan gebruiken.
 
 ## Uitgewerkt SKILL.md-voorbeeld
 

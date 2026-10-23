@@ -2,10 +2,7 @@
 
 ## Gebruik als referentie
 
-Dit bestand is inspiratie en kwaliteitsreferentie voor Bert, volgens
-[begeleid zelf bouwen](bouwbegeleiding.md). De ideeën en input van de medewerker
-zijn leidend; de uitwerking hieronder is één mogelijkheid. Gebruik vragen en
-gerichte fragmenten bij behoefte, geen ongevraagde volledige bouwinstructie.
+Voorbeeld voor een eigen ontwerp; volg [bouwbegeleiding](bouwbegeleiding.md) voor gebruik en toetsing.
 
 Begeleidingsvraag: Welke content wil de medewerker beoordelen, en welke selectie en verbetercriteria passen bij het eigen werk?
 

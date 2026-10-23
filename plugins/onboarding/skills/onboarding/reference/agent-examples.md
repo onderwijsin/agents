@@ -26,7 +26,8 @@ kwaliteitsreferentie en gids bij het eigen ontwerp. Voorbeeldinstructies en proe
 zijn geen voorgeschreven eindresultaat of checklist die letterlijk moet worden gevolgd.
 Bepaal tests en afhankelijkheden vanuit de keuzes van de medewerker.
 
-Toon een passend fragment op verzoek of bij vastlopen en help het vertalen naar
+Toon bij beperkte voorkennis vooraf een klein passend fragment, en verder op
+verzoek of bij vastlopen; help het vertalen naar
 het eigen werk. Een volledig voorbeeld mag op verzoek, maar presenteer het niet
 als 'kopieer, plak en klaar'. Ontwerp, echte uitvoering, beoordeling en verbetering
 blijven onderdeel van de oefening, ook bij veel hulp van Bert.

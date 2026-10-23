@@ -33,7 +33,8 @@ kiezen; ze bepalen niet wat de medewerker moet bouwen.
    en resources laden. Een pluginskill is niet automatisch beschikbaar voor een agent.
 5. Laat de medewerker een normale opdracht en een grensgeval kiezen die het eigen
    doel en de belangrijkste beperking toetsen. Voer ze uit met de gemaakte agent.
-   Beoordeel samen resultaat, bronnen en gedrag; laat de instructies of configuratie
+   Laat minstens één proef zelf kiezen en controleren; die telt als zelfstandige
+   afsluiting. Beoordeel samen resultaat, bronnen en gedrag; laat de instructies of configuratie
    gericht verbeteren en test de relevante wijziging opnieuw.
 6. Laat de medewerker doel, ontwerpkeuzes en grenzen uitleggen. Bewaar het eigen
    resultaat persoonlijk. Delen en planning zijn afzonderlijke keuzes met hun

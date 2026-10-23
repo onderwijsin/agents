@@ -2,10 +2,7 @@
 
 ## Gebruik als referentie
 
-Dit bestand is inspiratie en kwaliteitsreferentie voor Bert, volgens
-[begeleid zelf bouwen](bouwbegeleiding.md). De ideeën en input van de medewerker
-zijn leidend; de uitwerking hieronder is één mogelijkheid. Gebruik vragen en
-gerichte fragmenten bij behoefte, geen ongevraagde volledige bouwinstructie.
+Voorbeeld voor een eigen ontwerp; volg [bouwbegeleiding](bouwbegeleiding.md) voor gebruik en toetsing.
 
 Begeleidingsvraag: Welke projectkeuzes wil de medewerker vóór de start zichtbaar maken, en welke voorwaarden staan al vast?
 
@@ -20,10 +17,6 @@ Bevestig projectdoel, gewenste uitvoer en welke voorwaarden vaststaan.
 Gebruik het [fictieve projectvoorstel](../assets/exercise-materials/projectvoorstel.md).
 Een tweede aangeleverd document kan voorwaarden verduidelijken; leg de herkomst
 van beide vast. De skill vraagt geen dossierkoppeling of planningsapp.
-
-Onderstaande uitwerking laat één mogelijke skill zien. Help de medewerker een
-eigen naam, activatie, aanpak en tests ontwikkelen. De voorbeeldtekst bevat haar
-werkwijze volledig, zodat Bert die als kwaliteitsreferentie kan gebruiken.
 
 ## Uitgewerkt SKILL.md-voorbeeld
 

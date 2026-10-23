@@ -2,10 +2,7 @@
 
 ## Gebruik als referentie
 
-Dit bestand is inspiratie en kwaliteitsreferentie voor Bert, volgens
-[begeleid zelf bouwen](bouwbegeleiding.md). De ideeën en input van de medewerker
-zijn leidend; de uitwerking hieronder is één mogelijkheid. Gebruik vragen en
-gerichte fragmenten bij behoefte, geen ongevraagde volledige bouwinstructie.
+Voorbeeld voor een eigen ontwerp; volg [bouwbegeleiding](bouwbegeleiding.md) voor gebruik en toetsing.
 
 Begeleidingsvraag: Wat telt in het eigen werk als een actie, en welke gegevens moeten aantoonbaar uit de notities komen?
 
@@ -21,10 +18,6 @@ Bevestig de gewenste uitvoer, bijvoorbeeld een korte actietabel. Gebruik het
 [fictieve overlegverslag](../assets/exercise-materials/overlegverslag.md).
 Voor relatieve termijnen is de datum en zo nodig tijdzone van de notitie nodig.
 Er zijn geen apps, losse resources of externe takenlijst nodig.
-
-Onderstaande uitwerking laat één mogelijke skill zien. Help de medewerker een
-eigen naam, activatie, aanpak en tests ontwikkelen. De voorbeeldtekst bevat haar
-werkwijze volledig, zodat Bert die als kwaliteitsreferentie kan gebruiken.
 
 ## Uitgewerkt SKILL.md-voorbeeld
 

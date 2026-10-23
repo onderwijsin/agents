@@ -1,9 +1,9 @@
 # Module 2 — Veilig gebruik, organisatiebeleid en usage
 
-Doel: 2FA inschakelen, gegevens en pluginrechten verantwoord beoordelen en de eigen usage vinden.
+Doel: 2FA controleren, gegevens verantwoord kiezen en de eigen gebruikslimieten vinden.
 Lees [ChatGPT-beleid voor medewerkers](organization-policy.md) en [gebruik en limieten](usage.md).
 Leg kort uit: bronnen controleren, AI kan fouten maken, de medewerker beoordeelt
-het resultaat. Controleer de zakelijke workspace en bespreek welke gegevens de
+het resultaat. Gebruik de al gecontroleerde zakelijke workspace en bespreek welke gegevens de
 medewerker in ChatGPT mag invoeren, uploaden of via koppelingen ontsluiten.
 Vraag nooit om codes, wachtwoorden of een screenshot met gevoelige gegevens.
 
@@ -18,7 +18,9 @@ Lukt instellen niet, help of verwijs naar de systeembeheerder; dit onderdeel bli
 
 ## Veilig gebruik en usage
 
-Bespreek deze drie situaties één voor één en laat eerst de medewerker kiezen:
+Bespreek deze drie situaties en laat eerst de medewerker kiezen. De laatste
+zelfstandig gemotiveerde keuze telt ook als afsluiting; voeg geen vierde scenario toe.
+Bij beginners behandel je ze één voor één:
 
 1. Een openbaar kennisbankartikel samenvatten. Geschikt voor de oefening; controleer
    de bron en samenvatting, ook als het onderwerp bekend lijkt.
@@ -26,12 +28,11 @@ Bespreek deze drie situaties één voor één en laat eerst de medewerker kiezen
    contactgegevens en adviesvoorkeuren mogen; medische informatie of gegevens uit
    een selectie- of HR-dossier niet. Laat de medewerker aangeven wat vóór gebruik
    moet worden verwijderd of gemaskeerd. Oefen met fictieve passages.
-3. Een plugin toegang tot organisatiegegevens geven. Controleer dienst, gegevens,
-   gevraagde rechten en bereikbare gevoelige gegevens. Laat bijvoorbeeld kiezen tussen
-   publieke kennis via Onderwijsloket en de nog
-   niet toegestane Outlook Email-koppeling. Leg uit waarom alleen-lezen en een
-   zichtbare plugin geen toestemming bewijzen. Gebruik de actuele gebundelde tabel;
-   ga geen echte verboden bron testen.
+3. Een plugin toegang tot organisatiegegevens geven. Laat kiezen tussen publieke
+   kennis via Onderwijsloket en de nog niet toegestane Outlook Email-koppeling.
+   Bespreek waarom zichtbaarheid of alleen-lezen geen toestemming bewijst.
+   De eigen plugin en concrete rechten worden in module 7 beoordeeld; houd het hier
+   bij de gegevenskeuze. Test geen echte verboden bron.
 
 Leg ook uit dat alleen de aangeboden ChatGPT Business-omgeving voor werk is toegestaan.
 Bespreek bij authenticatie kort de eigen inlogmethode per dienst, het verbod op
