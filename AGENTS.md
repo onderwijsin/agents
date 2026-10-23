@@ -48,7 +48,11 @@ Verify claimed host behavior through installation and representative tasks, rath
 runtime compatibility from matching file formats.
 
 Create marketplace-distributed skills inside exactly one plugin; keep resources within that package.
-For workspace agents, author standalone skills under `agents/<agent-name>/skills/` for manual upload.
+For workspace agents, author shared standalone skills under root `skills/` for manual upload.
+Declare dependencies in agent instruction frontmatter and matching consumer arrays in each skill's
+`metadata.agents`. Before changing a shared skill, inspect
+all declared consumers and preserve their authority, inputs and behavior; review affected workflows.
+Keep the root README inventories aligned when adding, removing or renaming plugins, skills or agents.
 Workspace agents can use apps (MCPs) and standalone workspace skills, but cannot use plugins or
 plugin-bundled skills. Follow [agent deployment](docs/agent-deployment.md) for this separate route.
 Use the containing plugin version for bundled skill changes. Keep `.agents/skills/` for repository

@@ -3,7 +3,7 @@
 Maintained workspace-agent source for documentation audits and draft PR follow-up.
 The orchestration and permissions are in [INSTRUCTION.md](INSTRUCTION.md).
 Read-only repository selection and the request template are in the standalone
-[github-activity-discovery skill](skills/github-activity-discovery/SKILL.md).
+[github-activity-discovery skill](../../skills/github-activity-discovery/SKILL.md).
 The GitHub account and action policy are in [apps/github.yaml](apps/github.yaml).
 
 ## Operating modes
@@ -132,8 +132,10 @@ workflow still require testing in the deployed agent.
 
 Follow [agent deployment](../../docs/agent-deployment.md):
 
-1. Upload `skills/github-activity-discovery/` as a standalone workspace skill and
-   link it to Docs Drift alongside `docs-sync-audit` and `code-documentation`.
+1. Upload or reconcile `github-activity-discovery`, `docs-sync-audit` and `code-documentation`
+   from their root `skills/` directories once in the workspace. Link all three uploaded skills
+   to Docs Drift; root sources are outside marketplace synchronization. Before shared edits,
+   check each skill's `metadata.agents` and run `pnpm validate` for matching consumer declarations.
 2. Attach `files/docs-drift-reference.md` as `docs-drift-reference.md`, preserving
    its filename alongside the existing `pr-review-follow-up.md`.
 3. Copy the Markdown body of `INSTRUCTION.md`, excluding YAML frontmatter, into
@@ -141,8 +143,9 @@ Follow [agent deployment](../../docs/agent-deployment.md):
    and read-only commit-search diagnostics. Audit and writing guidance now load
    when their respective workflow steps begin.
 
-App permissions and standalone skills are unchanged; the configuration reference
-is a new required connected file. This README is maintainer
+The audit-mode change retains the same app permissions and required skill names; its configuration
+reference is required. Their canonical skill sources now live under root `skills/`, with
+`metadata.agents` arrays and manual workspace uploads as described in the deployment guide. This README is maintainer
 documentation, not a connected file. Discovery uses seven 24-hour intervals for
 a seven-day window, bisects saturated intervals, and tracks coverage in a run-local
 ledger. At the timestamp precision limit it partitions by inventory repository,

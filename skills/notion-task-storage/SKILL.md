@@ -2,6 +2,8 @@
 name: notion-task-storage
 description: Discover a configured Notion task database, map its live schema, list and read scoped tasks, search all task states, and create, update and verify authorized tasks. Use as the Notion provider for task-storage; accepts destination and mapping overrides without personal database defaults.
 license: MIT
+metadata:
+  agents: [commitment-manager, task-manager]
 ---
 
 # Notion task storage

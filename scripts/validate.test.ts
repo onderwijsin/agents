@@ -5,13 +5,14 @@ import {
   mkdtemp,
   mkdir,
   readFile,
+  readdir,
   realpath,
   rm,
   symlink,
   writeFile,
 } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { join, relative } from "node:path";
 import { test } from "node:test";
 import { fileURLToPath } from "node:url";
 import { stripAnsi } from "consola/utils";
@@ -32,10 +33,34 @@ async function fixture(run: (root: string) => Promise<void>): Promise<void> {
       join(root, ".claude-plugin/marketplace.json"),
       JSON.stringify({ name: "test", owner: { name: "Test" }, plugins: [] }),
     );
+    await inventoryReadme(root);
     await run(root);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
+}
+
+/** Seed readable inventories; individual tests mutate them to exercise drift detection. */
+async function inventoryReadme(root: string): Promise<void> {
+  const lines = ["# Collection", ""];
+  for (const [directory, heading, label, filename] of [
+    ["plugins", "Plugins", "Name", "README.md"],
+    ["skills", "Skills", "Name", "SKILL.md"],
+    ["agents", "Workspace agents", "Agent", "README.md"],
+  ] as const) {
+    lines.push(`## ${heading}`, "", `| ${label} | Purpose |`, "| --- | --- |");
+    let entries: string[];
+    try {
+      entries = await readdir(join(root, directory));
+    } catch (error: unknown) {
+      if (!(error instanceof Error && "code" in error && error.code === "ENOENT")) throw error;
+      entries = [];
+    }
+    for (const id of entries.sort())
+      lines.push(`| [${id}](${directory}/${id}/${filename}) | Purpose. |`);
+    lines.push("");
+  }
+  await writeFile(join(root, "README.md"), lines.join("\n"));
 }
 
 /** Write a bundled skill with supplied metadata for boundary tests. */
@@ -115,6 +140,7 @@ test("missing plugin files and catalog duplication fail", async () => {
       join(root, "plugins/draft/skills/draft/SKILL.md"),
       "---\nname: draft\ndescription: Draft text when asked.\n---\n# Draft\n\nWrite text.\n",
     );
+    await inventoryReadme(root);
     await validate(root);
   });
 });
@@ -203,6 +229,7 @@ async function addPlugin(root: string): Promise<string> {
       plugins: [{ name: "draft", source: "./plugins/draft" }],
     }),
   );
+  await inventoryReadme(root);
   return path;
 }
 
@@ -553,13 +580,235 @@ test("presentation icons require contained PNG assets", async () => {
   });
 });
 
-test("root skills are rejected while repository development skills are outside distribution", async () => {
+/** Add one standalone source and a valid agent with each dependency type. */
+async function addWorkspaceAgent(root: string, id = "first"): Promise<string> {
+  const path = join(root, "agents", id);
+  await mkdir(join(path, "apps"), { recursive: true });
+  const consumers = (await readdir(join(root, "agents"))).sort();
+  await mkdir(join(root, "skills/shared/references"), { recursive: true });
+  await writeFile(
+    join(root, "skills/shared/SKILL.md"),
+    `---\nname: shared\ndescription: Review tasks when asked.\nmetadata:\n  agents: ${JSON.stringify(consumers)}\n---\n# Review\n\n[Policy](references/policy.md)\n`,
+  );
+  await writeFile(join(root, "skills/shared/references/policy.md"), "# Policy\n");
+  await mkdir(join(path, "apps"), { recursive: true });
+  await mkdir(join(path, "files"));
+  await writeFile(join(path, "README.md"), "# Agent\n");
+  await writeFile(join(path, "apps/microsoft_outlook_email.yaml"), "read_actions: true\n");
+  await writeFile(join(path, "files/context.md"), "# Context\n");
+  await writeFile(
+    join(path, "INSTRUCTION.md"),
+    "---\nchannel: chatgpt\napps: [microsoft_outlook_email]\nskills: [shared]\nfiles: [context.md]\nmemory: true\n---\n## Role\nReview the selected tasks.\n",
+  );
+  await inventoryReadme(root);
+  return path;
+}
+
+test("standalone workspace skills share one source and derive consumers from agent metadata", async () => {
   await fixture(async (root) => {
     await mkdir(join(root, ".agents/skills/internal"), { recursive: true });
     await writeFile(join(root, ".agents/skills/internal/SKILL.md"), "Contributor instructions");
+    await addWorkspaceAgent(root);
+    await addWorkspaceAgent(root, "second");
+    await mkdir(join(root, "skills/unused"));
+    await writeFile(
+      join(root, "skills/unused/SKILL.md"),
+      "---\nname: unused\ndescription: Draft.\nmetadata:\n  agents: []\n---\n# Draft\n",
+    );
+    await inventoryReadme(root);
+    const original = await readFile(join(root, "skills/shared/SKILL.md"));
     await validate(root);
-    await mkdir(join(root, "skills"));
-    await assert.rejects(validate(root), /Distributable skills belong inside plugins/);
+    const report = await inspect(root);
+    assert.deepEqual(report.skillConsumers, { shared: ["first", "second"], unused: [] });
+    assert.match(formatReport(report, root), /shared: first, second/);
+    assert.match(formatReport(report, root), /unused: no declared agents/);
+    assert.deepEqual(await readFile(join(root, "skills/shared/SKILL.md")), original);
+  });
+});
+
+test("workspace metadata.agents requires unique names and matches both sides of the consumer contract", async () => {
+  await fixture(async (root) => {
+    await addWorkspaceAgent(root);
+    const path = join(root, "skills/shared/SKILL.md");
+    const source = await readFile(path, "utf8");
+    for (const replacement of [
+      "agents: []",
+      "agents: [unknown-agent]",
+      "agents: [first, first]",
+      "agents: first",
+    ]) {
+      await writeFile(path, source.replace('agents: ["first"]', replacement));
+      await assert.rejects(validate(root), /Workspace skill (metadata|agent consistency)/);
+    }
+    await writeFile(path, source.replace('metadata:\n  agents: ["first"]\n', ""));
+    await assert.rejects(validate(root), /Workspace skill metadata/);
+    await writeFile(path, source);
+    const instruction = join(root, "agents/first/INSTRUCTION.md");
+    const originalInstruction = await readFile(instruction, "utf8");
+    await writeFile(instruction, originalInstruction.replace("skills: [shared]", "skills: []"));
+    await assert.rejects(validate(root), /unexpected: first/);
+    await writeFile(instruction, originalInstruction);
+    await addWorkspaceAgent(root, "second");
+    // Array order is immaterial; unrelated metadata retains the string-value contract.
+    await writeFile(
+      path,
+      source.replace('agents: ["first"]', "agents: [second, first]\n  owner: team"),
+    );
+    await validate(root);
+    await writeFile(path, source);
+    await assert.rejects(validate(root), /missing: second/);
+  });
+  await fixture(async (root) => {
+    await addSkill(root, "name: draft\ndescription: Draft.\nmetadata:\n  agents: [first]");
+    await assert.rejects(validate(root), /expected string/);
+  });
+});
+
+test("missing workspace skill, app and file dependencies are all reported without plugin fallback", async () => {
+  await fixture(async (root) => {
+    const path = await addWorkspaceAgent(root);
+    await addPlugin(root);
+    const instruction = join(path, "INSTRUCTION.md");
+    await writeFile(
+      instruction,
+      (await readFile(instruction, "utf8")).replace(
+        "skills: [shared]",
+        "skills: [draft, constructor]",
+      ),
+    );
+    await rm(join(path, "apps/microsoft_outlook_email.yaml"));
+    await rm(join(path, "files/context.md"));
+    const report = await inspect(root);
+    const failures = report.results.filter((result) => result.status === "failed");
+    for (const rule of [
+      "Workspace agent skill dependency",
+      "Workspace agent app dependency",
+      "Workspace agent file dependency",
+    ]) {
+      assert.ok(
+        failures.some((result) => result.rule === rule && result.file === instruction),
+        rule,
+      );
+    }
+    assert.deepEqual(report.skillConsumers.draft, ["first"]);
+    assert.deepEqual(report.skillConsumers.constructor, ["first"]);
+    const output = formatReport(report, root);
+    for (const target of [
+      "skills/draft/SKILL.md",
+      "apps/microsoft_outlook_email.yaml",
+      "files/context.md",
+    ])
+      assert.ok(output.includes(target), target);
+    await assert.rejects(validate(root), /must exist at/);
+  });
+});
+
+test("invalid agent metadata blocks dependencies but not skill resources or neighboring agents", async () => {
+  await fixture(async (root) => {
+    const path = await addWorkspaceAgent(root);
+    await addWorkspaceAgent(root, "second");
+    await writeFile(
+      join(path, "INSTRUCTION.md"),
+      "---\nchannel: chatgpt\napps: []\nskills: [shared, shared]\nfiles: []\nmemory: 'true'\n---\n## Role\nReview.\n",
+    );
+    await writeFile(
+      join(root, "skills/shared/references/policy.md"),
+      "# Policy\n\n[Missing](missing.md)\n",
+    );
+    const report = await inspect(root);
+    assert.ok(
+      report.results.some((r) => r.rule === "Workspace agent metadata" && r.status === "failed"),
+    );
+    assert.ok(
+      report.results.some(
+        (r) => r.rule === "Workspace agent dependencies" && r.status === "skipped",
+      ),
+    );
+    assert.ok(report.results.some((r) => r.rule === "Markdown links" && r.status === "failed"));
+    assert.deepEqual(report.skillConsumers.shared, ["second"]);
+    assert.match(formatReport(report, root), /Index may be incomplete/);
+    await writeFile(
+      join(path, "INSTRUCTION.md"),
+      "---\nskills: []\nskills: []\n---\n## Role\nReview.\n",
+    );
+    await assert.rejects(validate(root), /unique/);
+  });
+});
+
+test("workspace dependency names reject traversal and dependency targets must be files", async () => {
+  await fixture(async (root) => {
+    const path = await addWorkspaceAgent(root);
+    const instruction = join(path, "INSTRUCTION.md");
+    const source = await readFile(instruction, "utf8");
+    for (const [before, after] of [
+      ["apps: [microsoft_outlook_email]", "apps: [../other]"],
+      ["skills: [shared]", "skills: [../shared]"],
+      ["files: [context.md]", "files: [../context.md]"],
+    ] as const) {
+      await writeFile(instruction, source.replace(before, after));
+      await assert.rejects(validate(root), /Workspace agent metadata/);
+    }
+    await writeFile(instruction, source);
+    await rm(join(path, "apps/microsoft_outlook_email.yaml"));
+    await mkdir(join(path, "apps/microsoft_outlook_email.yaml"));
+    await rm(join(path, "files/context.md"));
+    await mkdir(join(path, "files/context.md"));
+    const report = await inspect(root);
+    assert.equal(
+      report.results.filter(
+        (r) => /Workspace agent (app|file) dependency/.test(r.rule) && r.status === "failed",
+      ).length,
+      2,
+    );
+  });
+});
+
+test("workspace skills validate metadata and transitive resources without sibling fallbacks", async () => {
+  await fixture(async (root) => {
+    await addWorkspaceAgent(root);
+    await mkdir(join(root, "skills/other"));
+    await writeFile(join(root, "skills/other/SKILL.md"), "# Missing metadata\n");
+    await writeFile(
+      join(root, "skills/shared/references/policy.md"),
+      "# Policy\n\n[Other](../../other/SKILL.md)\n",
+    );
+    await assert.rejects(validate(root), /missing YAML frontmatter/);
+    await assert.rejects(validate(root), /link escapes package/);
+    await writeFile(
+      join(root, "skills/other/SKILL.md"),
+      "---\nname: wrong\ndescription: Draft.\nmetadata:\n  agents: []\n---\n# Draft\n",
+    );
+    await assert.rejects(validate(root), /name must match directory/);
+    await rm(join(root, "skills/shared/SKILL.md"));
+    await assert.rejects(validate(root), /Workspace agent skill dependency/);
+  });
+});
+
+test("workspace skills reject symlinks and agent-local skill directories", async () => {
+  await fixture(async (root) => {
+    const path = await addWorkspaceAgent(root);
+    await mkdir(join(path, "skills/shared"), { recursive: true });
+    await assert.rejects(validate(root), /not agent-local skills/);
+    await rm(join(path, "skills"), { recursive: true });
+    await symlink(
+      join(root, "skills/shared/references/policy.md"),
+      join(root, "skills/shared/references/linked.md"),
+    );
+    await assert.rejects(validate(root), /symlinks are not distributable/);
+    await rm(join(root, "skills/shared/references/linked.md"));
+    await symlink(join(root, "skills/shared"), join(root, "skills/alias"));
+    await assert.rejects(validate(root), /expected a content directory/);
+    await rm(join(root, "skills/alias"));
+    await rm(join(path, "apps/microsoft_outlook_email.yaml"));
+    await symlink(
+      join(root, "skills/shared/references/policy.md"),
+      join(path, "apps/microsoft_outlook_email.yaml"),
+    );
+    await assert.rejects(validate(root), /reference escapes/);
+  });
+  await fixture(async (root) => {
+    await symlink(join(root, "missing"), join(root, "skills"));
+    await assert.rejects(validate(root), /expected a real directory/);
   });
 });
 
@@ -703,5 +952,68 @@ test("CLI prints the complete report before exiting successfully or unsuccessful
     assert.equal(colored.status, 1);
     assert.notEqual(stripAnsi(colored.stdout), colored.stdout);
     assert.equal(stripAnsi(colored.stdout), failed.stdout);
+  });
+});
+
+test("README inventory tables report missing, stale and duplicate entries independently", async () => {
+  await fixture(async (root) => {
+    await addPlugin(root);
+    await addWorkspaceAgent(root);
+    const readme = join(root, "README.md");
+    const original = await readFile(readme, "utf8");
+    await writeFile(
+      readme,
+      original
+        .replace("| [draft](plugins/draft/README.md) | Purpose. |", "")
+        .replace(
+          "| [shared](skills/shared/SKILL.md) | Purpose. |",
+          "| [ghost](skills/ghost/SKILL.md) | Purpose. |",
+        )
+        .replace(
+          "| [first](agents/first/README.md) | Purpose. |",
+          "| [first](agents/first/README.md) | Purpose. |\n| [first](agents/first/README.md) | Again. |",
+        ),
+    );
+    const report = await inspect(root);
+    const failures = report.results.filter(
+      (r) => r.status === "failed" && /^README .* inventory$/.test(r.rule),
+    );
+    assert.equal(failures.length, 3);
+    const output = formatReport(report, root);
+    assert.match(output, /missing: draft/);
+    assert.match(output, /missing: shared; unexpected: ghost/);
+    assert.match(output, /duplicate names/);
+    for (const failure of failures) assert.equal(failure.file, readme);
+    await writeFile(readme, original);
+    await validate(root);
+    await validate(relative(process.cwd(), root));
+  });
+});
+
+test("README inventories require canonical links in the right table, ignoring prose and fenced examples", async () => {
+  await fixture(async (root) => {
+    await addPlugin(root);
+    const readme = join(root, "README.md");
+    const original = await readFile(readme, "utf8");
+    const row = "| [draft](plugins/draft/README.md) | Purpose. |";
+    await writeFile(
+      readme,
+      original.replace(row, "") +
+        `\n[Draft](plugins/draft/README.md)\n\n\`\`\`md\n${row}\n\`\`\`\n`,
+    );
+    await assert.rejects(validate(root), /missing: draft/);
+    await writeFile(
+      readme,
+      original.replace(row, "| [Draft](plugins/draft/plugin.json) | Purpose. |"),
+    );
+    await assert.rejects(validate(root), /expected plugins\/<name>\/README.md/);
+    await writeFile(readme, original.replace(row, "| Draft | Purpose. |"));
+    await assert.rejects(validate(root), /one local entry link/);
+    await writeFile(readme, original.replace("## Plugins", "## Packages"));
+    await assert.rejects(validate(root), /exactly one "Plugins" section/);
+    await writeFile(readme, original.replace("## Skills\n", "## Skills\n\n## Skills\n"));
+    await assert.rejects(validate(root), /exactly one "Skills" section/);
+    await rm(readme);
+    await assert.rejects(validate(root), /README inventory source/);
   });
 });

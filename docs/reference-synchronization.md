@@ -4,10 +4,15 @@ Maintain shared reference documents once at plugin root and distribute only the
 Markdown each skill needs inside its installed directory. The synchronizer prepares
 those copies; the validator independently checks the resulting resource paths.
 
+This guide applies to `plugins/` only. Root `skills/` contains independently uploaded workspace
+skills with their own `references/` and resources. Those shared skills are uploaded once and
+attached to consumers; they have no generated copies, ownership manifests or sync step. See
+[skill authoring](creating-skills.md) and [workspace deployment](agent-deployment.md).
+
 ## Resource paths
 
-Use singular **`reference/`** for reference directories in distributed plugins and
-skills. This is the repository's chosen OpenAI-targeted packaging convention; the
+Use singular **`reference/`** for reference directories inside plugins, including their bundled
+skills. Root workspace skills use plural `references/`. This is the repository's chosen OpenAI-targeted packaging convention; the
 [Agent Skills specification](https://agentskills.io/specification) permits additional
 directories and illustrates `references/`, so singular spelling is not a universal
 specification requirement. The [OpenAI packaging guide](https://developers.openai.com/plugins/build/plugins)

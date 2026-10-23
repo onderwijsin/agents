@@ -2,6 +2,8 @@
 name: task-review
 description: Review a configured personal task list for completion evidence, planning, aging backlog, quality and next-up priorities. Use for recurring reviews, focused maintenance and task-specific approval follow-ups through task-storage.
 license: MIT
+metadata:
+  agents: [task-manager]
 ---
 
 # Review and maintain tasks

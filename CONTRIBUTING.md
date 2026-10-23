@@ -28,12 +28,17 @@ folders; the repository content itself is open source under MIT.
 - Follow [creating skills](docs/creating-skills.md) and [creating plugins](docs/creating-plugins.md).
 - Create marketplace-distributed skills in `plugins/<plugin-name>/skills/<skill-name>/`.
   Use a single-skill plugin for an independent capability.
-- For workspace agents, create standalone skills in `agents/<agent-name>/skills/<skill-name>/`
-  for separate manual upload and linking. Agents cannot use plugins or plugin-bundled skills;
+- For workspace agents, create standalone skills in `skills/<skill-name>/`
+  for manual upload once per workspace and linking to consuming agents. Declare dependencies
+  in agent frontmatter and matching consumer names in each skill's `metadata.agents` array.
+  Use `agents: []` for standalone-only skills. Review every consumer before shared changes.
+  Agents cannot use plugins or plugin-bundled skills;
   follow [agent deployment](docs/agent-deployment.md).
 - Include a README for each plugin package with usage, prerequisites, examples,
   supported hosts, and limitations. Keep bundled skill instructions inside their package.
 - Update both catalogs when adding a plugin. Catalogs reference plugin packages.
+- Keep the root README inventory tables aligned with `plugins/`, `skills/` and `agents/`.
+  Validation checks entries and dependency declarations; it does not validate live deployment.
 - Version bundled skill changes through the containing plugin; individual skills need no version.
 - Add only resources needed by the capability; do not duplicate content for each provider.
 - Author shared references in plugin-root `reference/` and link to their installed
@@ -45,7 +50,8 @@ folders; the repository content itself is open source under MIT.
 Submit a focused pull request describing the user benefit, changed behavior, compatibility,
 and validation evidence. Run `pnpm check` and manually exercise new content on every platform
 claimed as supported. Passing structural checks does not prove runtime compatibility.
-Maintainers review before merging; workspace sync can distribute merged catalog entries.
+Maintainers review before merging. Marketplace synchronization distributes plugin content;
+root workspace skills and agent definitions require manual workspace updates after review.
 The [release workflow](docs/releases.md) prepares independent plugin versions on PRs before
 merge and tags merged versions. Patch is the default; PR labels select minor or major bumps.
 No changesets or changelogs are required.

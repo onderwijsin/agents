@@ -22,13 +22,16 @@ page representation. A reusable skill inherits the caller's authorized scope rat
 
 Workspace agents can use apps (MCPs) and standalone workspace skills uploaded separately.
 They cannot use plugins or plugin-bundled skills. Author their skills under
-`agents/<agent-name>/skills/<skill-name>/`, with all required resources inside each skill.
+`skills/<skill-name>/`, with all required resources inside each skill.
 Upload and link every dependency individually; plugin installation does not make it available.
 
-A workspace skill may serve several agents. Its source under one agent folder records a
-maintained dependency, not exclusive ownership. Reuse that canonical source and uploaded skill
-when linking another agent. Marketplace packages serve a separate distribution route and cannot
-stand in for these uploaded dependencies.
+A workspace skill may serve several agents. Reuse its root `skills/` source and upload it once,
+then attach the same workspace skill to every consumer. Agent instruction frontmatter is the
+dependency list; each skill's `metadata.agents` array exposes its consumers. `pnpm validate`
+checks both lists agree and prints the reverse index. A skill may also be used standalone;
+`agents: []` means it currently has no declared agent consumers. Review all consumers before changing a shared skill, preserving caller-specific inputs, permissions and
+behavior. Structural checks establish dependency presence, not behavioral compatibility.
+Marketplace packages serve a separate distribution route and cannot stand in for these uploads.
 
 ## Keep instructions operational
 
@@ -66,17 +69,20 @@ write outcome requires a lookup before retrying. Count only verified writes as s
 
 ## Make recurring runs recoverable
 
-Use incremental windows with an overlap that fits the source, a first-run fallback,
-and checkpoints advanced only after successful processing. Resolve relative dates
-against the originating event timestamp; give human-facing dates an explicit timezone.
+Resolve invocation settings independently for each manual or scheduled run. Keep the host
+schedule, requested evidence window and planning horizon distinct. For incremental discovery,
+record coverage and gaps, with checkpoints advanced only after successful processing. Use an
+overlap only where the workflow defines it; a checkpoint never silently widens or narrows an
+explicit requested window. Task-list reviews may inspect the current selection afresh each run.
+Resolve relative dates against the originating event timestamp and report an explicit timezone.
 
 Keep Memory compact: checkpoints, identifiers, unresolved gaps, and explicit decisions.
 Keep live service data authoritative. Missing or stale Memory should cause extra
 verification rather than duplicate writes or invented coverage. Runtime memory files
 are separate from version-controlled connected references.
 
-Report outcomes users can verify: created items with direct links, existing matches,
-questions needing judgment, and coverage or write failures. Keep reports proportional
+Report outcomes users can verify: created or updated items with direct links, existing matches,
+proposals awaiting approval, questions needing judgment, and coverage or write failures. Keep reports proportional
 to the task and preserve the original language of source-derived titles when useful.
 
 ## Review source and behavior separately

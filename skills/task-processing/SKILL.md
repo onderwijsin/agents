@@ -2,6 +2,8 @@
 name: task-processing
 description: Qualify commitment candidates, merge repeated evidence, and decide whether to create tasks or report existing matches and ambiguity. Use after commitment scanning or when processing an evidence-backed task request, independently of the storage provider.
 license: MIT
+metadata:
+  agents: [commitment-manager]
 ---
 
 # Process commitment tasks

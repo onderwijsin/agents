@@ -11,15 +11,15 @@ This README covers maintenance, deployment and verification.
 
 ## Composition
 
-| Source                                                     | Responsibility                                                                                                                                       |
-| ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [INSTRUCTION.md](INSTRUCTION.md)                           | Role, request modes, workflow, permissions, Memory and report. Frontmatter is a local deployment checklist.                                          |
-| [Configuration reference](files/task-manager-reference.md) | Invocation precedence, defaults, scopes, examples and history isolation. Attach with this exact filename.                                            |
-| [task-review](skills/task-review/SKILL.md)                 | Review decisions, maintenance permissions and approval follow-ups.                                                                                   |
-| [task-storage](skills/task-storage/SKILL.md)               | Provider routing and normalized discovery, listing, reading, search, creation, update and verification contract. Caller authority limits operations. |
-| [notion-task-storage](skills/notion-task-storage/SKILL.md) | Live schema mapping, scoped retrieval, targeted patches and read-back.                                                                               |
-| [notion-formatting](skills/notion-formatting/SKILL.md)     | Native Notion content, preservation and verification.                                                                                                |
-| `apps/`                                                    | Intended end-user access: Notion task updates, read-only Slack, Outlook Email and GitHub.                                                            |
+| Source                                                           | Responsibility                                                                                                                                       |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [INSTRUCTION.md](INSTRUCTION.md)                                 | Role, request modes, workflow, permissions, Memory and report. Frontmatter is a local deployment checklist.                                          |
+| [Configuration reference](files/task-manager-reference.md)       | Invocation precedence, defaults, scopes, examples and history isolation. Attach with this exact filename.                                            |
+| [task-review](../../skills/task-review/SKILL.md)                 | Review decisions, maintenance permissions and approval follow-ups.                                                                                   |
+| [task-storage](../../skills/task-storage/SKILL.md)               | Provider routing and normalized discovery, listing, reading, search, creation, update and verification contract. Caller authority limits operations. |
+| [notion-task-storage](../../skills/notion-task-storage/SKILL.md) | Live schema mapping, scoped retrieval, targeted patches and read-back.                                                                               |
+| [notion-formatting](../../skills/notion-formatting/SKILL.md)     | Native Notion content, preservation and verification.                                                                                                |
+| `apps/`                                                          | Intended end-user access: Notion task updates, read-only Slack, Outlook Email and GitHub.                                                            |
 
 Storage adapters are instruction-level interfaces, not executable code or automatic integrations.
 No marketplace or plugin changes are required. Every skill contains its own runtime resources.
@@ -47,7 +47,7 @@ and Amsterdam time. Reports follow invocation language; existing task language i
 The host sets the interval separately. Save complete configuration in its scheduled prompt;
 a different interval does not silently adjust evidence or planning bounds.
 
-The [Notion mapping](skills/notion-task-storage/references/notion-mapping.md) documents aliases,
+The [Notion mapping](../../skills/notion-task-storage/references/notion-mapping.md) documents aliases,
 field/status overrides and optional maintenance concepts. Missing next-action-owner mapping
 limits scope to accountable owner and is reported. `review_status_mappings` refine open lifecycle
 states for backlog/next-up/blocked reviews. Missing optional progress, deferral or type fields
@@ -59,8 +59,8 @@ Follow [agent deployment](../../docs/agent-deployment.md). Repository edits do n
 agent, connected file, app policy or uploaded skill.
 
 1. Reconcile the current workspace agent with this source before overwriting UI-only changes.
-2. Upload all four `skills/` directories separately through the workspace skills editor,
-   including references, assets and presentation metadata. Link each skill to the agent.
+2. Upload the four required sources from root `skills/` once through the workspace skills editor,
+   including references, assets, scripts and presentation metadata when present. Link each skill to the agent.
    Workspace agents use standalone skills and apps; plugins do not supply their dependencies.
 3. Attach `task-manager-reference.md`, preserving its name. Transfer only the Markdown body of
    `INSTRUCTION.md` through the deployment guide's builder prompt, then inspect saved formatting
@@ -74,18 +74,20 @@ agent, connected file, app policy or uploaded skill.
 6. Reopen settings and verify dependency content, identities, file loading, activation, source
    scope and actual saved results. Record revision, agent identity, date, checks and gaps.
 
-## Duplicate skills and compatibility with Commitment Manager
+## Shared skills and compatibility with Commitment Manager
 
-For now, `task-storage`, `notion-task-storage` and `notion-formatting` are complete copies in both
-agent directories, as requested. Keep each pair identical when changing them; no shared-reference
-or synchronization mechanism is introduced. `task-review` is specific to this workflow;
-`commitment-scanning` and `task-processing` are not needed because Task Manager creates no tasks.
+`task-storage`, `notion-task-storage` and `notion-formatting` each have one source under root
+`skills/`, shared with Commitment Manager. Upload each once and attach the same workspace skill
+to both agents. `task-review` serves this workflow; `commitment-scanning` and `task-processing`
+serve commitment capture. There are no per-agent copies or skill synchronization steps.
 
 The storage contract adds maintenance capabilities while retaining discovery/search/create/verify.
 Commitment Manager's caller policy still prohibits existing-task updates except its same-run
-formatting repair. Updating the storage skill grants no new caller authority. If both agents link
-to one workspace skill, reconcile its content and review both consumers before updating it; local
-duplicate sources do not create two separate workspace identities automatically.
+formatting repair. Updating a shared skill grants no new caller authority. Before editing or
+uploading a shared skill, run `pnpm validate` for its consumer index and review each caller's
+inputs, outputs, permissions and representative tasks. The index derives from agent frontmatter;
+each skill also exposes its consumers in `metadata.agents`, validated against those declarations.
+Structural checks cannot prove behavioral compatibility.
 
 Replace the pasted `notion-task-managent`/`notion-task-management` dependency and personal reference
 with these four skills and invocation configuration. Old weekly unscoped history is incompatible;
@@ -94,13 +96,14 @@ source selection and review/planning preferences. No task data migration is perf
 
 ## Adding a storage provider
 
-Implement the [task contract](skills/task-storage/references/task-contract.md) as a standalone
-provider skill with all resources inside its directory. Document destination/account discovery,
+Implement the [task contract](../../skills/task-storage/references/task-contract.md) as a standalone
+provider skill under root `skills/` with all resources inside its directory. Update its
+`metadata.agents`, consuming agents' dependencies and the root README Skills table together. Document destination/account discovery,
 identity and lifecycle mappings, scoped complete retrieval, targeted updates, evidence preservation,
 read-back, concurrency and retry limitations. Creation remains available only for callers that
 authorize it. Add explicit routing to `task-storage`, link the new skill in agent frontmatter and
-runtime instructions, and supply its app policy and setup documentation. Maintain both copies of
-shared storage skills until shared-source handling is designed separately.
+runtime instructions, and supply its app policy and setup documentation. Review all consumers of
+shared storage skills for compatibility before uploading a changed workspace skill.
 
 Test the provider with real authorized fixtures before claiming support. Unsupported providers
 currently produce a configuration error with no fallback writes. Matching Markdown interfaces
@@ -115,9 +118,9 @@ pnpm format
 pnpm check
 ```
 
-Also inspect agent frontmatter dependencies, skill frontmatter, resource links, duplicate copies,
-permissions and the entire diff, including untracked files. Existing repository checks do not
-fully validate agent-local contracts or deployed behavior.
+Validation checks agent frontmatter, dependency presence, standalone skill metadata, consumer
+agreement, root README inventories and resource links, and prints the declared consumer index. Inspect permissions and the entire diff, including
+untracked files. These checks do not prove behavioral compatibility or deployed configuration.
 
 Before rollout, exercise these cases in ChatGPT using authorized fixtures:
 
@@ -133,7 +136,7 @@ Before rollout, exercise these cases in ChatGPT using authorized fixtures:
 | Approval followed by newer conflicting data                              | Re-fetch, reassess and renew approval where materially changed.                                 |
 | Timeout, partial write, second run                                       | Inspect actual state before retry; no duplicate context or blind replay; report pending fields. |
 | Unavailable evidence, incomplete pagination, unsupported provider        | Explicit gaps; no comprehensive claim, unsafe writes or provider fallback.                      |
-| Commitment Manager using extended storage copies                         | Existing tasks unchanged; new-task duplicate checks and creation behavior retained.             |
+| Commitment Manager using shared storage skills                           | Existing tasks unchanged; new-task duplicate checks and creation behavior retained.             |
 
 ## Provider evidence and current limitations
 

@@ -1,6 +1,8 @@
 ---
 name: github-activity-discovery
 description: Discover accessible GitHub repositories with recent commits on a target branch. Use for activity-based repository selection or read-only commit-search diagnostics, including result limits, default-branch exceptions, and missing search results.
+metadata:
+  agents: [docs-drift]
 ---
 
 # GitHub activity discovery

@@ -1,6 +1,8 @@
 ---
 name: scan-sensitive-data
 description: Detect and classify potentially sensitive personal, confidential, or unnecessary information in user-provided or authorized retrieved text and structured records. Use for privacy, data-minimization, CRM hygiene, compliance triage, and proposed redactions across any source system. Produce structured, minimally revealing findings with explanations and suggested safe replacements; do not modify source data or invent organization-specific policies.
+metadata:
+  agents: [pipedrive-sanitizer]
 ---
 
 # Scan sensitive data

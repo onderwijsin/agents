@@ -8,7 +8,7 @@ The original Notion page describes the agent as **a draft, not yet deployed**. M
 
 1. Follow the [deployment guide](../../docs/agent-deployment.md). Copy only the Markdown body of `INSTRUCTION.md` into the agent; apply frontmatter settings separately.
 2. Attach the four files in `files/` under their exact filenames.
-3. Upload `skills/scan-sensitive-data/` as a standalone workspace skill, including `SKILL.md`, `references/`, `assets/` and any presentation metadata, then link it to the agent. Workspace agents can use apps (MCPs) and standalone workspace skills, but cannot use plugins or plugin-bundled skills.
+3. Upload or reconcile root `skills/scan-sensitive-data/` once as a standalone workspace skill, including `SKILL.md`, `references/`, assets, scripts and any presentation metadata when present, then link it to the agent. This source is outside marketplace synchronization; keep its `metadata.agents` consumer list aligned with agent frontmatter. Workspace agents can use apps (MCPs) and standalone workspace skills, but cannot use plugins or plugin-bundled skills.
 4. Configure Pipedrive, Notion and Slack according to `apps/` and the permissions below. Ensure the Slack app **Onderwijs in Agent** is a member of the configured channel.
 5. Verify the account, live schemas, current policies, saved filters and write permissions. Configure Daily/Historical schedules separately; never schedule Remediation.
 6. Perform the acceptance checks below and record what was actually verified. This documentation migration does not perform runtime or acceptance testing.
@@ -35,7 +35,7 @@ The agent performs **privacy checks with human decisions**. Its fixed data flow 
 | [notion-schema.md](files/notion-schema.md)                                     | Policy sources, databases, properties and persistence conventions.    |
 | [pipedrive-sanitization-workflow.md](files/pipedrive-sanitization-workflow.md) | Selection, completeness, checkpoints, approval and execution.         |
 | [report-format.md](files/report-format.md)                                     | ChatGPT report and privacy-safe Slack summary.                        |
-| [scan-sensitive-data](skills/scan-sensitive-data/SKILL.md)                     | Classification method with its own references and assets.             |
+| [scan-sensitive-data](../../skills/scan-sensitive-data/SKILL.md)               | Classification method with its own references and assets.             |
 | [apps/](apps/)                                                                 | Intended app permissions, applied separately in the live environment. |
 | This README                                                                    | Manual setup, invocation examples, maintenance and acceptance checks. |
 

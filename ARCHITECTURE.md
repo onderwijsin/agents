@@ -19,6 +19,8 @@ flowchart LR
   O --> X[Codex: native marketplace]
   C --> A[Claude Code: marketplace]
   G --> S[Other Agent Skills hosts]
+  G --> W[Shared standalone workspace skills]
+  W --> U[Manual workspace upload and agent linking]
 ```
 
 Portable content and packaging preserve shared instructions. Each host determines its execution
@@ -30,7 +32,8 @@ capability and provider, not inferred from marketplace membership.
 | Location                           | Architectural responsibility                                            |
 | ---------------------------------- | ----------------------------------------------------------------------- |
 | `plugins/<name>/`                  | Independently distributable plugin package and bundled resources        |
-| `agents/<name>/`                   | Workspace agent source and dependencies for manual ChatGPT deployment   |
+| `agents/<name>/`                   | Workspace agent definitions, app policies and connected files           |
+| `skills/<name>/`                   | Shared standalone workspace skills for manual upload and agent linking  |
 | `.agents/plugins/marketplace.json` | Primary ChatGPT/Codex discovery catalog                                 |
 | `.claude-plugin/marketplace.json`  | Claude-compatible discovery catalog                                     |
 | `.agents/skills/`                  | Contributor-facing agent skills, separate from distributed capabilities |
@@ -48,7 +51,7 @@ inside the plugin's distribution boundary. Every marketplace-distributed skill b
 Plugins contain one or more
 skills and are the canonical units of distribution, installation, and versioning. Bundled skill
 changes belong to the containing plugin version; skills need no independent version.
-Runtime resources resolve within each installed skill directory, using singular
+Plugin runtime resources resolve within each bundled skill directory, using singular
 `reference/` for Markdown reference material and `assets/` for skill assets. Shared
 authored references may live at plugin root; reference synchronization supplies only
 the copies reachable from each skill's Markdown links. Generated ownership manifests
@@ -59,17 +62,22 @@ assets remain at plugin root. Symlinks are not distributable.
 Repository development skills in `.agents/skills/` remain outside marketplace distribution.
 
 Workspace agents combine instructions and configuration, connected-app policies, attached files,
-and workspace skill dependencies. Agent-local skill sources document reusable workspace skills;
-they do not imply agent ownership or plugin distribution. Maintain one authored source per skill
-and reference it when reused. Workspace agents can use apps (MCPs) and separately uploaded
-standalone workspace skills; plugins and plugin-bundled skills are unavailable to them.
-Keep these standalone sources under `agents/<agent-name>/skills/`, including their resources,
-for individual manual upload and linking. They are outside plugin catalogs and versioning.
+and workspace skill dependencies. Shared standalone skills live in root `skills/`, with one
+authored source per skill and resources kept inside each skill boundary. Agent frontmatter
+declares dependencies; each shared skill lists its consumers in `metadata.agents`. Validation
+checks that both declarations agree and prints the reverse consumer index.
+Workspace skills can serve standalone requests, agents, or both. An empty consumer array records
+standalone-only use. Workspace agents can use apps (MCPs) and separately uploaded standalone
+workspace skills; plugins and plugin-bundled skills are unavailable to them. Upload each shared
+skill once to the ChatGPT workspace, with its skill-local `references/`, assets and scripts, then
+attach it to each consuming agent. No agent packaging or skill-copy synchronization
+is involved. These skills are outside plugin catalogs and versioning.
 Marketplace-distributed skills retain their canonical plugin location and have a separate audience;
 marketplace installation does not supply workspace-agent dependencies.
 Agent definitions are manually reconciled with ChatGPT through the
 [deployment guide](docs/agent-deployment.md); repository changes do not update running agents.
-The local agent layout is an authoring convention, not a provider import contract.
+The local agent layout and workspace skill metadata extension are authoring conventions, not
+provider import contracts. Deployment guidance records their compatibility limits.
 
 ## Authoring, review, and validation
 
@@ -78,7 +86,8 @@ validation, host testing, and maintainer review. Approved content and catalog ch
 together. Workspace administrators control how reviewed content becomes available to colleagues.
 
 Validation enforces package identities, required files, metadata, resource boundaries, and
-consistency between catalogs and canonical content. Format and lint checks support readable,
+consistency between catalogs and canonical content. It also checks agent dependency files,
+workspace skill consumer agreement and root README inventory coverage. Format and lint checks support readable,
 maintainable instructions. Runtime testing establishes installation, activation, resource access,
 and representative behavior on each claimed host. Structural validation and runtime verification
 serve distinct purposes; neither substitutes for the other.

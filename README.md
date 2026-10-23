@@ -3,7 +3,7 @@
 # Onderwijs in · Agents
 
 Reusable AI capabilities for communications, editorial work, research,
-and operations, distributed as plugins and maintained workspace-agent definitions.
+and operations, distributed as plugins, shared workspace skills and maintained agent definitions.
 [Onderwijs in](https://onderwijsin.nl) is a Dutch nonprofit helping more talented
 people find their way into education. The collection is shared under the
 [MIT license](LICENSE); some capabilities are generic, while others require
@@ -47,6 +47,35 @@ Consult each package README for required apps and external skills, host-specific
 and pending acceptance checks. Portable files do not guarantee identical tools, permissions,
 or behavior on every host.
 
+## Skills
+
+Shared workspace skills live in root [`skills/`](skills/). They are **not included in marketplace
+synchronization**: manually upload each skill, including its references, assets and scripts, to the
+ChatGPT workspace. Upload it once, then attach it to any agents that need it. Changes in Git must
+also be manually applied to the uploaded workspace skill.
+
+A workspace skill can be used standalone, as a capability of an agent, or both. Its required apps
+and other skill dependencies must be available in either case. The Agents column below lists
+current agent consumers; each skill also records these in its `metadata.agents` array.
+
+Skills belonging to plugins are always packaged with that plugin under
+`plugins/<plugin-name>/skills/` and synchronize with it. They follow the plugin installation route,
+separately from the manually uploaded workspace skills listed here. Repository development skills
+in `.agents/skills/` remain contributor tooling.
+
+| Name                                                                   | Agents                           | Purpose                                                                              |
+| ---------------------------------------------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------ |
+| [code-documentation](skills/code-documentation/SKILL.md)               | Docs Drift                       | Write and improve repository, API and code documentation.                            |
+| [commitment-scanning](skills/commitment-scanning/SKILL.md)             | Commitment Manager               | Find attributable, outstanding personal commitments in configured sources.           |
+| [docs-sync-audit](skills/docs-sync-audit/SKILL.md)                     | Docs Drift                       | Compare documentation with implementation and report evidenced drift.                |
+| [github-activity-discovery](skills/github-activity-discovery/SKILL.md) | Docs Drift                       | Discover repositories with relevant activity and diagnose commit-search coverage.    |
+| [notion-formatting](skills/notion-formatting/SKILL.md)                 | Commitment Manager, Task Manager | Format, preserve and verify Notion page content during authorized writes.            |
+| [notion-task-storage](skills/notion-task-storage/SKILL.md)             | Commitment Manager, Task Manager | Map Notion task schemas, retrieve tasks and verify authorized creation or updates.   |
+| [scan-sensitive-data](skills/scan-sensitive-data/SKILL.md)             | Pipedrive Sanitizer              | Classify potentially sensitive information and propose minimal, masked redactions.   |
+| [task-processing](skills/task-processing/SKILL.md)                     | Commitment Manager               | Qualify commitments, consolidate evidence and decide whether tasks are missing.      |
+| [task-review](skills/task-review/SKILL.md)                             | Task Manager                     | Review existing tasks for completion, planning, aging backlog, quality and priority. |
+| [task-storage](skills/task-storage/SKILL.md)                           | Commitment Manager, Task Manager | Route task operations through a provider-neutral storage contract.                   |
+
 ## Workspace agents
 
 Workspace agents in [`agents/`](agents/) combine instructions and configuration,
@@ -54,7 +83,10 @@ connected-app policies, reference files, and reusable workspace skill dependenci
 They are a separate resource class alongside plugins, with Git as the maintained
 source and ChatGPT as the runtime. Workspace agents use apps (MCPs) and separately uploaded
 standalone workspace skills; they cannot use plugins or plugin-bundled skills. Agent skill
-sources live under `agents/<agent-name>/skills/` for manual upload.
+sources live under root [`skills/`](skills/) for manual upload once per workspace,
+then attachment to any consuming agent. Agent frontmatter declares dependencies;
+`pnpm validate` checks dependency files, skill consumer agreement and all three README inventories,
+then prints the skill consumer index.
 
 | Agent                                                       | Purpose                                                                                                                                                            |
 | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -73,7 +105,7 @@ that the agent is deployed or available to colleagues.
 web UI; this repository provides no agent marketplace import or automatic sync.
 Workspace skills are managed separately and linked to the agent. Local edits have
 no effect until copied into the workspace. See [agent deployment](docs/agent-deployment.md)
-for the complete sync procedure and [agent best practices](docs/agent-best-practices.md)
+for the manual setup and update procedure and [agent best practices](docs/agent-best-practices.md)
 for authoring guidance.
 
 ## Contribute
@@ -83,7 +115,7 @@ GitHub issue, then contribute it through a reviewed pull request. Nontechnical c
 can contribute task examples, instructions, and feedback without writing software.
 
 - [Vision and development direction](docs/vision.md): priorities and dynamic references through Directus.
-- [Reference synchronization](docs/reference-synchronization.md): canonical sources,
+- [Reference synchronization](docs/reference-synchronization.md): shared plugin sources,
   generated skill-local copies, asset placement and validation.
 - [Plugin releases](docs/releases.md): reference synchronization, independent versions and Git tags.
 - [Architecture](ARCHITECTURE.md): sources of truth and lifecycle.

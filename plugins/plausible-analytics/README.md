@@ -73,7 +73,8 @@ Integration references:
 - [Plausible MCP](https://github.com/onderwijsin/plausible-mcp): tool schemas, filtering
   and authentication.
 - [Claude manifest reference](https://code.claude.com/docs/en/plugins/manifest-reference):
-  inline `mcpServers` in `.claude-plugin/plugin.json` and shared root `skills/` discovery.
+  inline `mcpServers` in `.claude-plugin/plugin.json` and discovery of the plugin's own
+  bundled `skills/` directory. This is separate from repository-root workspace skills.
 - [Plausible Stats API](https://plausible.io/docs/stats-api): the full API contract;
   this wrapper exposes a subset.
 - [Metric definitions](https://plausible.io/docs/metrics-definitions): measurement terminology.

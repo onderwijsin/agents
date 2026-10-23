@@ -87,8 +87,10 @@ De Claude-vermelding borgt catalogusconsistentie en claimt geen ChatGPT-function
 Workspace agents can use apps (MCPs) and standalone workspace skills uploaded separately.
 They cannot use plugins or plugin-bundled skills. Marketplace installation or synchronization
 therefore does not provide skills to workspace agents, even when the plugin connects the same app.
-Keep standalone sources and their resources under `agents/<agent-name>/skills/` and manually
-upload and link each required skill. See [agent deployment](agent-deployment.md) and the
+Keep shared standalone sources and their resources under root `skills/`. Manually upload each
+once to the workspace, then use it standalone, attach it to agents, or both. Keep `metadata.agents`
+aligned with agent dependency lists when attaching or detaching skills. Later Git changes require
+a manual workspace update; marketplace sync does not update those sources or agent definitions. See [agent deployment](agent-deployment.md) and the
 [Commitment Manager upload checklist](../agents/commitment-manager/README.md).
 
 ## Discovery and synchronization boundaries
@@ -101,7 +103,7 @@ by GitHub-to-ChatGPT marketplace sync. This limitation concerns that distributio
 hosts may support standalone skill installation.
 
 Every marketplace-distributed capability belongs to one plugin, including skill-only packages.
-Standalone workspace-agent skills follow the separate manual route above.
+Plugin skills remain packaged with their plugin; root workspace skills follow the manual route above.
 `.agents/skills/` contains repository development skills and is not marketplace content.
 Plugin versions govern bundled content; marketplace sync is not a separate skill release process.
 
@@ -169,8 +171,9 @@ Codex can consume `.agents/plugins/marketplace.json` through its native marketpl
 Claude Code uses `.claude-plugin/marketplace.json`. See the
 [Claude marketplace guide](https://code.claude.com/docs/en/plugin-marketplaces) for installation.
 These are distribution targets, not tested runtime guarantees; the first package must establish
-host-specific compatibility. Other hosts may independently support standalone Agent Skills,
-but this repository distributes its capabilities as plugins.
+host-specific compatibility. Other hosts may independently support standalone Agent Skills.
+This repository retains plugin packaging for marketplace content and root `skills/` for manually
+uploaded workspace content; matching files alone do not establish compatibility on another host.
 
 ## Empty catalog compatibility for future changes
 

@@ -1,6 +1,8 @@
 ---
 name: notion-formatting
 description: Apply a reliable workflow when creating, editing, or repairing Notion page bodies through Notion connectors. Use for task descriptions, meeting notes, reports, documentation, or other Notion content, especially when preventing or fixing broken paragraphs, malformed newlines, list rendering, or source links. Loads detailed formatting references only as needed, verifies saved content, and respects the calling agent's write permissions.
+metadata:
+  agents: [commitment-manager, task-manager]
 ---
 
 # Notion content workflow

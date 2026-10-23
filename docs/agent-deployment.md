@@ -1,4 +1,4 @@
-# Deploying workspace agents
+# Deploying workspace agents and skills
 
 Workspace agents live in `agents/<agent-name>/`. Git holds the maintained source;
 the deployed agent runs in ChatGPT. Our supported deployment workflow is manual
@@ -15,24 +15,80 @@ import schema. Do not upload them expecting ChatGPT to configure itself.
 
 Workspace agents can use apps (MCPs) and standalone workspace skills. They cannot use plugins
 or plugin-bundled skills. Installing a marketplace plugin does not expose its skills to an agent.
-Keep manually uploadable sources under `agents/<agent-name>/skills/<skill-name>/`, outside plugin
-manifests, marketplace catalogs and plugin versioning. A skill reused by another agent retains
-one canonical source; each agent must link the separately uploaded workspace skill.
+Keep shared manually uploadable sources under root `skills/<skill-name>/`, outside plugin
+manifests, marketplace catalogs and plugin versioning. Upload each source once to the workspace.
+A skill can be used standalone, attached to one or more agents, or both; attaching it reuses that
+workspace skill instead of packaging or copying its source into an agent. Subsequent Git edits
+require a manual workspace update. Marketplace synchronization does not update skills in root
+`skills/` or agent definitions.
 
-Each skill's upload includes `SKILL.md`, its `references/` directory and any assets or presentation
-metadata. Upload every named dependency independently, including skills called by other skills.
+Each skill's upload includes `SKILL.md`, its `references/` directory and any required assets,
+scripts or presentation metadata. Upload every named dependency independently, including skills called by other skills.
 A local path or a skill name in instructions does not itself upload, link or grant access.
 See the [Commitment Manager checklist](../agents/commitment-manager/README.md) for a concrete set.
 
+## Source layout and dependency declarations
+
+```text
+agents/<agent-name>/
+  README.md
+  INSTRUCTION.md
+  apps/<app-id>.yaml
+  files/<reference-name>.md
+skills/<skill-name>/
+  SKILL.md
+  references/<topic>.md
+  assets/<asset-name>
+  scripts/<helper>
+```
+
+References, assets and scripts are optional; keep required resources inside the skill's upload
+boundary. App policies and connected files remain local to their agent, even when the agents
+share a skill. Agent-local `skills/` directories are rejected.
+
+Agent instruction frontmatter records the intended settings and dependencies, including empty
+lists when no dependency of that type is needed:
+
+```yaml
+---
+channel: chatgpt
+apps: [notion]
+skills: [task-storage, notion-task-storage, notion-formatting]
+files: [agent-reference.md]
+memory: true
+---
+```
+
+This is a syntax example, not a complete deployable agent. App IDs resolve to the agent's
+`apps/<id>.yaml`, skill names to root `skills/<name>/SKILL.md`, and connected filenames to its
+`files/` directory. Current connected-file names use lowercase kebab-case with `.md`; app IDs
+may also contain underscores, such as `microsoft_outlook_email`.
+
+Each root skill requires `metadata.agents`, listing exactly the agent directory names that declare
+it. Keep both sides and the root README inventories current when adding/removing dependencies.
+Standalone-only skills use `agents: []`; standalone use itself requires no agent entry. See
+[skill authoring](creating-skills.md) for the full skill format and shared-change review.
+The array is a repository extension outside the standard string-only metadata contract; its
+upload acceptance is unverified. Verify acceptance in the target host before updating live skills.
+
+## Standalone workspace skill setup
+
+Upload the root skill directory and its resources in the workspace skills editor, or reconcile
+an existing uploaded skill with that source. Make any separately required apps and named skill
+dependencies available through the host. Test a representative direct invocation and resource
+loading in a fresh chat. Updating an uploaded skill may also affect attached agents; review the
+consumer list and test those workflows before applying a shared change. Use the agent steps below
+only when an agent also consumes the skill.
+
 ## Source-to-workspace mapping
 
-| Source                                                 | Manual destination                                                             |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `INSTRUCTION.md` YAML frontmatter                      | Agent settings and dependency checklist                                        |
-| `INSTRUCTION.md` Markdown body after the closing `---` | Agent builder prompt below, then verify the saved instructions                 |
-| `apps/<app-id>.yaml`                                   | Connected app account, actions, approval policy, and constraints               |
-| `files/<filename>`                                     | Agent's connected files, preserving the referenced filename                    |
-| `skills/<skill-name>/` standalone source               | Workspace skill managed in the ChatGPT skills editor, then linked to the agent |
+| Source                                                      | Manual destination                                                             |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `agents/<name>/INSTRUCTION.md` YAML frontmatter             | Agent settings and dependency checklist                                        |
+| `agents/<name>/INSTRUCTION.md` body after the closing `---` | Agent builder prompt below, then verify the saved instructions                 |
+| `agents/<name>/apps/<app-id>.yaml`                          | Connected app account, actions, approval policy, and constraints               |
+| `agents/<name>/files/<filename>`                            | Agent's connected files, preserving the referenced filename                    |
+| Root `skills/<skill-name>/` standalone source               | Workspace skill managed in the ChatGPT skills editor, then linked to the agent |
 
 The baseline lists `channel`, `apps`, `skills`, `files`, and `memory`. App IDs match
 the YAML filename stems; skill names match skill directory/frontmatter names;
@@ -44,12 +100,16 @@ belong with that workspace skill, rather than in the agent's connected files.
 1. Read the full definition, app policies, connected files, and required skills.
    Check that each listed dependency resolves and that runtime references use names
    available in ChatGPT rather than repository paths.
-2. Compare the intended source with the existing workspace agent and skills.
+2. Run `pnpm validate` and review the workspace skill consumer index before changing a shared
+   skill. Keep agent `skills` lists and each shared skill's `metadata.agents` array consistent;
+   fix invalid declarations before relying on the index. Review every consumer for input/output
+   and authority compatibility. Compare the intended source with the existing workspace agent and skills.
    Reconcile UI-only changes into Git before overwriting them. Identify other agents
    using any shared skill whose behavior will change.
-3. Resolve contradictions across instructions, references, and settings. Commitment Manager's
-   actual schedule belongs to the host automation; put destination and account configuration in
-   its saved invocation prompt. Preserve its explicit same-run formatting-repair exception.
+3. Resolve contradictions across instructions, connected references, skills and settings. Keep
+   caller-specific authority intact, including Commitment Manager's same-run formatting-repair
+   exception. The host owns any actual schedule; save invocation configuration with that schedule
+   for agents that resolve settings per run. Preserve intentional fixed configuration elsewhere.
 4. Confirm workspace access, required app connections, and the target data permissions.
    Keep credentials, private communications, and runtime history out of Git.
 
@@ -66,9 +126,8 @@ belong with that workspace skill, rather than in the agent's connected files.
    resolve it before enabling affected writes. Instruction text does not enforce
    service permissions. Broad app access may exceed the agent's narrower task scope.
 3. Open the separate **ChatGPT skills editor**. Upload each standalone skill with its resources.
-   Create missing workspace skills or
-   edit existing ones from their canonical source, including referenced resources
-   and applicable presentation metadata. Review shared-skill changes with their
+   Create missing workspace skills or update the existing shared skill from its root source,
+   including references, assets, scripts and applicable presentation metadata. Review shared-skill changes with their
    other consumers. Agent builder skill linking alone does not edit skill content.
 4. Return to the agent builder and link each required workspace skill. Verify the
    selected skill's identity and content; matching display names alone are insufficient.
@@ -124,10 +183,10 @@ Manager, verify existing tasks remain unchanged and that a second scan creates n
 Record the source revision or reviewed diff, deployed agent identity, date, changed
 shared skills, settings not represented in source, checks performed, and remaining
 gaps in the deployment review. Do not claim deployment or host verification from
-local formatting and lint checks alone. Existing repository validation does not
-validate the agent YAML contract or its live configuration.
+local formatting and lint checks alone. Repository validation checks frontmatter types, dependency
+existence and resource boundaries; it does not validate live configuration or behavioral compatibility.
 
-For later edits, repeat this comparison and sync process. To roll back, restore the
+For later edits, repeat this comparison and manual-update process. To roll back, restore the
 previous source contents in each affected UI surface and verify again; reverting
 Git alone leaves the live agent and shared skills unchanged.
 

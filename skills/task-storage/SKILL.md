@@ -2,6 +2,8 @@
 name: task-storage
 description: Resolve a configured task destination and route schema discovery, scoped task reads, duplicate searches, authorized creation or updates and read-back verification to its storage provider. Use for task persistence without embedding provider-specific fields in the calling workflow.
 license: MIT
+metadata:
+  agents: [commitment-manager, task-manager]
 ---
 
 # Store tasks
