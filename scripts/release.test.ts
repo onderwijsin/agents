@@ -4,6 +4,7 @@ import { mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
+import { runInNewContext } from "node:vm";
 import { parseDocument } from "yaml";
 import {
   bumpVersion,
@@ -274,4 +275,58 @@ test("CI requires committed migration output before resource validation", async 
   assert.ok(migrate >= 0 && migrate < committed && committed < validate);
   assert.match(steps[committed]?.run ?? "", /git diff --exit-code/);
   assert.match(steps[committed]?.run ?? "", /git ls-files --others/);
+});
+
+test("PR validation skips superseded heads but preserves failure and fork gates", async () => {
+  const workflow = parseDocument(
+    await readFile(new URL("../.github/workflows/prepare-release.yml", import.meta.url), "utf8"),
+  ).toJS();
+  assert.deepEqual(Object.keys(workflow.on), ["pull_request"]);
+  assert.ok(workflow.on.pull_request.types.includes("synchronize"));
+  assert.equal(workflow.jobs.prepare.permissions.actions, undefined);
+
+  const validate = workflow.jobs.validate;
+  for (const [result, prepared, expected, shouldRun] of [
+    ["success", "prepared", "original", false],
+    ["success", "prepared", "prepared", true],
+    ["failure", "prepared", "original", true],
+    ["cancelled", "", "original", true],
+    ["skipped", "", "fork-head", true],
+  ] as const) {
+    assert.equal(
+      runInNewContext(validate.if, {
+        always: () => true,
+        needs: { prepare: { result, outputs: { prepared_sha: prepared } } },
+        github: { event: { pull_request: { head: { sha: expected } } } },
+      }),
+      shouldRun,
+      `${result}: ${prepared} -> ${expected}`,
+    );
+  }
+
+  const guard = validate.steps[0].run;
+  for (const [sameRepository, result, prepared, expected, shouldPass] of [
+    ["true", "success", "head", "head", true],
+    ["true", "failure", "head", "head", false],
+    ["true", "cancelled", "", "head", false],
+    ["true", "success", "other", "head", false],
+    ["false", "skipped", "", "fork-head", true],
+  ] as const) {
+    let passed = true;
+    try {
+      execFileSync("bash", ["-e", "-c", guard], {
+        env: {
+          SAME_REPOSITORY: sameRepository,
+          PREPARATION_RESULT: result,
+          PREPARED: prepared,
+          EXPECTED: expected,
+        },
+        stdio: "pipe",
+      });
+    } catch {
+      passed = false;
+    }
+    assert.equal(passed, shouldPass, `${sameRepository}: ${result}, ${prepared} -> ${expected}`);
+  }
+  assert.equal(validate.steps[1].with.ref, "${{ github.event.pull_request.head.sha }}");
 });

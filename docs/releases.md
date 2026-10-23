@@ -8,7 +8,10 @@ The root tooling package and individual skills are never released separately.
 ## Everyday use
 
 Open a PR to `main`. The **Prepare release** workflow commits synchronized references and the expected plugin
-versions to the same branch, then runs its **validate** job for that resulting commit.
+versions to the same branch. If preparation pushes a new commit, the original run skips
+**validate** and GitHub creates a new PR run awaiting approval. Select **Approve workflows
+to run** in the PR merge box; that run validates the prepared commit. If preparation
+changes nothing, **validate** runs immediately in the existing PR run.
 Review the version diff along with the content. Repeated runs or additional commits
 in the same PR calculate from the base version rather than bumping again.
 
@@ -65,11 +68,12 @@ use a release script introduced only in its own PR. Its first bootstrap run may 
 until that script exists on `main`; normal validation can verify this tooling-only PR.
 No existing plugin versions are changed during adoption.
 
-Repository Actions policy must allow the workflow's scoped `contents: write` and
-`actions: write` permissions. No PAT, GitHub App, registry credential or extra secret
+Repository Actions policy must allow the workflow's scoped `contents: write` permission. No PAT, GitHub App, registry credential or extra secret
 is needed. The bot never force-pushes; if the PR moves while preparation runs, the
 old run fails instead of overwriting newer work. Check the failed run and rerun on
-the current PR head if necessary. The current implementation assumes GitHub.com
+the current PR head if necessary. Bot-generated PR updates require approval by a user
+with write access before CI runs. Fully unattended validation would require a separately
+configured GitHub App or PAT; this workflow uses neither. The current implementation assumes GitHub.com
 and the standard GitHub-hosted Ubuntu runner with `gh` available.
 
 Automatic branch updates apply to same-repository PRs. Forks and Dependabot PRs
@@ -100,16 +104,17 @@ RELEASE_LABELS='["release:minor"]' pnpm release:prepare origin/main
    changes can themselves require a plugin bump. It does not check out or execute PR
    content, install PR dependencies or
    follow PR symlinks. The temporary index leaves the checkout untouched.
-2. The write step pushes that commit to the PR branch and dispatches the same
-   **Prepare release** workflow on that branch with its exact SHA. The dispatched
-   run skips preparation and runs only the **validate** job with a read-only token. This
-   places the required check on the prepared commit, rather than its predecessor.
-   The validation job installs
-   dependencies, runs reference migration, and requires a clean committed result
-   (including no untracked plugin output) before running validation and version checks.
-   A migration failure stops later validation steps. This prevents runner-only copies
-   from passing CI while marketplace consumers still lack the files. `pnpm check`
-   starts with an additional read-only migration drift check.
+2. The write step pushes that commit to the PR branch with `GITHUB_TOKEN`. GitHub
+   creates a `pull_request` synchronization run awaiting approval. The original run
+   skips **validate** only after successful preparation produced a different head;
+   preparation errors still fail its validation guard. Once a user with write access
+   approves the new run, preparation is a no-op and **validate** checks that run's own
+   PR head with a read-only token. No dispatch run is created: dispatched workflow jobs
+   cannot satisfy required PR checks. Validation installs dependencies, runs reference
+   migration, and requires a clean committed result (including no untracked plugin output)
+   before running validation and version checks. A migration failure stops later validation
+   steps. This prevents runner-only copies from passing CI while marketplace consumers
+   still lack the files. `pnpm check` starts with an additional read-only migration drift check.
 3. After merge, **Release** compares the snapshots before and after the push and tags
    new or changed plugin versions as `<plugin>@<version>`. Existing tags at the expected
    commit are accepted on rerun; a collision at another commit fails without moving
@@ -150,14 +155,15 @@ new chat. Root workspace skills and agents do not participate in this release or
 route; follow [workspace deployment](agent-deployment.md) for their manual updates. This release
 workflow changes version bookkeeping, not host compatibility.
 
-GitHub documents that [GITHUB_TOKEN-triggered events](https://docs.github.com/en/enterprise-cloud@latest/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow)
-do not generally start ordinary workflows automatically, while explicit
-`workflow_dispatch` does. It also documents that required checks must cover the
-[latest commit and merge queue events](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks).
-These behaviors are why preparation dispatches its own validation job and strict
-branch freshness is part of setup. Sources consulted on 20 October 2026.
+GitHub documents that [GITHUB_TOKEN-triggered PR updates](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow)
+create approval-required runs for `opened`, `synchronize`, and `reopened` events.
+Its [required-check documentation](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks)
+requires checks on the latest commit and excludes workflow-job checks from
+`workflow_dispatch` runs. Preparation therefore relies on the new PR event and
+workflow approval, with strict branch freshness as part of setup. Sources consulted
+on 23 October 2026. Hosts without this GitHub.com behavior must use local preparation.
 
 Local Git-fixture tests cover planning, SemVer selection, overlay synchronization,
-repeat runs, file boundaries and tag identities. GitHub bot permissions, dispatched
-validation jobs, ruleset enforcement and remote tag publication still require an end-to-end
+repeat runs, file boundaries and tag identities. GitHub bot permissions, approval of prepared-commit
+PR runs, ruleset enforcement and remote tag publication still require an end-to-end
 PR after this workflow reaches `main`; local checks cannot establish those results.
