@@ -16,16 +16,19 @@ and task rules are examples rather than defaults for every agent. Follow
 | Workspace skills          | Reusable task procedures, schemas, formatting, and supporting resources          |
 
 Keep orchestration in the instruction body and specialized mechanics in skills.
-For example, Commitment Manager decides what qualifies as a promise; task management
-owns database conventions, and formatting owns Notion page representation. A reusable
-skill inherits the caller's authorized scope rather than granting itself broader writes.
+For example, Commitment Manager orchestrates the run; commitment scanning owns evidence gathering,
+task processing owns qualification, storage owns provider mapping, and formatting owns Notion
+page representation. A reusable skill inherits the caller's authorized scope rather than granting itself broader writes.
 
-Skills are available through the user's workspace and may serve several agents.
-Their presence under an agent folder records a dependency and its maintained source,
-not exclusive ownership. Reuse one canonical source when multiple agents need the
-same capability. Marketplace-distributed skills remain inside their plugin; reference
-that source instead of maintaining a divergent agent copy. The baseline's workspace
-skill snapshots are outside plugin release and catalog machinery.
+Workspace agents can use apps (MCPs) and standalone workspace skills uploaded separately.
+They cannot use plugins or plugin-bundled skills. Author their skills under
+`agents/<agent-name>/skills/<skill-name>/`, with all required resources inside each skill.
+Upload and link every dependency individually; plugin installation does not make it available.
+
+A workspace skill may serve several agents. Its source under one agent folder records a
+maintained dependency, not exclusive ownership. Reuse that canonical source and uploaded skill
+when linking another agent. Marketplace packages serve a separate distribution route and cannot
+stand in for these uploaded dependencies.
 
 ## Keep instructions operational
 

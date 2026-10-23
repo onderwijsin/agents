@@ -26,8 +26,11 @@ folders; the repository content itself is open source under MIT.
 - Use lowercase kebab-case directories and matching manifest/frontmatter names.
 - Write portable Markdown with concise descriptions explaining when the skill applies.
 - Follow [creating skills](docs/creating-skills.md) and [creating plugins](docs/creating-plugins.md).
-- Create distributable skills in `plugins/<plugin-name>/skills/<skill-name>/`.
+- Create marketplace-distributed skills in `plugins/<plugin-name>/skills/<skill-name>/`.
   Use a single-skill plugin for an independent capability.
+- For workspace agents, create standalone skills in `agents/<agent-name>/skills/<skill-name>/`
+  for separate manual upload and linking. Agents cannot use plugins or plugin-bundled skills;
+  follow [agent deployment](docs/agent-deployment.md).
 - Include a README for each plugin package with usage, prerequisites, examples,
   supported hosts, and limitations. Keep bundled skill instructions inside their package.
 - Update both catalogs when adding a plugin. Catalogs reference plugin packages.

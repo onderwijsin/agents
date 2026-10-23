@@ -44,7 +44,7 @@ directories and agree on identities. Provider-specific manifests and extensions 
 metadata or configuration required by their host; they do not duplicate shared skill instructions.
 
 Plugin identity belongs in the root portable `plugin.json`. Bundled skills and resources belong
-inside the plugin's distribution boundary. Every distributable skill belongs to exactly one plugin.
+inside the plugin's distribution boundary. Every marketplace-distributed skill belongs to exactly one plugin.
 Plugins contain one or more
 skills and are the canonical units of distribution, installation, and versioning. Bundled skill
 changes belong to the containing plugin version; skills need no independent version.
@@ -61,7 +61,12 @@ Repository development skills in `.agents/skills/` remain outside marketplace di
 Workspace agents combine instructions and configuration, connected-app policies, attached files,
 and workspace skill dependencies. Agent-local skill sources document reusable workspace skills;
 they do not imply agent ownership or plugin distribution. Maintain one authored source per skill
-and reference it when reused. Marketplace-distributed skills retain their canonical plugin location.
+and reference it when reused. Workspace agents can use apps (MCPs) and separately uploaded
+standalone workspace skills; plugins and plugin-bundled skills are unavailable to them.
+Keep these standalone sources under `agents/<agent-name>/skills/`, including their resources,
+for individual manual upload and linking. They are outside plugin catalogs and versioning.
+Marketplace-distributed skills retain their canonical plugin location and have a separate audience;
+marketplace installation does not supply workspace-agent dependencies.
 Agent definitions are manually reconciled with ChatGPT through the
 [deployment guide](docs/agent-deployment.md); repository changes do not update running agents.
 The local agent layout is an authoring convention, not a provider import contract.

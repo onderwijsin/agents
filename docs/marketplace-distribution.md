@@ -82,6 +82,15 @@ Zie de [plugin-README](../plugins/onboarding/README.md) voor vereisten en beperk
 Standaardinstallatie volgt pas na geslaagde acceptatie, pilot en aparte uitrolgoedkeuring.
 De Claude-vermelding borgt catalogusconsistentie en claimt geen ChatGPT-functionaliteit.
 
+## Workspace agents use a separate route
+
+Workspace agents can use apps (MCPs) and standalone workspace skills uploaded separately.
+They cannot use plugins or plugin-bundled skills. Marketplace installation or synchronization
+therefore does not provide skills to workspace agents, even when the plugin connects the same app.
+Keep standalone sources and their resources under `agents/<agent-name>/skills/` and manually
+upload and link each required skill. See [agent deployment](agent-deployment.md) and the
+[Commitment Manager upload checklist](../agents/commitment-manager/README.md).
+
 ## Discovery and synchronization boundaries
 
 The [official plugin management guide](https://learn.chatgpt.com/docs/enterprise/plugin-management)
@@ -91,7 +100,8 @@ standalone skills in a repository-level `skills/` directory are not automaticall
 by GitHub-to-ChatGPT marketplace sync. This limitation concerns that distribution route; other
 hosts may support standalone skill installation.
 
-Every distributed capability here belongs to one plugin, including skill-only packages.
+Every marketplace-distributed capability belongs to one plugin, including skill-only packages.
+Standalone workspace-agent skills follow the separate manual route above.
 `.agents/skills/` contains repository development skills and is not marketplace content.
 Plugin versions govern bundled content; marketplace sync is not a separate skill release process.
 

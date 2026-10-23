@@ -11,15 +11,28 @@ baseline and [agent best practices](agent-best-practices.md) for authoring decis
 The YAML files record intended configuration; they are not an official ChatGPT
 import schema. Do not upload them expecting ChatGPT to configure itself.
 
+## Dependency boundary
+
+Workspace agents can use apps (MCPs) and standalone workspace skills. They cannot use plugins
+or plugin-bundled skills. Installing a marketplace plugin does not expose its skills to an agent.
+Keep manually uploadable sources under `agents/<agent-name>/skills/<skill-name>/`, outside plugin
+manifests, marketplace catalogs and plugin versioning. A skill reused by another agent retains
+one canonical source; each agent must link the separately uploaded workspace skill.
+
+Each skill's upload includes `SKILL.md`, its `references/` directory and any assets or presentation
+metadata. Upload every named dependency independently, including skills called by other skills.
+A local path or a skill name in instructions does not itself upload, link or grant access.
+See the [Commitment Manager checklist](../agents/commitment-manager/README.md) for a concrete set.
+
 ## Source-to-workspace mapping
 
-| Source                                                       | Manual destination                                                             |
-| ------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `INSTRUCTION.md` YAML frontmatter                            | Agent settings and dependency checklist                                        |
-| `INSTRUCTION.md` Markdown body after the closing `---`       | Agent instructions editor                                                      |
-| `apps/<app-id>.yaml`                                         | Connected app account, actions, approval policy, and constraints               |
-| `files/<filename>`                                           | Agent's connected files, preserving the referenced filename                    |
-| `skills/<skill-name>/` or an existing canonical skill source | Workspace skill managed in the ChatGPT skills editor, then linked to the agent |
+| Source                                                 | Manual destination                                                             |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `INSTRUCTION.md` YAML frontmatter                      | Agent settings and dependency checklist                                        |
+| `INSTRUCTION.md` Markdown body after the closing `---` | Agent instructions editor                                                      |
+| `apps/<app-id>.yaml`                                   | Connected app account, actions, approval policy, and constraints               |
+| `files/<filename>`                                     | Agent's connected files, preserving the referenced filename                    |
+| `skills/<skill-name>/` standalone source               | Workspace skill managed in the ChatGPT skills editor, then linked to the agent |
 
 The baseline lists `channel`, `apps`, `skills`, `files`, and `memory`. App IDs match
 the YAML filename stems; skill names match skill directory/frontmatter names;
@@ -34,11 +47,9 @@ belong with that workspace skill, rather than in the agent's connected files.
 2. Compare the intended source with the existing workspace agent and skills.
    Reconcile UI-only changes into Git before overwriting them. Identify other agents
    using any shared skill whose behavior will change.
-3. Resolve contradictions across instructions, references, and settings. In the
-   baseline, the instruction says daily at midnight while the reference specifies
-   Tuesday–Saturday; choose one intended schedule before enabling it. Its reference
-   also allows same-run formatting repairs while the instruction prohibits changes
-   to existing tasks; make the intended exception consistent before deployment.
+3. Resolve contradictions across instructions, references, and settings. Commitment Manager's
+   actual schedule belongs to the host automation; put destination and account configuration in
+   its saved invocation prompt. Preserve its explicit same-run formatting-repair exception.
 4. Confirm workspace access, required app connections, and the target data permissions.
    Keep credentials, private communications, and runtime history out of Git.
 
@@ -54,7 +65,8 @@ belong with that workspace skill, rather than in the agent's connected files.
    Where a control cannot express the requested restriction, document the gap and
    resolve it before enabling affected writes. Instruction text does not enforce
    service permissions. Broad app access may exceed the agent's narrower task scope.
-3. Open the separate **ChatGPT skills editor**. Create missing workspace skills or
+3. Open the separate **ChatGPT skills editor**. Upload each standalone skill with its resources.
+   Create missing workspace skills or
    edit existing ones from their canonical source, including referenced resources
    and applicable presentation metadata. Review shared-skill changes with their
    other consumers. Agent builder skill linking alone does not edit skill content.
@@ -99,7 +111,10 @@ Git alone leaves the live agent and shared skills unchanged.
 Checked on 2026-10-23: OpenAI's [Skill controls](https://learn.chatgpt.com/docs/enterprise/skills)
 distinguishes workspace skill lifecycle controls, filesystem distribution, and plugin
 installation. Moving files does not transfer workspace ownership or connector authorization.
-Our manual procedure and local YAML conventions are based on the supplied agent
+The workspace-agent restriction above is a maintainer-reported platform constraint confirmed
+for this repository on 2026-10-23, not inferred from plugin packaging or independently runtime-tested.
+The linked official controls describe skill governance; they do not establish plugin availability
+inside workspace agents. Our manual procedure and local YAML conventions are based on the supplied agent
 baseline and maintainer workflow, not a verified provider round-trip format.
 No live ChatGPT installation, permissions, schedule, or task execution is established
 by this guide. Recheck current official documentation and the target workspace when
