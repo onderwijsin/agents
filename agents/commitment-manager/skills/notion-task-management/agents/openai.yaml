@@ -1,0 +1,12 @@
+interface:
+  display_name: Notion Task Management
+  short_description: Maintain Acties tasks with correct schema and conventions
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+    - chatgpt
+    - codex
+    - api
+    - atlas
+  allow_implicit_invocation: true

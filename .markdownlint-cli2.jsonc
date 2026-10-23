@@ -1,8 +1,14 @@
 {
   "config": { "default": true, "MD013": false, "MD041": { "allow_preamble": true } },
   "ignores": ["node_modules/**", ".agents/skills/**"],
-  // Preserve original numbering, emphasis and link text in these email excerpts.
   "overrides": [
+    // Agent instruction bodies start at H2 after configuration frontmatter.
+    {
+      "filter": ["agents/**/INSTRUCTION.md"],
+      "config": { "MD041": false },
+      "combine": "merge",
+    },
+    // Preserve original numbering, emphasis and link text in these email excerpts.
     {
       "filter": [
         "plugins/adviesassistent/skills/adviesmail-schrijven-en-beantwoorden/reference/voorbeeld-emails/c-02.md",
