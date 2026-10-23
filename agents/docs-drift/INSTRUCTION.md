@@ -5,6 +5,7 @@ apps:
 skills:
   - code-documentation
   - docs-sync-audit
+  - github-activity-discovery
 files:
   - pr-review-follow-up.md
 memory: true
@@ -20,11 +21,12 @@ Use `GitHub` for repository discovery, inspection, documentation-only edits, pul
 
 Use the following resources on every scheduled run:
 
+- `github-activity-discovery` — Use this read-only skill for repository selection and commit-search diagnostics. It owns search requests, result-limit handling, and branch verification.
 - `docs-sync-audit` — Use this skill to audit repositories for documentation drift. Follow its methodology for discovering documentation surfaces, comparing them against the implementation, verifying findings, and assessing severity.
 - `code-documentation` — Use this skill when writing or updating documentation, including corrections requested during PR reviews. Follow its guidance for accurate, consistent, maintainable documentation.
 - `pr-review-follow-up.md` — Read and follow this reference when maintaining existing agent-created pull requests.
 
-Load both skills before beginning the audit workflow. Apply them to each relevant repository and task rather than treating them as optional guidance.
+Load each skill when its workflow step begins: discovery for selection, audit guidance for repository inspection, and writing guidance for justified corrections or review feedback.
 
 The scope restrictions and `GitHub` workflow rules in these instructions take precedence over generic skill recommendations. In particular, the agent must not generate comprehensive new documentation merely because a skill recommends it.
 
@@ -36,16 +38,19 @@ Rebuild the repository set from current `GitHub` data every time. Do not use a f
 
 ### 1. Select repositories
 
-1. List every repository accessible through `GitHub`.
-2. Exclude archived repositories from new audits.
-3. For each remaining repository, inspect commits reachable on its `main` branch during the rolling seven days immediately preceding the run.
-4. Include the repository only if `main` has at least one commit in that window.
-5. Do not use repository `pushed_at` as a proxy for branch activity. Exclude repositories whose activity is confined to other branches.
-6. Inspect every qualifying repository, not merely repositories found on previous runs.
+Invoke `github-activity-discovery` to rebuild the accessible repository inventory and
+identify repositories with commits on `main` in the rolling seven-day committed-date
+window. Use its fixed UTC window throughout the run. Audit every qualifying repository
+and carry unresolved discovery coverage into the run report. Continue independent
+PR maintenance when discovery is incomplete.
 
 ### 2. Audit documentation drift
 
-For every qualifying repository, invoke `docs-sync-audit`.
+For every qualifying repository, fetch all `main` commits in the fixed window and
+required commit details, following available pagination. Include merge commits,
+filter by committed timestamp, and deduplicate by SHA within each repository. Reuse
+history retrieved during discovery fallback and retain the complete window history
+for reviewer counts. Invoke `docs-sync-audit` for the documentation inspection.
 
 - Audit code changes from the seven-day window for documentation drift.
 - Also audit the broader current codebase for pre-existing documentation drift.
@@ -108,6 +113,7 @@ Immediately after creating each PR, determine reviewer selection independently f
 - Count commits attributable to `GitHub` user `remihuigen`.
 - Count commits attributable to `GitHub` user `joggienl`.
 - Use attributable author identity, not PR counts or feature-branch activity.
+- Use the complete `main` history gathered for the audit. If search results omit author identity, resolve it through commit details; missing identity is not a verified zero for either user. Report unresolved counts rather than selecting a reviewer from incomplete data.
 - Request the user with more qualifying commits.
 - If counts tie, request both when `GitHub` permits it.
 - If an intended reviewer is ineligible, including because they authored the PR or lack access, request the other eligible user.
@@ -145,6 +151,7 @@ If a skill-specific tool or script is unavailable, use supported equivalent capa
 Conclude every scheduled run with a concise report covering:
 
 - Repositories examined.
+- Fixed UTC window, discovery method, result-limit handling, and unresolved discovery coverage.
 - Confirmed findings, severity, and whether drift is recent or pre-existing.
 - Documentation corrections and draft PR URLs actually created.
 - Per-repository commit counts for `remihuigen` and `joggienl`.
