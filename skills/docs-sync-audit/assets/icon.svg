@@ -1,5 +1,6 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M3 13.5C3 12.1193 4.11929 11 5.5 11H9V21H5.5C4.11929 21 3 19.8807 3 18.5V13.5Z" fill="#FFD400"/>
-<path d="M15 7H18.5C19.8807 7 21 8.11929 21 9.5V18.5C21 19.8807 19.8807 21 18.5 21H15V7Z" fill="#F75858"/>
-<path d="M9 5.5C9 4.11929 10.1193 3 11.5 3H12.5C13.8807 3 15 4.11929 15 5.5V21H9V5.5Z" fill="#FFA43D"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Docs Sync Audit</title>
+  <g stroke="#243447" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="10" y="8" width="30" height="43" rx="4" fill="#FEF3C7" stroke="#243447" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 18h16m-16 8h12m-12 8h8" stroke="#243447" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="39" r="12" fill="#FFFBEB" stroke="#243447" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="m49 48 8 8m-23-17 4 4 7-8" stroke="#243447" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
 </svg>

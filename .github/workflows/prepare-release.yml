@@ -3,35 +3,23 @@ on:
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened, labeled, unlabeled, ready_for_review]
-  workflow_dispatch:
-    inputs:
-      pull_request:
-        description: PR number whose prepared commit must be validated
-        required: true
-      prepared_sha:
-        description: Prepared PR commit
-        required: true
-      base_sha:
-        description: Base used for preparation
-        required: true
 env:
   HUSKY: 0
 permissions:
   contents: read
 concurrency:
-  group: prepare-release-${{ github.event.pull_request.number || inputs.pull_request }}-${{ github.event_name }}
+  group: prepare-release-${{ github.event.pull_request.number }}
   cancel-in-progress: false
 jobs:
   prepare:
     outputs:
       prepared_sha: ${{ steps.versions.outputs.sha }}
     # Forks use the local preparation command; never grant writes to fork code.
-    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
       contents: write
-      actions: write
       pull-requests: read
     steps:
       # Execute only the base branch's release script, reading PR contents as Git objects.
@@ -53,29 +41,31 @@ jobs:
           git fetch origin "$HEAD"
           prepared=$(node scripts/release.ts prepare "$BASE" "$HEAD")
           echo "sha=$prepared" >> "$GITHUB_OUTPUT"
-      - name: Push prepared commit and validate through this workflow
+      - name: Push prepared commit for PR validation
         env:
           GH_TOKEN: ${{ github.token }}
           PREPARED: ${{ steps.versions.outputs.sha }}
           EXPECTED: ${{ github.event.pull_request.head.sha }}
           BRANCH: ${{ github.event.pull_request.head.ref }}
           PR: ${{ github.event.pull_request.number }}
-          BASE: ${{ github.event.pull_request.base.sha }}
         run: |
-          # A stale run must not update a newer branch or dispatch checks for the wrong commit.
+          # A stale run must not update a newer branch.
           current=$(gh pr view "$PR" --json headRefOid --jq .headRefOid)
           test "$current" = "$EXPECTED"
           gh auth setup-git
           if test "$PREPARED" != "$EXPECTED"; then
             git push origin "$PREPARED:refs/heads/$BRANCH"
+            # GitHub requires approval before running CI for a GITHUB_TOKEN PR update.
+            echo "Prepared commit: $PREPARED. Approve workflows to run on the PR." >> "$GITHUB_STEP_SUMMARY"
           fi
-          # GITHUB_TOKEN pushes do not reliably start ordinary CI automatically.
-          # Dispatch even on a no-op so a failed previous dispatch can be retried.
-          gh workflow run prepare-release.yml --ref "$BRANCH" -f pull_request="$PR" -f prepared_sha="$PREPARED" -f base_sha="$BASE"
   validate:
     needs: prepare
-    # Validate the prepared commit on its own event SHA with a read-only token.
-    if: always()
+    # Skip only a successful handoff to a newer commit. Failures still reach the guard.
+    # The new PR run must validate its own head after GitHub workflow approval.
+    if: >-
+      always() &&
+      (needs.prepare.result != 'success' ||
+       needs.prepare.outputs.prepared_sha == github.event.pull_request.head.sha)
     permissions:
       contents: read
       pull-requests: read
@@ -84,20 +74,18 @@ jobs:
     steps:
       - name: Require successful preparation
         env:
-          EVENT: ${{ github.event_name }}
           SAME_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
           PREPARATION_RESULT: ${{ needs.prepare.result }}
           PREPARED: ${{ needs.prepare.outputs.prepared_sha }}
           EXPECTED: ${{ github.event.pull_request.head.sha }}
         run: |
-          if test "$EVENT" = pull_request && test "$SAME_REPOSITORY" = true; then
+          if test "$SAME_REPOSITORY" = true; then
             test "$PREPARATION_RESULT" = success
-            # The old head must never pass the merge gate for a newly prepared commit.
-            test "$PREPARED" = "$EXPECTED" || { echo "Validation continues on the prepared commit in the dispatched run."; exit 1; }
+            test "$PREPARED" = "$EXPECTED"
           fi
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
-          ref: ${{ inputs.prepared_sha || github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
           persist-credentials: false
       - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
@@ -117,11 +105,11 @@ jobs:
       - name: Check plugin versions before merge
         env:
           GH_TOKEN: ${{ github.token }}
-          PR: ${{ inputs.pull_request || github.event.pull_request.number }}
-          EXPECTED: ${{ inputs.prepared_sha || github.event.pull_request.head.sha }}
-          BASE: ${{ inputs.base_sha || github.event.pull_request.base.sha }}
+          PR: ${{ github.event.pull_request.number }}
+          EXPECTED: ${{ github.event.pull_request.head.sha }}
+          BASE: ${{ github.event.pull_request.base.sha }}
         run: |
-          # Labels are mutable: validate against current PR state, including bot dispatches.
+          # Labels are mutable: validate against current PR state, including approved bot updates.
           gh pr view "$PR" --json labels,headRefOid,baseRefName > "$RUNNER_TEMP/release-pr.json"
           test "$(jq -r .headRefOid "$RUNNER_TEMP/release-pr.json")" = "$EXPECTED"
           test "$(jq -r .baseRefName "$RUNNER_TEMP/release-pr.json")" = main

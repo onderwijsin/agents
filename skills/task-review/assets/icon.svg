@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Task Review</title>
+  <g stroke="#243447" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="11" y="10" width="34" height="45" rx="5" fill="#DCFCE7" stroke="#243447" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="21" y="6" width="14" height="9" rx="3" fill="#F0FDF4" stroke="#243447" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="m18 25 3 3 5-6m-8 17 3 3 5-6m5-10h7m-7 14h5" stroke="#243447" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="45" cy="44" r="11" fill="#F0FDF4" stroke="#243447" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="m53 52 6 6m-19-14 4 4 6-7" stroke="#243447" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

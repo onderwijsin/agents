@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Notion Task Storage</title>
+  <g stroke="#243447" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="8" y="10" width="48" height="44" rx="5" fill="#E0E7FF" stroke="#243447" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 23h48M23 23v31m-15-16h48" stroke="#243447" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="m13 30 3 3 4-5m-7 17 3 3 4-5m10-13h17m-17 15h17" stroke="#243447" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

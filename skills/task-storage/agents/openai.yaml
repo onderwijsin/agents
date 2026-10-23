@@ -1,0 +1,5 @@
+interface:
+  display_name: "Task Storage"
+  short_description: "Route task reads and verified writes to storage"
+  icon_small: "./assets/icon-small.png"
+  icon_large: "./assets/icon-large.png"

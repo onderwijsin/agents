@@ -6,8 +6,8 @@ interface:
     architecture documentation, changelog generation, and developer guides. Trigger
     on requests like "document this code", "create a README", "generate API docs",
     "write developer guide", or when analyzing codebases for documentation purposes.
-  icon_small: assets/icon.svg
-  icon_large: assets/icon.svg
+  icon_small: "./assets/icon-small.png"
+  icon_large: "./assets/icon-large.png"
 policy:
   products:
     - chatgpt

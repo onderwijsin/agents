@@ -2,8 +2,8 @@ interface:
   display_name: Scan Sensitive Data
   short_description: Identify sensitive information and propose privacy-preserving
     edits
-  icon_small: assets/icon.svg
-  icon_large: assets/icon.svg
+  icon_small: "./assets/icon-small.png"
+  icon_large: "./assets/icon-large.png"
 policy:
   products:
     - chatgpt
