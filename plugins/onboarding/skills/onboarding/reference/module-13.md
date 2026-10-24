@@ -2,7 +2,11 @@
 
 Doel: vanuit eigen bronmateriaal een document, presentatie of spreadsheet laten
 maken, openen, controleren en verbeteren. Dit is keuzeverdieping.
-Een chattekst of Space-pagina alleen is geen werkbestand.
+Leg vóór de eerste opdracht uit dat Work een bestand kan maken dat je in een
+andere toepassing gebruikt, bijvoorbeeld een presentatie voor een overleg of een
+spreadsheet voor scenario's. Dat helpt als je het resultaat wilt meenemen en verder
+bewerken; voor een kort concept volstaat een chat. Een chattekst of Space-pagina
+alleen is geen werkbestand.
 
 ## Bron en resultaat kiezen
 

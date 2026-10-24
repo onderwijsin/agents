@@ -1,6 +1,9 @@
 # Module 6 — Laat Work een document op schijf bewerken
 
 Doel: ervaren dat Work een bestand rechtstreeks op de harde schijf kan wijzigen.
+Leg vóór het koppelen van een map uit dat lokale Work-toegang bewerken in het
+bestaande bestand mogelijk maakt, bijvoorbeeld een projectvoorstel bijwerken zonder
+tekst heen en weer te kopiëren. Voor alleen advies over een tekst volstaat een chat.
 Deze module wordt in de **desktopapp** uitgevoerd. Controleer platform, zakelijke
 workspace, Work en lokale maptoegang via [functienavigatie](feature-navigation.md).
 Ontbreekt deze mogelijkheid, noteer `unavailable`; een web-upload/download voldoet niet.

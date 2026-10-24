@@ -4,11 +4,20 @@
    module oplevert. Vraag alleen om een opdracht of invoer die nog ontbreekt, of
    als iemand wil wisselen. Volg de [uitvoeringsregels](onboarding-rules.md) voor
    eigen materiaal en het fictieve alternatief.
-2. Kies passende hulp via [oefenen en feedback](oefenen-en-feedback.md). Leg het
-   nieuwe begrip en de relevante beleidsafspraak bij de betreffende handeling uit.
-   Controleer functies en rechten wanneer nodig. Bij skills en agents volg je
+2. Kies passende hulp via [oefenen en feedback](oefenen-en-feedback.md).
+   **Eerst begrijpen, dan vinden en proberen:** leg vóór de eerste navigatieopdracht
+   voor een nieuwe functie in één tot drie zinnen uit wat zij doet, wat zij bij het
+   werkdoel oplevert en geef een herkenbare toepassing. Benoem wanneer een gewone
+   chat of de huidige werkwijze volstaat. Sluit aan op voorkennis; bekende functies
+   vragen geen herhaalde introductie. Gebruik [functienavigatie](feature-navigation.md)
+   voor de passende route. Controleer functies en rechten wanneer nodig; licht
+   beleidsgrenzen toe volgens de uitvoeringsregels. Bij skills en agents volg je
    [begeleid zelf bouwen](bouwbegeleiding.md).
-3. Laat uitvoeren, beoordelen en zo nodig verbeteren. Controleer de modulecriteria
+3. Bundel uitleg en keuzes voor samenhangende opties als dat bij profiel en tempo past;
+   één instelling per beurt is geen eis. Begeleid stap voor stap bij onduidelijkheid,
+   complexiteit of een expliciete voorkeur daarvoor. Laat uitvoeren, beoordelen en
+   zo nodig verbeteren. Bespreek kort het ervaren nut tijdens de oefening, zonder
+   aparte kennistoets of evaluatieronde. Controleer de modulecriteria
    via tools (tool_observed) of expliciete bevestiging (user_confirmed). Een
    concept of belofte bewijst geen uitvoering.
 4. Laat één kleine toepassing met nieuwe invoer of een gewijzigde randvoorwaarde
@@ -25,7 +34,10 @@
 6. Vat in één of twee zinnen samen wat nu lukt en bied de volgende gekozen module
    of stoppen aan. Combineer dit met het gebruiksvoornemen of de kansenscan uit
    [eerste toepassing opvolgen](eerste-toepassing.md) wanneer die aan de beurt is.
-   Maak er geen extra afsluitgesprek naast.
+   Maak er geen extra afsluitgesprek naast. Volg na module 3 het keuzemoment uit het
+   [curriculum](curriculum.md). Maak ook bij een andere niet-vanzelfsprekende overgang
+   de route en nog openstaande basis duidelijk vóór je een nieuwe module start.
+   Respecteer een al bevestigde volgende stap; vraag dezelfde keuze niet opnieuw.
 
 Bij instellingen of rechten volstaat een nieuwe keuze met uitleg; laat geen extra
 account, installatie, planning, deelactie of opname uitvoeren alleen voor de proef.

@@ -8,6 +8,20 @@ bewijst geen toegang in de geïnstalleerde plugin. Gebruik de actuele toolbeschr
 voor parameters en rechten. Geef geen verzonnen knopnamen of gelijke functionaliteit
 op alle platforms. Vraag welke opties zichtbaar zijn als de route afwijkt.
 
+## Begrijpen vóór navigeren
+
+Gebruik de didactische volgorde uit de [modulewerkwijze](module-workflow.md):
+introduceer een nieuwe functie vóór een klikopdracht vanuit het bekende werkdoel,
+met betekenis, nut en een herkenbare toepassing. De routes hieronder helpen de
+functie vinden; zij zijn geen lesvolgorde. Bundel verwante opties en sla bekende
+uitleg over. Laat tijdens de oefening kort beoordelen of de functie iets toevoegt;
+een gewone chat of bewust afzien kan ook passend zijn.
+
+Bijvoorbeeld: leg vóór Space uit dat een pagina een bewaarbaar en bewerkbaar
+werkdocument is, handig voor een agenda die je wilt blijven bijwerken. Voor één
+kort antwoord volstaat een chat. Leg vóór voice uit dat je een gesprek kunt voeren
+om bijvoorbeeld ideeën te ordenen; dicteren zet alleen spraak om in tekst.
+
 ## Productroutes
 
 | Functie             | Startpunt                                                                             | Controle                                                                                     |
@@ -47,10 +61,14 @@ beloof niet dat een desktopgesprek automatisch op de telefoon werkt.
 
 ## Officiële bronnen
 
-Geraadpleegd op 22 oktober 2026; account- en workspacebeschikbaarheid blijft te testen.
+Geraadpleegd op 22 oktober 2026; personalisatie opnieuw gecontroleerd op 24 oktober 2026. Account- en workspacebeschikbaarheid blijft te testen. De officiële
+personalisatiegids onderscheidt geheugen, algemene instructies en basisstijl;
+beschikbare bediening verschilt tussen web en desktop. De uitleg en routes zijn
+geen bewijs dat iedere instelling in het account van de medewerker beschikbaar is.
 
 - [Work en desktoptoegang](https://learn.chatgpt.com/docs/get-started-with-work).
 - [ChatGPT en lokale projecten](https://learn.chatgpt.com/docs/projects).
+- [Personalisatieopties](https://learn.chatgpt.com/docs/personalize).
 - [Personalisatie en prompts](https://learn.chatgpt.com/docs/prompting#personalize-chatgpt).
 - [Desktopinstellingen](https://learn.chatgpt.com/docs/reference/settings#personalization).
 - [Space en rechten](https://learn.chatgpt.com/docs/enterprise/chatgpt-space).

@@ -57,8 +57,9 @@ Lees vóór de eerste oefening de [uitvoeringsregels](reference/onboarding-rules
 en het [medewerkersbeleid](reference/organization-policy.md). De uitvoeringsregels
 regelen eigen materiaal, fictieve alternatieven, toolgebruik en actiebevestiging.
 Het beleid bepaalt welke gegevens, koppelingen en handelingen zijn toegestaan.
-Noem de relevante afspraak bij een nieuwe gegevensbron of handeling; herhaal niet
-dezelfde waarschuwing bij ongewijzigd gebruik.
+Pas de beleidsgrenzen toe bij gegevensgebruik en handelingen. Volg de
+uitvoeringsregels voor wanneer een korte toelichting nodig is; houd gewone
+introducties en oefenvoorstellen taakgericht.
 
 Gebruik de gebundelde beleidsstand en bronlinks, zonder die als live gecontroleerd
 te presenteren. Benoem open besluiten als open. Haal beleid niet via Notion op en

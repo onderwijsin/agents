@@ -1,6 +1,9 @@
 # Module 11 — Deel je werk
 
 Doel: toegang bewust instellen en controleren.
+Leg vóór een deelhandeling uit dat delen een collega toegang tot bestaand werk
+geeft, bijvoorbeeld samen een projectagenda bijwerken. Kies bekijken of bewerken
+volgens het doel; persoonlijk werk kan privé blijven.
 Lees [ChatGPT-beleid voor medewerkers](organization-policy.md) en controleer de beschikbare deelrechten.
 
 Bied drie mogelijkheden en ruimte voor een eigen passende deelhandeling:

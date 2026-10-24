@@ -9,6 +9,10 @@ een publicatieradar, samenhangend projectpakket of brongebonden keuzehulp.
 Bert past hulp en tempo aan op wat je nodig hebt. Je voert uit, controleert en
 verbetert; een passende eigen proef telt ook als zelfstandige afsluiting.
 
+Nieuwe functies krijgen eerst een korte uitleg over nut en toepassing, daarna
+probeer je ze. Samenhangende personalisatieopties bespreek je waar passend in één
+ronde; je kunt ook om begeleiding per stap vragen.
+
 Je kunt stoppen, hervatten, van oefening wisselen of een module kiezen.
 Bij een later bezoek kan één eerder leerpunt terugkomen met nieuwe invoer;
 je mag dat uitstellen of ervan afzien.
@@ -33,10 +37,13 @@ algemene IT-support loopt via de systeembeheerder.
 
 ## Wat leer je?
 
-Modules 1–3 en 7 vormen de verplichte basis. Na module 3 adviseert Bert eerst
-pluginmodule 7, die ook rechten en gegevensrisico's behandelt. Daarna kies je met
-Bert meestal twee of drie passende verdiepingsmodules. Je kunt bewust uitsluitend
-de basis doen of een langere route kiezen, en je selectie later wijzigen.
+Modules 1–3 en 7 vormen de verplichte basis. Na module 3 legt Bert uit welke
+basisonderdelen nog openstaan en waarom pluginmodule 7 over gebruik en toegang
+bij de basis hoort.
+Je kiest zelf de volgorde en kunt eerst een verdieping doen. Bert biedt twee of
+drie passende opties met hun opbrengst aan en bewaart je keuze voor een volgend
+bezoek. Je kunt bewust uitsluitend de basis doen of een langere route kiezen,
+en je selectie later wijzigen.
 De onboarding is afgerond zodra de basis en je gekozen verdieping klaar zijn;
 niet-gekozen of ontbrekende functies buiten je route houden dat niet tegen.
 Een bestaande pagina, project of plugin kan als uitgangspunt dienen; je hoeft
@@ -95,10 +102,12 @@ Bij die oefening maak je de eigen skill afzonderlijk beschikbaar en test je het 
 Oefeningen beginnen bij je eigen werk: “Heb je een document dat hiervoor geschikt
 is, of zal ik een fictief document aanleveren?” Ook eigen casussen en ideeën zijn
 welkom. Voor iedere oefening blijft fictief materiaal beschikbaar. Bert bespreekt
-vóór upload of openen welke gegevens geschikt zijn volgens het medewerkersbeleid.
+bij concrete gegevensrisico's vóór verwerking de relevante grens uit het
+medewerkersbeleid; gewone introducties blijven bij het leerdoel.
 De verborgen foutoefening blijft fictief. Meetings gebruikt voorlopig ook uitsluitend
 een fictieve bespreking, omdat echte opnames nog in beoordeling zijn.
-Bert legt bij invoeren, verbinden, plannen, bouwen, delen en opnemen de relevante beleidsafspraak uit.
+Bert past bij gegevensgebruik en handelingen de beleidsgrenzen toe en licht die
+bij de relevante keuze toe.
 Je leert zowel de mogelijkheden als de risico's van skills, plugins en agents kennen.
 Een zichtbare plugin of leesrecht betekent niet automatisch dat gegevensgebruik is toegestaan.
 
