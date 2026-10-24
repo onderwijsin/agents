@@ -1,4 +1,4 @@
-# Module 2 — Veilig gebruik, organisatiebeleid en usage
+# Module 2 — Veilig gebruik, organisatiebeleid en gebruiksstatistieken
 
 Doel: 2FA controleren, gegevens verantwoord kiezen en de eigen gebruikslimieten vinden.
 Lees [ChatGPT-beleid voor medewerkers](organization-policy.md) en [gebruik en limieten](usage.md).
@@ -9,6 +9,8 @@ Vraag nooit om codes, wachtwoorden of een screenshot met gevoelige gegevens.
 
 ## Verplicht: 2FA instellen
 
+Leg vóór de navigatie uit dat 2FA naast het wachtwoord een extra controle bij
+inloggen toevoegt, zodat een uitgelekt wachtwoord alleen niet genoeg is.
 Laat de medewerker in ChatGPT via Settings → Security and login → Multi-factor
 authentication 2FA inschakelen en de instelling controleren. Staat 2FA al aan,
 laat dat controleren en bevestigen. Begeleid één stap tegelijk volgens de
@@ -16,23 +18,29 @@ laat dat controleren en bevestigen. Begeleid één stap tegelijk volgens de
 Laat codes en QR-codes uitsluitend in de beveiligingsinterface gebruiken, nooit in chat.
 Lukt instellen niet, help of verwijs naar de systeembeheerder; dit onderdeel blijft open.
 
-## Veilig gebruik en usage
+## Veilig gebruik en gegevenskeuze
 
-Bespreek deze drie situaties en laat eerst de medewerker kiezen. De laatste
-zelfstandig gemotiveerde keuze telt ook als afsluiting; voeg geen vierde scenario toe.
-Bij beginners behandel je ze één voor één:
+Kies één herkenbare werksituatie bij profiel en ervaring, met meerdere bronnen
+of manieren van werken. Vraag de medewerker eerst zelf een aanpak te motiveren:
+welke informatie gebruiken, wat vooraf controleren en wat eventueel aanpassen?
+Gebruik bijvoorbeeld het voorbereiden van een samenvatting uit gespreksnotities,
+een publiek artikel en eerdere correspondentie. Geef geen veilige/verboden labels
+of beleidsconclusies in de vraag; laat de medewerker zelf aandachtspunten ontdekken.
+Pas complexiteit en hoeveelheid context aan, zonder het antwoord voor te zeggen.
 
-1. Een openbaar kennisbankartikel samenvatten. Geschikt voor de oefening; controleer
-   de bron en samenvatting, ook als het onderwerp bekend lijkt.
-2. Een gespreksverslag met reguliere zakelijke persoonsgegevens verwerken. Namen,
-   contactgegevens en adviesvoorkeuren mogen; medische informatie of gegevens uit
-   een selectie- of HR-dossier niet. Laat de medewerker aangeven wat vóór gebruik
-   moet worden verwijderd of gemaskeerd. Oefen met fictieve passages.
-3. Een plugin toegang tot organisatiegegevens geven. Laat kiezen tussen publieke
-   kennis via Onderwijsloket en de nog niet toegestane Outlook Email-koppeling.
-   Bespreek waarom zichtbaarheid of alleen-lezen geen toestemming bewijst.
-   De eigen plugin en concrete rechten worden in module 7 beoordeeld; houd het hier
-   bij de gegevenskeuze. Test geen echte verboden bron.
+Beoordeel het antwoord met deze interne criteria; lees dit niet als antwoordlijst voor:
+
+- Passende gegevenskeuze en aanpassing vóór verwerking volgens het medewerkersbeleid,
+  inclusief het onderscheid tussen reguliere zakelijke persoonsgegevens en uitgesloten gegevens.
+- Toegestane koppelingen en bereikbare gegevens controleren; zichtbaarheid of alleen-lezen
+  bewijst geen toestemming. Toegang tot een bron betekent niet dat die gekoppeld mag worden.
+- Bron en uitkomst controleren en onzekerheid herkennen.
+
+Vraag alleen gericht door op nog ontbrekende afwegingen. Laat bij een misvatting na
+feedback een kleine variant zelf beoordelen. Een zelfstandig gemotiveerde aanpak
+of passende vervolgkeuze telt als afsluiting; voeg geen extra reeks scenario's toe.
+Gebruik fictieve passages als broninhoud nodig is en open geen verboden koppeling.
+De eigen plugin en concrete rechten volgen in module 7.
 
 Leg ook uit dat alleen de aangeboden ChatGPT Business-omgeving voor werk is toegestaan.
 Bespreek bij authenticatie kort de eigen inlogmethode per dienst, het verbod op
@@ -42,13 +50,27 @@ beheerderschecklist: laat de medewerker één passende veiligheidskeuze uitlegge
 De bewaartermijn voor gesprekken is nog niet bepaald; verwijderen van een bronbestand
 verwijdert overgenomen gegevens niet automatisch uit gesprekken.
 
-Geef gerichte feedback op de keuze. Laat vervolgens de eigen usagepagina openen,
-de getoonde beperking en resetinformatie bekijken en uitleggen wat te doen bij een
-limiet. Gebruik de organisatieafspraak over uitsluitend inbegrepen gebruik;
+## Gebruiksstatistieken begrijpen en vinden
+
+Introduceer vóór een navigatieopdracht in gewone taal wat gebruiksstatistieken
+laten zien: hoeveel van de beschikbare gebruiksruimte is verbruikt of nog over is,
+welke limieten zichtbaar zijn en wanneer die eventueel vernieuwen. Dat helpt
+begrijpen waarom sommige functies tijdelijk beperkt kunnen raken bij een limiet.
+Gebruik 'usage' alleen als herkenbaar interfacelabel. Volg daarna
+[gebruik en limieten](usage.md) om de eigen beschikbare weergave te vinden.
+
+Laat de medewerker in eigen woorden duiden wat de daadwerkelijk getoonde cijfers
+betekenen en wat te doen bij een limiet. Licht verbruikt tegenover resterend toe;
+verzin geen percentage, limiet of resetmoment als dat niet zichtbaar is. Ontbreekt
+een gebruiksweergave, leg de beperking vast en bespreek kort wat de medewerker bij
+een limietmelding kan doen; maak zoeken geen blokkerende opdracht.
+Gebruik de organisatieafspraak over uitsluitend inbegrepen gebruik;
 geen abonnementsvergelijking of betaalde uitwijkroute.
 
 Afronding: 2FA is aantoonbaar actief of door de medewerker bevestigd (`user_confirmed`);
-zonder die bevestiging is deze verplichte basismodule niet voltooid. De drie scenario's
-en afspraken voor ChatGPT-gebruik zijn behandeld; de medewerker
-heeft de eigen usage gevonden of een gecontroleerde route daarnaartoe vastgesteld.
-Leg een ontbrekende usageweergave expliciet vast, zonder een limiet te verzinnen.
+zonder die bevestiging is deze verplichte basismodule niet voltooid. De medewerker
+heeft gegevenskeuze, koppelingstoestemming en bron- en resultaatcontrole zelfstandig
+gemotiveerd en de afspraken voor ChatGPT-gebruik besproken. De beschikbare
+gebruiksweergave is gevonden en geduid, of het ontbreken ervan is expliciet vastgelegd
+met een besproken aanpak bij een limietmelding. Een ontbrekende weergave alleen
+blokkeert afronding niet; een nog open veiligheidsafweging wel.

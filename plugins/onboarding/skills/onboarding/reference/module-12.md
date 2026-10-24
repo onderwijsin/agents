@@ -1,7 +1,10 @@
 # Module 12 — Gebruik ChatGPT Meetings
 
 Doel: een oefenbespreking vastleggen en notities, besluiten en acties controleren.
-Vraag het besturingssysteem als dat nog niet bekend is. Raad macOS-gebruikers
+Leg vóór navigatie uit dat Meetings een bespreking vastlegt en helpt om notities,
+besluiten en acties terug te vinden, bijvoorbeeld na projectoverleg. De uitkomst
+moet tegen de bespreking worden gecontroleerd; voor een eigen korte notitie is een
+opname vaak niet nodig. Vraag het besturingssysteem als dat nog niet bekend is. Raad macOS-gebruikers
 ChatGPT Meetings in de desktopapp aan. De opdracht gaat uit van Windows-ondersteuning
 op een later moment; controleer bij uitvoering wat beschikbaar is en beloof geen datum.
 Een Meetings-connector die oude notities kan lezen bewijst geen opnamefunctie.

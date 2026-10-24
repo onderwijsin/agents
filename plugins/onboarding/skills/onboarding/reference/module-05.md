@@ -1,7 +1,11 @@
 # Module 5 — Maak je eerste project
 
 Doel: gesprekken, geüploade bestanden en instructies samenbrengen in een ChatGPT Project.
-Dit is het project met gedeelde context; lokale maptoegang volgt in module 6.
+Leg vóór het aanmaken uit dat een project gesprekken, bronnen en instructies bij
+elkaar houdt, zodat je bij terugkerend projectwerk minder context hoeft te herhalen.
+Koppel dit aan het werkdoel, bijvoorbeeld meerdere overleggen binnen één programma.
+Voor één losse vraag volstaat een chat. Dit is het project met gedeelde context;
+lokale maptoegang volgt in module 6.
 
 Gebruik waar passend het werkdoel en de casus uit eerdere modules. Bied alleen bij
 behoefte drie opdrachten en ruimte voor een eigen idee:

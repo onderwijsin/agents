@@ -1,6 +1,9 @@
 # Module 8 — Plan je eerste taak
 
 Doel: een daadwerkelijk opgeslagen taak maken en deze beheren.
+Leg vóór navigatie uit dat een geplande taak een opdracht op een afgesproken moment
+of herhaald uitvoert, bijvoorbeeld een wekelijkse voorbereiding. Dat bespaart het
+steeds opnieuw starten; voor een eenmalige vraag die nu speelt volstaat een chat.
 Controleer Scheduled en de relevante rechten; lees de [uitvoeringsregels](onboarding-rules.md).
 Leg bij de bronkeuze uit dat een geplande run dezelfde gegevens- en toolgrenzen
 heeft als een gewone chat. Gebruik de [beleidsstand](organization-policy.md);

@@ -6,9 +6,10 @@ ontbrekende intake aan via [profiel en leertempo](learner-profile.md).
 Leg Chat uit bij de eerste vraag en Work wanneer een taak tools of een bestand nodig
 heeft. Wijs nu alleen aan waar een nieuwe chat begint. Pages, Projects, plugins,
 skills en agents worden bij hun eigen oefening geïntroduceerd; geef geen rondleiding
-langs alle schermen. Geef vóór invoer kort de gegevensgrens uit
-[medewerkersbeleid](organization-policy.md). Vraag naar een geschikte eigen casus
-of document en bied fictieve invoer aan volgens de [uitvoeringsregels](onboarding-rules.md).
+langs alle schermen. Vraag naar een eigen casus of document en bied fictieve invoer
+aan volgens de [uitvoeringsregels](onboarding-rules.md). Houd de introductie bij het
+leren vragen, beoordelen en bijsturen; licht een gegevensgrens alleen toe als het
+gekozen materiaal of de voorgenomen handeling daar concreet aanleiding toe geeft.
 Bespreek de modellen en redeneerniveaus die de medewerker daadwerkelijk ziet:
 voor een eenvoudige oefening volstaat een lichte beschikbare optie, voor een complexe
 opdracht kan meer redeneren passend zijn. Maak er geen modelcatalogus van.

@@ -99,8 +99,14 @@ Waarden:
 - `modules.<id>.learning_observation`: optionele korte waarneming van voorkennis,
   benodigde hulp en resultaat van de laatste poging. Een geslaagde toolactie is
   geen bewijs van zelfstandig begrip. Bewaar geen brontekst of persoonsbeoordeling.
-- `current_step`: een korte concrete hervatstap. Noteer bij bouwmodules de eigen taak
-  en een korte bevestigde ontwerpkeuze zonder broninhoud. Per module mogen `exercise` en een
+- `current_module` en `current_step`: bewaar de gekozen volgende module en een korte
+  concrete hervatstap. Is na module 3 nog geen vervolg gekozen, bewaar dan
+  `current_module: "personalization"` en `current_step: "choose-next-module"` totdat
+  de medewerker kiest. Hervat daar het keuzemoment, geen automatische pluginles.
+  Toon openstaande basismodules op basis van hun eigen status; een optionele keuze
+  verandert die niet. Een bevestigde volgende module gaat bij hervatten voor op een
+  nieuwe routevraag. Noteer bij bouwmodules de eigen taak en een korte bevestigde
+  ontwerpkeuze zonder broninhoud. Per module mogen `exercise` en een
   veilige resultaatverwijzing worden bewaard. Bewaar geen gevoelige lokale paden.
 - `status`: `not_started`, `in_progress`, `completed`, `skipped`, `unavailable`.
   `unavailable` vereist `reason` en `checked_at`; controleer de beperking bij hervatten.
