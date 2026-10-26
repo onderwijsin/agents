@@ -45,6 +45,21 @@ een conflict op het werk. Vraag tijdens de onboarding niet naar zulke eigen
 gegevens; bespreek dit met fictieve voorbeelden. Dit advies over privégebruik
 verruimt de uitsluitingen voor werkgegevens onder 'Omgeving en gegevens' niet.
 
+## Voorzorgsadvies voor computer- en browsertoegang
+
+De onboarding adviseert Computer Use, Computer History en Browser Use direct uit
+te zetten, tenzij er een heel goede, concrete reden is om ze aan te houden.
+Een nuttige toepassing alleen verruimt geen gegevens- of toegangsrechten.
+Bespreek bij een uitzondering doel, noodzakelijke toegang en risico's; laat
+ontbrekende organisatorische goedkeuring of onduidelijke grenzen eerst door de
+ChatGPT-beheerders beoordelen. Houd de tools intussen uit.
+
+Dit is een voorzorgsadvies, geen vastgesteld algemeen verbod. Een structureel
+beleidsbesluit en eventuele technische handhaving staan nog open; issue
+[#53](https://github.com/onderwijsin/agents/issues/53) bevat de vervolgbeoordeling,
+waaronder een verbod als voorkeursoptie om te beoordelen. Een persoonlijke
+bevestiging of promptwaarschuwing vormt geen technische afscherming.
+
 ## Koppelingen: beleid en feitelijke beschikbaarheid
 
 | Systeem                                | Stand en betekenis voor de onboarding                                                                                                                                     |

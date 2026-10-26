@@ -48,6 +48,44 @@ betrouwbare voortgangsdatabase. De desktopinstelling kan lokale agentinstructies
 openen in plaats van alle personalisatie-opties van ChatGPT te tonen: benoem dat
 verschil en begeleid waar nodig ook de zakelijke ChatGPT-instellingen.
 
+## Computer- en browsertoegang uitschakelen
+
+Gebruik deze routes alleen voor controle en uitschakelen. Stel eerst platform,
+app en zichtbare opties vast; de beschikbaarheid hangt ook van workspace en account af.
+
+- **Computer Use, macOS/Windows:** bekijk in de desktopapp Plugins → Computer Use.
+  Zet aanwezige server- en skilltoggles uit. Onder Settings → Computer use kun je
+  opgeslagen appgoedkeuringen intrekken. Trek waar nodig op macOS de bijbehorende
+  rechten in onder Systeeminstellingen → Privacy en beveiliging → Schermopname en
+  Toegankelijkheid; controleer de juiste vermelding. Vraag geen extra rechten aan.
+- **Computer History, macOS:** Settings → Integrations → Computer history; zet
+  Computer History uit. Alleen pauzeren is tijdelijk. Uitzetten stopt toekomstige
+  verzameling en verwijdert niet automatisch eerder opgeslagen geschiedenis of
+  herinneringen. Begeleid verwijdering daarvan alleen als de medewerker dat wil.
+  Veronderstel deze macOS-functie niet op Windows, web of mobiel.
+- **Browser Use:** bekijk in de desktopinstellingen de browsertoegang en zet de
+  functie uit waar die schakelaar beschikbaar is. Trek opgeslagen sitegoedkeuringen
+  in; alleen het browservenster sluiten is geen uitschakeling. Bij de ChatGPT-
+  browserextensie: Settings → Chrome extension voor siterechten; schakel de
+  extensie uit via het extensiebeheer van de betreffende browser. De ingebouwde
+  browser heeft eigen sessies; de extensie kan bestaande browsersessies gebruiken.
+  Een cloudbrowser draait elders en heeft afzonderlijke toegangsgrenzen: controleer
+  die apart als die wordt aangeboden. Verwar Browser Use niet met gewoon webzoeken.
+
+Vraag bij afwijkende labels welke opties zichtbaar zijn, zonder gevoelige
+scherminhoud op te vragen. Ontbreekt een uitknop, trek de relevante goedkeuringen
+in waar mogelijk en verwijs voor volledige uitschakeling naar de beheerder;
+claim dan niet dat de hele functie uit staat. Installeer of activeer geen tool
+om de instelling te kunnen vinden. Bij web of mobiel volstaan de uitleg en het
+advies voor later desktopgebruik, plus controle van een relevante bestaande extensie.
+
+Routes gecontroleerd aan officiële documentatie op 26 oktober 2026; niet in de
+accounts van medewerkers getest:
+
+- [Computer Use](https://learn.chatgpt.com/docs/computer-use).
+- [Computer History](https://learn.chatgpt.com/docs/customization/computer-history).
+- [Ingebouwde browser en extensie](https://help.openai.com/en/articles/20001277-using-the-built-in-browser-in-the-chatgpt-desktop-app).
+
 ## Ontbrekende mogelijkheden
 
 Bij ontbrekende tooltoegang mag de gebruiker de interfacehandeling uitvoeren en het
