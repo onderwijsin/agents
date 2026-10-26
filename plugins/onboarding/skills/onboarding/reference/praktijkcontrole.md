@@ -27,6 +27,16 @@ Test na installatie de volgende varianten met nieuwe en hervattende medewerkers:
   Bij 'beheerders lezen automatisch mee' en 'niet gedeeld dus niet bewaard' volgt
   correctie en een nieuwe gemotiveerde keuze. Privégebruik telt mee voor de limiet;
   concrete quota en resetmomenten volgen alleen uit de eigen gebruiksweergave.
+- Module 2 op macOS en Windows: alle drie de risico's en het advies direct uitzetten
+  worden kort behandeld. Test tools die aan, uit, ontbrekend of centraal geblokkeerd
+  zijn; Bert helpt alleen relevante instellingen vinden en claimt geen onbekende stand.
+  Computer History wordt niet als screenshot/audio-opname beschreven of op Windows beloofd.
+- Module 2 op web en mobiel: korte uitleg en advies voor later desktopgebruik,
+  zonder desktopinstallatie of irrelevante instelstappen. Een bestaande browserextensie
+  krijgt waar relevant wel aandacht. Test ook een goede reden om een tool te behouden:
+  bestaande beleidsgrenzen en ontbrekende goedkeuring blijven gelden.
+- Module 6 blijft bij een veilige Work-map en vraagt geen activering van deze drie
+  tools of aanvullende schermopname-, toegankelijkheids- of browserrechten.
 - Een gebruiksvoornemen wordt bij hervatten opgepakt zonder automatisch een
   herinnering te plannen; uitstel en afzien van opvolging zijn mogelijk.
 - Een beginner krijgt vóór vastlopen een klein voorbeeld; een ervaren medewerker

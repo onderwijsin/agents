@@ -15,6 +15,13 @@ alternatief fictieve documenten aan volgens de [uitvoeringsregels](onboarding-ru
 2. Het [projectvoorstel](../assets/exercise-materials/projectvoorstel.md) verbeteren.
 3. Het [overlegverslag](../assets/exercise-materials/overlegverslag.md) structureren.
 
+Gebruik voor deze oefening afgebakende lokale Work-maptoegang. Computer Use,
+Computer History en Browser Use zijn hiervoor niet nodig; volg het
+[voorzorgsadvies](organization-policy.md#voorzorgsadvies-voor-computer--en-browsertoegang)
+en laat geen extra schermopname-, toegankelijkheids- of browserrechten toekennen.
+Als de beschikbare route toch zulke toegang vraagt, stop die route en controleer
+met de beheerder of veilige lokale bestandstoegang beschikbaar is.
+
 ## Uitvoering
 
 1. Laat een aparte oefenmap op de computer maken met een kopie van het gekozen veilige

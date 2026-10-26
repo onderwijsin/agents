@@ -60,6 +60,39 @@ betekenen voor een eigen keuze. Vraag geen medische of persoonlijke HR-informati
 Bij een misvatting, zoals 'beheerders lezen automatisch mee' of 'niet gedeeld dus
 niet bewaard', geef gerichte feedback en laat de keuze opnieuw motiveren.
 
+## Computer Use, Computer History en Browser Use
+
+Geef iedereen, ook web- en mobiele gebruikers, deze korte uitleg vóór eventuele
+inzet. Deze functies kunnen later bij desktopgebruik relevant worden; Browser Use
+via een extensie kan ook bij webgebruik spelen.
+
+- **Computer Use** kan toegestane apps zien en bedienen, bijvoorbeeld om een
+  handeling uit te voeren. Daarbij kunnen gevoelige dossiers in beeld komen en
+  onbedoelde wijzigingen of acties in andere apps plaatsvinden.
+- **Computer History** kan activiteit en tekst uit toegestane apps en websites
+  gebruiken om werk terug te vinden en context te onthouden. Daardoor kunnen
+  gevoelige teksten en werkpatronen in een tijdlijn of geheugen terechtkomen.
+  Het is geen screenshot- of audio-opnamefunctie.
+- **Browser Use** kan websites lezen en bedienen, bijvoorbeeld voor een webtaak.
+  In ingelogde omgevingen kan het gegevens zien en namens je account handelen.
+  Misleidende instructies op een pagina kunnen ongewenste acties uitlokken.
+
+Adviseer duidelijk: **zet deze drie tools direct uit, tenzij je een heel goede,
+concrete reden hebt om ze aan te houden**. Bespreek bij zo'n reden het doel,
+noodzakelijke toegang en gegevensrisico; bestaande organisatiegrenzen blijven
+leidend. Volg het [voorzorgsadvies](organization-policy.md#voorzorgsadvies-voor-computer--en-browsertoegang)
+bij twijfel of ontbrekende goedkeuring. Dit advies is geen vastgesteld algemeen verbod.
+
+Bied desktopgebruikers hulp aan bij het vinden en uitschakelen via
+[functienavigatie](feature-navigation.md#computer--en-browsertoegang-uitschakelen).
+Laat de medewerker zelf de stand controleren en zo nodig uitzetten; activeer of
+installeer niets om te oefenen. Vraag web- en mobiele gebruikers niet om de
+desktopapp te installeren of naar ontbrekende desktopinstellingen te zoeken.
+Controleer bij webgebruik wel een al aanwezige browserextensie als dat relevant is.
+Laat iedereen kort de risico's en eigen keuze bevestigen. Leg alleen vast: uit,
+volgens medewerker uit, niet beschikbaar, of gemotiveerd aangehouden met de
+benodigde beoordeling; een onbekende stand is geen bevestigde uitschakeling.
+
 ## Gebruiksstatistieken begrijpen en vinden
 
 Introduceer vóór een navigatieopdracht in gewone taal wat gebruiksstatistieken
@@ -82,7 +115,9 @@ zonder die bevestiging is deze verplichte basismodule niet voltooid. De medewerk
 heeft gegevenskeuze, koppelingstoestemming en bron- en resultaatcontrole zelfstandig
 gemotiveerd en de afspraken voor ChatGPT-gebruik besproken. De medewerker kan
 de afspraken over privégebruik, zichtbaarheid, gevoelige privégegevens en
-gebruiksruimte in eigen woorden toepassen. De beschikbare
+gebruiksruimte in eigen woorden toepassen. De drie toegangsrisico's en het
+voorzorgsadvies zijn besproken; de relevante instellingen zijn gecontroleerd of
+hun onbekende stand of onbeschikbaarheid is expliciet vastgelegd. De beschikbare
 gebruiksweergave is gevonden en geduid, of het ontbreken ervan is expliciet vastgelegd
 met een besproken aanpak bij een limietmelding. Een ontbrekende weergave alleen
 blokkeert afronding niet; een nog open veiligheidsafweging wel.

@@ -108,6 +108,13 @@ De verborgen foutoefening blijft fictief. Meetings gebruikt voorlopig ook uitslu
 een fictieve bespreking, omdat echte opnames nog in beoordeling zijn.
 Bert past bij gegevensgebruik en handelingen de beleidsgrenzen toe en licht die
 bij de relevante keuze toe.
+Module 2 behandelt ook de risico's van Computer Use, Computer History en Browser
+Use. Het voorzorgsadvies is deze direct uit te zetten, tenzij er een heel goede,
+concrete reden is om ze binnen de bestaande beleidsgrenzen aan te houden. Bert
+helpt zo nodig de relevante instellingen vinden. Web- en mobiele gebruikers
+krijgen een korte uitleg voor eventueel later desktopgebruik; een aanwezige
+browserextensie wordt waar relevant ook gecontroleerd.
+
 Je leert zowel de mogelijkheden als de risico's van skills, plugins en agents kennen.
 Een zichtbare plugin of leesrecht betekent niet automatisch dat gegevensgebruik is toegestaan.
 
