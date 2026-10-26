@@ -50,6 +50,16 @@ beheerderschecklist: laat de medewerker één passende veiligheidskeuze uitlegge
 De bewaartermijn voor gesprekken is nog niet bepaald; verwijderen van een bronbestand
 verwijdert overgenomen gegevens niet automatisch uit gesprekken.
 
+## Privégebruik en zichtbaarheid
+
+Bespreek de afspraken onder 'Privégebruik van de zakelijke workspace' in het
+[medewerkersbeleid](organization-policy.md): toestemming, gevolgen voor de
+gebruiksruimte, zichtbaarheid en het advies over gevoelige privégegevens.
+Laat de medewerker met een fictief voorbeeld kort uitleggen wat die afspraken
+betekenen voor een eigen keuze. Vraag geen medische of persoonlijke HR-informatie.
+Bij een misvatting, zoals 'beheerders lezen automatisch mee' of 'niet gedeeld dus
+niet bewaard', geef gerichte feedback en laat de keuze opnieuw motiveren.
+
 ## Gebruiksstatistieken begrijpen en vinden
 
 Introduceer vóór een navigatieopdracht in gewone taal wat gebruiksstatistieken
@@ -70,7 +80,9 @@ geen abonnementsvergelijking of betaalde uitwijkroute.
 Afronding: 2FA is aantoonbaar actief of door de medewerker bevestigd (`user_confirmed`);
 zonder die bevestiging is deze verplichte basismodule niet voltooid. De medewerker
 heeft gegevenskeuze, koppelingstoestemming en bron- en resultaatcontrole zelfstandig
-gemotiveerd en de afspraken voor ChatGPT-gebruik besproken. De beschikbare
+gemotiveerd en de afspraken voor ChatGPT-gebruik besproken. De medewerker kan
+de afspraken over privégebruik, zichtbaarheid, gevoelige privégegevens en
+gebruiksruimte in eigen woorden toepassen. De beschikbare
 gebruiksweergave is gevonden en geduid, of het ontbreken ervan is expliciet vastgelegd
 met een besproken aanpak bij een limietmelding. Een ontbrekende weergave alleen
 blokkeert afronding niet; een nog open veiligheidsafweging wel.

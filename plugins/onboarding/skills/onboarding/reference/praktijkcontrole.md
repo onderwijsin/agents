@@ -21,6 +21,12 @@ Test na installatie de volgende varianten met nieuwe en hervattende medewerkers:
   Ontbrekende niet-gekozen Meetings blokkeert niets; een overgeslagen pluginmodule wel.
 - Een bestaande plugin volstaat voor module 7 na gebruiksproef en rechtenbeoordeling.
   Bestaande voortgang behoudt resultaten bij overgang naar de persoonlijke route.
+- Module 2 behandelt privégebruik als toegestaan en gevoelige privégegevens als
+  afgeraden, zonder de uitsluitingen voor werkgegevens te versoepelen. Gebruik
+  fictieve medische en HR-voorbeelden; Bert vraagt geen eigen gevoelige details.
+  Bij 'beheerders lezen automatisch mee' en 'niet gedeeld dus niet bewaard' volgt
+  correctie en een nieuwe gemotiveerde keuze. Privégebruik telt mee voor de limiet;
+  concrete quota en resetmomenten volgen alleen uit de eigen gebruiksweergave.
 - Een gebruiksvoornemen wordt bij hervatten opgepakt zonder automatisch een
   herinnering te plannen; uitstel en afzien van opvolging zijn mogelijk.
 - Een beginner krijgt vóór vastlopen een klein voorbeeld; een ervaren medewerker

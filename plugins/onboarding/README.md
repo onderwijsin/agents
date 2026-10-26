@@ -49,21 +49,21 @@ niet-gekozen of ontbrekende functies buiten je route houden dat niet tegen.
 Een bestaande pagina, project of plugin kan als uitgangspunt dienen; je hoeft
 geen extra module te doen alleen om iets te hebben om mee te oefenen.
 
-| Module | Onderwerp                                                 |
-| ------ | --------------------------------------------------------- |
-| 1      | Je eerste gesprek en gerichte vervolgvragen               |
-| 2      | 2FA instellen, veilig gebruik, beleid en gebruikslimieten |
-| 3      | Geheugen, schrijfstijl en eigen aangepaste instructies    |
-| 4      | Een pagina maken, bewerken en terugvinden                 |
-| 5      | Een project met instructies en bestanden inrichten        |
-| 6      | Een lokaal document rechtstreeks laten bewerken           |
-| 7      | Een plugin gebruiken en de toegang beoordelen             |
-| 8      | Een taak plannen en beheren                               |
-| 9      | Een eigen skill maken, testen en hergebruiken             |
-| 10     | Een eigen agent bouwen en testen                          |
-| 11     | Werk delen met de juiste toegang                          |
-| 12     | Een fictieve bespreking vastleggen met Meetings           |
-| 13     | Een bruikbaar document, presentatie of spreadsheet maken  |
+| Module | Onderwerp                                                     |
+| ------ | ------------------------------------------------------------- |
+| 1      | Je eerste gesprek en gerichte vervolgvragen                   |
+| 2      | 2FA, veilig gebruik, privégebruik, beleid en gebruikslimieten |
+| 3      | Geheugen, schrijfstijl en eigen aangepaste instructies        |
+| 4      | Een pagina maken, bewerken en terugvinden                     |
+| 5      | Een project met instructies en bestanden inrichten            |
+| 6      | Een lokaal document rechtstreeks laten bewerken               |
+| 7      | Een plugin gebruiken en de toegang beoordelen                 |
+| 8      | Een taak plannen en beheren                                   |
+| 9      | Een eigen skill maken, testen en hergebruiken                 |
+| 10     | Een eigen agent bouwen en testen                              |
+| 11     | Werk delen met de juiste toegang                              |
+| 12     | Een fictieve bespreking vastleggen met Meetings               |
+| 13     | Een bruikbaar document, presentatie of spreadsheet maken      |
 
 Een gebruikelijke route telt zes of zeven modules, verdeeld over passende sessies.
 Er is nog geen geteste totale tijdsduur. Eerder opgeslagen resultaten blijven behouden.

@@ -1,6 +1,7 @@
 # AI-beleid voor medewerkers van Onderwijs in
 
-Gebundelde beleidsstand: **23 oktober 2026**. Gebruik deze referentie tijdens de
+Gebundelde beleidsstand: **23 oktober 2026**, aangevuld op **26 oktober 2026**
+met de afspraken over privégebruik. Gebruik deze referentie tijdens de
 onboarding; er is geen Notion-koppeling nodig. De bronlinks onderaan zijn voor
 naslag. Dit is een samenvatting, geen bewijs dat alle technische maatregelen al
 werken. Bij een gemelde wijziging of tegenstrijdigheid: bespreek het betreffende
@@ -25,6 +26,24 @@ Verwijder of maskeer gevoelige informatie **vóór** gebruik, of overleg eerst.
 Namen weghalen is onvoldoende als details iemand alsnog herkenbaar maken.
 Laat ChatGPT geen verboden dossier lezen om het vervolgens te anonimiseren of
 op te schonen. Oefenen kan met fictieve of publieke informatie.
+
+## Privégebruik van de zakelijke workspace
+
+Privégebruik van de ChatGPT Business-workspace van Onderwijs in is toegestaan.
+Ook privégesprekken tellen mee voor de gebruikslimiet; houd genoeg gebruiksruimte
+voor werk over. Volg voor de concrete limieten en resetmomenten de eigen
+[gebruiksweergave](usage.md).
+
+Eigen gesprekken zijn niet automatisch zichtbaar voor collega's of beheerders;
+zelf een chat of pagina delen geeft anderen toegang. ChatGPT verwerkt de invoer
+en kan die bewaren. Niet automatisch zichtbaar betekent dus niet dat gegevens
+niet worden verwerkt of bewaard.
+
+Het wordt afgeraden gevoelige privégegevens te delen, zoals persoonlijke medische
+klachten en persoonlijke HR-zaken: salaris, arbeidsovereenkomst, beoordeling of
+een conflict op het werk. Vraag tijdens de onboarding niet naar zulke eigen
+gegevens; bespreek dit met fictieve voorbeelden. Dit advies over privégebruik
+verruimt de uitsluitingen voor werkgegevens onder 'Omgeving en gegevens' niet.
 
 ## Koppelingen: beleid en feitelijke beschikbaarheid
 
@@ -133,6 +152,10 @@ Geraadpleegd op 23 oktober 2026:
 - [Integraties in ChatGPT](https://app.notion.com/p/402b66e1be698033980af17792b391b5).
 - [Plugins & Connectors](https://app.notion.com/p/402b66e1be69808fb275e42b754af361): alle registerrijen gelezen; dit is vastgelegde configuratie, geen eigen technische toegangstest.
 - [Softwaregebruik en authenticatie](https://app.notion.com/p/3f3b66e1be6980098543d92f94748f61).
+
+Aanvullend geraadpleegd op 26 oktober 2026:
+
+- [Privégegevens in ChatGPT](https://app.notion.com/p/405b66e1be6980f19ae2ece684854b6d).
 
 De hoofdteksten waren leesbaar; de ingesloten categoriedatabase en de aparte witte
 en zwarte softwarelijsten zijn niet integraal overgenomen of gecontroleerd.
