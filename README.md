@@ -81,9 +81,12 @@ in `.agents/skills/` remain contributor tooling.
 | [task-processing](skills/task-processing/SKILL.md)                     | Commitment Manager               | Qualify commitments, consolidate evidence and decide whether tasks are missing.              |
 | [task-review](skills/task-review/SKILL.md)                             | Task Manager                     | Review existing tasks for completion, planning, aging backlog, quality and priority.         |
 | [task-storage](skills/task-storage/SKILL.md)                           | Commitment Manager, Task Manager | Route task operations through a provider-neutral storage contract.                           |
+| [typescript-conventions](skills/typescript-conventions/SKILL.md)       | —                                | Apply TypeScript conventions alongside the five coding workflows.                            |
 
-The five [coding skills](docs/coding-skills.md) work independently. Their source selection,
-license records and [evaluation status](docs/coding-skills-evaluation.md) are documented;
+The five general [coding workflows](docs/coding-skills.md) work independently, with
+[TypeScript conventions](skills/typescript-conventions/SKILL.md) as an optional reference supplement.
+The workflows' source selection, license records and
+[evaluation status](docs/coding-skills-evaluation.md) are documented;
 authoring these files does not install or activate them in a coding host.
 
 ## Workspace agents

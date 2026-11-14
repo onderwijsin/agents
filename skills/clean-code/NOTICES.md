@@ -23,5 +23,16 @@ verification choices, preservation of existing edits and explicit deferral under
 Added authorized removal of proven redundant/unreachable code and a separate scope decision
 for changes to supported behavior.
 
+## Additional adapted source
+
+[antfu-simplify, Anthony Fu](https://github.com/antfu/skills/blob/d524ed287eef22757297827ce42e3cad88abd20c/skills/antfu-simplify/SKILL.md),
+revision `d524ed287eef22757297827ce42e3cad88abd20c`, skill version `2026.10.31`.
+Copyright (c) 2025-PRESENT Anthony Fu; MIT. Full notice: [LICENSE-ANTFU](LICENSE-ANTFU).
+
+Adapted explicit diff scope, a stated outcome, small reversible ablation experiments, and
+final accounting for remaining mechanisms. A passing check must cover the risk; a failing
+cut does not prove the original design necessary. Generalization stays within current
+contracts, and verification remains proportionate.
+
 The local contribution is MIT: [LICENSE-MIT](LICENSE-MIT). The adapted package retains both
 MIT and Apache-2.0 obligations; the combined expression is `MIT AND Apache-2.0`.

@@ -22,6 +22,18 @@ Recovery, stable error translation, rollback, resource cleanup and explicit comp
 useful responsibilities. A broad catch that disguises an unexpected failure warrants a finding
 only when its effect and replacement are established.
 
+## Derived state and shared types
+
+For stored flags or caches, identify the authoritative inputs and compare computing the
+value on demand with storing it. Check mutation, event timing, reactive tracking, lifetime,
+concurrency and performance before calling the state redundant. A snapshot may intentionally
+represent an earlier moment; a cache may enforce a real latency or resource limit.
+
+For repeated type shapes, determine whether they express the same knowledge or independent
+domain, wire or public contracts. Reusing or deriving a canonical type can prevent drift;
+deriving one independent contract from another can introduce unwanted coupling. Inference
+is useful when it keeps meaning and API stability clear, not as a reason to erase useful types.
+
 ## Verification machinery
 
 Ask what a checker knows independently and which failure it can expose. Recomputing a value

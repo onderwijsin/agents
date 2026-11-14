@@ -13,6 +13,16 @@ Changed the persona and session modes into a task-local workflow. Replaced line-
 single-use-abstraction and automatic-test rules with current-purpose decisions and
 proportionate verification. Removed prescribed sign-offs.
 
+## Additional adapted source
+
+[antfu-simplify, Anthony Fu](https://github.com/antfu/skills/blob/d524ed287eef22757297827ce42e3cad88abd20c/skills/antfu-simplify/SKILL.md),
+revision `d524ed287eef22757297827ce42e3cad88abd20c`, skill version `2026.10.31`.
+Copyright (c) 2025-PRESENT Anthony Fu; MIT. Full notice: [LICENSE-ANTFU](LICENSE-ANTFU).
+
+Adapted the stated-outcome check, subtraction of unnecessary mechanisms, derivable state
+and shared type shapes, and fixes expressed through the governing rule. Kept domain exceptions
+and current scope; omitted caller-count thresholds and automatic test additions.
+
 ## Additional research
 
 [Karpathy Guidelines, multica-ai](https://github.com/multica-ai/andrej-karpathy-skills/blob/2c606141936f1eeef17fa3043a72095b4765b9c2/skills/karpathy-guidelines/SKILL.md)
