@@ -18,6 +18,7 @@ Read the request, applicable repository instructions, and the affected code and 
 Inspect the working tree and preserve existing work. Identify the required observable result,
 supported inputs and failures, and the callers, exports, tests or documentation the change
 must reach. Use the repository's actual stack and commands.
+Summarize the intended outcome in one sentence and use it to judge each part of the change.
 
 An explicit current requirement can supersede a historical test expectation. An inferred
 preference cannot; establish the intended contract before changing an existing expectation.
@@ -42,12 +43,19 @@ compatibility paths for an identified consumer or supported contract. An abstrac
 earn its place with one caller or implementation when it names domain knowledge, owns a
 lifecycle, enforces a boundary or isolates a real reason to change.
 
+Reuse or derive types for genuinely shared shapes, while keeping distinct domain or public
+contracts independent. Derive values from existing authoritative data when separate state
+would only duplicate it; retain snapshots or caches with a concrete lifecycle or performance role.
+
 Choose the approach once each proposed layer or behavior has a present purpose. For a small
 task, this can remain working reasoning; explain a trade-off only when it affects the user.
 
 ## 3. Make the complete change
 
 Fix the cause at its owning boundary and update affected callers, configuration and exports.
+Apply the governing rule to the supported input class instead of hardcoding an incidental
+name, path or value from the bug report. Preserve genuine domain exceptions and keep the
+solution within current requirements.
 Keep cohesive logic together, names concrete, types informative and control flow readable.
 Extract or inline when it improves understanding; use repository conventions to choose the form.
 Remove support code your change makes unused within scope.
@@ -85,7 +93,9 @@ may need a specified rejection case; framework wiring may require exercising the
 Aim for the smallest maintainable suite that provides sufficient confidence. Coverage and
 test count are not goals in themselves.
 
-Review the full diff for omitted callers, unnecessary layers and unrelated edits. Finish when
+Review the full diff against the stated outcome. For each added mechanism, ask what required
+behavior or useful clarity would be lost if it were omitted, inlined or merged; remove it when
+the direct path is sufficient. Check for omitted callers and unrelated edits. Finish when
 the requested result is checked and failures caused by the change are resolved. Report the
 outcome, material decisions, checks actually run and remaining verification gaps concisely.
 An already sufficient implementation can be the right result.

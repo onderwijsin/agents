@@ -21,4 +21,14 @@ sweeps and interactive selection workflows. Test analysis is supporting evidence
 detailed test-value decisions have their own independently usable skill. Confidence describes
 evidence quality rather than the category of code being reviewed.
 
+## Additional adapted source
+
+[antfu-simplify, Anthony Fu](https://github.com/antfu/skills/blob/d524ed287eef22757297827ce42e3cad88abd20c/skills/antfu-simplify/SKILL.md),
+revision `d524ed287eef22757297827ce42e3cad88abd20c`, skill version `2026.10.31`.
+Copyright (c) 2025-PRESENT Anthony Fu; MIT. Full notice: [LICENSE-ANTFU](LICENSE-ANTFU).
+
+Adapted the inventory of a change's mechanisms, the read-only ablation question, and
+candidates involving duplicated state and type knowledge. Replaced pass/fail-as-proof with
+contract evidence; review remains read-only.
+
 The local contribution is MIT: [LICENSE-MIT](LICENSE-MIT).

@@ -63,6 +63,11 @@ Check apparent duplicates against the same contract, meaningful input class, pro
 observable result and failure mode. Keep distinct rejection, safety, persistence, concurrency,
 compatibility and resource behavior. Similar output alone does not establish redundancy.
 
+Ask what plausible regression would become undetected if a candidate test were removed.
+Passing the remaining suite cannot answer that question by itself. If a structural cleanup
+breaks a test, check its expectation against the supported contract before recommending a
+rewrite: it may expose a behavior regression or merely depend on the old implementation.
+
 Complete this pass when each in-scope case or equivalent group has an evidence-based value
 decision or a named uncertainty. Working notes suffice; no permanent evidence map is required.
 

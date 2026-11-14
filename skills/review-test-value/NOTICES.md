@@ -15,6 +15,17 @@ mandatory integration roots and collection accounting with checks triggered by a
 risk. Keep, improve, consolidate and remove are recommendations, and a useful suite can
 receive an overall keep assessment.
 
+## Additional adapted source
+
+[antfu-simplify, Anthony Fu](https://github.com/antfu/skills/blob/d524ed287eef22757297827ce42e3cad88abd20c/skills/antfu-simplify/SKILL.md),
+revision `d524ed287eef22757297827ce42e3cad88abd20c`, skill version `2026.10.31`.
+Copyright (c) 2025-PRESENT Anthony Fu; MIT. Full notice: [LICENSE-ANTFU](LICENSE-ANTFU).
+
+Adapted the question of what protection test removal loses. Passing the remaining suite
+is not evidence that a removed test was redundant; failures after structural cleanup require
+checking the behavioral contract before rewriting assertions. The maintainer's workflow-first
+testing policy remains authoritative.
+
 ## Examined without copying
 
 [remove-tautological-tests, brandhaug](https://github.com/brandhaug/skills/blob/9cb193614af39847d80ab687ef3a8de01841632e/remove-tautological-tests/SKILL.md)

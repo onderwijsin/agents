@@ -18,3 +18,16 @@ Converted execution into detection and evidence-backed recommendations. Removed 
 function-style and Claude-specific prescriptions; added explicit maintenance consequences,
 pragmatic responsibility boundaries, uncertainty and read-only behavior. The local adaptation
 is distributed under Apache-2.0, including the upstream terms and attribution above.
+
+## Additional adapted source
+
+[antfu-simplify, Anthony Fu](https://github.com/antfu/skills/blob/d524ed287eef22757297827ce42e3cad88abd20c/skills/antfu-simplify/SKILL.md),
+revision `d524ed287eef22757297827ce42e3cad88abd20c`, skill version `2026.10.31`.
+Copyright (c) 2025-PRESENT Anthony Fu; MIT. Full notice: [LICENSE-ANTFU](LICENSE-ANTFU).
+
+Adapted checks for duplicated state and drifting type shapes, with independent domain/public
+contracts and meaningful path differences preserved. Caller counts, repetition counts and
+lines saved remain clues rather than maintenance verdicts.
+
+The adapted package also retains the MIT terms of antfu-simplify. Its combined license
+expression is `MIT AND Apache-2.0`.

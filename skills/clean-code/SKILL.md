@@ -19,6 +19,9 @@ code, configuration and conventions. Preserve pre-existing edits. Resolve findin
 current locations and recheck their evidence: an old report is a lead, not current proof.
 For direct cleanup, identify the concrete maintenance problem in the named area. If no target
 can be inferred from the current task, ask for one rather than expanding to the repository.
+For cleanup of a PR or working-tree change, state its intended outcome in one sentence and
+limit edits to changed code plus the dependent updates needed to simplify it. A named module
+request can authorize a broader target; surrounding code is not automatically part of a diff cleanup.
 
 Distinguish each proposed change:
 
@@ -70,6 +73,18 @@ must resolve a finding or a concrete problem in the request. Preserve useful abs
 cohesive logic and domain names; choose clarity over line reduction. Add a boundary when
 responsibilities have a real reason to change separately, rather than imposing a design pattern.
 
+Use **ablation** to compare simpler forms: omit an option, inline a wrapper, merge a layer or
+derive a duplicated value, then identify the supported behavior or useful clarity at risk.
+When a safe local experiment helps resolve the question, try one reversible cut and compare
+the relevant behavior with the baseline. Keep it only when checks or an explicit invariant
+establish preservation; a green check that misses the affected behavior is insufficient.
+If a cut fails, diagnose the contract or test coupling and restore unsafe changes. The failure
+alone does not prove the original abstraction necessary; another simpler form may preserve it.
+
+Consolidate paths around their shared rule while preserving supported exceptions, error
+outcomes and side-effect ordering. Remove incidental hardcoding only when a current contract
+establishes the broader rule; cleanup does not authorize inventing new supported cases.
+
 Update affected callers, imports, exports, registrations and configuration as part of the
 same coherent change. Remove obsolete private support only after checking surviving users.
 Keep runtime validation, error translation, cleanup, security and externally observable
@@ -99,7 +114,9 @@ code is updated, and checks for the applied groups pass or have accurately repor
 
 ## 4. Verify and hand off
 
-Review the complete diff against the request and recheck changed callers and contracts. Run
+Review the complete diff against the request and account for each remaining mechanism's
+purpose. Explain non-obvious decisions to retain code when they matter to the result.
+Recheck callers and contracts. Run
 required repository checks and any focused checks for remaining concrete risks. Re-run checks
 after fixes as needed; a full suite after every tiny edit is unnecessary unless repository
 guidance or the change's risk requires it. Inspect unexpected collection drops, skips and

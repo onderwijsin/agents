@@ -1,6 +1,7 @@
 # Coding skills evaluation
 
-Date: 14 November 2026. Scope: initial authoring of the five standalone coding skills.
+Date: 14 November 2026. Scope: initial authoring and the antfu-simplify adaptation of the five
+standalone coding skills.
 
 ## Author walkthrough
 
@@ -38,7 +39,24 @@ rules, with the same limitation: no fresh-agent or host behavior is measured.
 | Mocked SDK calls return success, but the task requires confidence that real serialization and framework registration work together. A control test only checks the application's specified outbound payload. | Use a focused real integration or E2E test for the runtime contract; keep useful payload assertions where mocks suffice. | Implementation, hygiene verification, test review and cleanup name the limits of mocks; the test-pattern reference distinguishes payload choice from runtime wiring. |
 | A short low-level test catches a known rounding risk that the normal E2E flow misses.                                                                                                                        | Keep the useful test despite a preference for a smaller suite.                                                           | The goal is sufficient confidence with a maintainable suite, and the existing numerical-test contrast preserves distinct failure protection.                         |
 
-The walkthroughs found the intended ownership and testing-policy decisions in the written instructions. They do
+## Ablation walkthrough
+
+These author inspections cover the additional decisions adapted from antfu-simplify. They
+check instruction coverage, including controls against the source's overly strong heuristics;
+they do not measure fresh-agent behavior.
+
+| Scenario and supplied context                                                                                                                                                | Expected decision                                                                                                                    | Instruction inspection result                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A PR adds a private option with one fixed supported value and no public/config consumer; a nearby helper has one caller but names a non-obvious domain step.                 | Bloat considers removing the option while preserving the useful helper; review makes no edits.                                       | Bloat inventories introduced mechanisms and asks the read-only ablation question. Existing domain-meaning criteria preserve useful single-caller abstractions. |
+| Removing a convention-discovered route leaves a unit suite green because it never starts the framework.                                                                      | Treat green tests as insufficient evidence; inspect discovery and the runtime contract before claiming the route unnecessary.        | Bloat and cleanup qualify green checks by the behavior they observe; existing discovery and real-runtime testing rules remain.                                 |
+| A wrapper is inlined and a test fails only because it asserts the old private call sequence; an alternate direct flow preserves the specified outcome.                       | Diagnose test coupling without declaring the wrapper necessary or mechanically changing the assertion.                               | Bloat, cleanup and test review distinguish a failing cut from evidence that the original structure is required.                                                |
+| A cut removes required error translation and a public-protocol test detects the changed outcome.                                                                             | Restore the unsafe cut and preserve translation; the same behavior might still fit a simpler structure.                              | Cleanup requires preservation through relevant checks or an explicit invariant and restoration of unsafe changes.                                              |
+| A stored flag equals an immutable input property; a control snapshot records a value before that input changes, and a cache has a documented latency role.                   | Consider deriving the redundant flag; preserve the snapshot and justified cache.                                                     | Implementation and bloat inspect derived state; the evidence reference requires checking time, mutation, reactive semantics, lifetime and performance.         |
+| Two internal aliases repeat the same canonical type; a wire interface happens to share the shape but is independently versioned.                                             | Consider reusing the shared internal knowledge while preserving the independent wire contract.                                       | Implementation, hygiene and bloat explicitly distinguish genuinely shared knowledge from unwanted coupling.                                                    |
+| A reported name triggers an arbitrary special case even though the requirement defines a rule for all supported names; a control name belongs to a specified exception list. | Apply the established rule across the supported class and preserve the intentional exception, without adding future configurability. | Implementation and cleanup make generalization conditional on the current contract and preserve domain exceptions.                                             |
+| Removing the only meaningful rejection test leaves the rest of the suite passing.                                                                                            | Identify the lost failure protection; passing remaining tests cannot justify removal.                                                | Test review explicitly asks which plausible regression becomes undetected, and the workflow-first testing policy preserves supported rejection contracts.      |
+
+The walkthroughs found the intended ownership, testing-policy and ablation decisions in the written instructions. They do
 not measure model reliability, comprehension, false-positive rates or improvement over a
 baseline. In particular, the shared documentation skill's broad description could still
 affect selection in a co-installed host; no existing skill was changed to pre-empt that risk.

@@ -20,6 +20,8 @@ configuration and contracts. Review the named area or change, including local ad
 they are in scope. For a branch review, establish the actual comparison base rather than
 assuming a branch name. Follow only the callers, registrations and contracts needed to judge it.
 If the target cannot be inferred from the current task, ask for it.
+For a change review, summarize its intended outcome in one sentence and account for the
+mechanisms it introduces: helpers, options, branches, state, types, dependencies and support code.
 
 Judge behavior against explicit current requirements, which can supersede historical test
 expectations. An inferred preference cannot retire a supported contract. This step is
@@ -28,8 +30,10 @@ or their gaps named.
 
 ## 2. Investigate necessity
 
-For each candidate, trace its purpose to a current requirement, real consumer, public contract,
-operational workflow or independently meaningful invariant. Inspect imports and callers,
+Use **ablation** as a read-only question: if this piece were removed, inlined or merged, what
+concrete behavior or useful clarity would be lost? Trace its purpose to a current requirement,
+real consumer, public contract, operational workflow or independently meaningful invariant.
+Inspect imports and callers,
 framework discovery, hooks, registrations, public exports, active configuration and relevant
 history before calling code dead. Public consumers can live outside the repository.
 An unsuccessful search leaves uncertainty; it does not establish unreachability.
@@ -41,11 +45,18 @@ Look for:
 - Duplicate implementations that could reuse an identified helper, installed library or
   platform capability with equivalent semantics. Check installed versions and official docs.
 - Repeated validation or fallback paths that add no distinct failure protection.
+- State, flags or caches that duplicate derivable data, or type shapes that repeat the same
+  authoritative knowledge without a separate contract.
 - Verification machinery whose producer and checker share the same information and can fail
   together, without an independent consumer, authority or failure boundary.
 
 Before judging deletion across dynamic discovery, trust, compatibility or persistence
-boundaries, read [evidence checks](references/evidence-checks.md).
+boundaries, or comparing derived state and repeated type shapes, read
+[evidence checks](references/evidence-checks.md).
+
+A green check supports a cut only where it exercises the behavior at risk; otherwise identify
+the invariant or missing evidence explicitly. A failing check can reveal a real contract or
+an implementation-coupled test; it does not by itself prove the current structure necessary.
 
 Trace production code and its supporting tests outward together when they justify only each
 other. A closed justification loop requires evidence about the cluster's purpose; missing

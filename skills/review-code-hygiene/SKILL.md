@@ -1,7 +1,7 @@
 ---
 name: review-code-hygiene
 description: Review readability and maintainability of necessary code in a named area or change. Use for cohesion, coupling, responsibility boundaries, naming, types, control flow, error ownership and code comments; report concrete maintenance problems without edits.
-license: Apache-2.0
+license: "MIT AND Apache-2.0"
 metadata:
   agents: []
 ---
@@ -36,9 +36,12 @@ Inspect the necessary code for these problems:
 - **Coupling:** callers know another module's private representation, duplicate its policy,
   or must coordinate edits across layers to change one rule.
 - **Names and types:** names obscure domain meaning; broad types, casts or flag combinations
-  hide valid states or transfer avoidable reasoning to every caller.
+  hide valid states or transfer avoidable reasoning to every caller. Repeated shapes can drift;
+  deriving an independent public or domain type can instead create unwanted coupling.
 - **Control flow:** nesting, dense expressions, scattered mutations or distant conditions
   obscure ordering, invariants or outcomes. Show which reasoning becomes easier with the remedy.
+  Check whether duplicated state makes readers reconcile multiple sources of truth; retain
+  intentional snapshots and caches with a concrete lifecycle or performance role.
 - **Error ownership:** a failure is translated, recovered from or logged where its caller
   cannot act on it, or handling obscures the boundary responsible for the decision.
 - **Comments and documentation:** text contradicts behavior or narrates syntax while a
@@ -49,6 +52,8 @@ contract that is violated, or knowledge that crosses an inappropriate boundary. 
 cohesive function may contain several operations; a useful abstraction may have one
 implementation. Split or extract for clearer responsibility, domain meaning or lifecycle,
 and inline when indirection hides those things. File count and function length are clues.
+When consolidating similar paths, identify the shared domain rule and preserve meaningful
+differences; similar syntax alone does not establish shared responsibility.
 
 Prefer readable, explicit logic to clever compression. Existing consistent patterns can be
 clearer than an isolated preferred style. Recommend a type or flow change only when it

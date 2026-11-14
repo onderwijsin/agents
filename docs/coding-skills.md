@@ -72,6 +72,7 @@ complete repository trees were checked where no license file was discoverable.
 | [Sentry code-simplifier](https://github.com/getsentry/skills/blob/e94f22214528d69899d09c627b3315ddc3544816/skills/code-simplifier/SKILL.md), `e94f22214528d69899d09c627b3315ddc3544816`                   | Clarity over compression, cohesion, useful abstractions, names and behavior preservation → hygiene and cleanup.                                                              | React and function-style rules, persona, automatic execution during review and aesthetic-only recommendations.                                                |
 | [remove-tautological-tests](https://github.com/brandhaug/skills/blob/9cb193614af39847d80ab687ef3a8de01841632e/remove-tautological-tests/SKILL.md), `9cb193614af39847d80ab687ef3a8de01841632e`             | Compared oracle independence, interaction assertions and refactor fragility against deslop; no text or examples adapted.                                                     | Blanket snapshot judgments, mandatory replacements and edit workflow. No discoverable license; overlapping material was sourced from licensed deslop instead. |
 | [Han refactor](https://github.com/testdouble/han/blob/abba73a773528905a8f3d15956029394746e5c7f/han-coding/skills/refactor/SKILL.md), `abba73a773528905a8f3d15956029394746e5c7f`                           | Named target, current findings, small named transformations, behavior preservation and recoverability → cleanup.                                                             | Claude-only configuration/scripts, mandatory full suite after each step, tests as the only verification route and stopping on unrelated failures.             |
+| [antfu-simplify](https://github.com/antfu/skills/blob/d524ed287eef22757297827ce42e3cad88abd20c/skills/antfu-simplify/SKILL.md), `d524ed287eef22757297827ce42e3cad88abd20c`                                | Stated outcome, ablation, derived state/types and general-rule fixes → the five skills in their existing roles.                                                              | Caller/repetition thresholds, type-only runtime guarantees, test pass/fail as proof, and mandatory reports or verification after every deletion.              |
 
 The deslop comparison included its
 [test-smells](https://github.com/MrZoyo/deslop-GPT/blob/3913d8afeb18ed5c3cabc3ec39202ce02587ca87/skills/deslop/references/test-smells.md),
@@ -92,16 +93,51 @@ Sentry credits Anthropic's code-simplifier. The
 and its package license were inspected for attribution. Its proactive cleanup instruction was
 not carried into the read-only reviewer or made an automatic post-implementation stage.
 
+## antfu-simplify assessment
+
+The full skill was inspected at the revision above on 14 November 2026, including its hard
+rules, workflow, ablation table, keep/cut criteria, smell list and report example. Its declared
+skill version is `2026.10.31`. The skill directory contains only `SKILL.md`; the repository
+[LICENSE.md](https://github.com/antfu/skills/blob/d524ed287eef22757297827ce42e3cad88abd20c/LICENSE.md)
+supplies the MIT grant and Anthony Fu's copyright notice.
+
+The strongest addition is ablation: make a mechanism's contribution explicit by considering
+its removal, inlining or merging. Existing skills already required a present purpose and
+small refactorings; this adds a concrete way to compare simpler alternatives. Role boundaries
+remain intact: reviewers reason without edits, implementation checks new mechanisms, and
+cleanup can use safe reversible local experiments.
+
+| Source mechanism                                                                           | Adaptation and reason                                                                                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| One-sentence goal and a bounded diff                                                       | Implementation, bloat review and cleanup use a stated outcome as the yardstick. PR/change cleanup stays within changed code and necessary dependent updates. A directly named module still permits module-level work.                            |
+| Base selection and surrounding context                                                     | Existing actual-comparison-base and caller inspection remain. The PR target can differ from the repository default, so the source's default-branch example is not prescribed.                                                                    |
+| Inventory helpers, options, branches, types, files and dependencies                        | Bloat review accounts for mechanisms introduced by the change; implementation and cleanup check remaining purpose. An inventory can remain working reasoning, without a mandatory report.                                                        |
+| Remove, inline or merge and verify                                                         | Bloat uses a read-only counterfactual; cleanup can try a reversible local cut and check the affected contract. A green check that does not exercise the risk is insufficient evidence.                                                           |
+| A failed cut proves the original piece necessary                                           | Rejected as a conclusion. Failure may expose a required behavior, an implementation-coupled test, or a bad transformation. Diagnose the cause and restore unsafe cuts; a different simple design may still preserve the contract.                |
+| Helpers with two callers, extraction at the third repetition, abstractions that save lines | Replaced with current responsibility, domain meaning, lifecycle and change-cost criteria. Counts can suggest investigation but cannot decide necessity or readability.                                                                           |
+| Infer or derive repeated types                                                             | Reuse authoritative type knowledge where it is genuinely shared. Preserve independent domain, wire and public contracts where derivation would create coupling or obscure meaning. Export status alone is not a verdict.                         |
+| State, flags or caches derivable from existing data                                        | Added to bloat review and implementation, with hygiene checks for conflicting sources of truth. Preserve intentional snapshots, reactive semantics, lifetimes and concrete performance/resource roles.                                           |
+| General rule rather than a bug-report literal                                              | Implementation fixes the cause across the supported input class; cleanup consolidates only where a current contract establishes the rule. Preserve genuine exceptions and avoid speculative new supported cases.                                 |
+| Real edge cases and robust behavior                                                        | Existing contract/risk checks remain, including runtime validation, concurrency, cleanup and error propagation. TypeScript types alone do not validate external data; robustness does not mandate every possible misuse test.                    |
+| Similar paths and duplicated logic                                                         | Consolidate shared domain knowledge while preserving supported differences, errors and side-effect ordering. Similar syntax can belong to independently changing responsibilities.                                                               |
+| Remove a test and see what is unprotected                                                  | Test review asks which plausible regression becomes undetected. Remaining tests passing does not establish that protection survived. Existing preference for improving tests and using real runtime checks where mocks are insufficient remains. |
+| Checks after each batch and a cut/keep table with diff statistics                          | Keep proportionate focused verification and required final checks. Explain non-obvious retention when useful; compulsory typecheck/lint/test runs per cut, tables and line-reduction targets are omitted.                                        |
+| Match style, retain useful comments, avoid unrelated changes and commits                   | Existing repository-convention, comment-purpose, scope and authorization rules already cover these. Their meaning is retained without duplicating another workflow.                                                                              |
+
+No dependency on antfu's other skills, tooling or instructions is introduced. The two existing
+optional reference files remain sufficient; specialized state/type evidence extends bloat's
+existing reference rather than creating another prerequisite.
+
 ## Licensing and independent distribution
 
-Ponytail, deslop, Vinta and Han include MIT license grants and copyright notices. Karpathy's
+Ponytail, deslop, Vinta, Han and antfu-simplify include MIT license grants and copyright notices. Karpathy's
 frontmatter and README declare MIT but provide no separate license file or copyright notice;
 its general ideas were compared without reproducing passages. The brandhaug tree has no
 discoverable license declaration or file. Its text and examples are excluded from adaptation.
 
 Sentry and Anthropic's code-simplifier package use Apache-2.0. Sentry's license carries
-Copyright 2025 Functional Software, Inc. dba Sentry. The hygiene adaptation uses Apache-2.0;
-cleanup combines MIT and Apache-2.0 material. The other new skills use MIT.
+Copyright 2025 Functional Software, Inc. dba Sentry. Hygiene and cleanup combine MIT and
+Apache-2.0 material after the antfu adaptation; the other three coding skills use MIT.
 
 Each independently distributable skill includes its own `NOTICES.md` with pinned source links,
 changes made and complete applicable license files. Required terms travel inside the skill's
