@@ -2,12 +2,13 @@
 
 # Onderwijs in · Agents
 
-Reusable AI capabilities for communications, editorial work, research,
+Reusable AI capabilities for communications, editorial work, coding, research,
 and operations, distributed as plugins, shared workspace skills and maintained agent definitions.
 [Onderwijs in](https://onderwijsin.nl) is a Dutch nonprofit helping more talented
 people find their way into education. The collection is shared under the
 [MIT license](LICENSE); some capabilities are generic, while others require
 organization-specific sources, services or configuration.
+Adapted skills retain their upstream license terms; consult their skill-local notices.
 
 An **Agent Skill** is a folder of Markdown instructions and optional resources that
 teaches an AI assistant when and how to perform a reusable task. A **plugin** packages
@@ -63,18 +64,27 @@ Skills belonging to plugins are always packaged with that plugin under
 separately from the manually uploaded workspace skills listed here. Repository development skills
 in `.agents/skills/` remain contributor tooling.
 
-| Name                                                                   | Agents                           | Purpose                                                                              |
-| ---------------------------------------------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------ |
-| [code-documentation](skills/code-documentation/SKILL.md)               | Docs Drift                       | Write and improve repository, API and code documentation.                            |
-| [commitment-scanning](skills/commitment-scanning/SKILL.md)             | Commitment Manager               | Find attributable, outstanding personal commitments in configured sources.           |
-| [docs-sync-audit](skills/docs-sync-audit/SKILL.md)                     | Docs Drift                       | Compare documentation with implementation and report evidenced drift.                |
-| [github-activity-discovery](skills/github-activity-discovery/SKILL.md) | Docs Drift                       | Discover repositories with relevant activity and diagnose commit-search coverage.    |
-| [notion-formatting](skills/notion-formatting/SKILL.md)                 | Commitment Manager, Task Manager | Format, preserve and verify Notion page content during authorized writes.            |
-| [notion-task-storage](skills/notion-task-storage/SKILL.md)             | Commitment Manager, Task Manager | Map Notion task schemas, retrieve tasks and verify authorized creation or updates.   |
-| [scan-sensitive-data](skills/scan-sensitive-data/SKILL.md)             | Pipedrive Sanitizer              | Classify potentially sensitive information and propose minimal, masked redactions.   |
-| [task-processing](skills/task-processing/SKILL.md)                     | Commitment Manager               | Qualify commitments, consolidate evidence and decide whether tasks are missing.      |
-| [task-review](skills/task-review/SKILL.md)                             | Task Manager                     | Review existing tasks for completion, planning, aging backlog, quality and priority. |
-| [task-storage](skills/task-storage/SKILL.md)                           | Commitment Manager, Task Manager | Route task operations through a provider-neutral storage contract.                   |
+| Name                                                                   | Agents                           | Purpose                                                                                      |
+| ---------------------------------------------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------- |
+| [clean-code](skills/clean-code/SKILL.md)                               | —                                | Apply scoped cleanup or review findings with behavior preservation and proportionate checks. |
+| [code-documentation](skills/code-documentation/SKILL.md)               | Docs Drift                       | Write and improve repository, API and code documentation.                                    |
+| [commitment-scanning](skills/commitment-scanning/SKILL.md)             | Commitment Manager               | Find attributable, outstanding personal commitments in configured sources.                   |
+| [docs-sync-audit](skills/docs-sync-audit/SKILL.md)                     | Docs Drift                       | Compare documentation with implementation and report evidenced drift.                        |
+| [github-activity-discovery](skills/github-activity-discovery/SKILL.md) | Docs Drift                       | Discover repositories with relevant activity and diagnose commit-search coverage.            |
+| [implement-simply](skills/implement-simply/SKILL.md)                   | —                                | Deliver features and fixes with the simplest sufficient implementation.                      |
+| [notion-formatting](skills/notion-formatting/SKILL.md)                 | Commitment Manager, Task Manager | Format, preserve and verify Notion page content during authorized writes.                    |
+| [notion-task-storage](skills/notion-task-storage/SKILL.md)             | Commitment Manager, Task Manager | Map Notion task schemas, retrieve tasks and verify authorized creation or updates.           |
+| [review-code-bloat](skills/review-code-bloat/SKILL.md)                 | —                                | Review unnecessary capabilities, layers and dependencies without editing code.               |
+| [review-code-hygiene](skills/review-code-hygiene/SKILL.md)             | —                                | Review concrete readability and maintenance problems without editing code.                   |
+| [review-test-value](skills/review-test-value/SKILL.md)                 | —                                | Assess tests and support code for independent regression protection without edits.           |
+| [scan-sensitive-data](skills/scan-sensitive-data/SKILL.md)             | Pipedrive Sanitizer              | Classify potentially sensitive information and propose minimal, masked redactions.           |
+| [task-processing](skills/task-processing/SKILL.md)                     | Commitment Manager               | Qualify commitments, consolidate evidence and decide whether tasks are missing.              |
+| [task-review](skills/task-review/SKILL.md)                             | Task Manager                     | Review existing tasks for completion, planning, aging backlog, quality and priority.         |
+| [task-storage](skills/task-storage/SKILL.md)                           | Commitment Manager, Task Manager | Route task operations through a provider-neutral storage contract.                           |
+
+The five [coding skills](docs/coding-skills.md) work independently. Their source selection,
+license records and [evaluation status](docs/coding-skills-evaluation.md) are documented;
+authoring these files does not install or activate them in a coding host.
 
 ## Workspace agents
 
