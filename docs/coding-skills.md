@@ -1,20 +1,25 @@
 # Coding skills
 
-Five standalone skills help deliver and maintain the simplest sufficient implementation.
+Five standalone workflow skills help deliver and maintain the simplest sufficient implementation.
 They adapt selected upstream workflows rather than installing the original overlapping skills.
 The content is English and tool-neutral; no framework, test runner, external app or companion
 skill is required. A coding host must provide access to the relevant source and checks, plus
 editing capability for implementation and cleanup.
 
+[TypeScript conventions](../skills/typescript-conventions/SKILL.md) is a separate reference
+supplement for TypeScript syntax, project style, file/module contracts, types, configuration
+and async idioms. It adds no implementation, review, cleanup or test-selection procedure.
+
 ## Choose a skill
 
-| Request                                                    | Skill                                                         | Result                                                          |
-| ---------------------------------------------------------- | ------------------------------------------------------------- | --------------------------------------------------------------- |
-| Implement a feature or fix; choose a design or dependency. | [implement-simply](../skills/implement-simply/SKILL.md)       | Complete focused implementation and proportionate verification. |
-| Find unnecessary complexity in an area or change.          | [review-code-bloat](../skills/review-code-bloat/SKILL.md)     | Read-only findings about necessity and supported removal/reuse. |
-| Review structure and maintainability.                      | [review-code-hygiene](../skills/review-code-hygiene/SKILL.md) | Read-only findings about concrete maintenance costs.            |
-| Assess tests, including only those added by an agent.      | [review-test-value](../skills/review-test-value/SKILL.md)     | Keep, improve, consolidate or remove recommendations.           |
-| Apply findings or clean up a named area.                   | [clean-code](../skills/clean-code/SKILL.md)                   | Scoped changes, affected-code updates and verification.         |
+| Request                                                    | Skill                                                               | Result                                                          |
+| ---------------------------------------------------------- | ------------------------------------------------------------------- | --------------------------------------------------------------- |
+| Implement a feature or fix; choose a design or dependency. | [implement-simply](../skills/implement-simply/SKILL.md)             | Complete focused implementation and proportionate verification. |
+| Find unnecessary complexity in an area or change.          | [review-code-bloat](../skills/review-code-bloat/SKILL.md)           | Read-only findings about necessity and supported removal/reuse. |
+| Review structure and maintainability.                      | [review-code-hygiene](../skills/review-code-hygiene/SKILL.md)       | Read-only findings about concrete maintenance costs.            |
+| Assess tests, including only those added by an agent.      | [review-test-value](../skills/review-test-value/SKILL.md)           | Keep, improve, consolidate or remove recommendations.           |
+| Apply findings or clean up a named area.                   | [clean-code](../skills/clean-code/SKILL.md)                         | Scoped changes, affected-code updates and verification.         |
+| Apply TypeScript conventions during any of those tasks.    | [typescript-conventions](../skills/typescript-conventions/SKILL.md) | Concrete idioms and examples within the active workflow.        |
 
 Descriptions support natural-language discovery and explicit invocation. Implementation is
 intended to be reachable during coding; reviewer triggers ask for a review rather than
@@ -31,6 +36,25 @@ All reviewers use the same compact content: location and issue, evidence and cos
 remedy, behavior impact, confidence/missing evidence, and relevant verification. Small findings
 can combine these in prose. No quotas, mandatory report files or JSON schema are involved.
 An empty review or no-change cleanup is valid.
+
+## TypeScript conventions supplement
+
+The conventions skill is reference material for the active workflow. It supplies concrete
+forms and semantics for file/module organization, imports and exports, narrowing, typed
+configuration, error representation, promises, naming and tool configuration. Its nine
+references include original examples, a language-specific anti-pattern catalog and primary
+research sources. It does not prescribe a framework, formatter or source-tree template.
+
+The five workflows retain implementation planning, necessity decisions, maintenance-cost
+reviews, test-value assessment and cleanup execution. The supplement adds no extra stage,
+review output, verification policy or dependency on those skills. The existing five skill
+directories are unchanged.
+
+The inspiration-package analysis is separate in
+[source research and design](typescript-conventions-research.md); those projects are not
+referenced by the installable skill. See [evaluation status](typescript-conventions-evaluation.md)
+for example checks, instruction simulation and unverified host behavior. This supplement is
+original synthesis under MIT, rather than another adaptation of the upstream skills below.
 
 ## Testing policy
 
