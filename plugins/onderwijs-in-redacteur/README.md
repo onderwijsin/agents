@@ -54,6 +54,10 @@ andere gegevens worden benoemd; oude templatevoorbeelden zijn geen nieuwe feiten
 Bij redigeren: geef tekst, mailingnaam of link en kies chat of direct bewerken in
 Loops. De skill controleert inhoud, logica, toon, taal en subject/preview. Voor live
 werk gelden statuschecks, revisieveilige updates en controle na iedere mutatie.
+Workflowmails mogen worden opgehaald, geredigeerd en als testpreview verstuurd bij
+status `Draft`, `Paused` of `PausedAndQueueing`. `Sending`, onbekende statussen en
+mislukte statuschecks blokkeren deze handelingen. De skill verifieert steeds de
+bedoelde mailnode en wijzigt nooit workflowlogica of -uitvoering.
 Na live oplevering krijg je de geverifieerde link en het aanbod voor een testpreview.
 Na beide routes vraagt de skill apart of een volledige stijlreview gewenst is.
 
