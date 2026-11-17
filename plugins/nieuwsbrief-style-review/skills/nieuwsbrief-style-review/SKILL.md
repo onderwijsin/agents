@@ -125,6 +125,12 @@ en uitsluitend de teamgids van het gekozen team:
 - Onderwijs in: [onderwijs-in.md](reference/onderwijs-in.md).
 - Trainees in onderwijs: [trainees-in-onderwijs.md](reference/trainees-in-onderwijs.md).
 
+FOOTER-01: de standaard verzendtemplate verzorgt voor beide teams de footer met
+logo en links. De mailinhoud eindigt bij de laatste inhoudssectie. Een ontbrekende
+footer in de mailinhoud is correct. Meld een daarin aanwezige footer met logo en
+links als duplicaat dat moet worden verwijderd, inclusief uitsluitend bijbehorende
+spacers. Laat de verzendtemplate en de door Loops toegevoegde afmeldtekst ongewijzigd.
+
 Beoordeel iedere vastgelegde regel tegen de opgehaalde inhoud en effectieve
 opmaak. Gebruik de LMX-specificatie voor technische geldigheid. Label algemene
 Loops-ontwerpadviezen apart van teamregels; presenteer adviezen niet als huisstijl.
@@ -137,15 +143,15 @@ email-mutatie worden hersteld, beschrijf dan een concrete actie die de gebruiker
 Wijzig het gedeelde theme zelf nooit.
 
 Pas voor iedere Onderwijs in-mail de algemene gids toe: theme, sectiecontainers,
-typografie, radiusregels, herbruikbare patronen en verplichte footer. Bepaal daarna
+typografie, radiusregels en herbruikbare patronen. Bepaal daarna
 het format; lees alleen bij een deep dive aanvullend
 [deep dive-template](reference/onderwijs-in-deep-dive-template.md) voor vaste
 structuur, rubrieken en statische deep dive-tekst. Vraag bij onduidelijk format om
 verduidelijking en controleer intussen de algemene regels. Leg andere mails geen
 deep dive-structuur of auteurswisseling op. De gesprekssectie en persoonlijke
 auteur zijn algemeen contextafhankelijk; bij deep dives zijn ze verplicht.
-Voor Trainees in onderwijs is de inhoudelijke indeling vrij tussen de verplichte
-header en footer. Lees bij aanwezige agenda-, icoon-, interview-, team- of
+Voor Trainees in onderwijs is de inhoudelijke indeling na de verplichte
+header vrij. Lees bij aanwezige agenda-, icoon-, interview-, team- of
 contactblokken de [Trainees-patronen](reference/trainees-in-onderwijs-patronen.md).
 Eis geen Onderwijs in-deep dive-rubrieken, aantallen of volgorde. Controleer alle
 afbeeldingen, ook binnen componenten, op alttekst volgens de gekozen teamgids.

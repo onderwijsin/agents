@@ -3,7 +3,7 @@
 ## Toepassing
 
 Deze gids bepaalt de stijl van iedere Trainees in onderwijs-mail: campagnes,
-workflowmails en transactionele drafts. Tussen de verplichte header en footer
+workflowmails en transactionele drafts. Na de verplichte header
 is de inhoudelijke indeling vrij. Secties mogen naar behoefte worden gekozen,
 herordend of weggelaten. Er is geen vaste nieuwsbriefvolgorde, geen algemeen
 minimumaantal verhalen en geen deep dive-structuur.
@@ -47,9 +47,8 @@ bestemmingen; een templatevoorbeeld als `https://google.com` is geen passende CT
 
 TIO-RADIUS-01: secties, callouts en afbeeldingen gebruiken radius **12 px**.
 Buttons en datumvlakken zijn vaste uitzonderingen met radius **8 px**.
-De teamfoto in component `Team` en het footerlogo in component
-`Logo Trainees in onderwijs` blijven ongerond (radius **0 px**);
-een ontbrekende radius is bij deze afbeeldingen correct. Het ongeronde buitenste mailvlak met `borderRadius=0` is
+De teamfoto in component `Team` blijft ongerond (radius **0 px**);
+een ontbrekende radius is bij deze afbeelding correct. Het ongeronde buitenste mailvlak met `borderRadius=0` is
 geen sectie en hoeft geen radius 12 te krijgen. De lokale radiusregels zijn
 leidend boven afwijkende waarden in het theme. Bewaar proporties van logo's
 en componentbeelden; pas een ontbrekende afbeeldingsradius zo nodig alleen
@@ -60,13 +59,12 @@ mailgebonden toe, zonder een gedeeld component te wijzigen.
 TIO-SECTIE-01: plaats alle inhoud in `Section`-containers met
 `blockColor=#eef8fa`, `blockBorderRadius=12` en padding
 boven/rechts/onder/links **40/30/40/30 px**.
-Alleen header en footer staan als functionele elementen buiten deze containers.
+Alleen de header staat als functioneel element buiten deze containers.
 Metadata en visuele spacers zijn geen losse contentsecties.
 
 TIO-RUIMTE-01: tussen twee inhoudssecties staat EXACT één lege paragraaf.
 Gebruik `<Paragraph></Paragraph>` of één equivalente paragraaf met één `Br`.
-XML-newlines tellen niet als visuele witregel. Voor de footer staat eveneens één
-lege paragraaf; na de footer staan nul. **Tussen header en eerste sectie staat
+XML-newlines tellen niet als visuele witregel. **Tussen header en eerste sectie staat
 geen lege paragraaf**: de headerpadding verzorgt de afstand.
 
 Gebruik tussen gewone tekstalinea's en na een losse hoofdheading één lege
@@ -103,7 +101,7 @@ Een bestandsnaam of “afbeelding” is onvoldoende. Bij onbekende inhoud: marke
 de ontbrekende beschrijving voor bevestiging.
 
 TIO-BEELD-02: behoud beeldverhouding en pas TIO-RADIUS-01 toe: radius 12
-voor gewone afbeeldingen, ongerond voor de teamfoto en het footerlogo. Benut bij voorkeur de volle
+voor gewone afbeeldingen, ongerond voor de teamfoto. Benut bij voorkeur de volle
 beschikbare breedte van de eigen container of kolom, met responsief gedrag.
 Dit is een voorkeur, geen opdracht om een icoon, portret, teambeeld of logo
 naar mailbreedte op te rekken. De patroonbreedten gaan voor; vermijd vervorming
@@ -114,15 +112,14 @@ uit `assets/traineesinonderwijs/icons/`, met witte achtergrond en gecentreerd ic
 Voorbeelden: [AI.png](../assets/traineesinonderwijs/icons/AI.png) en
 [Netwerk.png](../assets/traineesinonderwijs/icons/Netwerk.png).
 Image-stijl: radius 12, randbreedte 1 px, randkleur `#c7e6ee`.
-Gebruik geen inline SVG of een willekeurige glyph ter vervanging. De kleine
-sociale Icon-elementen in de vaste footer vormen een afzonderlijk patroon.
+Gebruik geen inline SVG of een willekeurige glyph ter vervanging.
 
 ## Groet en gesprek
 
 TIO-GROET-01: gebruik waar inhoudelijk passend het afsluitpatroon met groet,
 teamnaam, teamcomponent en namen uit de patroongids. De formulering mag bij de
 doelgroep passen; forceer deze warme ondertekening niet op een functionele
-notificatie. Het footerblok blijft wel altijd verplicht.
+notificatie.
 
 TIO-GESPREK-01: bied waar passend een afspraak met het programmateam aan via
 een geverifieerde SavvyCal-route. Gebruik daarvoor het gesprekspatroon uit de
@@ -130,39 +127,11 @@ patroongids, met de juiste route voor doelgroep/traject en verplichte UTM's.
 Een ontbrekend gesprekblok is geen fout wanneer het niet bij de mail past.
 Verzin geen kalender-ID, deelnemers, beschikbaarheid of persoonlijke boekingslink.
 
-## Verplichte footer
-
-TIO-FOOTER-01: het laatste zichtbare blok is de vaste tweekolomsfooter:
-links logo-component `cms91sxip00000jzqlzur2j3z` (`Logo Trainees in onderwijs`);
-rechts website, LinkedIn, Facebook en Instagram in die volgorde.
-
-| Onderdeel      | Verplichte opmaak                                                                        |
-| -------------- | ---------------------------------------------------------------------------------------- |
-| Columns        | `gap=20`, `stackOnMobile=false`; geen geforceerde eigen kolomverhouding.                 |
-| Beide kolommen | `verticalAlignment=middle`.                                                              |
-| Logowrapper    | `paddingTop=4`, `paddingBottom=4`.                                                       |
-| Logo Image     | `width=90`, alt “Logo van Trainees in onderwijs”, ongerond (radius 0 of niet ingesteld). |
-| Icons          | `align=right`, `gap=14`, `size=18`, `color=#808080`.                                     |
-
-| Icon              | Bestemming                                                  |
-| ----------------- | ----------------------------------------------------------- |
-| `link`            | `https://traineesinonderwijs.nl` met mailinggebonden UTM's. |
-| `linkedin`        | `https://www.linkedin.com/company/traineesinonderwijs`      |
-| `square-facebook` | `https://www.facebook.com/traineesinonderwijs/`             |
-| `instagram`       | `https://www.instagram.com/traineesinonderwijs/`            |
-
-TIO-FOOTER-02: nul lege paragrafen of andere visuele spacers na de footer.
-Laat Loops de afmeldtekst toevoegen; maak geen unsubscribeblok na.
-Een relatieve query zoals `?utm_source=...` is geen volledige websitebestemming.
-Pas de gedeelde UTM-regels toe op logo, header, teambeeld en alle andere links
-naar de eigen domeinen, ook in componentinhoud. Behoud andere queryparameters,
-fragmenten en personalisatie. Wijzig componenten uitsluitend mailgebonden.
-
 ## Theme-tokens
 
 Deze tabel legt de basisconfiguratie van het verplichte theme vast. De lokale
 regels hierboven bepalen de toepassing volgens TIO-RADIUS-01, inclusief de
-uitzonderingen voor buttons, datumvlakken, de teamfoto en het footerlogo.
+uitzonderingen voor buttons, datumvlakken en de teamfoto.
 Wijzig het gedeelde theme niet om een mail te herstellen.
 Lege kleurwaarden betekenen niet ingesteld; verzin hiervoor geen kleur.
 Afmetingen en letterspatiëring zijn px; regelhoogten percentages.

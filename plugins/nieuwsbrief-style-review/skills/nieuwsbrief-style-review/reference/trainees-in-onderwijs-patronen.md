@@ -2,8 +2,8 @@
 
 Lees altijd ook de [algemene stijl](trainees-in-onderwijs.md). Deze patronen
 bepalen de opmaak van een aanwezig blok, niet welke blokken of hoeveel items een
-mail moet bevatten. De inhoud, volgorde en hoeveelheid secties tussen header en
-footer zijn vrij. De templates uit de algemene gids zijn uitvoeringsreferenties;
+mail moet bevatten. De inhoud, volgorde en hoeveelheid secties na de header
+zijn vrij. De templates uit de algemene gids zijn uitvoeringsreferenties;
 voorbeeldpersonen, tekst en evenementen zijn geen verplichte inhoud.
 
 ## Agenda-items
@@ -97,9 +97,8 @@ met UTM's. Behoud componentidentiteit, personen en metadata. Pas de namen alleen
 aan bij bevestigde teaminformatie; raad geen actuele bezetting. Dit kleine
 teambeeld hoeft niet naar volle sectiebreedte te worden vergroot.
 
-Het teambeeld wordt binnen een lichtblauwe sectie getoond; alleen de vaste
-logo/social-footer staat erbuiten. De groet is inhoudelijk optioneel, de footer
-is altijd verplicht. Na de afsluitsectie één lege paragraaf en dan de footer.
+Het teambeeld wordt binnen een lichtblauwe sectie getoond. De groet is
+inhoudelijk optioneel.
 
 ## Gesprek met het programmateam
 

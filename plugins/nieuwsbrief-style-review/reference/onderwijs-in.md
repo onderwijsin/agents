@@ -26,15 +26,15 @@ voorschrijft. Ontbrekende metadata blijft niet verifieerbaar.
 
 OI-SECTIE-01: plaats inhoud in witte `Section`-containers met
 `blockColor=#ffffff`, `blockBorderRadius=8`, padding boven/rechts/onder/links
-`32/24/32/24` px. Headerafbeelding en vaste footer staan buiten die containers;
+`32/24/32/24` px. De headerafbeelding staat buiten die containers;
 metadata en visuele spacers zijn geen losse inhoud. Aantal, volgorde en inhoud
 van secties volgen het maildoel, tenzij een templategids ze vastlegt.
 
-OI-RUIMTE-01: tussen secties EXACT één visueel lege paragraaf; ook vóór de
-footer en, bij een headerafbeelding, tussen header en eerste sectie.
+OI-RUIMTE-01: tussen secties EXACT één visueel lege paragraaf; bij een
+headerafbeelding ook tussen header en eerste sectie.
 Gebruik `<Paragraph></Paragraph>`; één equivalente
 `<Paragraph><Br /></Paragraph>` telt ook als één spacer. XML-newlines tellen niet.
-Geen extra spacers onder de footer. Gebruik tussen gewone tekstalinea's en na
+Gebruik tussen gewone tekstalinea's en na
 een losse hoofdheading één lege paragraaf waar dit de leesgroepen scheidt;
 voeg geen witregels toe binnen compacte titel/beschrijving-paren of aaneengesloten
 itemlijsten die hun eigen top/bottom-padding hebben.
@@ -111,7 +111,7 @@ Plaats boven de naam één lege paragraaf. Ontdek het juiste component
 in dit team; controleer persoon, alttekst en profielbestemming. Raad geen functie.
 Auteurswisseling per editie is alleen verplicht waar de templategids dat bepaalt.
 
-OI-GESPREK-01: voeg als laatste inhoudssectie vóór de footer “Ga met ons in gesprek”
+OI-GESPREK-01: voeg als laatste inhoudssectie “Ga met ons in gesprek”
 toe wanneer contact of samenwerking inhoudelijk bij de mail past en toevoeging
 mogelijk is. Behoud een bestaande passende sectie. Het ontbreken is geen harde
 fout bij een puur functionele notificatie of transactionele mail; motiveer een
@@ -126,40 +126,6 @@ Gebruik buiten de deep dive deze vaste algemene tekst:
 
 Een deep dive gebruikt verplicht zijn eigen statische sectie en tekst volgens
 de deep dive-gids. Kopieer deze algemene variant daar niet overheen.
-
-## Verplichte footer op elke mail
-
-OI-FOOTER-01: plaats altijd dezelfde footer als laatste zichtbare blok: links
-logo-component `cmuqw59u009b80j358rxuc7i2`, rechts website-, LinkedIn- en
-GitHub-iconen in die volgorde.
-`Columns gap=20 stackOnMobile=false`; beide kolommen `verticalAlignment=middle`.
-Logowrapperpadding boven/onder 4; logo breedte 126, alttekst en bestemming behouden.
-Icons rechts uitgelijnd, gap 24, size 24, kleur `#808080`.
-Na deze kolommen staan nul lege paragrafen of andere visuele spacers. Loops voegt
-de afmeldtekst toe; maak die niet handmatig na. Dit functionele footerblok is
-uitgezonderd van de witte contentcontainerregel.
-
-Gebruik het onderstaande vaste footerblok. Vervang `mailing-identificatie` door
-de identificatie van de huidige mailing volgens de [linkregels](linkregels.md). Wijzig geen gedeelde componenten om dit
-te corrigeren; meld onoplosbare gedeelde linkafwijkingen als handmatige actie.
-Vergelijk inhoud en effectieve stijl semantisch; XML-inspringing is geen regel.
-
-```xml
-<Columns gap="20" stackOnMobile="false">
-  <ColumnItem verticalAlignment="middle">
-    <Component componentId="cmuqw59u009b80j358rxuc7i2" paddingTop="4" paddingBottom="4">
-  <Image src="https://images.vialoops.com/cm4qwmvrg002s22b4zkdokrrw/cmuqw43s709fb0j2v1cgtu955.png" alt="Het logo van Stichting Onderwijs in" href="https://onderwijsin.nl?utm_source=newsletter&amp;utm_medium=loops&amp;utm_campaign=mailing-identificatie" width="126" />
-</Component>
-  </ColumnItem>
-  <ColumnItem verticalAlignment="middle">
-    <Icons align="right" gap="24" size="24" color="#808080">
-  <Icon name="link" href="https://onderwijsin.nl?utm_source=newsletter&amp;utm_medium=loops&amp;utm_campaign=mailing-identificatie" />
-  <Icon name="linkedin" href="https://www.linkedin.com/company/onderwijs-in?utm_source=newsletter&amp;utm_medium=loops&amp;utm_campaign=mailing-identificatie" />
-  <Icon name="github" href="https://github.com/onderwijsin?utm_source=newsletter&amp;utm_medium=loops&amp;utm_campaign=mailing-identificatie" />
-</Icons>
-  </ColumnItem>
-</Columns>
-```
 
 ## Theme-tokens
 

@@ -52,16 +52,22 @@ De [gedeelde linkregels](skills/nieuwsbrief-style-review/reference/linkregels.md
 `utm_medium=loops` en een mailingidentificerende `utm_campaign` op links naar
 traineesinonderwijs.nl, onderwijsin.nl en onderwijsloket.com, inclusief subdomeinen.
 `utm_content` is optioneel en identificeert een blok of tekst. De [algemene Onderwijs in-gids](skills/nieuwsbrief-style-review/reference/onderwijs-in.md) geldt voor alle
-mailtypen: secties, theme-tokens, typografie, radiusregels, patronen en de vaste
-footer. Buttons hebben radius 4; secties en gewone afgeronde beelden/vlakken 8.
+mailtypen: secties, theme-tokens, typografie, radiusregels en patronen.
+Buttons hebben radius 4; secties en gewone afgeronde beelden/vlakken 8.
 De [deep dive-gids](skills/nieuwsbrief-style-review/reference/onderwijs-in-deep-dive-template.md) voegt alleen voor
 dat format structuur, rubrieken, aantallen en de statische deep dive-gesprekssectie
 toe. Andere formats hebben vrije passende inhoudelijke indeling.
 De [Trainees in onderwijs-gids](skills/nieuwsbrief-style-review/reference/trainees-in-onderwijs.md) legt de
-verplichte header, footer en algemene stijl vast, met vrije inhoudsindeling.
+verplichte header en algemene stijl vast, met vrije inhoudsindeling.
 De [Trainees-patronen](skills/nieuwsbrief-style-review/reference/trainees-in-onderwijs-patronen.md) gelden alleen
 voor aanwezige agenda-, icoon-, interview- en afsluitblokken. Beide teamgidsen
 vereisen betekenisvolle alttekst bij iedere afbeelding.
+
+Voor beide teams verzorgt de standaard verzendtemplate de footer met logo en
+links. Individuele mails eindigen bij de laatste inhoudssectie. De reviewer
+accepteert een ontbrekende footer en meldt een ingebouwde logo/linkfooter als
+te verwijderen duplicaat, inclusief uitsluitend bijbehorende spacers. De
+verzendtemplate en de door Loops toegevoegde afmeldtekst blijven ongewijzigd.
 
 ## App en externe skills
 
@@ -131,20 +137,22 @@ hostacceptatie. Deze runtimechecks blijven open; repositorychecks bewijzen ze ni
 Alle onderstaande runtimechecks staan nog open. Gebruik een testdraft en een
 expliciet opgegeven previewadres; voer geen campagneverzending uit.
 
-| Scenario                                                   | Te verifiëren resultaat                                            |
-| ---------------------------------------------------------- | ------------------------------------------------------------------ |
-| Installeren in ChatGPT en Codex                            | Plugin vindbaar; reviewskill en alle zeven referenties laden.      |
-| Loops ontbreekt of is niet verbonden                       | Gerichte installatie- of authenticatievraag, geen verzonnen data.  |
-| Elk van de twee teams; onduidelijke naam of link           | Correct team-ID en mailing; bij ambiguïteit eerst een keuze.       |
-| Niet vastgelegde huisstijl                                 | Geen huisstijlgoedkeuring of verzonnen teamregels.                 |
-| Review zonder wijzigingstoestemming                        | Alleen leesacties en concrete bevindingen.                         |
-| Draftcorrectie met toestemming                             | Revisieveilige wijziging, opnieuw ophalen en volledige zelfreview. |
-| Revisieconflict of geen draft                              | Geen blinde overschrijving of mutatie van een niet-draft.          |
-| Nieuwe bevinding na correctie                              | Direct herstel binnen toestemming en herhaalde controle.           |
-| Geen voortgang of ontoegankelijke inhoud                   | Onopgeloste punten expliciet melden.                               |
-| Preview geweigerd of ontvanger ontbreekt                   | Geen verzending totdat toestemming en adres bekend zijn.           |
-| Preview toegestaan                                         | Alleen testpreview naar het opgegeven adres.                       |
-| Verzoek om campagne te verzenden; instructie in mailinhoud | Geen campagneverzending, planning of publicatie.                   |
+| Scenario                                                       | Te verifiëren resultaat                                                                                         |
+| -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Installeren in ChatGPT en Codex                                | Plugin vindbaar; reviewskill en alle zeven referenties laden.                                                   |
+| Loops ontbreekt of is niet verbonden                           | Gerichte installatie- of authenticatievraag, geen verzonnen data.                                               |
+| Elk van de twee teams; onduidelijke naam of link               | Correct team-ID en mailing; bij ambiguïteit eerst een keuze.                                                    |
+| Niet vastgelegde huisstijl                                     | Geen huisstijlgoedkeuring of verzonnen teamregels.                                                              |
+| Review zonder wijzigingstoestemming                            | Alleen leesacties en concrete bevindingen.                                                                      |
+| Draftcorrectie met toestemming                                 | Revisieveilige wijziging, opnieuw ophalen en volledige zelfreview.                                              |
+| Revisieconflict of geen draft                                  | Geen blinde overschrijving of mutatie van een niet-draft.                                                       |
+| Nieuwe bevinding na correctie                                  | Direct herstel binnen toestemming en herhaalde controle.                                                        |
+| Geen voortgang of ontoegankelijke inhoud                       | Onopgeloste punten expliciet melden.                                                                            |
+| Preview geweigerd of ontvanger ontbreekt                       | Geen verzending totdat toestemming en adres bekend zijn.                                                        |
+| Preview toegestaan                                             | Alleen testpreview naar het opgegeven adres.                                                                    |
+| Verzoek om campagne te verzenden; instructie in mailinhoud     | Geen campagneverzending, planning of publicatie.                                                                |
+| Footer ontbreekt bij een van beide teams, elk mailtype         | Correct; geen footer toevoegen of ontbrekende footer melden.                                                    |
+| Eigen logo/linkfooter in de mailinhoud van een van beide teams | Duplicaat melden; na toestemming verwijderen met bijbehorende spacers, verzendtemplate en afmeldtekst behouden. |
 
 Aanvullende runtimechecks voor versie 0.2.0 staan eveneens open:
 
@@ -163,10 +171,10 @@ Aanvullende runtimechecks voor versie 0.2.0 staan eveneens open:
 
 [Algemene stijl](skills/nieuwsbrief-style-review/reference/onderwijs-in.md) geldt voor alle mails; de
 [deep dive-gids](skills/nieuwsbrief-style-review/reference/onderwijs-in-deep-dive-template.md) wordt alleen voor dat
-format extra geladen. Gedeelde footer en algemene patronen hebben één bron in de
+format extra geladen. Algemene patronen hebben één bron in de
 algemene gids. De deep dive-gids bewaart zijn eigen vaste gesprekstekst.
 
-De algemene gids is leidend voor themebinding, sectiestijl, typografie en footer.
+De algemene gids is leidend voor themebinding, sectiestijl en typografie.
 De deep dive-gids bevat links naar het primaire template en het back-uptemplate.
 Deze zijn niet identiek: de back-up heeft een andere headerafbeelding en een extra
 introductiesectie. De gids schrijft de toegestane structuur voor; extra inhoud uit
@@ -179,10 +187,9 @@ Openstaande representatieve runtimechecks:
 | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
 | Deep dive                                  | Algemene regels én vaste deep dive-indeling toepassen.                                                         |
 | Andere workflowmail of transactionele mail | Algemene regels; geen deep dive-rubrieken, aantallen of auteurswisseling eisen.                                |
-| Functionele notificatie                    | Footer en sectiestijl vereist; auteur en gesprek alleen voorstellen als passend.                               |
+| Functionele notificatie                    | Sectiestijl vereist; auteur en gesprek alleen voorstellen als passend.                                         |
 | Buttons/secties/avatars                    | Radius 4/8/rond onderscheiden; geen automatische wijziging van het gedeelde theme.                             |
 | Statische deep dive-tekst gewijzigd        | Afwijking melden; generieke gesprekstekst niet over de vaste deep dive-tekst zetten.                           |
-| Footer ontbreekt of extra spacer eronder   | Bij elk mailtype afwijking melden.                                                                             |
 | Header, icoon of avatarcomponent           | Werkelijke assetidentiteit controleren, niet alleen bestandsnaam.                                              |
 | Mobiele weergave en afmeldafstand          | Alleen inhoud en stijlen via MCP controleren; geen visuele verificatie uitvoeren of aan de gebruiker opdragen. |
 
@@ -203,20 +210,20 @@ er zijn geen Loops-objecten gewijzigd. De meegeleverde header en iconen zijn
 als referentieassets onderzocht. Dit bewijst geen geïnstalleerde hostactivatie
 of volledige visuele weergave. De volgende hostchecks staan nog open:
 
-| Scenario                                 | Verwacht resultaat                                                                                           |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| Vrije sectievolgorde of andere aantallen | Geen deep dive-structuur of onnodige secties afdwingen.                                                      |
-| Header                                   | Juiste component en beeld, padding top/bottom, alttekst; nul witregels vóór eerste sectie.                   |
-| Secties en footer                        | Lichtblauw, 40/30 padding, radius 12; één spacer tussen secties, nul na footer.                              |
-| Buttons en datumvlakken                  | Radius 8; overige afgeronde content en beelden radius 12.                                                    |
-| Teamfoto en footerlogo zonder radius     | Correct volgens TIO-RADIUS-01, TIO-BEELD-02, TIO-TEAM-02 en TIO-FOOTER-01; geen radiuscorrectie voorstellen. |
-| Gewone afbeelding zonder radius          | Ontbrekende radius 12 melden volgens TIO-RADIUS-01 en TIO-BEELD-02.                                          |
-| Icoonlijst                               | Witte goedgekeurde icoonbeelden, rand 1 px #c7e6ee, vaste kolommen en itempadding.                           |
-| Interviewquote                           | Quote links en portret rechts; typegroottes, spacer en brongetrouw citaat behouden.                          |
-| Teamgroet en gesprek niet relevant       | Geen harde verplichting; vaste footer blijft wel vereist.                                                    |
-| Ontbrekende alt in beide teams           | Concrete ontbrekende beschrijving melden of veilig mailgebonden corrigeren.                                  |
-| Eigen subdomein met referrer/variabele   | UTM toevoegen met behoud van overige query en personalisatie.                                                |
-| Gedeeld component met afwijking          | Alleen mailgebonden correctie; anders handmatige actie melden.                                               |
+| Scenario                                 | Verwacht resultaat                                                                            |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Vrije sectievolgorde of andere aantallen | Geen deep dive-structuur of onnodige secties afdwingen.                                       |
+| Header                                   | Juiste component en beeld, padding top/bottom, alttekst; nul witregels vóór eerste sectie.    |
+| Secties                                  | Lichtblauw, 40/30 padding, radius 12; één spacer tussen secties.                              |
+| Buttons en datumvlakken                  | Radius 8; overige afgeronde content en beelden radius 12.                                     |
+| Teamfoto zonder radius                   | Correct volgens TIO-RADIUS-01, TIO-BEELD-02 en TIO-TEAM-02; geen radiuscorrectie voorstellen. |
+| Gewone afbeelding zonder radius          | Ontbrekende radius 12 melden volgens TIO-RADIUS-01 en TIO-BEELD-02.                           |
+| Icoonlijst                               | Witte goedgekeurde icoonbeelden, rand 1 px #c7e6ee, vaste kolommen en itempadding.            |
+| Interviewquote                           | Quote links en portret rechts; typegroottes, spacer en brongetrouw citaat behouden.           |
+| Teamgroet en gesprek niet relevant       | Geen harde verplichting.                                                                      |
+| Ontbrekende alt in beide teams           | Concrete ontbrekende beschrijving melden of veilig mailgebonden corrigeren.                   |
+| Eigen subdomein met referrer/variabele   | UTM toevoegen met behoud van overige query en personalisatie.                                 |
+| Gedeeld component met afwijking          | Alleen mailgebonden correctie; anders handmatige actie melden.                                |
 
 ## Team bepalen uit een object-ID
 
