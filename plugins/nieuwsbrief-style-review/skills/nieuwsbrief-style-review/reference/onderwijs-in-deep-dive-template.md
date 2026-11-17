@@ -27,10 +27,10 @@ tekstlengte blijft niet verifieerbaar. Voor visuele witregels geldt OI-RUIMTE-01
 ## Vaste structuur
 
 STRUCT-01: headerafbeelding → persoonlijk bericht → Verhalen uit de praktijk →
-Kennis en expertise → Op de agenda → Ga met ons in gesprek → footer.
+Kennis en expertise → Op de agenda → Ga met ons in gesprek.
 De vijf inhoudssecties gebruiken de algemene sectiestijl (OI-SECTIE-01).
 Tussen opeenvolgende onderdelen staat EXACT één lege paragraaf, ook tussen
-header en sectie 1 en tussen sectie 5 en footer. Na de footer staan er nul.
+header en sectie 1.
 Voeg geen scheidingslijnen of extra spacers toe.
 
 ### Header
@@ -105,15 +105,10 @@ hieronder vastgelegde deep dive-tekst, volgorde en bestemming, met de algemene
 radiusregel en noodzakelijke UTM-normalisatie. De generieke variant uit de
 algemene gids vervangt deze deep dive-tekst niet.
 
-### Footer
-
-Gebruik de verplichte algemene footer volgens OI-FOOTER-01 in de
-[algemene gids](onderwijs-in.md). Voeg na de footer geen visuele spacer toe.
-
 ## Deep dive-stijlen en patronen
 
-Algemene containers, lettertypen, basisbuttons, headinggewicht, auteursblokken en
-footer staan uitsluitend in de algemene gids. De volgende rubriekstijlen komen
+Algemene containers, lettertypen, basisbuttons, headinggewicht en auteursblokken
+staan uitsluitend in de algemene gids. De volgende rubriekstijlen komen
 daar bovenop. Niet genoemde attributen volgen de algemene stijl en het theme;
 verzin geen verborgen rendererdefaults. `widths` zijn percentages; padding,
 `gap`, breedte en radius zijn px.

@@ -46,8 +46,11 @@ leggen verplichte themes vast; gedeelde regels leggen UTM-parameters vast. Train
 algemene stijlregels en conditionele patronen met een vrije inhoudelijke indeling.
 Onderwijs in heeft
 algemene stijlregels voor alle mailtypen en daarnaast een deep dive-referentie
-voor de vaste structuur en templatespecifieke blokken. Campagnes, gepauzeerde workflows en transactionele
-drafts vallen binnen de review. Volledige huisstijlgoedkeuring en runtimecompatibiliteit
+voor de vaste structuur en templatespecifieke blokken. Campagnedrafts,
+workflowmails met status `Draft`, `Paused` of `PausedAndQueueing` en transactionele
+drafts vallen binnen de review. `Sending`, onbekende workflowstatussen en mislukte
+statuschecks blokkeren inhoudelijk ophalen, review, wijzigingen en testpreviews.
+Volledige huisstijlgoedkeuring en runtimecompatibiliteit
 zijn nog niet aangetoond. Zie de package-README voor rechten, bronnen en acceptatiechecks.
 
 Referenties worden vanuit hun canonieke plugin-rootbronnen naar de benodigde

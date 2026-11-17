@@ -54,6 +54,19 @@ zij biedt geen dupliceerendpoint. De redacteur maakt daarom een nieuwe draft en
 kopieert de relevante emailvelden. Dit is geen server-side kloon van alle metadata.
 Gebruik het actuele schema; ga bij een fout niet onbeperkt nieuwe drafts aanmaken.
 
+Het workflow- en email-messagecontract is op 17 november 2026 via Loops MCP
+`search` en `describe` gecontroleerd. `getWorkflow` levert de statussen `Draft`,
+`Sending`, `Paused` en `PausedAndQueueing`, met mailnodes en hun `emailMessageId`.
+`getWorkflowNode` levert de volledige nodedata. `updateEmailMessage` staat
+workflowmails toe zolang de workflow niet `Sending` is; een verzendende workflow
+of een onjuiste `expectedRevisionId` geeft 409. De skill staat lezen, redigeren
+en testpreviews alleen toe bij de drie bekende niet-verzendende statussen;
+onbekende statussen en mislukte statuschecks blokkeren die handelingen.
+`previewEmailMessage` accepteert voor workflows `contactProperties` en
+`eventProperties`. Dit is schemaverificatie, geen uitgevoerde update, preview
+of geïnstalleerde hosttest. Campagnes blijven beperkt tot drafts en
+transactionele mails tot hun bestaande draft-email-message.
+
 Protocolbron: de [Loops OpenAPI-specificatie](https://app.loops.so/openapi.json),
 ontsloten via de MCP-tools `search` en `describe`. Zie ook
 [Loops sending settings](https://loops.so/docs/creating-emails/sending-settings)

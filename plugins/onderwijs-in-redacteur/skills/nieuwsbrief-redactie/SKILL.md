@@ -68,8 +68,8 @@ compatibility: Vereist het hele Redacteur-pakket. Voor Loops-werk zijn de Loops-
    hoogstens drie belangrijkste ingrepen. Vraag of de gebruiker ook een stijlreview
    met `nieuwsbrief-style-review` wil. Dit aanbod is geen toestemming om de mail
    alsnog naar Loops te schrijven of om een preview te sturen. Als er nog geen
-   geschikte Loops-draft is, kan de volledige reviewworkflow pas na selectie van
-   zo'n draft starten; maak daarvoor niet ongevraagd een mail aan.
+   geschikte Loops-mail met toegestane status is, kan de volledige reviewworkflow
+   pas na selectie daarvan starten; maak daarvoor niet ongevraagd een mail aan.
 
 ## Loops uitsluitend via MCP
 
@@ -95,11 +95,17 @@ browserfallback. Chatredactie kan doorgaan zonder Loops-interactie.
    inhoud in chat; maak geen claim dat stijlregels zijn toegepast zonder ze te lezen.
 2. Ontdek actuele MCP-endpoints en lees hun schema vóór gebruik. Verifieer het team
    Onderwijs in, ID `cm4qwmvrg002s22b4zkdokrrw`. Werk uitsluitend in dit team.
-   Bij bestaande mails controleer je vóór inhoudelijke Loops-review en iedere
-   mutatie/preview de status: campagne `Draft`; workflow `Paused` of
-   `PausedAndQueueing` met juiste mailnode; transactionele mail alleen de bestaande
-   `draftEmailMessageId`. Weiger overige/onbekende statussen; pauzeer of activeer
-   zelf niets. Geef terug wat de gebruiker moet aanpassen.
+   Bij bestaande mails controleer je vóór inhoudelijk ophalen, Loops-review en
+   iedere mutatie/preview de status: campagne `Draft`; workflow `Draft`, `Paused` of
+   `PausedAndQueueing`; transactionele mail alleen de bestaande
+   `draftEmailMessageId`. Deze workflowstatussen staan ophalen van mailinhoud,
+   redactie, wijzigingen en testpreviews toe. Verifieer dat de geselecteerde
+   email-message bij de bedoelde workflowmailnode hoort. Weiger `Sending` en
+   overige/onbekende of niet-verifieerbare statussen. Stop bij een mislukte
+   status- of nodecheck vóór inhoudelijk ophalen, redactie, mutaties en previews;
+   meld de blokkade en benodigde gebruikersactie. Alleen bij `Sending` kan
+   pauzeren door de gebruiker nodig zijn; een `Draft`-workflow hoeft niet te
+   worden gepauzeerd. Wijzig zelf geen workflowlogica of -uitvoering.
 3. Voor een **nieuwe deep dive**: lees campagne `cmuyeyrtc00iw0j0e6dwxv5j1` en diens
    email-message als bron. Kopieer naar een **nieuwe** draft, nooit terug naar de
    template. Als MCP geen dupliceeractie aanbiedt, maak via `createCampaign` een
@@ -124,8 +130,8 @@ browserfallback. Chatredactie kan doorgaan zonder Loops-interactie.
    opnieuw op. Herhaal inhoud, toon, spelling, subject/preview, betekenisbehoud en
    de toegepaste stijlregels. Herstel fouten binnen de toestemming direct en
    herhaal tot er geen oplosbare punten overblijven. Stop bij ontbrekende gegevens,
-   geen voortgang, gewijzigde status of een inhoudelijke beslissing buiten de
-   opdracht; meld dit als open punt, niet als geslaagde eindcontrole.
+   geen voortgang, niet-toegestane of niet-verifieerbare status of een inhoudelijke
+   beslissing buiten de opdracht; meld dit als open punt, niet als geslaagde eindcontrole.
 7. Lever de geverifieerde web-UI-link, belangrijkste ingrepen en ontbrekende delen
    (verhalen, expertise, agenda, auteur, assets of links). Spoor de gebruiker aan
    de laatste versie in Loops te bekijken. Vraag “Zal ik een preview sturen?” en
@@ -139,7 +145,8 @@ Preview alleen na expliciet verzoek en met bekend ontvangstadres, via het echte
 email-message-previewendpoint en passende testwaarden. Controleer status opnieuw.
 Rapporteer alleen door de service bevestigd succes. De gebruiker verzorgt echte
 verzending, planning, publicatie en activering in de webinterface. Verstuur NOOIT
-campagnes of transactionele mails, stuur geen events en wijzig geen doelgroepen,
-contacten, teaminstellingen, workflows, gedeelde themes of componenten.
+campagnes, workflowmails of transactionele mails, stuur geen events en wijzig geen
+doelgroepen, contacten, teaminstellingen, workflowlogica of -uitvoering (starten, pauzeren,
+hervatten of anderszins), gedeelde themes of componenten.
 De create-bevoegdheid hierboven hoort bij deze redactieskill; de afzonderlijke
 stijlreview-skill blijft beperkt tot haar eigen lees-, draft- en previewhandelingen.

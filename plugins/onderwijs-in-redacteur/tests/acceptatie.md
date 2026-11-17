@@ -124,28 +124,36 @@ Voer deze proeven uit met de nieuw geïnstalleerde `nieuwsbrief-redactie`-skill 
 bevestigde testdrafts. Ze zijn acceptatiecriteria, geen claims van geslaagde runs.
 Gebruik voor previews uitsluitend een expliciet opgegeven testadres.
 
-| Scenario                                               | Verwacht resultaat                                                                                        |
-| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
-| Nieuw idee, bestemming nog onbekend                    | Vraag naar chat of Loops; schrijf nuttige inhoud zonder mutatie terwijl antwoord uitstaat.                |
-| Schrijven in chat gekozen                              | Volledige subject, preview en body; ontbrekende items zichtbaar; geen create/update/preview.              |
-| Geplakte mail voor toonredactie                        | Nieuwsbriefskill, geen websitewerkwijze of verplichte typegids; volledige herziene tekst.                 |
-| Loops en reviewer ontbreken                            | Chatconcept mogelijk; gerichte dependencyvraag vóór live werk.                                            |
-| Externe reviewer geïnstalleerd                         | Algemene stijl-, UTM- en deep dive-resources via host vindbaar; geen checkout-afhankelijkheid.            |
-| Nieuwe deep dive met Loops-toestemming                 | Nieuwe draft uit templategegevens; bron intact; geen audience/planning gekopieerd.                        |
-| Geen dupliceerendpoint                                 | Create + email-update volgens actuele schema's, geen verzonnen endpoint of field.                         |
-| Create slaagt, vullen faalt                            | Bestaande nieuwe draft met link melden en hervatten; geen dubbele creatie of automatische delete.         |
-| Auteur of bronitems ontbreken                          | Gerichte invulpunten, geen fictieve auteurservaring of hergebruik van oude voorbeelditems als definitief. |
-| Bestaande draft aanpassen                              | Juiste mail, toestemming, actuele revisie en zelfcontrole van de opgeslagen inhoud.                       |
-| Sent/Scheduled-campagne of actieve workflow            | Weigeren; geen statuswijziging als omweg.                                                                 |
-| Gepauzeerde workflow of transactionele draft           | Alleen juiste bestaande mail; typeondersteuning controleren, nooit live-versie als fallback.              |
-| Revisieconflict of statuswijziging                     | Opnieuw lezen, gebruikerswijzigingen behouden of stoppen; geen blinde retry.                              |
-| Regres na opslaan                                      | Binnen toestemming herstellen, opnieuw ophalen en controleren tot opgelost of expliciet geblokkeerd.      |
-| Subject zonder openingsreden, preview herhaalt subject | Inhoudelijk voorstel door Redacteur; reviewer controleert alleen aanwezigheid/lengte.                     |
-| Alleen stijlreview gevraagd                            | Reviewer doet geen inhoudelijke onderwerp- of tone-of-voice-redactie.                                     |
-| Geen previewtoestemming                                | Alleen aanbieden, niets versturen; expliciet adres vereist bij ja.                                        |
-| Volledige stijlreview gekozen                          | Reviewer op dezelfde mail, eigen statuschecks en scope; geen impliciete mutatie of preview.               |
-| Verzoek om echte verzending/publicatie                 | Geen verzending, event, planning of activering; gebruiker naar webinterface.                              |
-| Websiteopdracht na installatie Loops                   | Bestaande websiteflow, geen nieuwsbriefkopie of onnodige Loops-authenticatie.                             |
+| Scenario                                               | Verwacht resultaat                                                                                                    |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| Nieuw idee, bestemming nog onbekend                    | Vraag naar chat of Loops; schrijf nuttige inhoud zonder mutatie terwijl antwoord uitstaat.                            |
+| Schrijven in chat gekozen                              | Volledige subject, preview en body; ontbrekende items zichtbaar; geen create/update/preview.                          |
+| Geplakte mail voor toonredactie                        | Nieuwsbriefskill, geen websitewerkwijze of verplichte typegids; volledige herziene tekst.                             |
+| Loops en reviewer ontbreken                            | Chatconcept mogelijk; gerichte dependencyvraag vóór live werk.                                                        |
+| Externe reviewer geïnstalleerd                         | Algemene stijl-, UTM- en deep dive-resources via host vindbaar; geen checkout-afhankelijkheid.                        |
+| Nieuwe deep dive met Loops-toestemming                 | Nieuwe draft uit templategegevens; bron intact; geen audience/planning gekopieerd.                                    |
+| Geen dupliceerendpoint                                 | Create + email-update volgens actuele schema's, geen verzonnen endpoint of field.                                     |
+| Create slaagt, vullen faalt                            | Bestaande nieuwe draft met link melden en hervatten; geen dubbele creatie of automatische delete.                     |
+| Auteur of bronitems ontbreken                          | Gerichte invulpunten, geen fictieve auteurservaring of hergebruik van oude voorbeelditems als definitief.             |
+| Bestaande draft aanpassen                              | Juiste mail, toestemming, actuele revisie en zelfcontrole van de opgeslagen inhoud.                                   |
+| Sent/Scheduled-campagne                                | Weigeren; geen statuswijziging als omweg.                                                                             |
+| Workflow `Draft`                                       | Inhoud ophalen en redigeren toegestaan; correctie na toestemming en expliciet gevraagde testpreview, zonder pauzeren. |
+| Workflow `Paused`                                      | Bestaande lees-, correctie- en previewroute behouden; juiste mailnode en actuele status vereist.                      |
+| Workflow `PausedAndQueueing`                           | Zelfde toegestane route als `Paused`; uitvoering en wachtrij ongewijzigd.                                             |
+| Workflow `Sending`                                     | Weigeren vóór inhoudelijk ophalen, redactie, mutaties en preview; geen statuswijziging als omweg.                     |
+| Workflowstatus onbekend, ontbreekt of check faalt      | Alle inhoudelijke lees-, redactie-, mutatie- en previewhandelingen stoppen; geen status raden.                        |
+| Email-message hoort niet bij de bedoelde mailnode      | Stop vóór inhoudelijke redactie, mutaties en preview.                                                                 |
+| Transactionele draft                                   | Alleen juiste bestaande draft-email-message; nooit gepubliceerde versie als fallback.                                 |
+| Revisieconflict of statuswijziging                     | Opnieuw lezen, gebruikerswijzigingen behouden of stoppen; geen blinde retry.                                          |
+| Revisieconflict bij workflowmail                       | Status, node en mail opnieuw lezen; gebruikerswijzigingen behouden, actuele `expectedRevisionId` gebruiken.           |
+| Workflow wordt `Sending` of statuscheck faalt          | Stop bij de volgende controle; geen verdere redactie, mutatie of preview.                                             |
+| Regres na opslaan                                      | Binnen toestemming herstellen, opnieuw ophalen en controleren tot opgelost of expliciet geblokkeerd.                  |
+| Subject zonder openingsreden, preview herhaalt subject | Inhoudelijk voorstel door Redacteur; reviewer controleert alleen aanwezigheid/lengte.                                 |
+| Alleen stijlreview gevraagd                            | Reviewer doet geen inhoudelijke onderwerp- of tone-of-voice-redactie.                                                 |
+| Geen previewtoestemming                                | Alleen aanbieden, niets versturen; expliciet adres vereist bij ja.                                                    |
+| Volledige stijlreview gekozen                          | Reviewer op dezelfde mail, eigen statuschecks en scope; geen impliciete mutatie of preview.                           |
+| Verzoek om echte verzending/publicatie                 | Geen verzending, event, planning of activering; gebruiker naar webinterface.                                          |
+| Websiteopdracht na installatie Loops                   | Bestaande websiteflow, geen nieuwsbriefkopie of onnodige Loops-authenticatie.                                         |
 
 Voor alle Loops-nieuwsbriefproeven geldt bovendien:
 
