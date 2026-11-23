@@ -7,7 +7,7 @@
 | Source or private-shape assertion       | A harmless rename or extraction fails the test while every supported result stays the same.                                 | The structure itself is a published import, generated artifact or enforced architectural contract.                          |
 | Interaction assertions                  | Internal helper order or count merely transcribes today's call graph.                                                       | Order or count controls a transaction, resource lifecycle, billing, retry limit or idempotency promise.                     |
 | Snapshot                                | Unreviewed recorded output hides the meaningful signal or requires accepting changes without a criterion.                   | The rendered or serialized artifact is the reviewed contract, or the snapshot deliberately characterizes existing behavior. |
-| Weak assertion                          | Non-null, type, length or existence checks add no protection beyond a stronger assertion of the same result.                | Presence, cardinality or type is itself a meaningful result or catches a distinct plausible regression.                     |
+| Weak assertion                          | Non-null, type, length or existence checks add no protection beyond a stronger assertion of the same result.                | Presence, cardinality or type is itself a meaningful result or detects a specific workflow failure.                         |
 | Similar test cases                      | Cases exercise the same contract, input class, path and failure mode with equivalent evidence.                              | They protect distinct supported outcomes, runtime boundaries or concrete regression risks.                                  |
 | Misuse permutations                     | An input matrix enumerates hypothetical misuse without a supported rejection contract or concrete risk.                     | Cases protect a specified failure outcome or a concrete regression risk in the intended workflow.                           |
 | Private-helper coverage                 | A helper's mechanics are re-tested without a separate invariant beyond existing public coverage.                            | The helper has an independently specified algorithm or invariant that higher-level tests cannot adequately check.           |
@@ -31,8 +31,14 @@
 - A mocked adapter can prove the application chooses the specified payload, but cannot by
   itself prove real SDK serialization, framework registration or persistence wiring. Use a
   focused real integration or E2E test when that runtime behavior is the contract to establish.
-- A pre-release bug fix may need only an improved existing workflow test and a focused
-  reproduction. Recommend a permanent regression case only when it adds meaningful protection.
+- A small fix can be complete with zero new permanent tests when existing verification or a
+  disposable reproduction provides sufficient confidence. A pre-release bug fix is not by
+  itself a reason to retain another regression case.
+- A task already has three tests protecting distinct supported outcomes. Keep all three if
+  each earns its maintenance cost; pruning requires no deletion. Where cases merely repeat
+  one another, consolidate their evidence and remove only support with no surviving consumer.
+- A proposed test verifies a helper's new branch but identifies no missed workflow failure
+  or established failure contract. Omit the case rather than inventing a theoretical risk.
 - An explicit new requirement can make an older expectation obsolete. A preference inferred
   from a cleanup request cannot supply that authority.
 

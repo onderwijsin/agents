@@ -50,10 +50,17 @@ Test primarily the intended workflow, meaningful behavioral contracts and concre
 Keep rejection and failure cases that protect supported contracts or concrete risks, rather
 than preserving implementation history or enumerating theoretical input misuse.
 
-Prefer improving existing tests over redundant cases, excessive parameterization or
-implementation-specific assertions. Add a permanent test only for a concrete protection gap
-with independently justified expectations. A bug fix does not automatically require a permanent
-regression test, especially before the first release.
+**Zero new permanent tests is a valid completed outcome.** Existing tests and relevant checks
+may provide sufficient confidence; a focused disposable reproduction can verify a fix without
+becoming a maintained test. A bug fix does not automatically require a permanent regression
+test, especially before the first release.
+
+Before adding a permanent test, establish the specific failure in the intended workflow or
+established failure contract that existing verification misses, how the assertion would detect
+it, and why its fixtures, mocks and maintenance are worth retaining. Derive expectations
+independently and prefer improving existing workflow tests over redundant cases, excessive
+parameterization or implementation-specific assertions. A new branch, helper or theoretical
+edge case alone does not justify another test.
 
 Use the narrowest meaningful evidence for the transformation: types and caller searches for
 a rename, focused behavior cases for control flow, or existing format examples for reader
@@ -105,14 +112,16 @@ undo only your own transformation while preserving existing work. Keep the last 
 state recoverable. Broaden investigation when an identified failure or dependency requires
 it; avoid adjacent cosmetic changes and speculative layers.
 
-Test cleanup preserves distinct failure protection. Consolidate genuinely equivalent evidence
-and remove fixture support only when it has no surviving consumer. Removing a redundant test
-does not authorize removing the production behavior it exercised.
-
 This step is complete when every in-scope item is applied or explicitly deferred, all affected
 code is updated, and checks for the applied groups pass or have accurately reported limits.
 
 ## 4. Verify and hand off
+
+Prune test changes within the task, including fixtures, mocks and helpers. Remove or consolidate
+parts without distinct, worthwhile protection and retain all useful tests and support with
+surviving consumers. Removing a redundant test does not authorize retiring production behavior.
+The pass may leave every test intact: there is no deletion quota or unrelated test-suite cleanup.
+Run the affected checks on the resulting suite.
 
 Review the complete diff against the request and account for each remaining mechanism's
 purpose. Explain non-obvious decisions to retain code when they matter to the result.

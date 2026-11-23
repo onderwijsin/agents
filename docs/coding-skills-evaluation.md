@@ -39,6 +39,22 @@ rules, with the same limitation: no fresh-agent or host behavior is measured.
 | Mocked SDK calls return success, but the task requires confidence that real serialization and framework registration work together. A control test only checks the application's specified outbound payload. | Use a focused real integration or E2E test for the runtime contract; keep useful payload assertions where mocks suffice. | Implementation, hygiene verification, test review and cleanup name the limits of mocks; the test-pattern reference distinguishes payload choice from runtime wiring. |
 | A short low-level test catches a known rounding risk that the normal E2E flow misses.                                                                                                                        | Keep the useful test despite a preference for a smaller suite.                                                           | The goal is sufficient confidence with a maintainable suite, and the existing numerical-test contrast preserves distinct failure protection.                         |
 
+## Test-addition and pruning walkthrough
+
+Updated 23 November 2026. These author inspections check the explicit zero-test outcome,
+the decision before adding permanent tests, and the final pruning pass. They inspect written
+instructions, not observed agent behavior.
+
+| Scenario and supplied context                                                                                                                            | Expected decision                                                                                                     | Instruction inspection result                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A bounded task is verified by existing workflow tests and relevant type/runtime checks; no behavior lacks meaningful protection.                         | Finish with zero new permanent tests.                                                                                 | Implementation, cleanup and test review explicitly accept that outcome when existing verification provides sufficient confidence.                                          |
+| A small fix is reproduced with a disposable local check; existing maintained checks give sufficient confidence after the fix.                            | Confirm the result and discard the reproduction instead of automatically retaining a regression case.                 | All three skills distinguish verification from retaining a permanent test.                                                                                                 |
+| A proposed helper test names only a new private branch and a theoretical misuse case, without a missed workflow failure or established failure contract. | Omit the proposed test.                                                                                               | The addition decision requires a specific missed failure, an effective assertion and a maintenance benefit; a new branch alone is insufficient.                            |
+| An existing workflow test can be strengthened to expose the identified failure.                                                                          | Improve the existing case before adding another with overlapping protection.                                          | The skills prioritize improving existing workflow tests and retain the restrictions on redundant cases, excessive parameterization and implementation-specific assertions. |
+| The task changes real runtime wiring that existing mocks do not exercise, and a known contract would fail if the wiring were wrong.                      | Add a focused real integration or E2E case if its protection and maintenance cost justify retention.                  | The concrete-reason decision preserves justified additions and the existing real-runtime testing rule.                                                                     |
+| A task adds three tests, each protecting a distinct worthwhile outcome.                                                                                  | Keep all three after the pruning pass.                                                                                | All three skills explicitly permit no removal and apply no deletion quota.                                                                                                 |
+| A task adds overlapping cases and fixture helpers; one helper also serves a surviving test.                                                              | Consolidate redundant evidence, remove orphan support, and retain the shared helper without auditing unrelated tests. | Pruning covers tests, fixtures, mocks and helpers within task scope; fixture retirement still follows surviving consumers.                                                 |
+
 ## Ablation walkthrough
 
 These author inspections cover the additional decisions adapted from antfu-simplify. They
@@ -67,12 +83,17 @@ Repository validation checks frontmatter, exact skill names, consumer declaratio
 coverage and skill-local resource links. Formatting, linting, type checking and the repository's
 validator tests run through `pnpm check`. These checks do not execute the skill workflows.
 
-| Command                                   | Result                                                                                                                                                         |
-| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pnpm format`                             | Passed.                                                                                                                                                        |
-| `pnpm check`                              | Passed: reference drift, formatting, Markdown/TypeScript lint, type checking, repository validation and tests.                                                 |
-| Repository validation within `pnpm check` | 976 passed, 0 failed, 5 skipped. The skips are shared plugin source links, checked in their installed copies instead; the new skill-local links are validated. |
-| Tests within `pnpm check`                 | 50 passed, 0 failed, 0 skipped. These exercise repository tooling, not coding-skill behavior.                                                                  |
+Updated 23 November 2026. The plain check encountered inherited Git signing settings while
+release tests committed temporary fixtures. A rerun disabled signing only for the test process;
+the contributor's Git configuration was not changed.
+
+| Command                                                                                  | Result                                                                                                                                                 |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `pnpm format`                                                                            | Passed.                                                                                                                                                |
+| `pnpm check`                                                                             | Content checks passed; release-fixture tests failed because signing temporary commits required an interactive terminal.                                |
+| `GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=commit.gpgsign GIT_CONFIG_VALUE_0=false pnpm check` | Passed: reference drift, formatting, Markdown/TypeScript lint, type checking, repository validation and tests.                                         |
+| Repository validation                                                                    | 997 passed, 0 failed, 5 skipped. The skips are shared plugin source links, checked in their installed copies instead; skill-local links are validated. |
+| Tests with the process-local signing override                                            | 50 passed, 0 failed, 0 skipped. These exercise repository tooling, not coding-skill behavior.                                                          |
 
 ## Runtime evaluation and pilot status
 
