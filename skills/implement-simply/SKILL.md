@@ -19,6 +19,8 @@ Inspect the working tree and preserve existing work. Identify the required obser
 supported inputs and failures, and the callers, exports, tests or documentation the change
 must reach. Use the repository's actual stack and commands.
 Summarize the intended outcome in one sentence and use it to judge each part of the change.
+Inspect existing verification before choosing tests; apply the test-addition decision below
+before writing permanent test code.
 
 An explicit current requirement can supersede a historical test expectation. An inferred
 preference cannot; establish the intended contract before changing an existing expectation.
@@ -81,17 +83,28 @@ workflow and its meaningful behavioral contracts and concrete risks. Keep reject
 failure cases when they enforce a supported contract or address a concrete risk; avoid
 enumerating theoretical input misuse or preserving implementation history for its own sake.
 
-Prefer improving existing tests over adding redundant cases, excessive parameterization or
-implementation-specific assertions. Add a permanent test only for a concrete protection gap,
-with an expected result derived from a requirement, known example or independent invariant.
-For a bug fix, reproduce the failure when practical and confirm the fix resolves it. A fix
-does not automatically require a permanent regression test, especially before the first release.
+**Zero new permanent tests is a valid completed outcome.** Use existing tests and relevant
+checks when they provide sufficient confidence. A focused disposable reproduction can verify
+a fix without becoming a maintained test. A bug fix does not automatically require a permanent
+regression test, especially before the first release.
+
+Before adding a permanent test, establish the specific failure in the intended workflow or
+established failure contract that existing verification misses, how the assertion would detect
+it, and why retaining the test is worth its fixtures, mocks and maintenance. Derive the expected
+result from a requirement, known example or independent invariant. Prefer improving existing
+workflow tests over redundant cases, excessive parameterization or implementation-specific
+assertions. A new branch, helper or theoretical edge case alone does not justify another case.
 
 Use real integration or E2E tests where mocks cannot establish the actual runtime contract.
 Choose the smallest meaningful check: types and callers may suffice for a rename; a parser
 may need a specified rejection case; framework wiring may require exercising the real runtime.
 Aim for the smallest maintainable suite that provides sufficient confidence. Coverage and
 test count are not goals in themselves.
+
+Before final verification, prune test changes within the task, including fixtures, mocks and
+helpers: remove or consolidate parts without distinct, worthwhile protection. Keep all useful
+tests; the pass may conclude that no removal is needed. There is no deletion quota or unrelated
+test-suite cleanup. Re-run affected checks after pruning.
 
 Review the full diff against the stated outcome. For each added mechanism, ask what required
 behavior or useful clarity would be lost if it were omitted, inlined or merged; remove it when

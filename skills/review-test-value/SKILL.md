@@ -12,6 +12,8 @@ Test primarily the intended workflow, not every possible misuse of its input. Ju
 the meaningful behavioral contracts and concrete risks they protect, rather than implementation
 history or theoretical edge cases. The goal is the smallest maintainable suite that provides
 sufficient confidence, not maximum coverage or the fewest possible tests.
+**Zero new permanent tests is a valid completed outcome.** Assess whether existing verification
+already provides sufficient confidence before recommending additions.
 
 Return a read-only review of the requested tests and support code. Preserve repository-owned
 content; run tools with no-write options or temporary outputs and disclose incidental artifacts.
@@ -37,10 +39,11 @@ first, then rejection and failure cases justified by a supported contract or con
 
 For each case or genuinely equivalent group, establish:
 
-1. The supported behavior or invariant and plausible regression it protects.
+1. The supported behavior or invariant and specific workflow failure or established failure
+   contract it protects.
 2. The production path exercised and observable result asserted.
 3. The **oracle**: where the expected result came from independently of the implementation.
-4. Whether that regression would make this assertion fail.
+4. Whether the specified failure would make this assertion fail.
 5. What distinct protection remains compared with other tests, and which harmless refactors
    would break it.
 
@@ -63,8 +66,9 @@ Check apparent duplicates against the same contract, meaningful input class, pro
 observable result and failure mode. Keep distinct rejection, safety, persistence, concurrency,
 compatibility and resource behavior. Similar output alone does not establish redundancy.
 
-Ask what plausible regression would become undetected if a candidate test were removed.
-Passing the remaining suite cannot answer that question by itself. If a structural cleanup
+Ask what specific workflow failure or established failure contract would lose protection if
+a candidate test were removed. Passing the remaining suite cannot answer that question by
+itself. If a structural cleanup
 breaks a test, check its expectation against the supported contract before recommending a
 rewrite: it may expose a behavior regression or merely depend on the old implementation.
 
@@ -85,17 +89,26 @@ overall keep assessment rather than one report entry per test. For material find
 - **Confidence and verification:** what is established, what needs checking, and any focused
   collection or execution check needed. Confidence is separate from importance.
 
-Group issues with the same cause and rank by practical benefit and risk. Prefer improving
-existing tests over redundant new cases, excessive parameterization or implementation-specific
-assertions. Recommend a new permanent test only for a concrete protection gap, with a meaningful
-observation and independent oracle. A bug fix does not automatically warrant a permanent
-regression test, especially before the first release. Fixture cleanup follows surviving
-consumers. A coverage target or missing helper test alone does not establish a protection gap.
+Group issues with the same cause and rank by practical benefit and risk. Before recommending
+a new permanent test, identify the specific workflow failure or established failure contract
+that existing verification misses, how an assertion with an independent oracle would detect
+it, and why the whole testing footprint is worth maintaining. Prefer improving existing workflow
+tests over redundant cases, excessive parameterization or implementation-specific assertions.
+A focused disposable reproduction may suffice for a fix; a bug fix does not automatically
+warrant a permanent regression test, especially before the first release.
+A new branch, missing helper test or theoretical edge case alone does not justify an addition.
 
 Production behavior requires a separate necessity argument before removal. When production
 machinery and tests justify only one another, supply evidence to one combined bloat finding;
 a test specifying a supported error is not such a loop merely because it is the only record.
 Leave unresolved candidates intact in the recommendation and identify the missing evidence.
+
+Before reporting, perform a pruning pass over the task's test changes and their fixtures,
+mocks and helpers.
+Recommend removal or consolidation only where a part adds no distinct, worthwhile protection;
+keep every useful test and support with surviving consumers, even when that means no removal.
+Keep the pass within the requested scope, with no deletion quota. This remains a read-only
+recommendation.
 
 Finish with the inspected scope, material recommendations and checks actually run, or
 **No material findings** with a brief basis.

@@ -66,19 +66,28 @@ The goal is the smallest maintainable test suite that provides sufficient confid
 than maximum coverage or the fewest possible tests. Implementation, test review and cleanup
 carry the applicable decisions independently:
 
-- A bug fix does not automatically require a permanent regression test, especially before
-  the first release. Decide from the protection gap and the value of retaining the case.
+- Zero new permanent tests is a valid completed outcome. Existing verification or a focused
+  disposable reproduction can provide sufficient confidence without adding maintained tests.
+- Before adding or recommending a permanent test, identify the specific failure in the
+  intended workflow or established failure contract that existing verification misses, how
+  the assertion would detect it, and why the test and its support code are worth maintaining.
+  A bug fix alone does not justify a permanent regression test, especially before first release.
 - Prefer improving existing tests over redundant new cases, excessive parameterization and
   implementation-specific assertions.
 - Use real integration or E2E tests where mocks cannot establish the actual runtime contract.
   A mocked outbound payload can still protect application behavior; it cannot establish real
   framework, SDK or persistence wiring by itself.
 - Keep rejection and failure cases justified by supported contracts or concrete risks.
+- Finish with a pruning pass over the task's test changes, fixtures, mocks and helpers.
+  Remove or consolidate parts without distinct, worthwhile protection. Keep every useful
+  test and stay within the task; no deletion quota or unrelated suite cleanup is required.
 - Explicit current requirements can supersede historical test expectations. An inferred
   preference cannot authorize changing the contract.
 
 This policy is supplied by the maintainer. It governs the selected upstream material, including
 examples that would otherwise prescribe a new regression test for every fix.
+Implementation and cleanup make the addition decision before writing tests; test review
+applies it to recommendations and keeps its pruning pass read-only.
 
 ## Source research and selection
 
